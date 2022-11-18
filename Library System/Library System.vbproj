@@ -1,0 +1,1048 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{02A8D27B-4BEC-4720-8035-0B16F01A44C3}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>Library_System.My.MyApplication</StartupObject>
+    <RootNamespace>Library_System</RootNamespace>
+    <AssemblyName>Library System</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>WindowsForms</MyType>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>Library System.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>Library System.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto, Version=1.9.0.0, Culture=neutral, PublicKeyToken=0e99375e54769942, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Portable.BouncyCastle.1.9.0\lib\net40\BouncyCastle.Crypto.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CRVsPackageLib, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="CrystalDecisions.CrystalReports.Design, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Data.AdoDotNetInterop, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FlashControlV71, Version=1.0.3187.32366, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="Google.Protobuf, Version=3.19.4.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Google.Protobuf.3.19.4\lib\net45\Google.Protobuf.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="K4os.Compression.LZ4, Version=1.2.6.0, Culture=neutral, PublicKeyToken=2186fa9121ef231d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\K4os.Compression.LZ4.1.2.6\lib\net45\K4os.Compression.LZ4.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="K4os.Compression.LZ4.Streams, Version=1.2.6.0, Culture=neutral, PublicKeyToken=2186fa9121ef231d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\K4os.Compression.LZ4.Streams.1.2.6\lib\net45\K4os.Compression.LZ4.Streams.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="K4os.Hash.xxHash, Version=1.0.6.0, Culture=neutral, PublicKeyToken=32cd54395057cec3, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\K4os.Hash.xxHash.1.0.6\lib\net45\K4os.Hash.xxHash.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MessagingToolkit.Barcode">
+      <HintPath>..\..\..\..\..\Desktop\MessagingToolkit.Barcode.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MySql.Data, Version=8.0.30.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="MySqlBackup, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySqlBackup.1.0.1\lib\MySqlBackup.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\netstandard1.1\System.Buffers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.4\lib\netstandard1.1\System.Memory.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.5.0.0\lib\net45\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="ZstdNet, Version=1.4.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\MySql.Data.8.0.31\lib\net452\ZstdNet.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+    <Import Include="System.Threading.Tasks" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AddAdmin.Designer.vb">
+      <DependentUpon>AddAdmin.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AddAdmin.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddFaculty.Designer.vb">
+      <DependentUpon>AddFaculty.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AddFaculty.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddNonPrinted.Designer.vb">
+      <DependentUpon>AddNonPrinted.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AddNonPrinted.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddStudent.Designer.vb">
+      <DependentUpon>AddStudent.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AddStudent.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Add_Book.Designer.vb">
+      <DependentUpon>Add_Book.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Add_Book.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminMainForms.Designer.vb">
+      <DependentUpon>AdminMainForms.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AdminMainForms.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BackUpandRestore.Designer.vb">
+      <DependentUpon>BackUpandRestore.vb</DependentUpon>
+    </Compile>
+    <Compile Include="BackUpandRestore.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="backupandrestore3.Designer.vb">
+      <DependentUpon>backupandrestore3.vb</DependentUpon>
+    </Compile>
+    <Compile Include="backupandrestore3.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BackupandRestore4.Designer.vb">
+      <DependentUpon>BackupandRestore4.vb</DependentUpon>
+    </Compile>
+    <Compile Include="BackupandRestore4.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BackupRestore.Designer.vb">
+      <DependentUpon>BackupRestore.vb</DependentUpon>
+    </Compile>
+    <Compile Include="BackupRestore.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="bar.Designer.vb">
+      <DependentUpon>bar.vb</DependentUpon>
+    </Compile>
+    <Compile Include="bar.vb" />
+    <Compile Include="bin\Debug\BorrowedNonPrintedReport.Designer.vb">
+      <DependentUpon>BorrowedNonPrintedReport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="bin\Debug\BorrowedNonPrintedReport.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="bin\Debug\CrystalReport1.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CrystalReport1.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="bin\Debug\BorrowedBookReport.Designer.vb">
+      <DependentUpon>BorrowedBookReport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="bin\Debug\BorrowedBookReport.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="bin\Debug\CrystalReport10.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CrystalReport10.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="bin\Debug\CrystalReport11.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CrystalReport11.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="bin\Debug\CrystalReport12.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CrystalReport12.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="bin\Debug\CrystalReport14.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CrystalReport14.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="bin\Debug\CrystalReport2.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CrystalReport2.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="bin\Debug\CrystalReport3.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CrystalReport3.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="bin\Debug\CrystalReport4.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CrystalReport4.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="bin\Debug\CrystalReport5.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CrystalReport5.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="bin\Debug\CrystalReport6.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CrystalReport6.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="bin\Debug\CrystalReport7.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CrystalReport7.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="bin\Debug\CrystalReport8.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CrystalReport8.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="bin\Debug\CrystalReport9.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CrystalReport9.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="bin\Debug\DamagedBookReport.Designer.vb">
+      <DependentUpon>DamagedBookReport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="bin\Debug\DamagedBookReport.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="bin\Debug\DamagedNonPrintedReport.Designer.vb">
+      <DependentUpon>DamagedNonPrintedReport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="bin\Debug\DamagedNonPrintedReport.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="bin\Debug\DataSet1.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="bin\Debug\DataSet2.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSet2.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="bin\Debug\DelinquentBorrowerReport.Designer.vb">
+      <DependentUpon>DelinquentBorrowerReport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="bin\Debug\DelinquentBorrowerReport.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="bin\Debug\FacultyBorrowerReport.Designer.vb">
+      <DependentUpon>FacultyBorrowerReport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="bin\Debug\FacultyBorrowerReport.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="bin\Debug\LostBookReport.Designer.vb">
+      <DependentUpon>LostBookReport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="bin\Debug\LostBookReport.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="bin\Debug\LostNonPrintedReport.Designer.vb">
+      <DependentUpon>LostNonPrintedReport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="bin\Debug\LostNonPrintedReport.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="bin\Debug\OverdueBookReport.Designer.vb">
+      <DependentUpon>OverdueBookReport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="bin\Debug\OverdueBookReport.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="bin\Debug\OverdueNonPrintedReport.Designer.vb">
+      <DependentUpon>OverdueNonPrintedReport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="bin\Debug\OverdueNonPrintedReport.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="bin\Debug\ReturnedBookReport.Designer.vb">
+      <DependentUpon>ReturnedBookReport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="bin\Debug\ReturnedBookReport.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="bin\Debug\ReturnedNonPrinted.Designer.vb">
+      <DependentUpon>ReturnedNonPrinted.vb</DependentUpon>
+    </Compile>
+    <Compile Include="bin\Debug\ReturnedNonPrinted.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="bin\Debug\ReturnedNonPrintedReport.Designer.vb">
+      <DependentUpon>ReturnedNonPrintedReport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="bin\Debug\ReturnedNonPrintedReport.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="bin\Debug\StudentBorrowerReport.Designer.vb">
+      <DependentUpon>StudentBorrowerReport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="bin\Debug\StudentBorrowerReport.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Borrow.Designer.vb">
+      <DependentUpon>Borrow.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Borrow.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BorrowedBook.Designer.vb">
+      <DependentUpon>BorrowedBook.vb</DependentUpon>
+    </Compile>
+    <Compile Include="BorrowedBook.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BorrowedNonPrinted.Designer.vb">
+      <DependentUpon>BorrowedNonPrinted.vb</DependentUpon>
+    </Compile>
+    <Compile Include="BorrowedNonPrinted.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClassBorrower.Designer.vb">
+      <DependentUpon>ClassBorrower.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ClassBorrower.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DamagedBook.Designer.vb">
+      <DependentUpon>DamagedBook.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DamagedBook.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DamagedNonPrinted.Designer.vb">
+      <DependentUpon>DamagedNonPrinted.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DamagedNonPrinted.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DelinquentBorrower.Designer.vb">
+      <DependentUpon>DelinquentBorrower.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DelinquentBorrower.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DueMaterials.Designer.vb">
+      <DependentUpon>DueMaterials.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DueMaterials.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FacultyBorrowers.Designer.vb">
+      <DependentUpon>FacultyBorrowers.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FacultyBorrowers.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Help.Designer.vb">
+      <DependentUpon>Help.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Help.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login Form.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login Form.Designer.vb">
+      <DependentUpon>Login Form.vb</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LostBook.Designer.vb">
+      <DependentUpon>LostBook.vb</DependentUpon>
+    </Compile>
+    <Compile Include="LostBook.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LostNonPrinted.Designer.vb">
+      <DependentUpon>LostNonPrinted.vb</DependentUpon>
+    </Compile>
+    <Compile Include="LostNonPrinted.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Lost_Book.Designer.vb">
+      <DependentUpon>Lost_Book.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Lost_Book.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Lost_NonPrinted.Designer.vb">
+      <DependentUpon>Lost_NonPrinted.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Lost_NonPrinted.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OverdueBook.Designer.vb">
+      <DependentUpon>OverdueBook.vb</DependentUpon>
+    </Compile>
+    <Compile Include="OverdueBook.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OverdueNonPrinted.Designer.vb">
+      <DependentUpon>OverdueNonPrinted.vb</DependentUpon>
+    </Compile>
+    <Compile Include="OverdueNonPrinted.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReturnBook.Designer.vb">
+      <DependentUpon>ReturnBook.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ReturnBook.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReturnedBook.Designer.vb">
+      <DependentUpon>ReturnedBook.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ReturnedBook.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SearchBook.Designer.vb">
+      <DependentUpon>SearchBook.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SearchBook.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SearchBook2.Designer.vb">
+      <DependentUpon>SearchBook2.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SearchBook2.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SearchBook3.Designer.vb">
+      <DependentUpon>SearchBook3.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SearchBook3.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SearchNonPrinted.Designer.vb">
+      <DependentUpon>SearchNonPrinted.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SearchNonPrinted.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SearchNonPrinted2.Designer.vb">
+      <DependentUpon>SearchNonPrinted2.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SearchNonPrinted2.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SearchNonPrinted3.Designer.vb">
+      <DependentUpon>SearchNonPrinted3.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SearchNonPrinted3.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SendMessage.Designer.vb">
+      <DependentUpon>SendMessage.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SendMessage.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StudentBorrower.Designer.vb">
+      <DependentUpon>StudentBorrower.vb</DependentUpon>
+    </Compile>
+    <Compile Include="StudentBorrower.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StudentMainForm.Designer.vb">
+      <DependentUpon>StudentMainForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="StudentMainForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Module1.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="TeacherMainForm.Designer.vb">
+      <DependentUpon>TeacherMainForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="TeacherMainForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UpdateAdmin.Designer.vb">
+      <DependentUpon>UpdateAdmin.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UpdateAdmin.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UpdateFaculty.Designer.vb">
+      <DependentUpon>UpdateFaculty.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UpdateFaculty.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UpdateNonPrinted.Designer.vb">
+      <DependentUpon>UpdateNonPrinted.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UpdateNonPrinted.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UpdateStudent.Designer.vb">
+      <DependentUpon>UpdateStudent.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UpdateStudent.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Update_Book.Designer.vb">
+      <DependentUpon>Update_Book.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Update_Book.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Update_Faculty.Designer.vb">
+      <DependentUpon>Update_Faculty.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Update_Faculty.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Update_Student.Designer.vb">
+      <DependentUpon>Update_Student.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Update_Student.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserManualForm.Designer.vb">
+      <DependentUpon>UserManualForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UserManualForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="AddAdmin.resx">
+      <DependentUpon>AddAdmin.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddFaculty.resx">
+      <DependentUpon>AddFaculty.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddNonPrinted.resx">
+      <DependentUpon>AddNonPrinted.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddStudent.resx">
+      <DependentUpon>AddStudent.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Add_Book.resx">
+      <DependentUpon>Add_Book.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminMainForms.resx">
+      <DependentUpon>AdminMainForms.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BackUpandRestore.resx">
+      <DependentUpon>BackUpandRestore.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="backupandrestore3.resx">
+      <DependentUpon>backupandrestore3.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BackupandRestore4.resx">
+      <DependentUpon>BackupandRestore4.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BackupRestore.resx">
+      <DependentUpon>BackupRestore.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="bar.resx">
+      <DependentUpon>bar.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="bin\Debug\BorrowedNonPrintedReport.resx">
+      <DependentUpon>BorrowedNonPrintedReport.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="bin\Debug\CrystalReport1.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrystalReport1.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="bin\Debug\BorrowedBookReport.resx">
+      <DependentUpon>BorrowedBookReport.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="bin\Debug\CrystalReport10.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrystalReport10.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="bin\Debug\CrystalReport11.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrystalReport11.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="bin\Debug\CrystalReport12.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrystalReport12.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="bin\Debug\CrystalReport14.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrystalReport14.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="bin\Debug\CrystalReport2.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrystalReport2.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="bin\Debug\CrystalReport3.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrystalReport3.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="bin\Debug\CrystalReport4.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrystalReport4.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="bin\Debug\CrystalReport5.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrystalReport5.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="bin\Debug\CrystalReport6.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrystalReport6.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="bin\Debug\CrystalReport7.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrystalReport7.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="bin\Debug\CrystalReport8.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrystalReport8.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="bin\Debug\CrystalReport9.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrystalReport9.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="bin\Debug\DamagedBookReport.resx">
+      <DependentUpon>DamagedBookReport.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="bin\Debug\DamagedNonPrintedReport.resx">
+      <DependentUpon>DamagedNonPrintedReport.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="bin\Debug\DelinquentBorrowerReport.resx">
+      <DependentUpon>DelinquentBorrowerReport.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="bin\Debug\FacultyBorrowerReport.resx">
+      <DependentUpon>FacultyBorrowerReport.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="bin\Debug\LostBookReport.resx">
+      <DependentUpon>LostBookReport.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="bin\Debug\LostNonPrintedReport.resx">
+      <DependentUpon>LostNonPrintedReport.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="bin\Debug\OverdueBookReport.resx">
+      <DependentUpon>OverdueBookReport.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="bin\Debug\OverdueNonPrintedReport.resx">
+      <DependentUpon>OverdueNonPrintedReport.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="bin\Debug\ReturnedBookReport.resx">
+      <DependentUpon>ReturnedBookReport.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="bin\Debug\ReturnedNonPrinted.resx">
+      <DependentUpon>ReturnedNonPrinted.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="bin\Debug\ReturnedNonPrintedReport.resx">
+      <DependentUpon>ReturnedNonPrintedReport.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="bin\Debug\StudentBorrowerReport.resx">
+      <DependentUpon>StudentBorrowerReport.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Borrow.resx">
+      <DependentUpon>Borrow.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BorrowedBook.resx">
+      <DependentUpon>BorrowedBook.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BorrowedNonPrinted.resx">
+      <DependentUpon>BorrowedNonPrinted.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ClassBorrower.resx">
+      <DependentUpon>ClassBorrower.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DamagedBook.resx">
+      <DependentUpon>DamagedBook.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DamagedNonPrinted.resx">
+      <DependentUpon>DamagedNonPrinted.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DelinquentBorrower.resx">
+      <DependentUpon>DelinquentBorrower.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DueMaterials.resx">
+      <DependentUpon>DueMaterials.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FacultyBorrowers.resx">
+      <DependentUpon>FacultyBorrowers.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Help.resx">
+      <DependentUpon>Help.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login Form.resx">
+      <DependentUpon>Login Form.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LostBook.resx">
+      <DependentUpon>LostBook.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LostNonPrinted.resx">
+      <DependentUpon>LostNonPrinted.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lost_Book.resx">
+      <DependentUpon>Lost_Book.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lost_NonPrinted.resx">
+      <DependentUpon>Lost_NonPrinted.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OverdueBook.resx">
+      <DependentUpon>OverdueBook.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OverdueNonPrinted.resx">
+      <DependentUpon>OverdueNonPrinted.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReturnBook.resx">
+      <DependentUpon>ReturnBook.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReturnedBook.resx">
+      <DependentUpon>ReturnedBook.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SearchBook.resx">
+      <DependentUpon>SearchBook.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SearchBook2.resx">
+      <DependentUpon>SearchBook2.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SearchBook3.resx">
+      <DependentUpon>SearchBook3.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SearchNonPrinted.resx">
+      <DependentUpon>SearchNonPrinted.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SearchNonPrinted2.resx">
+      <DependentUpon>SearchNonPrinted2.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SearchNonPrinted3.resx">
+      <DependentUpon>SearchNonPrinted3.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SendMessage.resx">
+      <DependentUpon>SendMessage.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StudentBorrower.resx">
+      <DependentUpon>StudentBorrower.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StudentMainForm.resx">
+      <DependentUpon>StudentMainForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TeacherMainForm.resx">
+      <DependentUpon>TeacherMainForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UpdateAdmin.resx">
+      <DependentUpon>UpdateAdmin.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UpdateFaculty.resx">
+      <DependentUpon>UpdateFaculty.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UpdateNonPrinted.resx">
+      <DependentUpon>UpdateNonPrinted.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UpdateStudent.resx">
+      <DependentUpon>UpdateStudent.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Update_Book.resx">
+      <DependentUpon>Update_Book.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Update_Faculty.resx">
+      <DependentUpon>Update_Faculty.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Update_Student.resx">
+      <DependentUpon>Update_Student.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserManualForm.resx">
+      <DependentUpon>UserManualForm.vb</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\DataSet1.xsc">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="bin\Debug\DataSet1.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSet1.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="bin\Debug\DataSet1.xss">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="bin\Debug\DataSet2.xsc">
+      <DependentUpon>DataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="bin\Debug\DataSet2.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSet2.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="bin\Debug\DataSet2.xss">
+      <DependentUpon>DataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="bin\Debug\Library System.exe.config" />
+    <None Include="bin\Debug\Library System.vshost.exe.config" />
+    <None Include="bin\Debug\Library System.vshost.exe.manifest" />
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="Resources\logo %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bgl.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo__1_-removebg-preview.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\searchicon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\up.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FOR STUDENT.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DARKBLUE.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\STUDENTS.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TEACHER.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ADMINS.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SEARCH_B.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SAD.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logged.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Debug\BouncyCastle.Crypto.dll" />
+    <Content Include="bin\Debug\CrystalDecisions.CrystalReports.Design.dll" />
+    <Content Include="bin\Debug\CrystalDecisions.CrystalReports.Engine.dll" />
+    <Content Include="bin\Debug\CrystalDecisions.Data.AdoDotNetInterop.dll" />
+    <Content Include="bin\Debug\CrystalDecisions.ReportAppServer.ClientDoc.dll" />
+    <Content Include="bin\Debug\CrystalDecisions.ReportAppServer.CommLayer.dll" />
+    <Content Include="bin\Debug\CrystalDecisions.ReportAppServer.CommonControls.dll" />
+    <Content Include="bin\Debug\CrystalDecisions.ReportAppServer.CommonObjectModel.dll" />
+    <Content Include="bin\Debug\CrystalDecisions.ReportAppServer.Controllers.dll" />
+    <Content Include="bin\Debug\CrystalDecisions.ReportAppServer.CubeDefModel.dll" />
+    <Content Include="bin\Debug\CrystalDecisions.ReportAppServer.DataDefModel.dll" />
+    <Content Include="bin\Debug\CrystalDecisions.ReportAppServer.DataSetConversion.dll" />
+    <Content Include="bin\Debug\CrystalDecisions.ReportAppServer.ObjectFactory.dll" />
+    <Content Include="bin\Debug\CrystalDecisions.ReportAppServer.Prompting.dll" />
+    <Content Include="bin\Debug\CrystalDecisions.ReportAppServer.ReportDefModel.dll" />
+    <Content Include="bin\Debug\CrystalDecisions.ReportAppServer.XmlSerialize.dll" />
+    <Content Include="bin\Debug\CrystalDecisions.ReportSource.dll" />
+    <Content Include="bin\Debug\CrystalDecisions.Shared.dll" />
+    <Content Include="bin\Debug\CrystalDecisions.Web.dll" />
+    <Content Include="bin\Debug\CrystalDecisions.Windows.Forms.dll" />
+    <Content Include="bin\Debug\FlashControlV71.dll" />
+    <Content Include="bin\Debug\Google.Protobuf.dll" />
+    <Content Include="bin\Debug\K4os.Compression.LZ4.dll" />
+    <Content Include="bin\Debug\K4os.Compression.LZ4.Streams.dll" />
+    <Content Include="bin\Debug\K4os.Hash.xxHash.dll" />
+    <Content Include="bin\Debug\Library System.exe" />
+    <Content Include="bin\Debug\Library System.pdb" />
+    <Content Include="bin\Debug\Library System.vshost.exe" />
+    <Content Include="bin\Debug\Library System.xml" />
+    <Content Include="bin\Debug\MessagingToolkit.Barcode.dll" />
+    <Content Include="bin\Debug\MySql.Data.dll" />
+    <Content Include="bin\Debug\MySql.Data.xml" />
+    <Content Include="bin\Debug\ShockwaveFlashObjects.dll" />
+    <Content Include="bin\Debug\stdole.dll" />
+    <Content Include="bin\Debug\System.Buffers.dll" />
+    <Content Include="bin\Debug\Ubiety.Dns.Core.dll" />
+    <Content Include="bin\Debug\USB-Barcode-Scanner.dll" />
+    <Content Include="bin\Debug\ZstdNet.dll" />
+    <Content Include="logo.ico" />
+    <None Include="Resources\UPDATE.png" />
+    <None Include="Resources\BORROW.png" />
+    <None Include="Resources\button.png" />
+    <None Include="Resources\Teacher1.jpg" />
+    <None Include="Resources\Students1.jpg" />
+    <None Include="Resources\Search_Borrow_Book.jpg" />
+    <None Include="Resources\Admins1.jpg" />
+    <None Include="Resources\icons8-books-64.png" />
+    <None Include="Resources\icons8-log-out-64.png" />
+    <None Include="Resources\Ecommerce-Barcode-Scanner-icon.png" />
+    <None Include="Resources\icons8-report-64 %283%29.png" />
+    <None Include="Resources\icons8-report-64 %282%29.png" />
+    <None Include="Resources\icons8-report-64 %281%29.png" />
+    <None Include="Resources\external-report-crowdfunding-flaticons-lineal-color-flat-icons-2.png" />
+    <None Include="Resources\icons8-report-64.png" />
+    <None Include="Resources\icons8-manage-64.png" />
+    <None Include="Resources\Start-Menu-Search-icon.png" />
+    <None Include="Resources\308825755_776650690121545_2147951894836260528_n.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\Release\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
