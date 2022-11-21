@@ -25,8 +25,7 @@ CREATE TABLE `cron_settings`  (
   `settingID` int NOT NULL AUTO_INCREMENT,
   `runinbackground` int NOT NULL,
   PRIMARY KEY (`settingID`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
-
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 -- ----------------------------
 -- Records of cron_settings
 -- ----------------------------
