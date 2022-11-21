@@ -1,6 +1,6 @@
 ﻿Imports MySql.Data.MySqlClient
 Public Class Borrow
-    Public conn As New MySqlConnection("server=localhost;uid=root;database=db_system")
+    Public conn As New MySqlConnection(connString)
     Private Sub Borrow_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         Me.WindowState = FormWindowState.Maximized
@@ -126,7 +126,7 @@ Public Class Borrow
         End Try
         conn.Close()
 
-        'Dim con As New MySqlConnection("server=localhost;uid=root;database=db_system")
+        'Dim con As New MySqlConnection(connString)
         'con.Open()
         'Dim cmd As New MySqlCommand("select * from tbl_category", con)
         'Dim da As New MySqlDataAdapter
@@ -414,7 +414,7 @@ Public Class Borrow
             For Each lvitem As ListViewItem In ListView1.Items
 
                 If lvitem.SubItems(0).Text = "Printed" Then
-                    Dim conn As New MySqlConnection("server=localhost; uid=root;database=db_system")
+                    Dim conn As New MySqlConnection(connString)
                     Dim cmmds As New MySqlCommand("Insert Into tbl_borrowedbooks (BookNumber,ISBN,Title,Author,DeweyDecimalClassification,Category,YearofPublication,Publisher,Address,Copyright,DateBorrowed,DatetoReturn,Username,Name,ContactNo) VALUES (@BookNumber,@ISBN,@Title,@Author,@Classification,@Category,@YearofPublication,@Publisher,@Address,@Copyright,@BorrowedDate,@DatetoReturn,@Username,@Name,@ContactNumber)", conn)
                     cmmds.Parameters.AddWithValue("@BookNumber", lvitem.SubItems(3).Text)
                     cmmds.Parameters.AddWithValue("@ISBN", lvitem.SubItems(4).Text)
@@ -435,7 +435,7 @@ Public Class Borrow
                     cmmds.ExecuteNonQuery()
                     conn.Close()
 
-                    Dim conn2 As New MySqlConnection("server=localhost; uid=root;database=db_system")
+                    Dim conn2 As New MySqlConnection(connString)
                     Dim cmmds2 As New MySqlCommand("Insert Into tbl_borrowreturnbooks (BookNumber,ISBN,Title,Author,DeweyDecimalClassification,Category,YearofPublication,Publisher,Address,Copyright,DateBorrowed,DatetoReturn,Username,Name,ContactNo) VALUES (@BookNumber,@ISBN,@Title,@Author,@Classification,@Category,@YearofPublication,@Publisher,@Address,@Copyright,@BorrowedDate,@DatetoReturn,@Username,@Name,@ContactNumber)", conn2)
                     cmmds2.Parameters.AddWithValue("@BookNumber", lvitem.SubItems(3).Text)
                     cmmds2.Parameters.AddWithValue("@ISBN", lvitem.SubItems(4).Text)
@@ -457,7 +457,7 @@ Public Class Borrow
                     conn2.Close()
 
                     If lvitem.SubItems(14).Text = "Faculty" Then
-                        Dim conn1 As New MySqlConnection("server=localhost; uid=root;database=db_system")
+                        Dim conn1 As New MySqlConnection(connString)
                         Dim cmmds1 As New MySqlCommand("Insert Into tbl_facultyborrowers (Username,Name,ContactNo,ItemNumber,ItemType,Title,DateBorrowed,DatetoReturn) VALUES (@Username,@Name,@ContactNumber,@BookNumber,@Material,@Title,@BorrowedDate,@DatetoReturn)", conn1)
                         cmmds1.Parameters.AddWithValue("@Username", lvitem.SubItems(15).Text)
                         cmmds1.Parameters.AddWithValue("@Name", lvitem.SubItems(16).Text)
@@ -472,7 +472,7 @@ Public Class Borrow
                         conn1.Close()
 
                     ElseIf lvitem.SubItems(14).Text = "Student" Then
-                        Dim conn5 As New MySqlConnection("server=localhost; uid=root;database=db_system")
+                        Dim conn5 As New MySqlConnection(connString)
                         Dim cmmds5 As New MySqlCommand("Insert Into tbl_studentborrowers (Username,Name,ContactNo,GradeSec,Teacher,ItemNumber,ItemType,Title,DateBorrowed,DatetoReturn) VALUES (@Username,@Name,@ContactNumber,@GradeandSection,@Teacher,@BookNumber,@Material,@Title,@BorrowedDate,@DatetoReturn)", conn5)
                         cmmds5.Parameters.AddWithValue("@Username", lvitem.SubItems(15).Text)
                         cmmds5.Parameters.AddWithValue("@Name", lvitem.SubItems(16).Text)
@@ -489,7 +489,7 @@ Public Class Borrow
                         conn5.Close()
                     End If
 
-                    Dim conn8 As New MySqlConnection("server=localhost; uid=root;database=db_system")
+                    Dim conn8 As New MySqlConnection(connString)
                     Dim cmmds8 As New MySqlCommand("Update tbl_book set status = 'Borrowed' where BookNumber= '" & lvitem.SubItems(3).Text & "' ", conn8)
                     conn8.Open()
                     cmmds8.ExecuteNonQuery()
@@ -497,7 +497,7 @@ Public Class Borrow
 
 
                 ElseIf lvitem.SubItems(0).Text = "Non-Printed" Then
-                    Dim conn3 As New MySqlConnection("server=localhost; uid=root;database=db_system")
+                    Dim conn3 As New MySqlConnection(connString)
                     Dim cmmds3 As New MySqlCommand("Insert Into tbl_borrowednonprinted (MaterialNumber,MaterialName,DateBorrowed,DatetoReturn,Username,Name,ContactNo) VALUES (@MaterialNumber,@MaterialName,@BorrowedDate,@DatetoReturn,@Username,@Name,@ContactNumber)", conn3)
                     cmmds3.Parameters.AddWithValue("@MaterialNumber", lvitem.SubItems(1).Text)
                     cmmds3.Parameters.AddWithValue("@MaterialName", lvitem.SubItems(2).Text)
@@ -510,7 +510,7 @@ Public Class Borrow
                     cmmds3.ExecuteNonQuery()
                     conn3.Close()
 
-                    Dim conn4 As New MySqlConnection("server=localhost; uid=root;database=db_system")
+                    Dim conn4 As New MySqlConnection(connString)
                     Dim cmmds4 As New MySqlCommand("Insert Into tbl_borrowreturnnonprinted (MaterialNumber,MaterialName,DateBorrowed,DatetoReturn,Username,Name,ContactNo) VALUES (@MaterialNumber,@MaterialName,@BorrowedDate,@DatetoReturn,@Username,@Name,@ContactNumber)", conn4)
                     cmmds4.Parameters.AddWithValue("@MaterialNumber", lvitem.SubItems(1).Text)
                     cmmds4.Parameters.AddWithValue("@MaterialName", lvitem.SubItems(2).Text)
@@ -524,7 +524,7 @@ Public Class Borrow
                     conn4.Close()
 
                     If lvitem.SubItems(14).Text = "Faculty" Then
-                        Dim conn9 As New MySqlConnection("server=localhost; uid=root;database=db_system")
+                        Dim conn9 As New MySqlConnection(connString)
                         Dim cmmds9 As New MySqlCommand("Insert Into tbl_facultyborrowers (Username,Name,ContactNo,ItemNumber,ItemType,Title,DateBorrowed,DatetoReturn) VALUES (@Username,@Name,@ContactNumber,@MaterialNumber,@Material,@MaterialName,@BorrowedDate,@DatetoReturn)", conn9)
                         cmmds9.Parameters.AddWithValue("@Username", lvitem.SubItems(15).Text)
                         cmmds9.Parameters.AddWithValue("@Name", lvitem.SubItems(16).Text)
@@ -539,7 +539,7 @@ Public Class Borrow
                         conn9.Close()
 
                     ElseIf lvitem.SubItems(14).Text = "Student" Then
-                        Dim conn10 As New MySqlConnection("server=localhost; uid=root;database=db_system")
+                        Dim conn10 As New MySqlConnection(connString)
                         Dim cmmds10 As New MySqlCommand("Insert Into tbl_studentborrowers (Username,Name,ContactNo,GradeSec,Teacher,ItemNumber,ItemType,Title,DateBorrowed,DatetoReturn) VALUES (@Username,@Name,@ContactNumber,@GradeandSection,@Teacher,@MaterialNumber,@Material,@MaterialName,@BorrowedDate,@DatetoReturn)", conn10)
                         cmmds10.Parameters.AddWithValue("@Username", lvitem.SubItems(15).Text)
                         cmmds10.Parameters.AddWithValue("@Name", lvitem.SubItems(16).Text)
@@ -556,7 +556,7 @@ Public Class Borrow
                         conn10.Close()
                     End If
 
-                    Dim conn8 As New MySqlConnection("server=localhost; uid=root;database=db_system")
+                    Dim conn8 As New MySqlConnection(connString)
                     Dim cmmds8 As New MySqlCommand("Update tbl_nonprinted set status = 'Borrowed' where MaterialNumber= '" & lvitem.SubItems(1).Text & "' ", conn8)
                     conn8.Open()
                     cmmds8.ExecuteNonQuery()

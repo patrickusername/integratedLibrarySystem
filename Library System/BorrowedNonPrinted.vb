@@ -1,7 +1,7 @@
 ﻿Imports MySql.Data.MySqlClient
 Public Class BorrowedNonPrinted
     Private Sub bind_data()
-        Dim conn As New MySqlConnection("server=localhost;uid=root;database=db_system")
+        Dim conn As New MySqlConnection(connString)
         conn.Open()
         Dim cmd As New MySqlCommand("select * from tbl_borrowednonprinted", conn)
         Dim d As New MySqlDataAdapter
@@ -22,7 +22,7 @@ Public Class BorrowedNonPrinted
     End Sub
 
     Private Sub btn_generate_Click(sender As Object, e As EventArgs) Handles btn_generate.Click
-        Dim conn As New MySqlConnection("server=localhost;uid=root;database=db_system")
+        Dim conn As New MySqlConnection(connString)
 
         conn.Open()
         'Dim cmd As New MySqlCommand("select * from tbl_borrowedbooks", conn)

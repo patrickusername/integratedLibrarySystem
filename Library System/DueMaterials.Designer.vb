@@ -29,31 +29,35 @@ Partial Class DueMaterials
         '
         'DataGridView1
         '
+        Me.DataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Location = New System.Drawing.Point(63, 101)
+        Me.DataGridView1.Location = New System.Drawing.Point(47, 82)
+        Me.DataGridView1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.RowTemplate.Height = 24
         Me.DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DataGridView1.Size = New System.Drawing.Size(1298, 411)
+        Me.DataGridView1.Size = New System.Drawing.Size(974, 334)
         Me.DataGridView1.TabIndex = 0
         '
         'btn_send
         '
         Me.btn_send.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_send.Location = New System.Drawing.Point(671, 567)
+        Me.btn_send.Location = New System.Drawing.Point(503, 461)
+        Me.btn_send.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.btn_send.Name = "btn_send"
-        Me.btn_send.Size = New System.Drawing.Size(150, 43)
+        Me.btn_send.Size = New System.Drawing.Size(112, 35)
         Me.btn_send.TabIndex = 5
         Me.btn_send.Text = "Send Message"
         Me.btn_send.UseVisualStyleBackColor = True
         '
         'DueMaterials
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1430, 687)
+        Me.ClientSize = New System.Drawing.Size(1028, 558)
         Me.Controls.Add(Me.btn_send)
         Me.Controls.Add(Me.DataGridView1)
+        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.Name = "DueMaterials"
         Me.Text = "DueMaterials"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized

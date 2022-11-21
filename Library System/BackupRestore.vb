@@ -9,7 +9,7 @@ Public Class BackupRestore
 
     Sub server(ByVal str As String)
         'con = New MySqlConnection("Data Source=" & str & ";Database=db_system;")
-        con = New MySqlConnection("server=localhost; uid=root;database=db_system")
+        con = New MySqlConnection(connString)
         con.Open()
         cmd = New MySqlCommand("Select * from localhost_3306", con)
         dread = cmd.ExecuteReader

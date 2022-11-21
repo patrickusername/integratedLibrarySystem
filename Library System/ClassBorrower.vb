@@ -11,7 +11,7 @@ Public Class ClassBorrower
         Me.WindowState = FormWindowState.Maximized
         DataGridView1.BackgroundColor = System.Drawing.SystemColors.Control
         'DataGridView1.Sort(DataGridView1.Columns(0), ListSortDirection.Descending)
-        Dim conn As New MySqlConnection("server=localhost;uid=root;database=db_system")
+        Dim conn As New MySqlConnection(connString)
         Dim dt As New DataTable
         Dim da As New MySqlDataAdapter("select Username, name, contactno, gradesec, title, dateborrowed, datetoreturn from tbl_studentborrowers WHERE Teacher='" & TeacherMainForm.lbl_name.Text & "'", conn)
         dt.Clear()

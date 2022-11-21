@@ -43,7 +43,7 @@ Public Class AddNonPrinted
                     Dim book As String = txt_matno.Text & ".jpg"
                     Dim folder As String = "C:\Barcode\"
                     Dim query As String = "Update tbl_nonprinted set ImagePath = @pathstring where MaterialNumber = '" & txt_matno.Text & "'"
-                    Using con As MySqlConnection = New MySqlConnection("server=localhost;uid=root;database=db_system")
+                    Using con As MySqlConnection = New MySqlConnection(connString)
                         Using cmd As MySqlCommand = New MySqlCommand(query, con)
                             Dim pathstring As String = System.IO.Path.Combine(folder, book)
                             cmd.Parameters.AddWithValue("@pathstring", pathstring)

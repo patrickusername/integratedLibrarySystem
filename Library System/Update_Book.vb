@@ -1,6 +1,6 @@
 ﻿Imports MySql.Data.MySqlClient
 Public Class Update_Book
-    Public conn As New MySqlConnection("server=localhost;uid=root;database=db_system")
+    Public conn As New MySqlConnection(connString)
     'Dim str As String
     Private Sub btn_search_Click(sender As Object, e As EventArgs) Handles btn_search.Click
         If txt_search.Text = "" Then

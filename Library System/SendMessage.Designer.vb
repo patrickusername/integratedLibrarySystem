@@ -27,14 +27,16 @@ Partial Class SendMessage
         Me.txt_recipient = New System.Windows.Forms.TextBox()
         Me.lbl_message = New System.Windows.Forms.Label()
         Me.lbl_recipient = New System.Windows.Forms.Label()
+        Me.btnLoad = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'btn_send
         '
         Me.btn_send.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_send.Location = New System.Drawing.Point(117, 354)
+        Me.btn_send.Location = New System.Drawing.Point(87, 334)
+        Me.btn_send.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.btn_send.Name = "btn_send"
-        Me.btn_send.Size = New System.Drawing.Size(150, 43)
+        Me.btn_send.Size = New System.Drawing.Size(112, 35)
         Me.btn_send.TabIndex = 9
         Me.btn_send.Text = "Send"
         Me.btn_send.UseVisualStyleBackColor = True
@@ -42,28 +44,31 @@ Partial Class SendMessage
         'txt_message
         '
         Me.txt_message.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txt_message.Location = New System.Drawing.Point(68, 166)
+        Me.txt_message.Location = New System.Drawing.Point(51, 135)
+        Me.txt_message.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.txt_message.Multiline = True
         Me.txt_message.Name = "txt_message"
         Me.txt_message.ScrollBars = System.Windows.Forms.ScrollBars.Both
-        Me.txt_message.Size = New System.Drawing.Size(255, 156)
+        Me.txt_message.Size = New System.Drawing.Size(192, 128)
         Me.txt_message.TabIndex = 8
         '
         'txt_recipient
         '
         Me.txt_recipient.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txt_recipient.Location = New System.Drawing.Point(68, 77)
+        Me.txt_recipient.Location = New System.Drawing.Point(51, 63)
+        Me.txt_recipient.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.txt_recipient.Name = "txt_recipient"
-        Me.txt_recipient.Size = New System.Drawing.Size(255, 27)
+        Me.txt_recipient.Size = New System.Drawing.Size(192, 23)
         Me.txt_recipient.TabIndex = 7
         '
         'lbl_message
         '
         Me.lbl_message.AutoSize = True
         Me.lbl_message.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbl_message.Location = New System.Drawing.Point(64, 143)
+        Me.lbl_message.Location = New System.Drawing.Point(48, 116)
+        Me.lbl_message.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.lbl_message.Name = "lbl_message"
-        Me.lbl_message.Size = New System.Drawing.Size(114, 20)
+        Me.lbl_message.Size = New System.Drawing.Size(96, 17)
         Me.lbl_message.TabIndex = 6
         Me.lbl_message.Text = "Text Message"
         '
@@ -71,23 +76,38 @@ Partial Class SendMessage
         '
         Me.lbl_recipient.AutoSize = True
         Me.lbl_recipient.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbl_recipient.Location = New System.Drawing.Point(65, 48)
+        Me.lbl_recipient.Location = New System.Drawing.Point(49, 39)
+        Me.lbl_recipient.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.lbl_recipient.Name = "lbl_recipient"
-        Me.lbl_recipient.Size = New System.Drawing.Size(79, 20)
+        Me.lbl_recipient.Size = New System.Drawing.Size(67, 17)
         Me.lbl_recipient.TabIndex = 5
         Me.lbl_recipient.Text = "Recipient"
         '
+        'btnLoad
+        '
+        Me.btnLoad.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnLoad.Location = New System.Drawing.Point(51, 276)
+        Me.btnLoad.Margin = New System.Windows.Forms.Padding(2)
+        Me.btnLoad.Name = "btnLoad"
+        Me.btnLoad.Size = New System.Drawing.Size(148, 26)
+        Me.btnLoad.TabIndex = 10
+        Me.btnLoad.Text = "Load SMS Template"
+        Me.btnLoad.UseVisualStyleBackColor = True
+        '
         'SendMessage
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(402, 416)
+        Me.ClientSize = New System.Drawing.Size(302, 398)
+        Me.Controls.Add(Me.btnLoad)
         Me.Controls.Add(Me.btn_send)
         Me.Controls.Add(Me.txt_message)
         Me.Controls.Add(Me.txt_recipient)
         Me.Controls.Add(Me.lbl_message)
         Me.Controls.Add(Me.lbl_recipient)
+        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.Name = "SendMessage"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "SendMessage"
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -99,4 +119,5 @@ Partial Class SendMessage
     Friend WithEvents txt_recipient As TextBox
     Friend WithEvents lbl_message As Label
     Friend WithEvents lbl_recipient As Label
+    Friend WithEvents btnLoad As Button
 End Class

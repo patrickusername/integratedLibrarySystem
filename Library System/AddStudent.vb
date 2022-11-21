@@ -104,7 +104,7 @@ Public Class AddStudent
                     Dim uname As String = txt_uname1.Text & ".jpg"
                     Dim folder As String = "C:\Barcode\"
                     Dim query As String = "Update tbl_admin set ImagePath = @pathstring where Username = '" & txt_uname1.Text & "'"
-                    Using con As MySqlConnection = New MySqlConnection("server=localhost;uid=root;database=db_system")
+                    Using con As MySqlConnection = New MySqlConnection(connString)
                         Using cmd As MySqlCommand = New MySqlCommand(query, con)
                             Dim pathstring As String = System.IO.Path.Combine(folder, uname)
                             cmd.Parameters.AddWithValue("@pathstring", pathstring)
@@ -148,7 +148,7 @@ Public Class AddStudent
 
         If MsgBox("Are you sure you want to add this record?", MsgBoxStyle.OkCancel) = MsgBoxResult.Ok Then
             For Each lvitem As ListViewItem In ListView1.Items
-                Dim conn As New MySqlConnection("server=localhost; uid=root;database=db_system")
+                Dim conn As New MySqlConnection(connString)
                 Dim cmmds As New MySqlCommand("Insert Into tbl_student (Username,Name,ContactNo,GradeSec,Teacher,Password,ImagePath) VALUES (@Username,@Name,@ContactNo,@GradeSec,@Teacher,@Password,@ImagePath)", conn)
                 cmmds.Parameters.AddWithValue("@Username", lvitem.SubItems(0).Text)
                 cmmds.Parameters.AddWithValue("@Name", lvitem.SubItems(1).Text)
@@ -162,7 +162,7 @@ Public Class AddStudent
                 cmmds.ExecuteNonQuery()
                 conn.Close()
 
-                Dim conn1 As New MySqlConnection("server=localhost; uid=root;database=db_system")
+                Dim conn1 As New MySqlConnection(connString)
                 Dim cmmds1 As New MySqlCommand("Insert Into tbl_users (Username,Name,Password,Usertype) VALUES (@Username,@Name,@Password,@Usertype)", conn1)
                 cmmds1.Parameters.AddWithValue("@Username", lvitem.SubItems(0).Text)
                 cmmds1.Parameters.AddWithValue("@Name", lvitem.SubItems(1).Text)

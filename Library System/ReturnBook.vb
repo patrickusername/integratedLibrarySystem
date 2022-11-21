@@ -1,9 +1,9 @@
 ﻿Imports MySql.Data.MySqlClient
 Imports System.ComponentModel
 Public Class ReturnBook
-    Public conn As New MySqlConnection("server=localhost;uid=root;database=db_system")
+    Public conn As New MySqlConnection(connString)
     Private Sub bind_data()
-        Dim con As New MySqlConnection("server=localhost;uid=root;database=db_system")
+        Dim con As New MySqlConnection(connString)
         con.Open()
         Dim cmd As New MySqlCommand("Select * from tbl_borrowreturnbooks", con)
         Dim da As New MySqlDataAdapter
@@ -81,8 +81,9 @@ Public Class ReturnBook
         'Me.WindowState = FormWindowState.Maximized
 
         Dim theDate As Date
-        theDate = Format(Now(), "dd-MM-yyyy")
-        txt_dateret.Text = theDate
+        theDate = Date.Now
+        Dim theDateStr = theDate.ToString("dd-MM-yyyy")
+        txt_dateret.Text = theDateStr
 
         conn.Open()
         Try
@@ -639,7 +640,7 @@ Public Class ReturnBook
             For Each lvitem As ListViewItem In ListView1.Items
 
                 If lvitem.SubItems(0).Text = "Printed" Then 'save to tbl_returnedbooks
-                    Dim conn As New MySqlConnection("server=localhost; uid=root;database=db_system")
+                    Dim conn As New MySqlConnection(connString)
                     Dim cmmds As New MySqlCommand("Insert Into tbl_returnedbooks (BookNumber,ISBN,Title,Author,DeweyDecimalClassification,Category,YearofPublication,Publisher,Address,Copyright,DateReturned,Username,Name) VALUES (@BookNumber,@ISBN,@Title,@Author,@Classification,@Category,@YearofPublication,@Publisher,@Address,@Copyright,@DateReturned,@Username,@Name)", conn)
                     cmmds.Parameters.AddWithValue("@BookNumber", lvitem.SubItems(3).Text)
                     cmmds.Parameters.AddWithValue("@ISBN", lvitem.SubItems(4).Text)
@@ -659,7 +660,7 @@ Public Class ReturnBook
                     conn.Close()
 
                     If lvitem.SubItems(16).Text = "Damaged" Then 'save to tbl_damagedbooks
-                        Dim conn2 As New MySqlConnection("server=localhost; uid=root;database=db_system")
+                        Dim conn2 As New MySqlConnection(connString)
                         Dim cmmds2 As New MySqlCommand("Insert Into tbl_damagedbooks (BookNumber,ISBN,Title,Author,DeweyDecimalClassification,Category,YearofPublication,Publisher,Address,Copyright,Name,DateReturned) VALUES (@BookNumber,@ISBN,@Title,@Author,@Classification,@Category,@YearofPublication,@Publisher,@Address,@Copyright,@Name,@DateReturned)", conn2)
                         cmmds2.Parameters.AddWithValue("@BookNumber", lvitem.SubItems(3).Text)
                         cmmds2.Parameters.AddWithValue("@ISBN", lvitem.SubItems(4).Text)
@@ -679,7 +680,7 @@ Public Class ReturnBook
                     End If
 
                     If lvitem.SubItems(12).Text < lvitem.SubItems(13).Text Then
-                        Dim conn4 As New MySqlConnection("server=localhost; uid=root;database=db_system")
+                        Dim conn4 As New MySqlConnection(connString)
                         Dim cmmds4 As New MySqlCommand("Insert Into tbl_overduebooks (BookNumber,ISBN,Title,Author,DeweyDecimalClassification,Category,YearofPublication,DatetoReturn,DateReturned) VALUES (@BookNumber,@ISBN,@Title,@Author,@Classification,@Category,@YearofPublication,@DatetoReturn,@DateReturned)", conn4)
                         cmmds4.Parameters.AddWithValue("@BookNumber", lvitem.SubItems(3).Text)
                         cmmds4.Parameters.AddWithValue("@ISBN", lvitem.SubItems(4).Text)
@@ -693,7 +694,7 @@ Public Class ReturnBook
                         cmmds4.ExecuteNonQuery()
                         conn4.Close()
 
-                        Dim conn5 As New MySqlConnection("server=localhost; uid=root;database=db_system")
+                        Dim conn5 As New MySqlConnection(connString)
                         Dim cmmds5 As New MySqlCommand("Insert Into tbl_delinquentborrowers (ItemNumber,Username,Name,DatetoReturn,DateReturned,Reason) VALUES (@ItemNumber,@Username,@Name,@DatetoReturn,@DateReturned,@Reason)", conn5)
                         cmmds5.Parameters.AddWithValue("@ItemNumber", lvitem.SubItems(3).Text)
                         cmmds5.Parameters.AddWithValue("@Username", lvitem.SubItems(14).Text)
@@ -706,20 +707,20 @@ Public Class ReturnBook
                         conn5.Close()
                     End If
 
-                    Dim conn8 As New MySqlConnection("server=localhost; uid=root;database=db_system")
+                    Dim conn8 As New MySqlConnection(connString)
                     Dim cmmds8 As New MySqlCommand("Update tbl_book set status = 'Available' where BookNumber= '" & lvitem.SubItems(3).Text & "' ", conn8)
                     conn8.Open()
                     cmmds8.ExecuteNonQuery()
                     conn8.Close()
 
-                    Dim conn9 As New MySqlConnection("server=localhost; uid=root;database=db_system")
+                    Dim conn9 As New MySqlConnection(connString)
                     Dim cmmds9 As New MySqlCommand("delete from tbl_borrowreturnbooks where BookNumber= '" & lvitem.SubItems(3).Text & "' ", conn9)
                     conn9.Open()
                     cmmds9.ExecuteNonQuery()
                     conn9.Close()
 
                 ElseIf lvitem.SubItems(0).Text = "Non-Printed" Then 'save to tbl_returnednonprinted
-                    Dim conn1 As New MySqlConnection("server=localhost; uid=root;database=db_system")
+                    Dim conn1 As New MySqlConnection(connString)
                     Dim cmmds1 As New MySqlCommand("Insert Into tbl_returnednonprinted (MaterialNumber,MaterialName,DateReturned,Username,Name) VALUES (@MaterialNumber,@MaterialName,@DateReturned,@Username,@Name)", conn1)
                     cmmds1.Parameters.AddWithValue("@MaterialNumber", lvitem.SubItems(1).Text)
                     cmmds1.Parameters.AddWithValue("@MaterialName", lvitem.SubItems(2).Text)
@@ -731,7 +732,7 @@ Public Class ReturnBook
                     conn1.Close()
 
                     If lvitem.SubItems(16).Text = "Damaged" Then 'save to tbl_damagednonprinted
-                        Dim conn3 As New MySqlConnection("server=localhost; uid=root;database=db_system")
+                        Dim conn3 As New MySqlConnection(connString)
                         Dim cmmds3 As New MySqlCommand("Insert Into tbl_damagednonprinted (MaterialNumber,MaterialName,Name,DateReturned) VALUES (@MaterialNumber,@MaterialName,@Name,@DateReturned)", conn3)
                         cmmds3.Parameters.AddWithValue("@MaterialNumber", lvitem.SubItems(1).Text)
                         cmmds3.Parameters.AddWithValue("@MaterialName", lvitem.SubItems(2).Text)
@@ -743,7 +744,7 @@ Public Class ReturnBook
                     End If
 
                     If lvitem.SubItems(12).Text < lvitem.SubItems(13).Text Then
-                        Dim conn6 As New MySqlConnection("server=localhost; uid=root;database=db_system")
+                        Dim conn6 As New MySqlConnection(connString)
                         Dim cmmds6 As New MySqlCommand("Insert Into tbl_overduenonprinted (MaterialNumber,MaterialName,DatetoReturn,DateReturned) VALUES (@MaterialNumber,@MaterialName,@DatetoReturn,@DateReturned)", conn6)
                         cmmds6.Parameters.AddWithValue("@MaterialNumber", lvitem.SubItems(1).Text)
                         cmmds6.Parameters.AddWithValue("@MaterialName", lvitem.SubItems(2).Text)
@@ -755,7 +756,7 @@ Public Class ReturnBook
 
 
 
-                        Dim conn7 As New MySqlConnection("server=localhost; uid=root;database=db_system")
+                        Dim conn7 As New MySqlConnection(connString)
                         Dim cmmds7 As New MySqlCommand("Insert Into tbl_delinquentborrowers (ItemNumber,Username,Name,DatetoReturn,DateReturned,Reason) VALUES (@MaterialNumber,@Username,@Name,@DatetoReturn,@DateReturned,@Reason)", conn7)
                         cmmds7.Parameters.AddWithValue("@MaterialNumber", lvitem.SubItems(1).Text)
                         cmmds7.Parameters.AddWithValue("@Username", lvitem.SubItems(14).Text)
@@ -768,13 +769,13 @@ Public Class ReturnBook
                         conn7.Close()
                     End If
 
-                    Dim conn10 As New MySqlConnection("server=localhost; uid=root;database=db_system")
+                    Dim conn10 As New MySqlConnection(connString)
                     Dim cmmds10 As New MySqlCommand("Update tbl_nonprinted set status = 'Available' where MaterialNumber= '" & lvitem.SubItems(1).Text & "' ", conn10)
                     conn10.Open()
                     cmmds10.ExecuteNonQuery()
                     conn10.Close()
 
-                    Dim conn11 As New MySqlConnection("server=localhost; uid=root;database=db_system")
+                    Dim conn11 As New MySqlConnection(connString)
                     Dim cmmds11 As New MySqlCommand("delete from tbl_borrowreturnnonprinted where MaterialNumber= '" & lvitem.SubItems(1).Text & "' ", conn11)
                     conn11.Open()
                     cmmds11.ExecuteNonQuery()

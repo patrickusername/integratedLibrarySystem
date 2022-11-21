@@ -2,7 +2,7 @@
 Imports System.ComponentModel
 Public Class SearchNonPrinted3
     Private Sub bind_data()
-        Dim con As New MySqlConnection("server=localhost;uid=root;database=db_system")
+        Dim con As New MySqlConnection(connString)
         con.Open()
         Dim cmd As New MySqlCommand("select materialnumber, materialname, status from tbl_nonprinted", con)
         Dim da As New MySqlDataAdapter
@@ -21,7 +21,7 @@ Public Class SearchNonPrinted3
         DataGridView1.Refresh()
         DataGridView1.Sort(DataGridView1.Columns(0), ListSortDirection.Descending)
 
-        Dim con As New MySqlConnection("server=localhost;uid=root;database=db_system")
+        Dim con As New MySqlConnection(connString)
         con.Open()
         Dim cmd As New MySqlCommand("select * from tbl_nonprinted", con)
         Dim da As New MySqlDataAdapter
@@ -40,7 +40,7 @@ Public Class SearchNonPrinted3
 
     Private Sub txt_isbn1_TextChanged(sender As Object, e As EventArgs) Handles txt_isbn1.TextChanged
         Dim searchque As String = "Select materialname, materialnumber, status from tbl_nonprinted Where concat (MaterialNumber, MaterialName, Status)  like '%" & txt_isbn1.Text & "%'"
-        Dim conn As MySqlConnection = New MySqlConnection("server=localhost; uid=root;database=db_system")
+        Dim conn As MySqlConnection = New MySqlConnection(connString)
         Dim cmd5 As MySqlCommand = New MySqlCommand(searchque, conn)
         Dim da As MySqlDataAdapter = New MySqlDataAdapter
         da.SelectCommand = cmd5

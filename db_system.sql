@@ -1,59 +1,78 @@
 /*
-Navicat MySQL Data Transfer
+ Navicat Premium Data Transfer
 
-Source Server         : localhost
-Source Server Version : 50505
-Source Host           : localhost:3306
-Source Database       : db_system
+ Source Server         : LOCAL
+ Source Server Type    : MySQL
+ Source Server Version : 80030 (8.0.30)
+ Source Host           : localhost:3306
+ Source Schema         : db_system
 
-Target Server Type    : MYSQL
-Target Server Version : 50505
-File Encoding         : 65001
+ Target Server Type    : MySQL
+ Target Server Version : 80030 (8.0.30)
+ File Encoding         : 65001
 
-Date: 2022-11-16 21:10:33
+ Date: 20/11/2022 22:50:53
 */
 
-SET FOREIGN_KEY_CHECKS=0;
+SET NAMES utf8mb4;
+SET FOREIGN_KEY_CHECKS = 0;
+
 -- ----------------------------
--- Table structure for `tbl_admin`
+-- Table structure for cronsent
+-- ----------------------------
+DROP TABLE IF EXISTS `cronsent`;
+CREATE TABLE `cronsent`  (
+  `sentID` int NOT NULL AUTO_INCREMENT,
+  `bookNumber` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `borrowerName` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `date` date NOT NULL,
+  PRIMARY KEY (`sentID`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of cronsent
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for tbl_admin
 -- ----------------------------
 DROP TABLE IF EXISTS `tbl_admin`;
-CREATE TABLE `tbl_admin` (
-  `Username` int(50) NOT NULL,
-  `Name` varchar(255) NOT NULL,
-  `Password` varchar(50) NOT NULL,
-  `ContactNo` varchar(50) NOT NULL,
-  `ImagePath` varchar(100) NOT NULL,
-  PRIMARY KEY (`Username`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE `tbl_admin`  (
+  `Username` int NOT NULL,
+  `Name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `Password` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `ContactNo` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `ImagePath` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  PRIMARY KEY (`Username`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tbl_admin
 -- ----------------------------
-INSERT INTO `tbl_admin` VALUES ('19100298', 'Jessa Mae Cabillo Nitura', 'password', '(+63) 977-2331-123', '');
-INSERT INTO `tbl_admin` VALUES ('19100911', 'Haries Bening', 'password', '(+63) 945-6789-123', '');
-INSERT INTO `tbl_admin` VALUES ('19100919', 'Patrick Bilaoen', 'password', '(+63) 995-1785-280', '');
-INSERT INTO `tbl_admin` VALUES ('19101202', 'Ariane Mariz R. Dulay', 'password', '(+63) 977-1494-323', '');
+INSERT INTO `tbl_admin` VALUES (19100298, 'Jessa Mae Cabillo Nitura', 'password', '(+63) 977-2331-123', '');
+INSERT INTO `tbl_admin` VALUES (19100911, 'Haries Bening', 'password', '(+63) 945-6789-123', '');
+INSERT INTO `tbl_admin` VALUES (19100919, 'Patrick Bilaoen', 'password', '(+63) 995-1785-280', '');
+INSERT INTO `tbl_admin` VALUES (19101202, 'Ariane Mariz R. Dulay', 'password', '(+63) 977-1494-323', '');
 
 -- ----------------------------
--- Table structure for `tbl_book`
+-- Table structure for tbl_book
 -- ----------------------------
 DROP TABLE IF EXISTS `tbl_book`;
-CREATE TABLE `tbl_book` (
-  `BookNumber` varchar(100) NOT NULL,
-  `ISBN` varchar(100) NOT NULL,
-  `Title` varchar(100) NOT NULL,
-  `Author` varchar(100) NOT NULL,
-  `DeweyDecimalClassification` varchar(100) NOT NULL,
-  `Category` varchar(100) NOT NULL,
-  `YearofPublication` varchar(100) NOT NULL,
-  `Publisher` varchar(100) NOT NULL,
-  `Address` varchar(100) NOT NULL,
-  `Copyright` varchar(100) NOT NULL,
-  `Status` varchar(100) NOT NULL,
-  `ImagePath` varchar(100) NOT NULL,
-  PRIMARY KEY (`BookNumber`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE `tbl_book`  (
+  `BookNumber` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `ISBN` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `Title` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `Author` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `DeweyDecimalClassification` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `Category` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `YearofPublication` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `Publisher` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `Address` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `Copyright` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `Status` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `ImagePath` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  PRIMARY KEY (`BookNumber`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tbl_book
@@ -109,89 +128,89 @@ INSERT INTO `tbl_book` VALUES ('90022004', '978-1-09872-232-9', 'Araling Panlipu
 INSERT INTO `tbl_book` VALUES ('90022005', '978-1-09872-232-9', 'Araling Panlipunan - Pilipinas (Isang Sulyap at Pagyakap)', 'Michael DC. Rama, Florencia C. Domingo, Jennifer G. Rama, Jayson A. Cruz', '900 - History and Geography', 'Textbook', '2010', 'Asian Escapades Management and Publishing Enterprises', '37 A. Mabini Street, 3000, Malolos City, Bulacan, Philippines', '2010 James Perry', 'Available', '');
 
 -- ----------------------------
--- Table structure for `tbl_borrowedbooks`
+-- Table structure for tbl_borrowedbooks
 -- ----------------------------
 DROP TABLE IF EXISTS `tbl_borrowedbooks`;
-CREATE TABLE `tbl_borrowedbooks` (
-  `BookID` int(255) NOT NULL AUTO_INCREMENT,
-  `BookNumber` varchar(255) NOT NULL,
-  `ISBN` varchar(255) NOT NULL,
-  `Title` varchar(255) NOT NULL,
-  `Author` varchar(255) NOT NULL,
-  `DeweyDecimalClassification` varchar(255) NOT NULL,
-  `Category` varchar(255) NOT NULL,
-  `YearofPublication` varchar(255) NOT NULL,
-  `Publisher` varchar(255) NOT NULL,
-  `Address` varchar(255) NOT NULL,
-  `Copyright` varchar(255) NOT NULL,
-  `DateBorrowed` varchar(255) NOT NULL,
-  `DatetoReturn` varchar(255) NOT NULL,
-  `Username` varchar(255) NOT NULL,
-  `Name` varchar(255) NOT NULL,
-  `ContactNo` varchar(25) NOT NULL,
-  PRIMARY KEY (`BookID`)
-) ENGINE=InnoDB AUTO_INCREMENT=57 DEFAULT CHARSET=utf8mb4;
+CREATE TABLE `tbl_borrowedbooks`  (
+  `BookID` int NOT NULL AUTO_INCREMENT,
+  `BookNumber` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `ISBN` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `Title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `Author` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `DeweyDecimalClassification` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `Category` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `YearofPublication` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `Publisher` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `Address` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `Copyright` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `DateBorrowed` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `DatetoReturn` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `Username` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `Name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `ContactNo` varchar(25) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  PRIMARY KEY (`BookID`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 57 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tbl_borrowedbooks
 -- ----------------------------
-INSERT INTO `tbl_borrowedbooks` VALUES ('53', '60422003', '978-9-23123-231-7', 'Technical Drawing 101 with AutoCAD', 'Ashleigh Congdon-Fuller, Antonio Ramirez, Douglas Smith', '570 - Science', 'General Reference', '2019', 'SDC Publications', 'PO Box 1334, Mission, Kansas, 66222, United States', '2019 Leonard Piekoff', '16/11/2022', '17/11/2022', '7001', 'Dr. Marina Gracias Estoesta', '(+63) 977-2130-087');
-INSERT INTO `tbl_borrowedbooks` VALUES ('54', '60422002', '978-9-23123-231-7', 'Technical Drawing 101 with AutoCAD', 'Ashleigh Congdon-Fuller, Antonio Ramirez, Douglas Smith', '570 - Science', 'General Reference', '2019', 'SDC Publications', 'PO Box 1334, Mission, Kansas, 66222, United States', '2019 Leonard Piekoff', '16/11/2022 - 07:22 pm', '17/11/2022 - 12:00 am', '100816100072', 'Felix Ramos Medina', '(+63) 977-4501-239');
-INSERT INTO `tbl_borrowedbooks` VALUES ('55', '60422001', '978-9-23123-231-7', 'Technical Drawing 101 with AutoCAD', 'Ashleigh Congdon-Fuller, Antonio Ramirez, Douglas Smith', '570 - Science', 'General Reference', '2019', 'SDC Publications', 'PO Box 1334, Mission, Kansas, 66222, United States', '2019 Leonard Piekoff', '16/11/2022 - 07:22 pm', '19/11/2022 - 12:00 am', '100845150051', 'Princess Jewel Grace Alas Orejudos', '(+63) 939-9774-505');
-INSERT INTO `tbl_borrowedbooks` VALUES ('56', '40022003', '978-2-54335-423-8', 'Introducing English Language', 'Louise Mullany, Peter Stockwell', '400 - Language', 'Textbook', '2015', 'Routledge', 'Milton Park, Abingdon-on-Thames, Oxforshire, England, UK', '2019 Colleen Hover', '16/11/2022 - 07:26 pm', '19/11/2022', '101007150010', 'Ernest Charl Valdez Geneta', '(+63) 977-4501-236');
+INSERT INTO `tbl_borrowedbooks` VALUES (53, '60422003', '978-9-23123-231-7', 'Technical Drawing 101 with AutoCAD', 'Ashleigh Congdon-Fuller, Antonio Ramirez, Douglas Smith', '570 - Science', 'General Reference', '2019', 'SDC Publications', 'PO Box 1334, Mission, Kansas, 66222, United States', '2019 Leonard Piekoff', '16/11/2022', '17/11/2022', '7001', 'Dr. Marina Gracias Estoesta', '(+63) 977-2130-087');
+INSERT INTO `tbl_borrowedbooks` VALUES (54, '60422002', '978-9-23123-231-7', 'Technical Drawing 101 with AutoCAD', 'Ashleigh Congdon-Fuller, Antonio Ramirez, Douglas Smith', '570 - Science', 'General Reference', '2019', 'SDC Publications', 'PO Box 1334, Mission, Kansas, 66222, United States', '2019 Leonard Piekoff', '16/11/2022 - 07:22 pm', '17/11/2022 - 12:00 am', '100816100072', 'Felix Ramos Medina', '(+63) 977-4501-239');
+INSERT INTO `tbl_borrowedbooks` VALUES (55, '60422001', '978-9-23123-231-7', 'Technical Drawing 101 with AutoCAD', 'Ashleigh Congdon-Fuller, Antonio Ramirez, Douglas Smith', '570 - Science', 'General Reference', '2019', 'SDC Publications', 'PO Box 1334, Mission, Kansas, 66222, United States', '2019 Leonard Piekoff', '16/11/2022 - 07:22 pm', '19/11/2022 - 12:00 am', '100845150051', 'Princess Jewel Grace Alas Orejudos', '(+63) 939-9774-505');
+INSERT INTO `tbl_borrowedbooks` VALUES (56, '40022003', '978-2-54335-423-8', 'Introducing English Language', 'Louise Mullany, Peter Stockwell', '400 - Language', 'Textbook', '2015', 'Routledge', 'Milton Park, Abingdon-on-Thames, Oxforshire, England, UK', '2019 Colleen Hover', '16/11/2022 - 07:26 pm', '19/11/2022', '101007150010', 'Ernest Charl Valdez Geneta', '(+63) 977-4501-236');
 
 -- ----------------------------
--- Table structure for `tbl_borrowednonprinted`
+-- Table structure for tbl_borrowednonprinted
 -- ----------------------------
 DROP TABLE IF EXISTS `tbl_borrowednonprinted`;
-CREATE TABLE `tbl_borrowednonprinted` (
-  `MaterialID` int(255) NOT NULL AUTO_INCREMENT,
-  `MaterialNumber` varchar(255) NOT NULL,
-  `MaterialName` varchar(255) NOT NULL,
-  `DateBorrowed` varchar(255) NOT NULL,
-  `DatetoReturn` varchar(255) NOT NULL,
-  `Username` varchar(255) NOT NULL,
-  `Name` varchar(255) NOT NULL,
-  `ContactNo` varchar(255) NOT NULL,
-  PRIMARY KEY (`MaterialID`)
-) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8mb4;
+CREATE TABLE `tbl_borrowednonprinted`  (
+  `MaterialID` int NOT NULL AUTO_INCREMENT,
+  `MaterialNumber` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `MaterialName` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `DateBorrowed` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `DatetoReturn` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `Username` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `Name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `ContactNo` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  PRIMARY KEY (`MaterialID`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 42 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tbl_borrowednonprinted
 -- ----------------------------
-INSERT INTO `tbl_borrowednonprinted` VALUES ('32', '1000', 'Globe - World', '15/11/2022', '16/11/2022', '7001', 'Dr. Marina Gracias Estoesta', '(+63) 977-2130-087');
-INSERT INTO `tbl_borrowednonprinted` VALUES ('33', '1001', 'Globe - World', '15/11/2022', '15/11/2022', '7002', 'Mrs. Tricia Mae Laplana Carbonell', '(+63) 977-2130-090');
-INSERT INTO `tbl_borrowednonprinted` VALUES ('34', '1002', 'Globe - World', '15/11/2022', '17/11/2022', '100816100072', 'Felix Ramos Medina', '(+63) 977-4501-239');
-INSERT INTO `tbl_borrowednonprinted` VALUES ('35', '2000', 'Periodic Table', '15/11/2022', '18/11/2022', '100845150051', 'Princess Jewel Grace Alas Orejudos', '(+63) 939-9774-505');
-INSERT INTO `tbl_borrowednonprinted` VALUES ('36', '2001', 'Periodic Table', '15/11/2022', '16/11/2022', '101007150010', 'Ernest Charl Valdez Geneta', '(+63) 977-4501-236');
-INSERT INTO `tbl_borrowednonprinted` VALUES ('37', '2002', 'Periodic Table', '14/11/2022', '14/11/2022', '101090140013', 'Francis Bryan Villanueva Hidalgo', '(+63) 977-4501-237');
-INSERT INTO `tbl_borrowednonprinted` VALUES ('38', '3000', 'Philippine Map', '15/11/2022', '15/11/2022', '101090140013', 'Francis Bryan Villanueva Hidalgo', '(+63) 977-4501-237');
-INSERT INTO `tbl_borrowednonprinted` VALUES ('39', '3001', 'Philippine Map', '15/11/2022', '16/11/2022', '7004', 'Mrs. Jesusa Dulay Villanueva', '(+63) 951-7238-230');
-INSERT INTO `tbl_borrowednonprinted` VALUES ('40', '3002', 'Philippine Map', '15/11/2022', '16/11/2022', '7005', 'Mr. Jeremy Parado Marquez', '(+63) 977-2372-993');
-INSERT INTO `tbl_borrowednonprinted` VALUES ('41', '4000', 'World Map', '15/11/2022', '17/11/2022', '101090140045', 'Regine Emperador Gepega', '(+63) 939-9774-502');
+INSERT INTO `tbl_borrowednonprinted` VALUES (32, '1000', 'Globe - World', '15/11/2022', '16/11/2022', '7001', 'Dr. Marina Gracias Estoesta', '(+63) 977-2130-087');
+INSERT INTO `tbl_borrowednonprinted` VALUES (33, '1001', 'Globe - World', '15/11/2022', '15/11/2022', '7002', 'Mrs. Tricia Mae Laplana Carbonell', '(+63) 977-2130-090');
+INSERT INTO `tbl_borrowednonprinted` VALUES (34, '1002', 'Globe - World', '15/11/2022', '17/11/2022', '100816100072', 'Felix Ramos Medina', '(+63) 977-4501-239');
+INSERT INTO `tbl_borrowednonprinted` VALUES (35, '2000', 'Periodic Table', '15/11/2022', '18/11/2022', '100845150051', 'Princess Jewel Grace Alas Orejudos', '(+63) 939-9774-505');
+INSERT INTO `tbl_borrowednonprinted` VALUES (36, '2001', 'Periodic Table', '15/11/2022', '16/11/2022', '101007150010', 'Ernest Charl Valdez Geneta', '(+63) 977-4501-236');
+INSERT INTO `tbl_borrowednonprinted` VALUES (37, '2002', 'Periodic Table', '14/11/2022', '14/11/2022', '101090140013', 'Francis Bryan Villanueva Hidalgo', '(+63) 977-4501-237');
+INSERT INTO `tbl_borrowednonprinted` VALUES (38, '3000', 'Philippine Map', '15/11/2022', '15/11/2022', '101090140013', 'Francis Bryan Villanueva Hidalgo', '(+63) 977-4501-237');
+INSERT INTO `tbl_borrowednonprinted` VALUES (39, '3001', 'Philippine Map', '15/11/2022', '16/11/2022', '7004', 'Mrs. Jesusa Dulay Villanueva', '(+63) 951-7238-230');
+INSERT INTO `tbl_borrowednonprinted` VALUES (40, '3002', 'Philippine Map', '15/11/2022', '16/11/2022', '7005', 'Mr. Jeremy Parado Marquez', '(+63) 977-2372-993');
+INSERT INTO `tbl_borrowednonprinted` VALUES (41, '4000', 'World Map', '15/11/2022', '17/11/2022', '101090140045', 'Regine Emperador Gepega', '(+63) 939-9774-502');
 
 -- ----------------------------
--- Table structure for `tbl_borrowreturnbooks`
+-- Table structure for tbl_borrowreturnbooks
 -- ----------------------------
 DROP TABLE IF EXISTS `tbl_borrowreturnbooks`;
-CREATE TABLE `tbl_borrowreturnbooks` (
-  `BookNumber` varchar(255) NOT NULL,
-  `ISBN` varchar(255) NOT NULL,
-  `Title` varchar(255) NOT NULL,
-  `Author` varchar(255) NOT NULL,
-  `DeweyDecimalClassification` varchar(255) NOT NULL,
-  `Category` varchar(255) NOT NULL,
-  `YearofPublication` varchar(255) NOT NULL,
-  `Publisher` varchar(255) NOT NULL,
-  `Address` varchar(255) NOT NULL,
-  `Copyright` varchar(255) NOT NULL,
-  `DateBorrowed` varchar(255) NOT NULL,
-  `DatetoReturn` varchar(255) NOT NULL,
-  `Username` varchar(255) NOT NULL,
-  `Name` varchar(255) NOT NULL,
-  `ContactNo` varchar(255) NOT NULL,
-  PRIMARY KEY (`BookNumber`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE `tbl_borrowreturnbooks`  (
+  `BookNumber` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `ISBN` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `Title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `Author` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `DeweyDecimalClassification` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `Category` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `YearofPublication` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `Publisher` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `Address` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `Copyright` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `DateBorrowed` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `DatetoReturn` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `Username` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `Name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `ContactNo` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  PRIMARY KEY (`BookNumber`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tbl_borrowreturnbooks
@@ -201,19 +220,19 @@ INSERT INTO `tbl_borrowreturnbooks` VALUES ('60422001', '978-9-23123-231-7', 'Te
 INSERT INTO `tbl_borrowreturnbooks` VALUES ('60422002', '978-9-23123-231-7', 'Technical Drawing 101 with AutoCAD', 'Ashleigh Congdon-Fuller, Antonio Ramirez, Douglas Smith', '570 - Science', 'General Reference', '2019', 'SDC Publications', 'PO Box 1334, Mission, Kansas, 66222, United States', '2019 Leonard Piekoff', '16/11/2022 - 07:22 pm', '17/11/2022 - 12:00 am', '100816100072', 'Felix Ramos Medina', '(+63) 977-4501-239');
 
 -- ----------------------------
--- Table structure for `tbl_borrowreturnnonprinted`
+-- Table structure for tbl_borrowreturnnonprinted
 -- ----------------------------
 DROP TABLE IF EXISTS `tbl_borrowreturnnonprinted`;
-CREATE TABLE `tbl_borrowreturnnonprinted` (
-  `MaterialNumber` varchar(255) NOT NULL,
-  `MaterialName` varchar(255) NOT NULL,
-  `DateBorrowed` varchar(255) NOT NULL,
-  `DatetoReturn` varchar(255) NOT NULL,
-  `Username` varchar(255) NOT NULL,
-  `Name` varchar(255) NOT NULL,
-  `ContactNo` varchar(255) NOT NULL,
-  PRIMARY KEY (`MaterialNumber`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE `tbl_borrowreturnnonprinted`  (
+  `MaterialNumber` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `MaterialName` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `DateBorrowed` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `DatetoReturn` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `Username` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `Name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `ContactNo` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  PRIMARY KEY (`MaterialNumber`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tbl_borrowreturnnonprinted
@@ -222,163 +241,163 @@ INSERT INTO `tbl_borrowreturnnonprinted` VALUES ('3001', 'Philippine Map', '15/1
 INSERT INTO `tbl_borrowreturnnonprinted` VALUES ('4000', 'World Map', '15/11/2022', '17/11/2022', '101090140045', 'Regine Emperador Gepega', '(+63) 939-9774-502');
 
 -- ----------------------------
--- Table structure for `tbl_damagedbooks`
+-- Table structure for tbl_damagedbooks
 -- ----------------------------
 DROP TABLE IF EXISTS `tbl_damagedbooks`;
-CREATE TABLE `tbl_damagedbooks` (
-  `BookID` int(255) NOT NULL AUTO_INCREMENT,
-  `BookNumber` varchar(255) NOT NULL,
-  `ISBN` varchar(255) NOT NULL,
-  `Title` varchar(255) NOT NULL,
-  `Author` varchar(255) NOT NULL,
-  `DeweyDecimalClassification` varchar(255) NOT NULL,
-  `Category` varchar(255) NOT NULL,
-  `YearofPublication` varchar(255) NOT NULL,
-  `Publisher` varchar(255) NOT NULL,
-  `Address` varchar(255) NOT NULL,
-  `Copyright` varchar(255) NOT NULL,
-  `Name` varchar(255) NOT NULL,
-  `DateReturned` varchar(255) NOT NULL,
-  PRIMARY KEY (`BookID`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4;
+CREATE TABLE `tbl_damagedbooks`  (
+  `BookID` int NOT NULL AUTO_INCREMENT,
+  `BookNumber` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `ISBN` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `Title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `Author` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `DeweyDecimalClassification` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `Category` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `YearofPublication` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `Publisher` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `Address` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `Copyright` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `Name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `DateReturned` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  PRIMARY KEY (`BookID`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tbl_damagedbooks
 -- ----------------------------
 
 -- ----------------------------
--- Table structure for `tbl_damagednonprinted`
+-- Table structure for tbl_damagednonprinted
 -- ----------------------------
 DROP TABLE IF EXISTS `tbl_damagednonprinted`;
-CREATE TABLE `tbl_damagednonprinted` (
-  `MaterialID` int(255) NOT NULL AUTO_INCREMENT,
-  `MaterialNumber` varchar(255) NOT NULL,
-  `MaterialName` varchar(255) NOT NULL,
-  `Name` varchar(255) NOT NULL,
-  `DateReturned` varchar(255) NOT NULL,
-  PRIMARY KEY (`MaterialID`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4;
+CREATE TABLE `tbl_damagednonprinted`  (
+  `MaterialID` int NOT NULL AUTO_INCREMENT,
+  `MaterialNumber` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `MaterialName` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `Name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `DateReturned` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  PRIMARY KEY (`MaterialID`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 18 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tbl_damagednonprinted
 -- ----------------------------
-INSERT INTO `tbl_damagednonprinted` VALUES ('15', '2000', 'Periodic Table', 'Princess Jewel Grace Alas Orejudos', '15/11/2022');
-INSERT INTO `tbl_damagednonprinted` VALUES ('16', '2001', 'Periodic Table', 'Ernest Charl Valdez Geneta', '15/11/2022');
-INSERT INTO `tbl_damagednonprinted` VALUES ('17', '2002', 'Periodic Table', 'Francis Bryan Villanueva Hidalgo', '15/11/2022');
+INSERT INTO `tbl_damagednonprinted` VALUES (15, '2000', 'Periodic Table', 'Princess Jewel Grace Alas Orejudos', '15/11/2022');
+INSERT INTO `tbl_damagednonprinted` VALUES (16, '2001', 'Periodic Table', 'Ernest Charl Valdez Geneta', '15/11/2022');
+INSERT INTO `tbl_damagednonprinted` VALUES (17, '2002', 'Periodic Table', 'Francis Bryan Villanueva Hidalgo', '15/11/2022');
 
 -- ----------------------------
--- Table structure for `tbl_delinquentborrowers`
+-- Table structure for tbl_delinquentborrowers
 -- ----------------------------
 DROP TABLE IF EXISTS `tbl_delinquentborrowers`;
-CREATE TABLE `tbl_delinquentborrowers` (
-  `ItemID` int(255) NOT NULL AUTO_INCREMENT,
-  `ItemNumber` varchar(255) NOT NULL,
-  `Username` varchar(255) NOT NULL,
-  `Name` varchar(255) NOT NULL,
-  `DatetoReturn` varchar(255) NOT NULL,
-  `DateReturned` varchar(255) NOT NULL,
-  `Reason` varchar(255) NOT NULL,
-  PRIMARY KEY (`ItemID`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4;
+CREATE TABLE `tbl_delinquentborrowers`  (
+  `ItemID` int NOT NULL AUTO_INCREMENT,
+  `ItemNumber` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `Username` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `Name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `DatetoReturn` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `DateReturned` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `Reason` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  PRIMARY KEY (`ItemID`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 26 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tbl_delinquentborrowers
 -- ----------------------------
-INSERT INTO `tbl_delinquentborrowers` VALUES ('25', '2002', '101090140013', 'Francis Bryan Villanueva Hidalgo', '14/11/2022', '15/11/2022', 'nakalimutan');
+INSERT INTO `tbl_delinquentborrowers` VALUES (25, '2002', '101090140013', 'Francis Bryan Villanueva Hidalgo', '14/11/2022', '15/11/2022', 'nakalimutan');
 
 -- ----------------------------
--- Table structure for `tbl_faculty`
+-- Table structure for tbl_faculty
 -- ----------------------------
 DROP TABLE IF EXISTS `tbl_faculty`;
-CREATE TABLE `tbl_faculty` (
-  `Username` int(50) NOT NULL,
-  `Name` varchar(255) NOT NULL,
-  `ContactNo` varchar(50) NOT NULL,
-  `AdvisoryClass` varchar(50) NOT NULL,
-  `Password` varchar(50) NOT NULL,
-  `ImagePath` varchar(50) NOT NULL,
-  PRIMARY KEY (`Username`),
-  KEY `Username` (`Username`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE `tbl_faculty`  (
+  `Username` int NOT NULL,
+  `Name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `ContactNo` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `AdvisoryClass` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `Password` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `ImagePath` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  PRIMARY KEY (`Username`) USING BTREE,
+  INDEX `Username`(`Username` ASC) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tbl_faculty
 -- ----------------------------
-INSERT INTO `tbl_faculty` VALUES ('7001', 'Dr. Marina Gracias Estoesta', '(+63) 977-2130-087', '', 'password', '');
-INSERT INTO `tbl_faculty` VALUES ('7002', 'Mrs. Tricia Mae Laplana Carbonell', '(+63) 977-2130-090', '7-Narra', 'password', '');
-INSERT INTO `tbl_faculty` VALUES ('7003', 'Mrs. Ruth Rivera Maestro', '(+63) 921-3323-002', '7-Camachile', 'password', '');
-INSERT INTO `tbl_faculty` VALUES ('7004', 'Mrs. Jesusa Dulay Villanueva', '(+63) 951-7238-230', '8-Ipil-Ipil', 'password', '');
-INSERT INTO `tbl_faculty` VALUES ('7005', 'Mr. Jeremy Parado Marquez', '(+63) 977-2372-993', '8-Molave', 'password', '');
-INSERT INTO `tbl_faculty` VALUES ('7006', 'Mrs. Jobelle Picar Rocapor', '(+63) 999-2323-404', '9-Kamagong', 'password', '');
-INSERT INTO `tbl_faculty` VALUES ('7007', 'Mr. Frank Quidit Calub Jr', '(+63) 987-2334-499', '9-Olive', 'password', '');
-INSERT INTO `tbl_faculty` VALUES ('7008', 'Mrs. Imelda Garcia Gracias', '(+63) 977-2340-023', '10-Acacia', 'password', '');
-INSERT INTO `tbl_faculty` VALUES ('7009', 'Mrs. Catherine F. Carbonell', '(+63) 923-2300-823', '11-GAS', 'password', '');
-INSERT INTO `tbl_faculty` VALUES ('7010', 'Dr. John-John Q. Garcia', '(+63) 977-2131-237', '12-GAS', 'password', '');
-INSERT INTO `tbl_faculty` VALUES ('7011', 'Ms. Charlene Mae G. Gracias', '(+63) 988-2323-093', '12-HUMMS', 'password', '');
-INSERT INTO `tbl_faculty` VALUES ('7012', 'Mr. Jeffrey C. Galera', '(+63) 987-3200-323', '11-HUMMS', 'password', '');
-INSERT INTO `tbl_faculty` VALUES ('7020', 'Patrick Grey', '(+63) 995-1178-725', '12-TVL', 'password', 'C:\\Barcode\\7020.jpg');
-INSERT INTO `tbl_faculty` VALUES ('7030', 'Haries Bening', '(+63) 992-3131-232', '11-TVL', 'password', 'C:\\Barcode\\7030.jpg');
+INSERT INTO `tbl_faculty` VALUES (7001, 'Dr. Marina Gracias Estoesta', '(+63) 977-2130-087', '', 'password', '');
+INSERT INTO `tbl_faculty` VALUES (7002, 'Mrs. Tricia Mae Laplana Carbonell', '(+63) 977-2130-090', '7-Narra', 'password', '');
+INSERT INTO `tbl_faculty` VALUES (7003, 'Mrs. Ruth Rivera Maestro', '(+63) 921-3323-002', '7-Camachile', 'password', '');
+INSERT INTO `tbl_faculty` VALUES (7004, 'Mrs. Jesusa Dulay Villanueva', '(+63) 951-7238-230', '8-Ipil-Ipil', 'password', '');
+INSERT INTO `tbl_faculty` VALUES (7005, 'Mr. Jeremy Parado Marquez', '(+63) 977-2372-993', '8-Molave', 'password', '');
+INSERT INTO `tbl_faculty` VALUES (7006, 'Mrs. Jobelle Picar Rocapor', '(+63) 999-2323-404', '9-Kamagong', 'password', '');
+INSERT INTO `tbl_faculty` VALUES (7007, 'Mr. Frank Quidit Calub Jr', '(+63) 987-2334-499', '9-Olive', 'password', '');
+INSERT INTO `tbl_faculty` VALUES (7008, 'Mrs. Imelda Garcia Gracias', '(+63) 977-2340-023', '10-Acacia', 'password', '');
+INSERT INTO `tbl_faculty` VALUES (7009, 'Mrs. Catherine F. Carbonell', '(+63) 923-2300-823', '11-GAS', 'password', '');
+INSERT INTO `tbl_faculty` VALUES (7010, 'Dr. John-John Q. Garcia', '(+63) 977-2131-237', '12-GAS', 'password', '');
+INSERT INTO `tbl_faculty` VALUES (7011, 'Ms. Charlene Mae G. Gracias', '(+63) 988-2323-093', '12-HUMMS', 'password', '');
+INSERT INTO `tbl_faculty` VALUES (7012, 'Mr. Jeffrey C. Galera', '(+63) 987-3200-323', '11-HUMMS', 'password', '');
+INSERT INTO `tbl_faculty` VALUES (7020, 'Patrick Grey', '(+63) 995-1178-725', '12-TVL', 'password', 'C:\\Barcode\\7020.jpg');
+INSERT INTO `tbl_faculty` VALUES (7030, 'Haries Bening', '(+63) 992-3131-232', '11-TVL', 'password', 'C:\\Barcode\\7030.jpg');
 
 -- ----------------------------
--- Table structure for `tbl_facultyborrowers`
+-- Table structure for tbl_facultyborrowers
 -- ----------------------------
 DROP TABLE IF EXISTS `tbl_facultyborrowers`;
-CREATE TABLE `tbl_facultyborrowers` (
-  `Username` int(255) NOT NULL,
-  `Name` varchar(255) NOT NULL,
-  `ContactNo` varchar(255) NOT NULL,
-  `ItemID` int(255) NOT NULL AUTO_INCREMENT,
-  `ItemNumber` varchar(255) NOT NULL,
-  `ItemType` varchar(255) NOT NULL,
-  `Title` varchar(255) NOT NULL,
-  `DateBorrowed` varchar(255) NOT NULL,
-  `DatetoReturn` varchar(255) NOT NULL,
-  PRIMARY KEY (`ItemID`)
-) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4;
+CREATE TABLE `tbl_facultyborrowers`  (
+  `Username` int NOT NULL,
+  `Name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `ContactNo` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `ItemID` int NOT NULL AUTO_INCREMENT,
+  `ItemNumber` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `ItemType` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `Title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `DateBorrowed` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `DatetoReturn` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  PRIMARY KEY (`ItemID`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 29 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tbl_facultyborrowers
 -- ----------------------------
-INSERT INTO `tbl_facultyborrowers` VALUES ('7001', 'Dr. Marina Gracias Estoesta', '(+63) 977-2130-087', '25', '1000', 'Non-Printed', 'Globe - World', '15/11/2022', '16/11/2022');
-INSERT INTO `tbl_facultyborrowers` VALUES ('7002', 'Mrs. Tricia Mae Laplana Carbonell', '(+63) 977-2130-090', '26', '1001', 'Non-Printed', 'Globe - World', '15/11/2022', '15/11/2022');
-INSERT INTO `tbl_facultyborrowers` VALUES ('7004', 'Mrs. Jesusa Dulay Villanueva', '(+63) 951-7238-230', '27', '3001', 'Non-Printed', 'Philippine Map', '15/11/2022', '16/11/2022');
-INSERT INTO `tbl_facultyborrowers` VALUES ('7005', 'Mr. Jeremy Parado Marquez', '(+63) 977-2372-993', '28', '3002', 'Non-Printed', 'Philippine Map', '15/11/2022', '16/11/2022');
+INSERT INTO `tbl_facultyborrowers` VALUES (7001, 'Dr. Marina Gracias Estoesta', '(+63) 977-2130-087', 25, '1000', 'Non-Printed', 'Globe - World', '15/11/2022', '16/11/2022');
+INSERT INTO `tbl_facultyborrowers` VALUES (7002, 'Mrs. Tricia Mae Laplana Carbonell', '(+63) 977-2130-090', 26, '1001', 'Non-Printed', 'Globe - World', '15/11/2022', '15/11/2022');
+INSERT INTO `tbl_facultyborrowers` VALUES (7004, 'Mrs. Jesusa Dulay Villanueva', '(+63) 951-7238-230', 27, '3001', 'Non-Printed', 'Philippine Map', '15/11/2022', '16/11/2022');
+INSERT INTO `tbl_facultyborrowers` VALUES (7005, 'Mr. Jeremy Parado Marquez', '(+63) 977-2372-993', 28, '3002', 'Non-Printed', 'Philippine Map', '15/11/2022', '16/11/2022');
 
 -- ----------------------------
--- Table structure for `tbl_lostbooks`
+-- Table structure for tbl_lostbooks
 -- ----------------------------
 DROP TABLE IF EXISTS `tbl_lostbooks`;
-CREATE TABLE `tbl_lostbooks` (
-  `BookNumber` varchar(255) NOT NULL,
-  `ISBN` varchar(255) NOT NULL,
-  `Title` varchar(255) NOT NULL,
-  `Author` varchar(255) NOT NULL,
-  `DeweyDecimalClassification` varchar(255) NOT NULL,
-  `Category` varchar(255) NOT NULL,
-  `YearofPublication` varchar(255) NOT NULL,
-  `Publisher` varchar(255) NOT NULL,
-  `Address` varchar(255) NOT NULL,
-  `Copyright` varchar(255) NOT NULL,
-  `Name` varchar(255) NOT NULL,
-  `DatetoReturn` varchar(255) NOT NULL,
-  PRIMARY KEY (`BookNumber`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE `tbl_lostbooks`  (
+  `BookNumber` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `ISBN` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `Title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `Author` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `DeweyDecimalClassification` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `Category` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `YearofPublication` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `Publisher` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `Address` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `Copyright` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `Name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `DatetoReturn` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  PRIMARY KEY (`BookNumber`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tbl_lostbooks
 -- ----------------------------
 
 -- ----------------------------
--- Table structure for `tbl_lostnonprinted`
+-- Table structure for tbl_lostnonprinted
 -- ----------------------------
 DROP TABLE IF EXISTS `tbl_lostnonprinted`;
-CREATE TABLE `tbl_lostnonprinted` (
-  `MaterialNumber` varchar(255) NOT NULL,
-  `MaterialName` varchar(255) NOT NULL,
-  `Name` varchar(255) NOT NULL,
-  `DatetoReturn` varchar(255) NOT NULL,
-  PRIMARY KEY (`MaterialNumber`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE `tbl_lostnonprinted`  (
+  `MaterialNumber` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `MaterialName` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `Name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `DatetoReturn` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  PRIMARY KEY (`MaterialNumber`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tbl_lostnonprinted
@@ -386,141 +405,141 @@ CREATE TABLE `tbl_lostnonprinted` (
 INSERT INTO `tbl_lostnonprinted` VALUES ('3000', 'Philippine Map', 'Francis Bryan Villanueva Hidalgo', '15/11/2022');
 
 -- ----------------------------
--- Table structure for `tbl_nonprinted`
+-- Table structure for tbl_nonprinted
 -- ----------------------------
 DROP TABLE IF EXISTS `tbl_nonprinted`;
-CREATE TABLE `tbl_nonprinted` (
-  `MaterialNumber` int(255) NOT NULL AUTO_INCREMENT,
-  `MaterialName` varchar(255) NOT NULL,
-  `Status` varchar(255) NOT NULL,
-  `ImagePath` varchar(255) NOT NULL,
-  PRIMARY KEY (`MaterialNumber`)
-) ENGINE=InnoDB AUTO_INCREMENT=12212122 DEFAULT CHARSET=utf8mb4;
+CREATE TABLE `tbl_nonprinted`  (
+  `MaterialNumber` int NOT NULL AUTO_INCREMENT,
+  `MaterialName` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `Status` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `ImagePath` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  PRIMARY KEY (`MaterialNumber`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 12212122 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tbl_nonprinted
 -- ----------------------------
-INSERT INTO `tbl_nonprinted` VALUES ('1000', 'Globe - World', 'Available', 'C:\\Barcode\\1000.jpg');
-INSERT INTO `tbl_nonprinted` VALUES ('1001', 'Globe - World', 'Available', 'C:\\Barcode\\1001.jpg');
-INSERT INTO `tbl_nonprinted` VALUES ('1002', 'Globe - World', 'Available', 'C:\\Barcode\\1002.jpg');
-INSERT INTO `tbl_nonprinted` VALUES ('2000', 'Periodic Table', 'Available', 'C:\\Barcode\\2000.jpg');
-INSERT INTO `tbl_nonprinted` VALUES ('2001', 'Periodic Table', 'Available', 'C:\\Barcode\\2001.jpg');
-INSERT INTO `tbl_nonprinted` VALUES ('2002', 'Periodic Table', 'Available', 'C:\\Barcode\\2002.jpg');
-INSERT INTO `tbl_nonprinted` VALUES ('3000', 'Philippine Map', 'Lost', 'C:\\Barcode\\3000.jpg');
-INSERT INTO `tbl_nonprinted` VALUES ('3001', 'Philippine Map', 'Borrowed', 'C:\\Barcode\\3001.jpg');
-INSERT INTO `tbl_nonprinted` VALUES ('3002', 'Philippine Map', 'Available', 'C:\\Barcode\\3002.jpg');
-INSERT INTO `tbl_nonprinted` VALUES ('4000', 'World Map', 'Borrowed', 'C:\\Barcode\\4000.jpg');
-INSERT INTO `tbl_nonprinted` VALUES ('4001', 'World Map', 'Available', 'C:\\Barcode\\4001.jpg');
-INSERT INTO `tbl_nonprinted` VALUES ('4002', 'World Map', 'Available', 'C:\\Barcode\\4002.jpg');
+INSERT INTO `tbl_nonprinted` VALUES (1000, 'Globe - World', 'Available', 'C:\\Barcode\\1000.jpg');
+INSERT INTO `tbl_nonprinted` VALUES (1001, 'Globe - World', 'Available', 'C:\\Barcode\\1001.jpg');
+INSERT INTO `tbl_nonprinted` VALUES (1002, 'Globe - World', 'Available', 'C:\\Barcode\\1002.jpg');
+INSERT INTO `tbl_nonprinted` VALUES (2000, 'Periodic Table', 'Available', 'C:\\Barcode\\2000.jpg');
+INSERT INTO `tbl_nonprinted` VALUES (2001, 'Periodic Table', 'Available', 'C:\\Barcode\\2001.jpg');
+INSERT INTO `tbl_nonprinted` VALUES (2002, 'Periodic Table', 'Available', 'C:\\Barcode\\2002.jpg');
+INSERT INTO `tbl_nonprinted` VALUES (3000, 'Philippine Map', 'Lost', 'C:\\Barcode\\3000.jpg');
+INSERT INTO `tbl_nonprinted` VALUES (3001, 'Philippine Map', 'Borrowed', 'C:\\Barcode\\3001.jpg');
+INSERT INTO `tbl_nonprinted` VALUES (3002, 'Philippine Map', 'Available', 'C:\\Barcode\\3002.jpg');
+INSERT INTO `tbl_nonprinted` VALUES (4000, 'World Map', 'Borrowed', 'C:\\Barcode\\4000.jpg');
+INSERT INTO `tbl_nonprinted` VALUES (4001, 'World Map', 'Available', 'C:\\Barcode\\4001.jpg');
+INSERT INTO `tbl_nonprinted` VALUES (4002, 'World Map', 'Available', 'C:\\Barcode\\4002.jpg');
 
 -- ----------------------------
--- Table structure for `tbl_overduebooks`
+-- Table structure for tbl_overduebooks
 -- ----------------------------
 DROP TABLE IF EXISTS `tbl_overduebooks`;
-CREATE TABLE `tbl_overduebooks` (
-  `BookID` int(255) NOT NULL AUTO_INCREMENT,
-  `BookNumber` varchar(255) NOT NULL,
-  `ISBN` varchar(255) NOT NULL,
-  `Title` varchar(255) NOT NULL,
-  `Author` varchar(255) NOT NULL,
-  `DeweyDecimalClassification` varchar(255) NOT NULL,
-  `Category` varchar(255) NOT NULL,
-  `YearofPublication` varchar(255) NOT NULL,
-  `DatetoReturn` varchar(255) NOT NULL,
-  `DateReturned` varchar(255) NOT NULL,
-  PRIMARY KEY (`BookID`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4;
+CREATE TABLE `tbl_overduebooks`  (
+  `BookID` int NOT NULL AUTO_INCREMENT,
+  `BookNumber` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `ISBN` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `Title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `Author` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `DeweyDecimalClassification` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `Category` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `YearofPublication` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `DatetoReturn` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `DateReturned` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  PRIMARY KEY (`BookID`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 20 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tbl_overduebooks
 -- ----------------------------
 
 -- ----------------------------
--- Table structure for `tbl_overduenonprinted`
+-- Table structure for tbl_overduenonprinted
 -- ----------------------------
 DROP TABLE IF EXISTS `tbl_overduenonprinted`;
-CREATE TABLE `tbl_overduenonprinted` (
-  `MaterialID` int(255) NOT NULL AUTO_INCREMENT,
-  `MaterialNumber` varchar(255) NOT NULL,
-  `MaterialName` varchar(255) NOT NULL,
-  `DatetoReturn` varchar(255) NOT NULL,
-  `DateReturned` varchar(255) NOT NULL,
-  PRIMARY KEY (`MaterialID`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4;
+CREATE TABLE `tbl_overduenonprinted`  (
+  `MaterialID` int NOT NULL AUTO_INCREMENT,
+  `MaterialNumber` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `MaterialName` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `DatetoReturn` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `DateReturned` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  PRIMARY KEY (`MaterialID`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tbl_overduenonprinted
 -- ----------------------------
-INSERT INTO `tbl_overduenonprinted` VALUES ('14', '2002', 'Periodic Table', '14/11/2022', '15/11/2022');
+INSERT INTO `tbl_overduenonprinted` VALUES (14, '2002', 'Periodic Table', '14/11/2022', '15/11/2022');
 
 -- ----------------------------
--- Table structure for `tbl_returnedbooks`
+-- Table structure for tbl_returnedbooks
 -- ----------------------------
 DROP TABLE IF EXISTS `tbl_returnedbooks`;
-CREATE TABLE `tbl_returnedbooks` (
-  `BookID` int(255) NOT NULL AUTO_INCREMENT,
-  `BookNumber` varchar(255) NOT NULL,
-  `ISBN` varchar(255) NOT NULL,
-  `Title` varchar(255) NOT NULL,
-  `Author` varchar(255) NOT NULL,
-  `DeweyDecimalClassification` varchar(255) NOT NULL,
-  `Category` varchar(255) NOT NULL,
-  `YearofPublication` varchar(255) NOT NULL,
-  `Publisher` varchar(255) NOT NULL,
-  `Address` varchar(255) NOT NULL,
-  `Copyright` varchar(255) NOT NULL,
-  `DateReturned` varchar(255) NOT NULL,
-  `Username` varchar(255) NOT NULL,
-  `Name` varchar(255) NOT NULL,
-  PRIMARY KEY (`BookID`)
-) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8mb4;
+CREATE TABLE `tbl_returnedbooks`  (
+  `BookID` int NOT NULL AUTO_INCREMENT,
+  `BookNumber` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `ISBN` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `Title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `Author` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `DeweyDecimalClassification` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `Category` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `YearofPublication` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `Publisher` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `Address` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `Copyright` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `DateReturned` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `Username` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `Name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  PRIMARY KEY (`BookID`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 43 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tbl_returnedbooks
 -- ----------------------------
-INSERT INTO `tbl_returnedbooks` VALUES ('41', '00522001', '978-4-54349-094-2', 'Information Technology', 'Richard Fox', 'Computer science, information and general works', 'Textbook', '2015', 'Chapman and Hall/CRC.', 'Class 005', '', '28/10/2022', '101090130036', 'Mel Dheon Munar Jucutan');
-INSERT INTO `tbl_returnedbooks` VALUES ('42', '60422003', '978-9-23123-231-7', 'PO Box 1334, Mission, Kansas, 66222, United States', '2019 Leonard Piekoff', '570 - Science', 'General Reference', 'Technical Drawing 101 with AutoCAD', 'Ashleigh Congdon-Fuller, Antonio Ramirez, Douglas Smith', '2019', 'SDC Publications', '16/11/2022', '7001', 'Dr. Marina Gracias Estoesta');
+INSERT INTO `tbl_returnedbooks` VALUES (41, '00522001', '978-4-54349-094-2', 'Information Technology', 'Richard Fox', 'Computer science, information and general works', 'Textbook', '2015', 'Chapman and Hall/CRC.', 'Class 005', '', '28/10/2022', '101090130036', 'Mel Dheon Munar Jucutan');
+INSERT INTO `tbl_returnedbooks` VALUES (42, '60422003', '978-9-23123-231-7', 'PO Box 1334, Mission, Kansas, 66222, United States', '2019 Leonard Piekoff', '570 - Science', 'General Reference', 'Technical Drawing 101 with AutoCAD', 'Ashleigh Congdon-Fuller, Antonio Ramirez, Douglas Smith', '2019', 'SDC Publications', '16/11/2022', '7001', 'Dr. Marina Gracias Estoesta');
 
 -- ----------------------------
--- Table structure for `tbl_returnednonprinted`
+-- Table structure for tbl_returnednonprinted
 -- ----------------------------
 DROP TABLE IF EXISTS `tbl_returnednonprinted`;
-CREATE TABLE `tbl_returnednonprinted` (
-  `MaterialID` int(255) NOT NULL AUTO_INCREMENT,
-  `MaterialNumber` varchar(255) NOT NULL,
-  `MaterialName` varchar(255) NOT NULL,
-  `DateReturned` varchar(255) NOT NULL,
-  `Username` varchar(255) NOT NULL,
-  `Name` varchar(255) NOT NULL,
-  PRIMARY KEY (`MaterialID`)
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4;
+CREATE TABLE `tbl_returnednonprinted`  (
+  `MaterialID` int NOT NULL AUTO_INCREMENT,
+  `MaterialNumber` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `MaterialName` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `DateReturned` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `Username` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `Name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  PRIMARY KEY (`MaterialID`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 24 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tbl_returnednonprinted
 -- ----------------------------
-INSERT INTO `tbl_returnednonprinted` VALUES ('16', '1000', 'Globe - World', '28/10/2022', '7002', 'Mrs. Tricia Mae Laplana Carbonell');
-INSERT INTO `tbl_returnednonprinted` VALUES ('17', '1000', 'Globe - World', '15/11/2022', '7001', 'Dr. Marina Gracias Estoesta');
-INSERT INTO `tbl_returnednonprinted` VALUES ('18', '1001', 'Globe - World', '15/11/2022', '7002', 'Mrs. Tricia Mae Laplana Carbonell');
-INSERT INTO `tbl_returnednonprinted` VALUES ('19', '1002', 'Globe - World', '15/11/2022', '100816100072', 'Felix Ramos Medina');
-INSERT INTO `tbl_returnednonprinted` VALUES ('20', '2000', 'Periodic Table', '15/11/2022', '100845150051', 'Princess Jewel Grace Alas Orejudos');
-INSERT INTO `tbl_returnednonprinted` VALUES ('21', '2001', 'Periodic Table', '15/11/2022', '101007150010', 'Ernest Charl Valdez Geneta');
-INSERT INTO `tbl_returnednonprinted` VALUES ('22', '2002', 'Periodic Table', '15/11/2022', '101090140013', 'Francis Bryan Villanueva Hidalgo');
-INSERT INTO `tbl_returnednonprinted` VALUES ('23', '3002', 'Philippine Map', '16/11/2022', '7005', 'Mr. Jeremy Parado Marquez');
+INSERT INTO `tbl_returnednonprinted` VALUES (16, '1000', 'Globe - World', '28/10/2022', '7002', 'Mrs. Tricia Mae Laplana Carbonell');
+INSERT INTO `tbl_returnednonprinted` VALUES (17, '1000', 'Globe - World', '15/11/2022', '7001', 'Dr. Marina Gracias Estoesta');
+INSERT INTO `tbl_returnednonprinted` VALUES (18, '1001', 'Globe - World', '15/11/2022', '7002', 'Mrs. Tricia Mae Laplana Carbonell');
+INSERT INTO `tbl_returnednonprinted` VALUES (19, '1002', 'Globe - World', '15/11/2022', '100816100072', 'Felix Ramos Medina');
+INSERT INTO `tbl_returnednonprinted` VALUES (20, '2000', 'Periodic Table', '15/11/2022', '100845150051', 'Princess Jewel Grace Alas Orejudos');
+INSERT INTO `tbl_returnednonprinted` VALUES (21, '2001', 'Periodic Table', '15/11/2022', '101007150010', 'Ernest Charl Valdez Geneta');
+INSERT INTO `tbl_returnednonprinted` VALUES (22, '2002', 'Periodic Table', '15/11/2022', '101090140013', 'Francis Bryan Villanueva Hidalgo');
+INSERT INTO `tbl_returnednonprinted` VALUES (23, '3002', 'Philippine Map', '16/11/2022', '7005', 'Mr. Jeremy Parado Marquez');
 
 -- ----------------------------
--- Table structure for `tbl_student`
+-- Table structure for tbl_student
 -- ----------------------------
 DROP TABLE IF EXISTS `tbl_student`;
-CREATE TABLE `tbl_student` (
-  `Username` varchar(255) NOT NULL,
-  `Name` varchar(255) NOT NULL,
-  `ContactNo` varchar(25) NOT NULL,
-  `GradeSec` varchar(50) NOT NULL,
-  `Teacher` varchar(255) NOT NULL,
-  `Password` varchar(50) NOT NULL,
-  `ImagePath` varchar(50) NOT NULL,
-  PRIMARY KEY (`Username`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE `tbl_student`  (
+  `Username` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `Name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `ContactNo` varchar(25) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `GradeSec` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `Teacher` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `Password` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `ImagePath` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  PRIMARY KEY (`Username`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tbl_student
@@ -867,52 +886,53 @@ INSERT INTO `tbl_student` VALUES ('403825150274', 'Ashley Marie Hufalar Navales'
 INSERT INTO `tbl_student` VALUES ('403825150320', 'Miesha Franchesca Hufalar Navales', '(+63) 976-5321-012', '10-Acacia', 'Mrs. Imelda Garcia Gracias', 'password', '');
 
 -- ----------------------------
--- Table structure for `tbl_studentborrowers`
+-- Table structure for tbl_studentborrowers
 -- ----------------------------
 DROP TABLE IF EXISTS `tbl_studentborrowers`;
-CREATE TABLE `tbl_studentborrowers` (
-  `Username` varchar(12) NOT NULL,
-  `Name` varchar(255) NOT NULL,
-  `ContactNo` varchar(255) NOT NULL,
-  `GradeSec` varchar(255) NOT NULL,
-  `Teacher` varchar(255) NOT NULL,
-  `ItemID` int(255) NOT NULL AUTO_INCREMENT,
-  `ItemNumber` varchar(255) NOT NULL,
-  `ItemType` varchar(255) NOT NULL,
-  `Title` varchar(255) NOT NULL,
-  `DateBorrowed` varchar(255) NOT NULL,
-  `DatetoReturn` varchar(255) NOT NULL,
-  PRIMARY KEY (`ItemID`)
-) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=utf8mb4;
+CREATE TABLE `tbl_studentborrowers`  (
+  `Username` varchar(12) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `Name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `ContactNo` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `GradeSec` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `Teacher` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `ItemID` int NOT NULL AUTO_INCREMENT,
+  `ItemNumber` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `ItemType` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `Title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `DateBorrowed` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `DatetoReturn` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  PRIMARY KEY (`ItemID`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 52 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tbl_studentborrowers
 -- ----------------------------
-INSERT INTO `tbl_studentborrowers` VALUES ('101090130036', 'Mel Dheon Munar Jucutan', '(+63) 977-1499-716', '9-Olive', 'Mr. Frank Quidit Calub Jr', '43', '00522001', 'Printed', 'Information Technology', '28/10/2022', '31/10/2022');
-INSERT INTO `tbl_studentborrowers` VALUES ('101090140013', 'Francis Bryan Villanueva Hidalgo', '(+63) 977-4501-237', '7-Narra', 'Mrs. Tricia Mae Laplana Carbonell', '44', '00522003', 'Printed', 'Information Technology', '28/10/2022', '31/10/2022');
-INSERT INTO `tbl_studentborrowers` VALUES ('101090140045', 'Regine Emperador Gepega', '(+63) 939-9774-502', '7-Narra', 'Mrs. Tricia Mae Laplana Carbonell', '45', '30022002', 'Printed', 'Social Science: An Introduction to the Study of Society', '28/10/2022', '31/10/2022');
-INSERT INTO `tbl_studentborrowers` VALUES ('100816100072', 'Felix Ramos Medina', '(+63) 977-4501-239', '7-Narra', 'Mrs. Tricia Mae Laplana Carbonell', '46', '1002', 'Non-Printed', 'Globe - World', '15/11/2022', '17/11/2022');
-INSERT INTO `tbl_studentborrowers` VALUES ('100845150051', 'Princess Jewel Grace Alas Orejudos', '(+63) 939-9774-505', '7-Narra', 'Mrs. Tricia Mae Laplana Carbonell', '47', '2000', 'Non-Printed', 'Periodic Table', '15/11/2022', '18/11/2022');
-INSERT INTO `tbl_studentborrowers` VALUES ('101007150010', 'Ernest Charl Valdez Geneta', '(+63) 977-4501-236', '7-Narra', 'Mrs. Tricia Mae Laplana Carbonell', '48', '2001', 'Non-Printed', 'Periodic Table', '15/11/2022', '16/11/2022');
-INSERT INTO `tbl_studentborrowers` VALUES ('101090140013', 'Francis Bryan Villanueva Hidalgo', '(+63) 977-4501-237', '7-Narra', 'Mrs. Tricia Mae Laplana Carbonell', '49', '2002', 'Non-Printed', 'Periodic Table', '15/11/2022', '15/11/2022');
-INSERT INTO `tbl_studentborrowers` VALUES ('101090140013', 'Francis Bryan Villanueva Hidalgo', '(+63) 977-4501-237', '7-Narra', 'Mrs. Tricia Mae Laplana Carbonell', '50', '3000', 'Non-Printed', 'Philippine Map', '15/11/2022', '15/11/2022');
-INSERT INTO `tbl_studentborrowers` VALUES ('101090140045', 'Regine Emperador Gepega', '(+63) 939-9774-502', '7-Narra', 'Mrs. Tricia Mae Laplana Carbonell', '51', '4000', 'Non-Printed', 'World Map', '15/11/2022', '17/11/2022');
+INSERT INTO `tbl_studentborrowers` VALUES ('101090130036', 'Mel Dheon Munar Jucutan', '(+63) 977-1499-716', '9-Olive', 'Mr. Frank Quidit Calub Jr', 43, '00522001', 'Printed', 'Information Technology', '28/10/2022', '31/10/2022');
+INSERT INTO `tbl_studentborrowers` VALUES ('101090140013', 'Francis Bryan Villanueva Hidalgo', '(+63) 977-4501-237', '7-Narra', 'Mrs. Tricia Mae Laplana Carbonell', 44, '00522003', 'Printed', 'Information Technology', '28/10/2022', '31/10/2022');
+INSERT INTO `tbl_studentborrowers` VALUES ('101090140045', 'Regine Emperador Gepega', '(+63) 939-9774-502', '7-Narra', 'Mrs. Tricia Mae Laplana Carbonell', 45, '30022002', 'Printed', 'Social Science: An Introduction to the Study of Society', '28/10/2022', '31/10/2022');
+INSERT INTO `tbl_studentborrowers` VALUES ('100816100072', 'Felix Ramos Medina', '(+63) 977-4501-239', '7-Narra', 'Mrs. Tricia Mae Laplana Carbonell', 46, '1002', 'Non-Printed', 'Globe - World', '15/11/2022', '17/11/2022');
+INSERT INTO `tbl_studentborrowers` VALUES ('100845150051', 'Princess Jewel Grace Alas Orejudos', '(+63) 939-9774-505', '7-Narra', 'Mrs. Tricia Mae Laplana Carbonell', 47, '2000', 'Non-Printed', 'Periodic Table', '15/11/2022', '18/11/2022');
+INSERT INTO `tbl_studentborrowers` VALUES ('101007150010', 'Ernest Charl Valdez Geneta', '(+63) 977-4501-236', '7-Narra', 'Mrs. Tricia Mae Laplana Carbonell', 48, '2001', 'Non-Printed', 'Periodic Table', '15/11/2022', '16/11/2022');
+INSERT INTO `tbl_studentborrowers` VALUES ('101090140013', 'Francis Bryan Villanueva Hidalgo', '(+63) 977-4501-237', '7-Narra', 'Mrs. Tricia Mae Laplana Carbonell', 49, '2002', 'Non-Printed', 'Periodic Table', '15/11/2022', '15/11/2022');
+INSERT INTO `tbl_studentborrowers` VALUES ('101090140013', 'Francis Bryan Villanueva Hidalgo', '(+63) 977-4501-237', '7-Narra', 'Mrs. Tricia Mae Laplana Carbonell', 50, '3000', 'Non-Printed', 'Philippine Map', '15/11/2022', '15/11/2022');
+INSERT INTO `tbl_studentborrowers` VALUES ('101090140045', 'Regine Emperador Gepega', '(+63) 939-9774-502', '7-Narra', 'Mrs. Tricia Mae Laplana Carbonell', 51, '4000', 'Non-Printed', 'World Map', '15/11/2022', '17/11/2022');
 
 -- ----------------------------
--- Table structure for `tbl_users`
+-- Table structure for tbl_users
 -- ----------------------------
 DROP TABLE IF EXISTS `tbl_users`;
-CREATE TABLE `tbl_users` (
-  `Username` varchar(50) NOT NULL,
-  `Name` varchar(255) NOT NULL,
-  `Password` varchar(50) NOT NULL,
-  `Usertype` varchar(50) NOT NULL,
-  PRIMARY KEY (`Username`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE `tbl_users`  (
+  `Username` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `Name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `Password` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `Usertype` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  PRIMARY KEY (`Username`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tbl_users
 -- ----------------------------
+INSERT INTO `tbl_users` VALUES ('0909046', 'Dev Int', 'password', 'Admin');
 INSERT INTO `tbl_users` VALUES ('100809100001', 'Paula Marie Padin Abanes', 'password', 'Student');
 INSERT INTO `tbl_users` VALUES ('100816100072', 'Felix Ramos Medina', 'password', 'Student');
 INSERT INTO `tbl_users` VALUES ('100826130014', 'Renz Aldwin Abubo Mamuyac', 'password', 'Student');
@@ -1270,3 +1290,5 @@ INSERT INTO `tbl_users` VALUES ('7011', 'Ms. Charlene Mae G. Gracias', 'password
 INSERT INTO `tbl_users` VALUES ('7012', 'Mr. Jeffrey C. Galera', 'password', 'Faculty');
 INSERT INTO `tbl_users` VALUES ('7020', 'Patrick Grey', 'password', 'Faculty');
 INSERT INTO `tbl_users` VALUES ('7030', 'Haries Bening', 'password', 'Faculty');
+
+SET FOREIGN_KEY_CHECKS = 1;

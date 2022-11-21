@@ -1,7 +1,7 @@
 ﻿Imports MySql.Data.MySqlClient
 Public Class Lost_NonPrinted
     Private Sub bind_data()
-        Dim conn As New MySqlConnection("server=localhost;uid=root;database=db_system")
+        Dim conn As New MySqlConnection(connString)
         conn.Open()
         Dim cmd As New MySqlCommand("Select * from tbl_lostnonprinted", conn)
         Dim da As New MySqlDataAdapter
@@ -37,7 +37,7 @@ Public Class Lost_NonPrinted
     End Sub
 
     Private Sub btn_generate_Click(sender As Object, e As EventArgs) Handles btn_generate.Click
-        Dim conn As New MySqlConnection("server=localhost;uid=root;database=db_system")
+        Dim conn As New MySqlConnection(connString)
         conn.Open()
         'Dim cmd As New MySqlCommand("select * from tbl_lostbooks", conn)
         Dim cmd As New MySqlCommand("Select * From tbl_lostnonprinted where datetoreturn between '" + dt1.Value.ToString("dd/MM/yyyy") + "' and '" + dt2.Value.ToString("dd/MM/yyyy") + "'", conn)

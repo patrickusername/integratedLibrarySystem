@@ -1,7 +1,7 @@
 ﻿Imports MySql.Data.MySqlClient
 
 Public Class Add_Book
-    Public conn As New MySqlConnection("server=localhost;uid=root;database=db_system")
+    Public conn As New MySqlConnection(connString)
     Private Sub btn_cancl_Click(sender As Object, e As EventArgs) Handles btn_cancl.Click
         AdminMainForms.Show()
         Me.Hide()
@@ -101,7 +101,7 @@ Public Class Add_Book
                     Dim book As String = txt_booknum.Text & ".jpg"
                     Dim folder As String = "C:\Barcode\"
                     Dim query As String = "Update tbl_book set ImagePath = @pathstring where BookNumber = '" & txt_booknum.Text & "'"
-                    Using con As MySqlConnection = New MySqlConnection("server=localhost;uid=root;database=db_system")
+                    Using con As MySqlConnection = New MySqlConnection(connString)
                         Using cmd As MySqlCommand = New MySqlCommand(query, con)
                             Dim pathstring As String = System.IO.Path.Combine(folder, book)
                             cmd.Parameters.AddWithValue("@pathstring", pathstring)

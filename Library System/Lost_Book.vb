@@ -1,9 +1,9 @@
 ﻿Imports MySql.Data.MySqlClient
 Imports System.ComponentModel
 Public Class Lost_Book
-    Public conn As New MySqlConnection("server=localhost;uid=root;database=db_system")
+    Public conn As New MySqlConnection(connString)
     Private Sub bind_data()
-        Dim con As New MySqlConnection("server=localhost;uid=root;database=db_system")
+        Dim con As New MySqlConnection(connString)
         con.Open()
         Dim cmd As New MySqlCommand("Select * from tbl_borrowreturnbooks", con)
         Dim da As New MySqlDataAdapter

@@ -2,7 +2,7 @@
 Imports System.ComponentModel
 Public Class SearchBook
     Private Sub bind_data()
-        Dim con As New MySqlConnection("server=localhost;uid=root;database=db_system")
+        Dim con As New MySqlConnection(connString)
         con.Open()
         Dim cmd As New MySqlCommand("select * from tbl_book", con)
         Dim da As New MySqlDataAdapter
@@ -30,7 +30,7 @@ Public Class SearchBook
         DataGridView1.Refresh()
         DataGridView1.Sort(DataGridView1.Columns(0), ListSortDirection.Descending)
 
-        Dim con As New MySqlConnection("server=localhost;uid=root;database=db_system")
+        Dim con As New MySqlConnection(connString)
         con.Open()
         Dim cmd As New MySqlCommand("select * from tbl_book", con)
         Dim da As New MySqlDataAdapter
@@ -50,7 +50,7 @@ Public Class SearchBook
 
     Private Sub txt_isbn1_TextChanged(sender As Object, e As EventArgs) Handles txt_isbn1.TextChanged
         Dim searchque As String = "Select * from tbl_book Where concat (BookNumber, ISBN, Title, Author, DeweyDecimalClassification, Category, YearofPublication, Publisher, Address, Copyright, Status, ImagePath)  like '%" & txt_isbn1.Text & "%'"
-        Dim conn As MySqlConnection = New MySqlConnection("server=localhost; uid=root;database=db_system")
+        Dim conn As MySqlConnection = New MySqlConnection(connString)
         Dim cmd5 As MySqlCommand = New MySqlCommand(searchque, conn)
         Dim da As MySqlDataAdapter = New MySqlDataAdapter
         da.SelectCommand = cmd5
