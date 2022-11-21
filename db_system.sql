@@ -11,7 +11,7 @@
  Target Server Version : 80030 (8.0.30)
  File Encoding         : 65001
 
- Date: 21/11/2022 11:35:40
+ Date: 21/11/2022 11:48:42
 */
 
 SET NAMES utf8mb4;
@@ -25,11 +25,11 @@ CREATE TABLE `cron_settings`  (
   `settingID` int NOT NULL AUTO_INCREMENT,
   `runinbackground` int NOT NULL,
   PRIMARY KEY (`settingID`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+
 -- ----------------------------
 -- Records of cron_settings
 -- ----------------------------
-INSERT INTO `cron_settings` VALUES (1, 0);
 
 -- ----------------------------
 -- Table structure for cronsent
@@ -37,11 +37,11 @@ INSERT INTO `cron_settings` VALUES (1, 0);
 DROP TABLE IF EXISTS `cronsent`;
 CREATE TABLE `cronsent`  (
   `sentID` int NOT NULL AUTO_INCREMENT,
-  `bookNumber` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `borrowerName` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `date` date NOT NULL,
+  `bookNumber` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `borrowerName` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `date` date NULL DEFAULT NULL,
   PRIMARY KEY (`sentID`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of cronsent
@@ -58,7 +58,7 @@ CREATE TABLE `tbl_admin`  (
   `ContactNo` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `ImagePath` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   PRIMARY KEY (`Username`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tbl_admin
@@ -86,7 +86,7 @@ CREATE TABLE `tbl_book`  (
   `Status` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `ImagePath` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   PRIMARY KEY (`BookNumber`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tbl_book
@@ -163,7 +163,7 @@ CREATE TABLE `tbl_borrowedbooks`  (
   `Name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `ContactNo` varchar(25) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   PRIMARY KEY (`BookID`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 57 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 57 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tbl_borrowedbooks
@@ -187,7 +187,7 @@ CREATE TABLE `tbl_borrowednonprinted`  (
   `Name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `ContactNo` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   PRIMARY KEY (`MaterialID`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 42 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 42 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tbl_borrowednonprinted
@@ -224,14 +224,14 @@ CREATE TABLE `tbl_borrowreturnbooks`  (
   `Name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `ContactNo` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   PRIMARY KEY (`BookNumber`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tbl_borrowreturnbooks
 -- ----------------------------
-INSERT INTO `tbl_borrowreturnbooks` VALUES ('40022003', '978-2-54335-423-8', 'Introducing English Language', 'Louise Mullany, Peter Stockwell', '400 - Language', 'Textbook', '2015', 'Routledge', 'Milton Park, Abingdon-on-Thames, Oxforshire, England, UK', '2019 Colleen Hover', '16/11/2022 - 07:26 pm', '17/11/2022', '101007150010', 'Ernest Charl Valdez Geneta', '(+63) 977-4501-236');
-INSERT INTO `tbl_borrowreturnbooks` VALUES ('60422001', '978-9-23123-231-7', 'Technical Drawing 101 with AutoCAD', 'Ashleigh Congdon-Fuller, Antonio Ramirez, Douglas Smith', '570 - Science', 'General Reference', '2019', 'SDC Publications', 'PO Box 1334, Mission, Kansas, 66222, United States', '2019 Leonard Piekoff', '16/11/2022 - 07:22 pm', '19/11/2022 - 12:00 am', '100845150051', 'Princess Jewel Grace Alas Orejudos', '(+63) 939-9774-505');
-INSERT INTO `tbl_borrowreturnbooks` VALUES ('60422002', '978-9-23123-231-7', 'Technical Drawing 101 with AutoCAD', 'Ashleigh Congdon-Fuller, Antonio Ramirez, Douglas Smith', '570 - Science', 'General Reference', '2019', 'SDC Publications', 'PO Box 1334, Mission, Kansas, 66222, United States', '2019 Leonard Piekoff', '16/11/2022 - 07:22 pm', '17/11/2022 - 12:00 am', '100816100072', 'Felix Ramos Medina', '(+63) 977-4501-239');
+INSERT INTO `tbl_borrowreturnbooks` VALUES ('40022003', '978-2-54335-423-8', 'Introducing English Language', 'Louise Mullany, Peter Stockwell', '400 - Language', 'Textbook', '2015', 'Routledge', 'Milton Park, Abingdon-on-Thames, Oxforshire, England, UK', '2019 Colleen Hover', '16/11/2022 - 07:26 pm', '18/11/2022', '101007150010', 'Ernest Charl Valdez Geneta', '(+63) 977-4501-236');
+INSERT INTO `tbl_borrowreturnbooks` VALUES ('60422001', '978-9-23123-231-7', 'Technical Drawing 101 with AutoCAD', 'Ashleigh Congdon-Fuller, Antonio Ramirez, Douglas Smith', '570 - Science', 'General Reference', '2019', 'SDC Publications', 'PO Box 1334, Mission, Kansas, 66222, United States', '2019 Leonard Piekoff', '16/11/2022 - 07:22 pm', '18/11/2022', '100845150051', 'Princess Jewel Grace Alas Orejudos', '(+63) 939-9774-505');
+INSERT INTO `tbl_borrowreturnbooks` VALUES ('60422002', '978-9-23123-231-7', 'Technical Drawing 101 with AutoCAD', 'Ashleigh Congdon-Fuller, Antonio Ramirez, Douglas Smith', '570 - Science', 'General Reference', '2019', 'SDC Publications', 'PO Box 1334, Mission, Kansas, 66222, United States', '2019 Leonard Piekoff', '16/11/2022 - 07:22 pm', '18/11/2022', '100816100072', 'Felix Ramos Medina', '(+63) 977-4501-239');
 
 -- ----------------------------
 -- Table structure for tbl_borrowreturnnonprinted
@@ -246,7 +246,7 @@ CREATE TABLE `tbl_borrowreturnnonprinted`  (
   `Name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `ContactNo` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   PRIMARY KEY (`MaterialNumber`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tbl_borrowreturnnonprinted
@@ -273,7 +273,7 @@ CREATE TABLE `tbl_damagedbooks`  (
   `Name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `DateReturned` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   PRIMARY KEY (`BookID`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tbl_damagedbooks
@@ -290,7 +290,7 @@ CREATE TABLE `tbl_damagednonprinted`  (
   `Name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `DateReturned` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   PRIMARY KEY (`MaterialID`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 18 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 18 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tbl_damagednonprinted
@@ -312,7 +312,7 @@ CREATE TABLE `tbl_delinquentborrowers`  (
   `DateReturned` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `Reason` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   PRIMARY KEY (`ItemID`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 26 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 26 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tbl_delinquentborrowers
@@ -332,7 +332,7 @@ CREATE TABLE `tbl_faculty`  (
   `ImagePath` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   PRIMARY KEY (`Username`) USING BTREE,
   INDEX `Username`(`Username` ASC) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tbl_faculty
@@ -367,7 +367,7 @@ CREATE TABLE `tbl_facultyborrowers`  (
   `DateBorrowed` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `DatetoReturn` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   PRIMARY KEY (`ItemID`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 29 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 29 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tbl_facultyborrowers
@@ -395,7 +395,7 @@ CREATE TABLE `tbl_lostbooks`  (
   `Name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `DatetoReturn` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   PRIMARY KEY (`BookNumber`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tbl_lostbooks
@@ -411,7 +411,7 @@ CREATE TABLE `tbl_lostnonprinted`  (
   `Name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `DatetoReturn` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   PRIMARY KEY (`MaterialNumber`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tbl_lostnonprinted
@@ -428,7 +428,7 @@ CREATE TABLE `tbl_nonprinted`  (
   `Status` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `ImagePath` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   PRIMARY KEY (`MaterialNumber`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 12212122 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 12212122 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tbl_nonprinted
@@ -462,7 +462,7 @@ CREATE TABLE `tbl_overduebooks`  (
   `DatetoReturn` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `DateReturned` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   PRIMARY KEY (`BookID`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 20 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 20 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tbl_overduebooks
@@ -479,7 +479,7 @@ CREATE TABLE `tbl_overduenonprinted`  (
   `DatetoReturn` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `DateReturned` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   PRIMARY KEY (`MaterialID`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tbl_overduenonprinted
@@ -506,7 +506,7 @@ CREATE TABLE `tbl_returnedbooks`  (
   `Username` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `Name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   PRIMARY KEY (`BookID`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 43 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 43 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tbl_returnedbooks
@@ -526,7 +526,7 @@ CREATE TABLE `tbl_returnednonprinted`  (
   `Username` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `Name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   PRIMARY KEY (`MaterialID`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 24 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 24 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tbl_returnednonprinted
@@ -553,7 +553,7 @@ CREATE TABLE `tbl_student`  (
   `Password` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `ImagePath` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   PRIMARY KEY (`Username`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tbl_student
@@ -916,7 +916,7 @@ CREATE TABLE `tbl_studentborrowers`  (
   `DateBorrowed` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `DatetoReturn` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   PRIMARY KEY (`ItemID`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 52 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 52 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tbl_studentborrowers
@@ -941,12 +941,11 @@ CREATE TABLE `tbl_users`  (
   `Password` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `Usertype` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   PRIMARY KEY (`Username`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tbl_users
 -- ----------------------------
-INSERT INTO `tbl_users` VALUES ('0909046', 'Dev Int', 'password', 'Admin');
 INSERT INTO `tbl_users` VALUES ('100809100001', 'Paula Marie Padin Abanes', 'password', 'Student');
 INSERT INTO `tbl_users` VALUES ('100816100072', 'Felix Ramos Medina', 'password', 'Student');
 INSERT INTO `tbl_users` VALUES ('100826130014', 'Renz Aldwin Abubo Mamuyac', 'password', 'Student');
