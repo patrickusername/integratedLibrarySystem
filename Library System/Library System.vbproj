@@ -50,6 +50,9 @@
   <PropertyGroup>
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>logo.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="BouncyCastle.Crypto, Version=1.9.0.0, Culture=neutral, PublicKeyToken=0e99375e54769942, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -487,6 +490,12 @@
     <Compile Include="Form2.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmAutomaticSMS.Designer.vb">
+      <DependentUpon>frmAutomaticSMS.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmAutomaticSMS.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Help.Designer.vb">
       <DependentUpon>Help.vb</DependentUpon>
     </Compile>
@@ -536,6 +545,7 @@
     <Compile Include="OverdueNonPrinted.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Queries.vb" />
     <Compile Include="Restore.Designer.vb">
       <DependentUpon>Restore.vb</DependentUpon>
     </Compile>
@@ -548,6 +558,7 @@
     <Compile Include="ReturnBook.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="ReturnBooks.vb" />
     <Compile Include="ReturnedBook.Designer.vb">
       <DependentUpon>ReturnedBook.vb</DependentUpon>
     </Compile>
@@ -613,6 +624,7 @@
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
       <DependentUpon>Application.myapp</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="My Project\Resources.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -916,6 +928,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form2.resx">
       <DependentUpon>Form2.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAutomaticSMS.resx">
+      <DependentUpon>frmAutomaticSMS.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Help.resx">
       <DependentUpon>Help.vb</DependentUpon>
