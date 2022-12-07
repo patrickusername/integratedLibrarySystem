@@ -17,13 +17,15 @@ Public Class Update_Book
                     txt_booknumber.Text = data(0)
                     txt_isbn.Text = data(1)
                     txt_title.Text = data(2)
-                    txt_author.Text = data(3)
-                    cmb_ddc.Text = data(4)
-                    cmb_category.Text = data(5)
-                    txt_yearofpub.Text = data(6)
-                    txt_pubcom.Text = data(7)
-                    txt_address.Text = data(8)
-                    txt_copyright.Text = data(9)
+                    txt_auth_ln.Text = data(3)
+                    txt_auth_fn.Text = data(4)
+                    txt_auth_mn.Text = data(5)
+                    cmb_ddc.Text = data(6)
+                    cmb_category.Text = data(7)
+                    txt_yearofpub.Text = data(8)
+                    txt_pubcom.Text = data(9)
+                    txt_address.Text = data(10)
+                    txt_copyright.Text = data(11)
                     txt_search.Clear()
                 End If
             Else
@@ -41,7 +43,9 @@ Public Class Update_Book
         Me.Hide()
         txt_isbn.Clear()
         txt_title.Clear()
-        txt_author.Clear()
+        txt_auth_ln.Clear()
+        txt_auth_fn.Clear()
+        txt_auth_mn.Clear()
         cmb_category.SelectedIndex = -1
         txt_yearofpub.Clear()
         txt_pubcom.Clear()
@@ -62,7 +66,9 @@ Public Class Update_Book
         txt_search.Clear()
         txt_title.Clear()
         txt_isbn.Clear()
-        txt_author.Clear()
+        txt_auth_ln.Clear()
+        txt_auth_fn.Clear()
+        txt_auth_mn.Clear()
         txt_yearofpub.Clear()
         txt_pubcom.Clear()
         txt_address.Clear()
@@ -78,12 +84,15 @@ Public Class Update_Book
         If txt_isbn.Text = "" Then
             MsgBox("Please Enter ISBN", MsgBoxStyle.Critical)
             txt_isbn.Focus()
+        ElseIf txt_isbn.MaskCompleted = False Then
+            MsgBox("Please Enter ISBN", MsgBoxStyle.Critical)
+            txt_isbn.Focus()
         ElseIf txt_title.Text = "" Then
             MsgBox("Please Enter Title", MsgBoxStyle.Critical)
             txt_title.Focus()
-        ElseIf txt_author.Text = "" Then
-            MsgBox("Please Enter Author", MsgBoxStyle.Critical)
-            txt_author.Focus()
+            'ElseIf txt_auth_ln.Text = "" Or txt_auth_fn.Text = "" Or txt_auth_mn.Text = "" Then
+            '    MsgBox("Please Enter Author", MsgBoxStyle.Critical)
+            '    txt_auth_ln.Focus()
         ElseIf cmb_ddc.Text = "" Then
             MsgBox("Please Enter Dewey Decimal Classification", MsgBoxStyle.Critical)
             cmb_ddc.Focus()
@@ -112,7 +121,7 @@ Public Class Update_Book
 
             conn.Open()
             'Dim qstr As String = "UPDATE tbl_book SET ISBN = '" & txt_isbn.Text & "' , Title = '" & txt_title.Text & "' , Author = '" & txt_author.Text & "' , Category = '" & cmb_category.SelectedItem & "' , YearofPublication = '" & txt_yearofpub.Text & "' , PublishingCompany = '" & txt_pubcom.Text & "' , ClassNumber = '" & txt_classnum.Text & "' WHERE BookNumber = '" & txt_booknumber.Text & "'"
-            Dim qstr As String = "UPDATE tbl_book SET ISBN='" & txt_isbn.Text & "' , Title ='" & txt_title.Text & "' , Author = '" & txt_author.Text & "' , DeweyDecimalClassification = '" & cmb_ddc.Text & "' , Category = '" & cmb_category.Text & "' , YearofPublication = '" & txt_yearofpub.Text & "' , Publisher = '" & txt_pubcom.Text & "' , Address = '" & txt_address.Text & "' , Copyright = '" & txt_copyright.Text & "' WHERE BookNumber = '" & txt_booknumber.Text & "'"
+            Dim qstr As String = "UPDATE tbl_book SET ISBN='" & txt_isbn.Text & "' , Title ='" & txt_title.Text & "' , AuthorLastName = '" & txt_auth_ln.Text & "' , AuthorFirstName = '" & txt_auth_fn.Text & "' , AuthorMiddleName = '" & txt_auth_mn.Text & "' , DeweyDecimalClassification = '" & cmb_ddc.Text & "' , Category = '" & cmb_category.Text & "' , YearofPublication = '" & txt_yearofpub.Text & "' , Publisher = '" & txt_pubcom.Text & "' , Address = '" & txt_address.Text & "' , Copyright = '" & txt_copyright.Text & "' WHERE BookNumber = '" & txt_booknumber.Text & "'"
             Dim cmd As New MySqlCommand(qstr, conn)
             Dim dat As MySqlDataReader = cmd.ExecuteReader
             MsgBox("Book Information has been Updated!", MsgBoxStyle.Information)
@@ -121,7 +130,9 @@ Public Class Update_Book
             txt_title.Clear()
             txt_copyright.Clear()
             txt_address.Clear()
-            txt_author.Clear()
+            txt_auth_ln.Clear()
+            txt_auth_fn.Clear()
+            txt_auth_mn.Clear()
             cmb_ddc.SelectedIndex = -1
             cmb_category.SelectedIndex = -1
             txt_yearofpub.Clear()
@@ -141,7 +152,7 @@ Public Class Update_Book
         cmb_category.Text = ""
 
 
-        Me.WindowState = FormWindowState.Maximized
+        'Me.WindowState = FormWindowState.Maximized
         conn.Open()
         Try
             Dim str As String = "SELECT category FROM tbl_book GROUP BY category"
@@ -230,13 +241,15 @@ Public Class Update_Book
                     txt_booknumber.Text = data(0)
                     txt_isbn.Text = data(1)
                     txt_title.Text = data(2)
-                    txt_author.Text = data(3)
-                    cmb_ddc.Text = data(4)
-                    cmb_category.Text = data(5)
-                    txt_yearofpub.Text = data(6)
-                    txt_pubcom.Text = data(7)
-                    txt_address.Text = data(8)
-                    txt_copyright.Text = data(9)
+                    txt_auth_ln.Text = data(3)
+                    txt_auth_fn.Text = data(4)
+                    txt_auth_mn.Text = data(5)
+                    cmb_ddc.Text = data(6)
+                    cmb_category.Text = data(7)
+                    txt_yearofpub.Text = data(8)
+                    txt_pubcom.Text = data(9)
+                    txt_address.Text = data(10)
+                    txt_copyright.Text = data(11)
 
                 End If
                 data.Close()
@@ -251,6 +264,19 @@ Public Class Update_Book
             MsgBox("Year does not yet exist", MsgBoxStyle.Information)
             txt_yearofpub.Clear()
             txt_yearofpub.Focus()
+        End If
+    End Sub
+
+    Private Sub Label8_Click(sender As Object, e As EventArgs) Handles Label8.Click
+
+    End Sub
+
+    Private Sub txt_copyright_TextChanged(sender As Object, e As EventArgs) Handles txt_copyright.TextChanged
+        Dim currentYear As String = System.DateTime.Now.Year
+        If txt_copyright.Text > currentYear Then
+            MsgBox("Invalid Year", MsgBoxStyle.Information)
+            txt_copyright.Clear()
+            txt_copyright.Focus()
         End If
     End Sub
 End Class

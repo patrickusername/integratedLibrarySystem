@@ -13,7 +13,7 @@ Public Class SearchNonPrinted3
         DataGridView1.DataSource = dt
     End Sub
     Private Sub SearchNonPrinted3_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Me.WindowState = FormWindowState.Maximized
+        'Me.WindowState = FormWindowState.Maximized
         DataGridView1.BackgroundColor = System.Drawing.SystemColors.Control
         bind_data()
 

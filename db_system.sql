@@ -1,559 +1,627 @@
 /*
- Navicat Premium Data Transfer
+Navicat MySQL Data Transfer
 
- Source Server         : LOCAL
- Source Server Type    : MySQL
- Source Server Version : 80030 (8.0.30)
- Source Host           : localhost:3306
- Source Schema         : db_system
+Source Server         : localhost
+Source Server Version : 50505
+Source Host           : localhost:3306
+Source Database       : db_system
 
- Target Server Type    : MySQL
- Target Server Version : 80030 (8.0.30)
- File Encoding         : 65001
+Target Server Type    : MYSQL
+Target Server Version : 50505
+File Encoding         : 65001
 
- Date: 21/11/2022 11:48:42
+Date: 2022-12-05 19:30:26
 */
 
-SET NAMES utf8mb4;
-SET FOREIGN_KEY_CHECKS = 0;
-
+SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
--- Table structure for cron_settings
+-- Table structure for `cron_settings`
 -- ----------------------------
 DROP TABLE IF EXISTS `cron_settings`;
-CREATE TABLE `cron_settings`  (
-  `settingID` int NOT NULL AUTO_INCREMENT,
-  `runinbackground` int NOT NULL,
-  PRIMARY KEY (`settingID`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+CREATE TABLE `cron_settings` (
+  `settingID` int(11) NOT NULL AUTO_INCREMENT,
+  `runinbackground` int(11) NOT NULL,
+  PRIMARY KEY (`settingID`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of cron_settings
 -- ----------------------------
+INSERT INTO `cron_settings` VALUES ('1', '0');
 
 -- ----------------------------
--- Table structure for cronsent
+-- Table structure for `cronsent`
 -- ----------------------------
 DROP TABLE IF EXISTS `cronsent`;
-CREATE TABLE `cronsent`  (
-  `sentID` int NOT NULL AUTO_INCREMENT,
-  `bookNumber` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
-  `borrowerName` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
-  `date` date NULL DEFAULT NULL,
-  PRIMARY KEY (`sentID`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+CREATE TABLE `cronsent` (
+  `sentID` int(11) NOT NULL AUTO_INCREMENT,
+  `bookNumber` varchar(255) DEFAULT NULL,
+  `borrowerName` varchar(255) DEFAULT NULL,
+  `date` date DEFAULT NULL,
+  PRIMARY KEY (`sentID`)
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of cronsent
 -- ----------------------------
 
 -- ----------------------------
--- Table structure for tbl_admin
+-- Table structure for `tbl_admin`
 -- ----------------------------
 DROP TABLE IF EXISTS `tbl_admin`;
-CREATE TABLE `tbl_admin`  (
-  `Username` int NOT NULL,
-  `Name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `Password` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `ContactNo` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `ImagePath` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  PRIMARY KEY (`Username`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+CREATE TABLE `tbl_admin` (
+  `Username` int(50) NOT NULL,
+  `Name` varchar(255) NOT NULL,
+  `Password` varchar(50) NOT NULL,
+  `ContactNo` varchar(50) NOT NULL,
+  `ImagePath` varchar(100) NOT NULL,
+  PRIMARY KEY (`Username`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of tbl_admin
 -- ----------------------------
-INSERT INTO `tbl_admin` VALUES (19100298, 'Jessa Mae Cabillo Nitura', 'password', '(+63) 977-2331-123', '');
-INSERT INTO `tbl_admin` VALUES (19100911, 'Haries Bening', 'password', '(+63) 945-6789-123', '');
-INSERT INTO `tbl_admin` VALUES (19100919, 'Patrick Bilaoen', 'password', '(+63) 995-1785-280', '');
-INSERT INTO `tbl_admin` VALUES (19101202, 'Ariane Mariz R. Dulay', 'password', '(+63) 977-1494-323', '');
+INSERT INTO `tbl_admin` VALUES ('19100298', 'Jessa Mae Cabillo Nitura', 'password', '(+63) 977-2331-123', '');
+INSERT INTO `tbl_admin` VALUES ('19100911', 'Haries Bening', 'password', '(+63) 945-6789-123', '');
+INSERT INTO `tbl_admin` VALUES ('19100919', 'Patrick Bilaoen', 'password', '(+63) 995-1785-280', '');
+INSERT INTO `tbl_admin` VALUES ('19101202', 'Ariane Mariz R. Dulay', 'password', '(+63) 977-1494-323', '');
 
 -- ----------------------------
--- Table structure for tbl_book
+-- Table structure for `tbl_book`
 -- ----------------------------
 DROP TABLE IF EXISTS `tbl_book`;
-CREATE TABLE `tbl_book`  (
-  `BookNumber` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `ISBN` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `Title` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `Author` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `DeweyDecimalClassification` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `Category` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `YearofPublication` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `Publisher` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `Address` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `Copyright` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `Status` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `ImagePath` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  PRIMARY KEY (`BookNumber`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+CREATE TABLE `tbl_book` (
+  `BookNumber` int(100) NOT NULL AUTO_INCREMENT,
+  `ISBN` varchar(100) NOT NULL,
+  `Title` varchar(100) NOT NULL,
+  `Edition` varchar(100) NOT NULL,
+  `AuthorLastName` varchar(100) NOT NULL,
+  `AuthorFirstName` varchar(100) NOT NULL,
+  `AuthorMiddleName` varchar(100) NOT NULL,
+  `DeweyDecimalClassification` varchar(100) NOT NULL,
+  `Category` varchar(100) NOT NULL,
+  `YearofPublication` int(100) NOT NULL,
+  `Publisher` varchar(100) NOT NULL,
+  `Address` varchar(100) NOT NULL,
+  `Copyright` varchar(100) NOT NULL,
+  `Status` varchar(100) NOT NULL,
+  `Conditions` varchar(100) NOT NULL,
+  `ImagePath` varchar(100) NOT NULL,
+  PRIMARY KEY (`BookNumber`)
+) ENGINE=InnoDB AUTO_INCREMENT=202200527 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of tbl_book
 -- ----------------------------
-INSERT INTO `tbl_book` VALUES ('00522001', '978-4-54349-094-2', 'Information Technology', 'Richard Fox', '005 - Computer science, information and general works', 'Textbook', '2015', 'Chapman and Hall/CRC.', '6000 Broken Sound Parkway, NW,(Suite 300)', '2015 Jane Done', 'Available', '');
-INSERT INTO `tbl_book` VALUES ('00522002', '978-4-54349-094-2', 'Information Technology', 'Richard Fox', '005 - Computer science, information and general works', 'Textbook', '2015', 'Chapman and Hall/CRC.', '6000 Broken Sound Parkway, NW,(Suite 300)', '2015 Jane Done', 'Available', '');
-INSERT INTO `tbl_book` VALUES ('00522003', '978-4-54349-094-2', 'Information Technology', 'Richard Fox', '005 - Computer science, information and general works', 'Textbook', '2015', 'Chapman and Hall/CRC.', '6000 Broken Sound Parkway, NW,(Suite 300)', '2015 Jane Done', 'Borrowed', '');
-INSERT INTO `tbl_book` VALUES ('00522004', '978-4-54349-094-2', 'Information Technology', 'Richard Fox', '005 - Computer science, information and general works', 'Textbook', '2015', 'Chapman and Hall/CRC.', '6000 Broken Sound Parkway, NW,(Suite 300)', '2015 Jane Done', 'Available', '');
-INSERT INTO `tbl_book` VALUES ('00522005', '978-4-54349-094-2', 'Information Technology', 'Richard Fox', '005 - Computer science, information and general works', 'Textbook', '2015', 'Chapman and Hall/CRC.', '6000 Broken Sound Parkway, NW,(Suite 300)', '2015 Jane Done', 'Available', '');
-INSERT INTO `tbl_book` VALUES ('10022001', '978-0-12123-124-0', 'The Philosophy of Psychology', 'George Botterill', '100 - Philisophy and psychology', 'Textbook', '1999', 'ArtPostAsia Inc.', 'A/F The Athenaeum, 160 Leviste St., Makati City', '1999 John Q. Smith', 'Available', '');
-INSERT INTO `tbl_book` VALUES ('10022002', '978-0-12123-124-0', 'The Philosophy of Psychology', 'George Botterill', '100 - Philisophy and psychology', 'Textbook', '1999', 'ArtPostAsia Inc.', 'A/F The Athenaeum, 160 Leviste St., Makati City', '1999 John Q. Smith', 'Available', '');
-INSERT INTO `tbl_book` VALUES ('10022003', '978-0-12123-124-0', 'The Philosophy of Psychology', 'George Botterill', '100 - Philisophy and psychology', 'Textbook', '1999', 'ArtPostAsia Inc.', 'A/F The Athenaeum, 160 Leviste St., Makati City', '1999 John Q. Smith', 'Available', '');
-INSERT INTO `tbl_book` VALUES ('10022004', '978-0-12123-124-0', 'The Philosophy of Psychology', 'George Botterill', '100 - Philisophy and psychology', 'Textbook', '1999', 'ArtPostAsia Inc.', 'A/F The Athenaeum, 160 Leviste St., Makati City', '1999 John Q. Smith', 'Available', '');
-INSERT INTO `tbl_book` VALUES ('10022005', '978-0-12123-124-0', 'The Philosophy of Psychology', 'George Botterill', '100 - Philisophy and psychology', 'Textbook', '1999', 'ArtPostAsia Inc.', 'A/F The Athenaeum, 160 Leviste St., Makati City', '1999 John Q. Smith', 'Available', '');
-INSERT INTO `tbl_book` VALUES ('21022001', '978-3-53545-233-5', 'The Church in Africa', 'Hildebrandt Jonathan', '210 - Religion', 'Textbook', '1996', 'Africa Christian Press, Ghana', 'Opp. Melcom, Adabraka, Accra, Ghana', '1996 Lisa Shea', 'Available', '');
-INSERT INTO `tbl_book` VALUES ('21022002', '978-3-53545-233-5', 'The Church in Africa', 'Hildebrandt Jonathan', '210 - Religion', 'Textbook', '1996', 'Africa Christian Press, Ghana', 'Opp. Melcom, Adabraka, Accra, Ghana', '1996 Lisa Shea', 'Available', '');
-INSERT INTO `tbl_book` VALUES ('21022003', '978-3-53545-233-5', 'The Church in Africa', 'Hildebrandt Jonathan', '210 - Religion', 'Textbook', '1996', 'Africa Christian Press, Ghana', 'Opp. Melcom, Adabraka, Accra, Ghana', '1996 Lisa Shea', 'Available', '');
-INSERT INTO `tbl_book` VALUES ('21022005', '978-3-53545-233-5', 'The Church in Africa', 'Hildebrandt Jonathan', '210 - Religion', 'Textbook', '1996', 'Africa Christian Press, Ghana', 'Opp. Melcom, Adabraka, Accra, Ghana', '1996 Lisa Shea', 'Available', '');
-INSERT INTO `tbl_book` VALUES ('30022001', '978-1-23322-456-5', 'Social Science: An Introduction to the Study of Society', 'David Colander, Elgin Hunt', '300 - Social sciences', 'Textbook', '2019', 'Routledge', 'Milton Park, Abingdon-on-Thames, Oxforshire, England, UK', '2019 Colleen Hover', 'Available', '');
-INSERT INTO `tbl_book` VALUES ('30022002', '978-1-23322-456-5', 'Social Science: An Introduction to the Study of Society', 'David Colander, Elgin Hunt', '300 - Social sciences', 'Textbook', '2019', 'Routledge', 'Milton Park, Abingdon-on-Thames, Oxforshire, England, UK', '2019 Colleen Hover', 'Borrowed', '');
-INSERT INTO `tbl_book` VALUES ('30022003', '978-1-23322-456-5', 'Social Science: An Introduction to the Study of Society', 'David Colander, Elgin Hunt', '300 - Social sciences', 'Textbook', '2019', 'Routledge', 'Milton Park, Abingdon-on-Thames, Oxforshire, England, UK', '2019 Colleen Hover', 'Available', '');
-INSERT INTO `tbl_book` VALUES ('30022004', '978-1-23322-456-5', 'Social Science: An Introduction to the Study of Society', 'David Colander, Elgin Hunt', '300 - Social sciences', 'Textbook', '2019', 'Routledge', 'Milton Park, Abingdon-on-Thames, Oxforshire, England, UK', '2019 Colleen Hover', 'Available', '');
-INSERT INTO `tbl_book` VALUES ('30022005', '978-1-23322-456-5', 'Social Science: An Introduction to the Study of Society', 'David Colander, Elgin Hunt', '300 - Social sciences', 'Textbook', '2019', 'Routledge', 'Milton Park, Abingdon-on-Thames, Oxforshire, England, UK', '2019 Colleen Hover', 'Available', '');
-INSERT INTO `tbl_book` VALUES ('40022001', '978-2-54335-423-8', 'Introducing English Language', 'Louise Mullany, Peter Stockwell', '400 - Language', 'Textbook', '2015', 'Routledge', 'Milton Park, Abingdon-on-Thames, Oxforshire, England, UK', '2019 Colleen Hover', 'Available', '');
-INSERT INTO `tbl_book` VALUES ('40022002', '978-2-54335-423-8', 'Introducing English Language', 'Louise Mullany, Peter Stockwell', '400 - Language', 'Textbook', '2015', 'Routledge', 'Milton Park, Abingdon-on-Thames, Oxforshire, England, UK', '2019 Colleen Hover', 'Available', '');
-INSERT INTO `tbl_book` VALUES ('40022003', '978-2-54335-423-8', 'Introducing English Language', 'Louise Mullany, Peter Stockwell', '400 - Language', 'Textbook', '2015', 'Routledge', 'Milton Park, Abingdon-on-Thames, Oxforshire, England, UK', '2019 Colleen Hover', 'Borrowed', '');
-INSERT INTO `tbl_book` VALUES ('40022004', '978-2-54335-423-8', 'Introducing English Language', 'Louise Mullany, Peter Stockwell', '400 - Language', 'Textbook', '2015', 'Routledge', 'Milton Park, Abingdon-on-Thames, Oxforshire, England, UK', '2019 Colleen Hover', 'Available', '');
-INSERT INTO `tbl_book` VALUES ('40022005', '978-2-54335-423-8', 'Introducing English Language', 'Louise Mullany, Peter Stockwell', '400 - Language', 'Textbook', '2015', 'Routledge', 'Milton Park, Abingdon-on-Thames, Oxforshire, England, UK', '2019 Colleen Hover', 'Available', '');
-INSERT INTO `tbl_book` VALUES ('57022001', '971-8-23134-458-0', 'Science and Technology Biology II', 'Unknown', '570 - Science', 'Textbook', '2013', 'Saint Matthew’s Publishing', '4th Level, First RVC Building, 92 Anonas Street Corner K-6th Street, Brgy. East Kamias, 1102 Quezon ', '2013 Bill E. Elliot', 'Available', '');
-INSERT INTO `tbl_book` VALUES ('57022002', '971-8-23134-458-0', 'Science and Technology Biology II', 'Unknown', '570 - Science', 'Textbook', '2013', 'Saint Matthew’s Publishing', '4th Level, First RVC Building, 92 Anonas Street Corner K-6th Street, Brgy. East Kamias, 1102 Quezon ', '2013 Bill E. Elliot', 'Available', '');
-INSERT INTO `tbl_book` VALUES ('57022003', '971-8-23134-458-0', 'Science and Technology Biology II', 'Unknown', '570 - Science', 'Textbook', '2013', 'Saint Matthew’s Publishing', '4th Level, First RVC Building, 92 Anonas Street Corner K-6th Street, Brgy. East Kamias, 1102 Quezon ', '2013 Bill E. Elliot', 'Available', '');
-INSERT INTO `tbl_book` VALUES ('57022004', '971-8-23134-458-0', 'Science and Technology Biology II', 'Unknown', '570 - Science', 'Textbook', '2013', 'Saint Matthew’s Publishing', '4th Level, First RVC Building, 92 Anonas Street Corner K-6th Street, Brgy. East Kamias, 1102 Quezon ', '2013 Bill E. Elliot', 'Available', '');
-INSERT INTO `tbl_book` VALUES ('57022005', '971-8-23134-458-0', 'Science and Technology Biology II', 'Unknown', '570 - Science', 'Textbook', '2013', 'Saint Matthew’s Publishing', '4th Level, First RVC Building, 92 Anonas Street Corner K-6th Street, Brgy. East Kamias, 1102 Quezon ', '2013 Bill E. Elliot', 'Available', '');
-INSERT INTO `tbl_book` VALUES ('60422001', '978-9-23123-231-7', 'Technical Drawing 101 with AutoCAD', 'Ashleigh Congdon-Fuller, Antonio Ramirez, Douglas Smith', '570 - Science', 'General Reference', '2019', 'SDC Publications', 'PO Box 1334, Mission, Kansas, 66222, United States', '2019 Leonard Piekoff', 'Borrowed', '');
-INSERT INTO `tbl_book` VALUES ('60422002', '978-9-23123-231-7', 'Technical Drawing 101 with AutoCAD', 'Ashleigh Congdon-Fuller, Antonio Ramirez, Douglas Smith', '570 - Science', 'General Reference', '2019', 'SDC Publications', 'PO Box 1334, Mission, Kansas, 66222, United States', '2019 Leonard Piekoff', 'Borrowed', '');
-INSERT INTO `tbl_book` VALUES ('60422003', '978-9-23123-231-7', 'Technical Drawing 101 with AutoCAD', 'Ashleigh Congdon-Fuller, Antonio Ramirez, Douglas Smith', '570 - Science', 'General Reference', '2019', 'SDC Publications', 'PO Box 1334, Mission, Kansas, 66222, United States', '2019 Leonard Piekoff', 'Available', '');
-INSERT INTO `tbl_book` VALUES ('60422004', '978-9-23123-231-7', 'Technical Drawing 101 with AutoCAD', 'Ashleigh Congdon-Fuller, Antonio Ramirez, Douglas Smith', '570 - Science', 'General Reference', '2019', 'SDC Publications', 'PO Box 1334, Mission, Kansas, 66222, United States', '2019 Leonard Piekoff', 'Available', '');
-INSERT INTO `tbl_book` VALUES ('60422005', '978-9-23123-231-7', 'Technical Drawing 101 with AutoCAD', 'Ashleigh Congdon-Fuller, Antonio Ramirez, Douglas Smith', '570 - Science', 'General Reference', '2019', 'SDC Publications', 'PO Box 1334, Mission, Kansas, 66222, United States', '2019 Leonard Piekoff', 'Available', '');
-INSERT INTO `tbl_book` VALUES ('70022001', '978-2-32321-009-2', 'Enjoy Life with P.E. and Health', 'Grace Estela C. Mateo, Ph. D.', '700 - Arts and recreation', 'Textbook', '2010', 'Saint Matthew’s Publishing', '4th Level, First RVC Building, 92 Anonas Street Corner K-6th Street, Brgy. East Kamias, 1102 Quezon ', '2010 Jacques Derrida', 'Available', '');
-INSERT INTO `tbl_book` VALUES ('70022002', '978-2-32321-009-2', 'Enjoy Life with P.E. and Health', 'Grace Estela C. Mateo, Ph. D.', '700 - Arts and recreation', 'Textbook', '2010', 'Saint Matthew’s Publishing', '4th Level, First RVC Building, 92 Anonas Street Corner K-6th Street, Brgy. East Kamias, 1102 Quezon ', '2010 Jacques Derrida', 'Available', '');
-INSERT INTO `tbl_book` VALUES ('70022003', '978-2-32321-009-2', 'Enjoy Life with P.E. and Health', 'Grace Estela C. Mateo, Ph. D.', '700 - Arts and recreation', 'Textbook', '2010', 'Saint Matthew’s Publishing', '4th Level, First RVC Building, 92 Anonas Street Corner K-6th Street, Brgy. East Kamias, 1102 Quezon ', '2010 Jacques Derrida', 'Available', '');
-INSERT INTO `tbl_book` VALUES ('70022004', '978-2-32321-009-2', 'Enjoy Life with P.E. and Health', 'Grace Estela C. Mateo, Ph. D.', '700 - Arts and recreation', 'Textbook', '2010', 'Saint Matthew’s Publishing', '4th Level, First RVC Building, 92 Anonas Street Corner K-6th Street, Brgy. East Kamias, 1102 Quezon ', '2010 Jacques Derrida', 'Available', '');
-INSERT INTO `tbl_book` VALUES ('70022005', '978-2-32321-009-2', 'Enjoy Life with P.E. and Health', 'Grace Estela C. Mateo, Ph. D.', '700 - Arts and recreation', 'Textbook', '2010', 'Saint Matthew’s Publishing', '4th Level, First RVC Building, 92 Anonas Street Corner K-6th Street, Brgy. East Kamias, 1102 Quezon ', '2010 Jacques Derrida', 'Available', '');
-INSERT INTO `tbl_book` VALUES ('81022001', '978-2-67875-754-1', 'The Norton Anthology of American Literature', 'Robert S. Levine', '810 - Literature', 'Textbook', '1985', 'W. W. Norton & Company.', '500 Fifth Avenue, New York City, New York', '1985 Carol Baker', 'Available', '');
-INSERT INTO `tbl_book` VALUES ('81022002', '978-2-67875-754-1', 'The Norton Anthology of American Literature', 'Robert S. Levine', '810 - Literature', 'Textbook', '1985', 'W. W. Norton & Company.', '500 Fifth Avenue, New York City, New York', '1985 Carol Baker', 'Available', '');
-INSERT INTO `tbl_book` VALUES ('81022003', '978-2-67875-754-1', 'The Norton Anthology of American Literature', 'Robert S. Levine', '810 - Literature', 'Textbook', '1985', 'W. W. Norton & Company.', '500 Fifth Avenue, New York City, New York', '1985 Carol Baker', 'Available', '');
-INSERT INTO `tbl_book` VALUES ('81022004', '978-2-67875-754-1', 'The Norton Anthology of American Literature', 'Robert S. Levine', '810 - Literature', 'Textbook', '1985', 'W. W. Norton & Company.', '500 Fifth Avenue, New York City, New York', '1985 Carol Baker', 'Available', '');
-INSERT INTO `tbl_book` VALUES ('81022005', '978-2-67875-754-1', 'The Norton Anthology of American Literature', 'Robert S. Levine', '810 - Literature', 'Textbook', '1985', 'W. W. Norton & Company.', '500 Fifth Avenue, New York City, New York', '1985 Carol Baker', 'Available', '');
-INSERT INTO `tbl_book` VALUES ('90022001', '978-1-09872-232-9', 'Araling Panlipunan - Pilipinas (Isang Sulyap at Pagyakap)', 'Michael DC. Rama, Florencia C. Domingo, Jennifer G. Rama, Jayson A. Cruz', '900 - History and Geography', 'Textbook', '2010', 'Asian Escapades Management and Publishing Enterprises', '37 A. Mabini Street, 3000, Malolos City, Bulacan, Philippines', '2010 James Perry', 'Available', '');
-INSERT INTO `tbl_book` VALUES ('90022002', '978-1-09872-232-9', 'Araling Panlipunan - Pilipinas (Isang Sulyap at Pagyakap)', 'Michael DC. Rama, Florencia C. Domingo, Jennifer G. Rama, Jayson A. Cruz', '900 - History and Geography', 'Textbook', '2010', 'Asian Escapades Management and Publishing Enterprises', '37 A. Mabini Street, 3000, Malolos City, Bulacan, Philippines', '2010 James Perry', 'Available', '');
-INSERT INTO `tbl_book` VALUES ('90022003', '978-1-09872-232-9', 'Araling Panlipunan - Pilipinas (Isang Sulyap at Pagyakap)', 'Michael DC. Rama, Florencia C. Domingo, Jennifer G. Rama, Jayson A. Cruz', '900 - History and Geography', 'Textbook', '2010', 'Asian Escapades Management and Publishing Enterprises', '37 A. Mabini Street, 3000, Malolos City, Bulacan, Philippines', '2010 James Perry', 'Available', '');
-INSERT INTO `tbl_book` VALUES ('90022004', '978-1-09872-232-9', 'Araling Panlipunan - Pilipinas (Isang Sulyap at Pagyakap)', 'Michael DC. Rama, Florencia C. Domingo, Jennifer G. Rama, Jayson A. Cruz', '900 - History and Geography', 'Textbook', '2010', 'Asian Escapades Management and Publishing Enterprises', '37 A. Mabini Street, 3000, Malolos City, Bulacan, Philippines', '2010 James Perry', 'Available', '');
-INSERT INTO `tbl_book` VALUES ('90022005', '978-1-09872-232-9', 'Araling Panlipunan - Pilipinas (Isang Sulyap at Pagyakap)', 'Michael DC. Rama, Florencia C. Domingo, Jennifer G. Rama, Jayson A. Cruz', '900 - History and Geography', 'Textbook', '2010', 'Asian Escapades Management and Publishing Enterprises', '37 A. Mabini Street, 3000, Malolos City, Bulacan, Philippines', '2010 James Perry', 'Available', '');
+INSERT INTO `tbl_book` VALUES ('20220001', '978-0-67124-988-5', 'The Timetables of History: A Horizontal Linkage of People and Events', '4th Edition', 'Ramos', 'Marife', 'C.', '900 - History and Geography', 'General Reference', '1982', 'Touchstone', 'Chicago, United States', 'Touchstone', 'Available', 'Good', 'C:\\Users\\patrick\\Desktop\\BOOK BARCODE\\20.jpg');
+INSERT INTO `tbl_book` VALUES ('20220002', '978-0-67124-988-5', 'The Timetables of History: A Horizontal Linkage of People and Events', '4th Edition', 'Ramos', 'Marife', 'C.', '900 - History and Geography', 'General Reference', '1982', 'Touchstone', 'Chicago, United States', 'Touchstone', 'Available', 'Good', 'C:\\Users\\patrick\\Desktop\\BOOK BARCODE\\21.jpg');
+INSERT INTO `tbl_book` VALUES ('20220003', '978-0-67124-988-5', 'The Timetables of History: A Horizontal Linkage of People and Events', '4th Edition', 'Ramos', 'Marife', 'C.', '900 - History and Geography', 'General Reference', '1982', 'Touchstone', 'Chicago, United States', 'Touchstone', 'Available', 'Good', 'C:\\Users\\patrick\\Desktop\\BOOK BARCODE\\22.jpg');
+INSERT INTO `tbl_book` VALUES ('20220004', '978-4-54349-094-2', 'Information Technology', 'New Edition', 'Leavitt, Whisler', 'Harold, Thomas', 'J. , C.', '005 - Computer science, information and general works', 'Textbook', '2015', 'Chapman and Hall/CRC.', '6000 Broken Sound Parkway, NW,(Suite 300)', '2015 Jane Done', 'Available', 'Good', '');
+INSERT INTO `tbl_book` VALUES ('20220005', '978-4-54349-094-2', 'Information Technology', 'New Edition', 'Leavitt, Whisler', 'Harold, Thomas', 'J. , C.', '005 - Computer science, information and general works', 'Textbook', '2015', 'Chapman and Hall/CRC.', '6000 Broken Sound Parkway, NW,(Suite 300)', '2015 Jane Done', 'Available', 'Good', '');
+INSERT INTO `tbl_book` VALUES ('20220006', '978-4-54349-094-2', 'Information Technology', 'New Edition', 'Leavitt, Whisler', 'Harold, Thomas', 'J. , C.', '005 - Computer science, information and general works', 'Textbook', '2015', 'Chapman and Hall/CRC.', '6000 Broken Sound Parkway, NW,(Suite 300)', '2015 Jane Done', 'Available', 'Good', '');
+INSERT INTO `tbl_book` VALUES ('20220007', '978-4-54349-094-2', 'Information Technology', 'New Edition', 'Leavitt, Whisler', 'Harold, Thomas', 'J. , C.', '005 - Computer science, information and general works', 'Textbook', '2015', 'Chapman and Hall/CRC.', '6000 Broken Sound Parkway, NW,(Suite 300)', '2015 Jane Done', 'Available', 'Good', '');
+INSERT INTO `tbl_book` VALUES ('20220008', '978-4-54349-094-2', 'Information Technology', 'New Edition', 'Leavitt,  Whisler', 'Harold, Thomas', 'J. , C.', '005 - Computer science, information and general works', 'Textbook', '2015', 'Chapman and Hall/CRC.', '6000 Broken Sound Parkway, NW,(Suite 300)', '2015 Jane Done', 'Available', 'Good', '');
+INSERT INTO `tbl_book` VALUES ('20220009', '978-2-32321-009-2', 'Enjoy Life with P.E. and Health', '', '', '', '', '700 - Arts and recreation', 'Textbook', '2010', 'Saint Matthew’s Publishing', '4th Level, First RVC Building, 92 Anonas Street Corner K-6th Street, Brgy. East Kamias, 1102 Quezon ', '2010 Jacques Derrida', 'Available', 'Good', '');
+INSERT INTO `tbl_book` VALUES ('20220010', '978-0-12123-124-0', 'The Philosophy of Psychology', '', '', '', '', '100 - Philisophy and psychology', 'Textbook', '1999', 'ArtPostAsia Inc.', 'A/F The Athenaeum, 160 Leviste St., Makati City', '1999 John Q. Smith', 'Available', 'Good', '');
+INSERT INTO `tbl_book` VALUES ('20220011', '978-0-12123-124-0', 'The Philosophy of Psychology', '', '', '', '', '100 - Philisophy and psychology', 'Textbook', '1999', 'ArtPostAsia Inc.', 'A/F The Athenaeum, 160 Leviste St., Makati City', '1999 John Q. Smith', 'Available', 'Good', '');
+INSERT INTO `tbl_book` VALUES ('20220012', '978-0-12123-124-0', 'The Philosophy of Psychology', '', '', '', '', '100 - Philisophy and psychology', 'Textbook', '1999', 'ArtPostAsia Inc.', 'A/F The Athenaeum, 160 Leviste St., Makati City', '1999 John Q. Smith', 'Available', 'Good', '');
+INSERT INTO `tbl_book` VALUES ('20220013', '978-0-12123-124-0', 'The Philosophy of Psychology', '', '', '', '', '100 - Philisophy and psychology', 'Textbook', '1999', 'ArtPostAsia Inc.', 'A/F The Athenaeum, 160 Leviste St., Makati City', '1999 John Q. Smith', 'Available', 'Good', '');
+INSERT INTO `tbl_book` VALUES ('20220014', '978-0-12123-124-0', 'The Philosophy of Psychology', '', '', '', '', '100 - Philisophy and psychology', 'Textbook', '1999', 'ArtPostAsia Inc.', 'A/F The Athenaeum, 160 Leviste St., Makati City', '1999 John Q. Smith', 'Available', 'Good', '');
+INSERT INTO `tbl_book` VALUES ('20220015', '978-3-53545-233-5', 'The Church in Africa', '', '', '', '', '210 - Religion', 'Textbook', '1996', 'Africa Christian Press, Ghana', 'Opp. Melcom, Adabraka, Accra, Ghana', '1996 Lisa Shea', 'Available', 'Good', '');
+INSERT INTO `tbl_book` VALUES ('20220016', '978-3-53545-233-5', 'The Church in Africa', '', '', '', '', '210 - Religion', 'Textbook', '1996', 'Africa Christian Press, Ghana', 'Opp. Melcom, Adabraka, Accra, Ghana', '1996 Lisa Shea', 'Available', 'Good', '');
+INSERT INTO `tbl_book` VALUES ('20220017', '978-3-53545-233-5', 'The Church in Africa', '', '', '', '', '210 - Religion', 'Textbook', '1996', 'Africa Christian Press, Ghana', 'Opp. Melcom, Adabraka, Accra, Ghana', '1996 Lisa Shea', 'Available', 'Good', '');
+INSERT INTO `tbl_book` VALUES ('20220018', '978-3-53545-233-5', 'The Church in Africa', '', '', '', '', '210 - Religion', 'Textbook', '1996', 'Africa Christian Press, Ghana', 'Opp. Melcom, Adabraka, Accra, Ghana', '1996 Lisa Shea', 'Available', 'Good', '');
+INSERT INTO `tbl_book` VALUES ('20220019', '978-1-23322-456-5', 'Social Science: An Introduction to the Study of Society', '', '', '', '', '300 - Social sciences', 'Textbook', '2019', 'Routledge', 'Milton Park, Abingdon-on-Thames, Oxforshire, England, UK', '2019 Colleen Hover', 'Available', 'Good', '');
+INSERT INTO `tbl_book` VALUES ('20220020', '978-1-23322-456-5', 'Social Science: An Introduction to the Study of Society', '', '', '', '', '300 - Social sciences', 'Textbook', '2019', 'Routledge', 'Milton Park, Abingdon-on-Thames, Oxforshire, England, UK', '2019 Colleen Hover', 'Available', 'Good', '');
+INSERT INTO `tbl_book` VALUES ('20220021', '978-1-23322-456-5', 'Social Science: An Introduction to the Study of Society', '', '', '', '', '300 - Social sciences', 'Textbook', '2019', 'Routledge', 'Milton Park, Abingdon-on-Thames, Oxforshire, England, UK', '2019 Colleen Hover', 'Available', 'Good', '');
+INSERT INTO `tbl_book` VALUES ('20220022', '978-1-23322-456-5', 'Social Science: An Introduction to the Study of Society', '', '', '', '', '300 - Social sciences', 'Textbook', '2019', 'Routledge', 'Milton Park, Abingdon-on-Thames, Oxforshire, England, UK', '2019 Colleen Hover', 'Available', 'Good', '');
+INSERT INTO `tbl_book` VALUES ('20220023', '978-1-23322-456-5', 'Social Science: An Introduction to the Study of Society', '', '', '', '', '300 - Social sciences', 'Textbook', '2019', 'Routledge', 'Milton Park, Abingdon-on-Thames, Oxforshire, England, UK', '2019 Colleen Hover', 'Available', 'Good', '');
+INSERT INTO `tbl_book` VALUES ('20220024', '978-2-54335-423-8', 'Introducing English Language', '', '', '', '', '400 - Language', 'Textbook', '2015', 'Routledge', 'Milton Park, Abingdon-on-Thames, Oxforshire, England, UK', '2019 Colleen Hover', 'Available', 'Good', '');
+INSERT INTO `tbl_book` VALUES ('20220025', '978-2-54335-423-8', 'Introducing English Language', '', '', '', '', '400 - Language', 'Textbook', '2015', 'Routledge', 'Milton Park, Abingdon-on-Thames, Oxforshire, England, UK', '2019 Colleen Hover', 'Available', 'Good', '');
+INSERT INTO `tbl_book` VALUES ('20220026', '978-2-54335-423-8', 'Introducing English Language', '', '', '', '', '400 - Language', 'Textbook', '2015', 'Routledge', 'Milton Park, Abingdon-on-Thames, Oxforshire, England, UK', '2019 Colleen Hover', 'Available', 'Good', '');
+INSERT INTO `tbl_book` VALUES ('20220027', '978-2-54335-423-8', 'Introducing English Language', '', '', '', '', '400 - Language', 'Textbook', '2015', 'Routledge', 'Milton Park, Abingdon-on-Thames, Oxforshire, England, UK', '2019 Colleen Hover', 'Available', 'Good', '');
+INSERT INTO `tbl_book` VALUES ('20220028', '978-2-54335-423-8', 'Introducing English Language', '', '', '', '', '400 - Language', 'Textbook', '2015', 'Routledge', 'Milton Park, Abingdon-on-Thames, Oxforshire, England, UK', '2019 Colleen Hover', 'Available', 'Good', '');
+INSERT INTO `tbl_book` VALUES ('20220029', '971-8-23134-458-0', 'Science and Technology Biology II', '', '', '', '', '570 - Science', 'Textbook', '2013', 'Saint Matthew’s Publishing', '4th Level, First RVC Building, 92 Anonas Street Corner K-6th Street, Brgy. East Kamias, 1102 Quezon ', '2013 Bill E. Elliot', 'Available', 'Good', '');
+INSERT INTO `tbl_book` VALUES ('20220030', '971-8-23134-458-0', 'Science and Technology Biology II', '', '', '', '', '570 - Science', 'Textbook', '2013', 'Saint Matthew’s Publishing', '4th Level, First RVC Building, 92 Anonas Street Corner K-6th Street, Brgy. East Kamias, 1102 Quezon ', '2013 Bill E. Elliot', 'Available', 'Good', '');
+INSERT INTO `tbl_book` VALUES ('20220031', '971-8-23134-458-0', 'Science and Technology Biology II', '', '', '', '', '570 - Science', 'Textbook', '2013', 'Saint Matthew’s Publishing', '4th Level, First RVC Building, 92 Anonas Street Corner K-6th Street, Brgy. East Kamias, 1102 Quezon ', '2013 Bill E. Elliot', 'Available', 'Good', '');
+INSERT INTO `tbl_book` VALUES ('20220032', '971-8-23134-458-0', 'Science and Technology Biology II', '', '', '', '', '570 - Science', 'Textbook', '2013', 'Saint Matthew’s Publishing', '4th Level, First RVC Building, 92 Anonas Street Corner K-6th Street, Brgy. East Kamias, 1102 Quezon ', '2013 Bill E. Elliot', 'Available', 'Good', '');
+INSERT INTO `tbl_book` VALUES ('20220033', '971-8-23134-458-0', 'Science and Technology Biology II', '', '', '', '', '570 - Science', 'Textbook', '2013', 'Saint Matthew’s Publishing', '4th Level, First RVC Building, 92 Anonas Street Corner K-6th Street, Brgy. East Kamias, 1102 Quezon ', '2013 Bill E. Elliot', 'Available', 'Good', '');
+INSERT INTO `tbl_book` VALUES ('20220034', '978-9-23123-231-7', 'Technical Drawing 101 with AutoCAD', '3rd Edition', 'Smith', 'Jason', 'R.', '570 - Science', 'General Reference', '2019', 'SDC Publications', 'PO Box 1334, Mission, Kansas, 66222, United States', '2019 Leonard Piekoff', 'Available', 'Good', '');
+INSERT INTO `tbl_book` VALUES ('20220035', '978-9-23123-231-7', 'Technical Drawing 101 with AutoCAD', '3rd Edition', 'Smith', 'Jason', 'R.', '570 - Science', 'General Reference', '2019', 'SDC Publications', 'PO Box 1334, Mission, Kansas, 66222, United States', '2019 Leonard Piekoff', 'Available', 'Good', '');
+INSERT INTO `tbl_book` VALUES ('20220036', '978-9-23123-231-7', 'Technical Drawing 101 with AutoCAD', '3rd Edition', 'Smith', 'Jason', 'R.', '570 - Science', 'General Reference', '2019', 'SDC Publications', 'PO Box 1334, Mission, Kansas, 66222, United States', '2019 Leonard Piekoff', 'Available', 'Good', '');
+INSERT INTO `tbl_book` VALUES ('20220037', '978-9-23123-231-7', 'Technical Drawing 101 with AutoCAD', '3rd Edition', 'Smith', 'Jason', 'R.', '570 - Science', 'General Reference', '2019', 'SDC Publications', 'PO Box 1334, Mission, Kansas, 66222, United States', '2019 Leonard Piekoff', 'Available', 'Good', '');
+INSERT INTO `tbl_book` VALUES ('20220038', '978-9-23123-231-7', 'Technical Drawing 101 with AutoCAD', '3rd Edition', 'Smith', 'Jason', 'R.', '570 - Science', 'General Reference', '2019', 'SDC Publications', 'PO Box 1334, Mission, Kansas, 66222, United States', '2019 Leonard Piekoff', 'Available', 'Good', '');
+INSERT INTO `tbl_book` VALUES ('20220039', '978-2-32321-009-2', 'Enjoy Life with P.E. and Health', '', '', '', '', '700 - Arts and recreation', 'Textbook', '2010', 'Saint Matthew’s Publishing', '4th Level, First RVC Building, 92 Anonas Street Corner K-6th Street, Brgy. East Kamias, 1102 Quezon ', '2010 Jacques Derrida', 'Available', 'Good', '');
+INSERT INTO `tbl_book` VALUES ('20220040', '978-2-32321-009-2', 'Enjoy Life with P.E. and Health', '', '', '', '', '700 - Arts and recreation', 'Textbook', '2010', 'Saint Matthew’s Publishing', '4th Level, First RVC Building, 92 Anonas Street Corner K-6th Street, Brgy. East Kamias, 1102 Quezon ', '2010 Jacques Derrida', 'Available', 'Good', '');
+INSERT INTO `tbl_book` VALUES ('20220041', '978-2-32321-009-2', 'Enjoy Life with P.E. and Health', '', '', '', '', '700 - Arts and recreation', 'Textbook', '2010', 'Saint Matthew’s Publishing', '4th Level, First RVC Building, 92 Anonas Street Corner K-6th Street, Brgy. East Kamias, 1102 Quezon ', '2010 Jacques Derrida', 'Available', 'Good', '');
+INSERT INTO `tbl_book` VALUES ('20220042', '978-2-32321-009-2', 'Enjoy Life with P.E. and Health', '', 'Regalante', 'Jesusa May', 'A.', '700 - Arts and recreation', 'Textbook', '2010', 'Saint Matthew’s Publishing', '4th Level, First RVC Building, 92 Anonas Street Corner K-6th Street, Brgy. East Kamias, 1102 Quezon ', '2010 Jacques Derrida', 'Available', 'Good', '');
+INSERT INTO `tbl_book` VALUES ('20220043', '978-2-67875-754-1', 'The Norton Anthology of American Literature', '2nd Edition', 'Regalante', 'Jesusa May', 'A.', '810 - Literature', 'Textbook', '1985', 'W. W. Norton & Company.', '500 Fifth Avenue, New York City, New York', '1985 Carol Baker', 'Available', 'Good', '');
+INSERT INTO `tbl_book` VALUES ('20220044', '978-2-67875-754-1', 'The Norton Anthology of American Literature', '2nd Edition', 'Regalante', 'Jesusa May', 'A.', '810 - Literature', 'Textbook', '1985', 'W. W. Norton & Company.', '500 Fifth Avenue, New York City, New York', '1985 Carol Baker', 'Available', 'Good', '');
+INSERT INTO `tbl_book` VALUES ('20220045', '978-2-67875-754-1', 'The Norton Anthology of American Literature', '2nd Edition', 'Regalante', 'Jesusa May', 'A.', '810 - Literature', 'Textbook', '1985', 'W. W. Norton & Company.', '500 Fifth Avenue, New York City, New York', '1985 Carol Baker', 'Available', 'Good', '');
+INSERT INTO `tbl_book` VALUES ('20220046', '978-2-67875-754-1', 'The Norton Anthology of American Literature', '2nd Edition', 'Regalante', 'Jesusa May', 'A.', '810 - Literature', 'Textbook', '1985', 'W. W. Norton & Company.', '500 Fifth Avenue, New York City, New York', '1985 Carol Baker', 'Available', 'Good', '');
+INSERT INTO `tbl_book` VALUES ('20220047', '978-2-67875-754-1', 'The Norton Anthology of American Literature', '2nd Edition', 'Regalante', 'Jesusa May', 'A.', '810 - Literature', 'Textbook', '1985', 'W. W. Norton & Company.', '500 Fifth Avenue, New York City, New York', '1985 Carol Baker', 'Available', 'Good', '');
+INSERT INTO `tbl_book` VALUES ('20220048', '978-1-09872-232-9', 'Araling Panlipunan - Pilipinas (Isang Sulyap at Pagyakap)', '', '', '', '', '900 - History and Geography', 'Textbook', '2010', 'Asian Escapades Management and Publishing Enterprises', '37 A. Mabini Street, 3000, Malolos City, Bulacan, Philippines', '2010 James Perry', 'Available', 'Good', '');
+INSERT INTO `tbl_book` VALUES ('20220049', '978-1-09872-232-9', 'Araling Panlipunan - Pilipinas (Isang Sulyap at Pagyakap)', '', '', '', '', '900 - History and Geography', 'Textbook', '2010', 'Asian Escapades Management and Publishing Enterprises', '37 A. Mabini Street, 3000, Malolos City, Bulacan, Philippines', '2010 James Perry', 'Available', 'Good', '');
+INSERT INTO `tbl_book` VALUES ('20220050', '978-1-09872-232-9', 'Araling Panlipunan - Pilipinas (Isang Sulyap at Pagyakap)', '', '', '', '', '900 - History and Geography', 'Textbook', '2010', 'Asian Escapades Management and Publishing Enterprises', '37 A. Mabini Street, 3000, Malolos City, Bulacan, Philippines', '2010 James Perry', 'Available', 'Good', '');
+INSERT INTO `tbl_book` VALUES ('20220051', '978-1-09872-232-9', 'Araling Panlipunan - Pilipinas (Isang Sulyap at Pagyakap)', '', '', '', '', '900 - History and Geography', 'Textbook', '2010', 'Asian Escapades Management and Publishing Enterprises', '37 A. Mabini Street, 3000, Malolos City, Bulacan, Philippines', '2010 James Perry', 'Available', 'Good', '');
+INSERT INTO `tbl_book` VALUES ('20220052', '978-1-09872-232-9', 'Araling Panlipunan - Pilipinas (Isang Sulyap at Pagyakap)', '', '', '', '', '900 - History and Geography', 'Textbook', '2010', 'Asian Escapades Management and Publishing Enterprises', '37 A. Mabini Street, 3000, Malolos City, Bulacan, Philippines', '2010 James Perry', 'Available', 'Good', '');
 
 -- ----------------------------
--- Table structure for tbl_borrowedbooks
+-- Table structure for `tbl_borrowedbooks`
 -- ----------------------------
 DROP TABLE IF EXISTS `tbl_borrowedbooks`;
-CREATE TABLE `tbl_borrowedbooks`  (
-  `BookID` int NOT NULL AUTO_INCREMENT,
-  `BookNumber` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `ISBN` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `Title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `Author` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `DeweyDecimalClassification` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `Category` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `YearofPublication` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `Publisher` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `Address` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `Copyright` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `DateBorrowed` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `DatetoReturn` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `Username` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `Name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `ContactNo` varchar(25) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  PRIMARY KEY (`BookID`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 57 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+CREATE TABLE `tbl_borrowedbooks` (
+  `BookID` int(255) NOT NULL AUTO_INCREMENT,
+  `BookNumber` int(255) NOT NULL,
+  `ISBN` varchar(255) NOT NULL,
+  `Title` varchar(255) NOT NULL,
+  `Edition` varchar(255) NOT NULL,
+  `AuthorLastName` varchar(255) NOT NULL,
+  `AuthorFirstName` varchar(255) NOT NULL,
+  `AuthorMiddleName` varchar(255) NOT NULL,
+  `DeweyDecimalClassification` varchar(255) NOT NULL,
+  `Category` varchar(255) NOT NULL,
+  `YearofPublication` int(255) NOT NULL,
+  `Publisher` varchar(255) NOT NULL,
+  `Address` varchar(255) NOT NULL,
+  `Copyright` varchar(255) NOT NULL,
+  `Conditions` varchar(255) NOT NULL,
+  `DateBorrowed` varchar(255) NOT NULL,
+  `DatetoReturn` varchar(255) NOT NULL,
+  `Username` int(255) NOT NULL,
+  `Name` varchar(255) NOT NULL,
+  `ContactNo` varchar(255) NOT NULL,
+  PRIMARY KEY (`BookID`)
+) ENGINE=InnoDB AUTO_INCREMENT=98 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of tbl_borrowedbooks
 -- ----------------------------
-INSERT INTO `tbl_borrowedbooks` VALUES (53, '60422003', '978-9-23123-231-7', 'Technical Drawing 101 with AutoCAD', 'Ashleigh Congdon-Fuller, Antonio Ramirez, Douglas Smith', '570 - Science', 'General Reference', '2019', 'SDC Publications', 'PO Box 1334, Mission, Kansas, 66222, United States', '2019 Leonard Piekoff', '16/11/2022', '17/11/2022', '7001', 'Dr. Marina Gracias Estoesta', '(+63) 977-2130-087');
-INSERT INTO `tbl_borrowedbooks` VALUES (54, '60422002', '978-9-23123-231-7', 'Technical Drawing 101 with AutoCAD', 'Ashleigh Congdon-Fuller, Antonio Ramirez, Douglas Smith', '570 - Science', 'General Reference', '2019', 'SDC Publications', 'PO Box 1334, Mission, Kansas, 66222, United States', '2019 Leonard Piekoff', '16/11/2022 - 07:22 pm', '17/11/2022 - 12:00 am', '100816100072', 'Felix Ramos Medina', '(+63) 977-4501-239');
-INSERT INTO `tbl_borrowedbooks` VALUES (55, '60422001', '978-9-23123-231-7', 'Technical Drawing 101 with AutoCAD', 'Ashleigh Congdon-Fuller, Antonio Ramirez, Douglas Smith', '570 - Science', 'General Reference', '2019', 'SDC Publications', 'PO Box 1334, Mission, Kansas, 66222, United States', '2019 Leonard Piekoff', '16/11/2022 - 07:22 pm', '19/11/2022 - 12:00 am', '100845150051', 'Princess Jewel Grace Alas Orejudos', '(+63) 939-9774-505');
-INSERT INTO `tbl_borrowedbooks` VALUES (56, '40022003', '978-2-54335-423-8', 'Introducing English Language', 'Louise Mullany, Peter Stockwell', '400 - Language', 'Textbook', '2015', 'Routledge', 'Milton Park, Abingdon-on-Thames, Oxforshire, England, UK', '2019 Colleen Hover', '16/11/2022 - 07:26 pm', '19/11/2022', '101007150010', 'Ernest Charl Valdez Geneta', '(+63) 977-4501-236');
+INSERT INTO `tbl_borrowedbooks` VALUES ('89', '522001', '978-4-54349-094-2', 'Information Technology', '', 'Richard Fox', '', '', '005 - Computer science, information and general works', 'Textbook', '2015', 'Chapman and Hall/CRC.', '6000 Broken Sound Parkway, NW,(Suite 300)', '2015 Jane Done', '', '11/29/2022 - 02:48 pm', '12/02/2022 - 02:54 pm', '2147483647', 'Felix Ramos Medina', '(+63) 977-4501-239');
+INSERT INTO `tbl_borrowedbooks` VALUES ('90', '30022001', '978-1-23322-456-5', 'Social Science: An Introduction to the Study of Society', '', '', '', '', '300 - Social sciences', 'Textbook', '2019', 'Routledge', 'Milton Park, Abingdon-on-Thames, Oxforshire, England, UK', '2019 Colleen Hover', '', '12/03/2022 - 01:04 pm', '12/10/2022 - 01:04 pm', '7001', 'Dr. Marina Gracias Estoesta', '(+63) 977-2130-087');
+INSERT INTO `tbl_borrowedbooks` VALUES ('91', '30022001', '978-1-23322-456-5', 'Social Science: An Introduction to the Study of Society', '', '', '', '', '300 - Social sciences', 'Textbook', '2019', 'Routledge', 'Milton Park, Abingdon-on-Thames, Oxforshire, England, UK', '2019 Colleen Hover', '', '12/03/2022 - 01:46 pm', '12/10/2022 - 01:47 pm', '7001', 'Dr. Marina Gracias Estoesta', '(+63) 977-2130-087');
+INSERT INTO `tbl_borrowedbooks` VALUES ('92', '30022001', '978-1-23322-456-5', 'Social Science: An Introduction to the Study of Society', '', '', '', '', '300 - Social sciences', 'Textbook', '2019', 'Routledge', 'Milton Park, Abingdon-on-Thames, Oxforshire, England, UK', '2019 Colleen Hover', '', '12/03/2022 - 01:52 pm', '12/10/2022 - 01:52 pm', '7001', 'Dr. Marina Gracias Estoesta', '(+63) 977-2130-087');
+INSERT INTO `tbl_borrowedbooks` VALUES ('93', '522003', '978-4-54349-094-2', 'Information Technology', '', '', '', '', '005 - Computer science, information and general works', 'Textbook', '2015', 'Chapman and Hall/CRC.', '6000 Broken Sound Parkway, NW,(Suite 300)', '2015 Jane Done', '', '12/03/2022 - 01:52 pm', '12/10/2022 - 01:53 pm', '7001', 'Dr. Marina Gracias Estoesta', '(+63) 977-2130-087');
+INSERT INTO `tbl_borrowedbooks` VALUES ('94', '522001', '978-4-54349-094-2', 'Information Technology', '', '', '', '', '005 - Computer science, information and general works', 'Textbook', '2015', 'Chapman and Hall/CRC.', '6000 Broken Sound Parkway, NW,(Suite 300)', '2015 Jane Done', 'Good', '12/03/2022 - 01:52 pm', '12/10/2022 - 01:53 pm', '7001', 'Dr. Marina Gracias Estoesta', '(+63) 977-2130-087');
+INSERT INTO `tbl_borrowedbooks` VALUES ('95', '40022003', '978-2-54335-423-8', 'Introducing English Language', '', '', '', '', '400 - Language', 'Textbook', '2015', 'Routledge', 'Milton Park, Abingdon-on-Thames, Oxforshire, England, UK', '2019 Colleen Hover', '', '12/03/2022 - 03:43 pm', '12/10/2022 - 03:43 pm', '2147483647', 'Rica Nemia Grandia Daligdig', '(+63) 949-8177-038');
+INSERT INTO `tbl_borrowedbooks` VALUES ('96', '40022002', '978-2-54335-423-8', 'Introducing English Language', '', '', '', '', '400 - Language', 'Textbook', '2015', 'Routledge', 'Milton Park, Abingdon-on-Thames, Oxforshire, England, UK', '2019 Colleen Hover', '', '12/03/2022 - 03:43 pm', '12/10/2022 - 03:45 pm', '2147483647', 'Rica Nemia Grandia Daligdig', '(+63) 949-8177-038');
+INSERT INTO `tbl_borrowedbooks` VALUES ('97', '30022003', '978-1-23322-456-5', 'Social Science: An Introduction to the Study of Society', '', '', '', '', '300 - Social sciences', 'Textbook', '2019', 'Routledge', 'Milton Park, Abingdon-on-Thames, Oxforshire, England, UK', '2019 Colleen Hover', '', '12/03/2022 - 08:52 pm', '12/10/2022 - 08:56 pm', '2147483647', 'Mel Dheon Munar Jucutan', '(+63) 977-1499-716');
 
 -- ----------------------------
--- Table structure for tbl_borrowednonprinted
+-- Table structure for `tbl_borrowednonprinted`
 -- ----------------------------
 DROP TABLE IF EXISTS `tbl_borrowednonprinted`;
-CREATE TABLE `tbl_borrowednonprinted`  (
-  `MaterialID` int NOT NULL AUTO_INCREMENT,
-  `MaterialNumber` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `MaterialName` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `DateBorrowed` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `DatetoReturn` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `Username` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `Name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `ContactNo` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  PRIMARY KEY (`MaterialID`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 42 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+CREATE TABLE `tbl_borrowednonprinted` (
+  `MaterialID` int(255) NOT NULL AUTO_INCREMENT,
+  `MaterialNumber` int(255) NOT NULL,
+  `MaterialName` varchar(255) NOT NULL,
+  `Conditions` varbinary(255) NOT NULL,
+  `DateBorrowed` varchar(255) NOT NULL,
+  `DatetoReturn` varchar(255) NOT NULL,
+  `Username` int(255) NOT NULL,
+  `Name` varchar(255) NOT NULL,
+  `ContactNo` varchar(255) NOT NULL,
+  PRIMARY KEY (`MaterialID`)
+) ENGINE=InnoDB AUTO_INCREMENT=63 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of tbl_borrowednonprinted
 -- ----------------------------
-INSERT INTO `tbl_borrowednonprinted` VALUES (32, '1000', 'Globe - World', '15/11/2022', '16/11/2022', '7001', 'Dr. Marina Gracias Estoesta', '(+63) 977-2130-087');
-INSERT INTO `tbl_borrowednonprinted` VALUES (33, '1001', 'Globe - World', '15/11/2022', '15/11/2022', '7002', 'Mrs. Tricia Mae Laplana Carbonell', '(+63) 977-2130-090');
-INSERT INTO `tbl_borrowednonprinted` VALUES (34, '1002', 'Globe - World', '15/11/2022', '17/11/2022', '100816100072', 'Felix Ramos Medina', '(+63) 977-4501-239');
-INSERT INTO `tbl_borrowednonprinted` VALUES (35, '2000', 'Periodic Table', '15/11/2022', '18/11/2022', '100845150051', 'Princess Jewel Grace Alas Orejudos', '(+63) 939-9774-505');
-INSERT INTO `tbl_borrowednonprinted` VALUES (36, '2001', 'Periodic Table', '15/11/2022', '16/11/2022', '101007150010', 'Ernest Charl Valdez Geneta', '(+63) 977-4501-236');
-INSERT INTO `tbl_borrowednonprinted` VALUES (37, '2002', 'Periodic Table', '14/11/2022', '14/11/2022', '101090140013', 'Francis Bryan Villanueva Hidalgo', '(+63) 977-4501-237');
-INSERT INTO `tbl_borrowednonprinted` VALUES (38, '3000', 'Philippine Map', '15/11/2022', '15/11/2022', '101090140013', 'Francis Bryan Villanueva Hidalgo', '(+63) 977-4501-237');
-INSERT INTO `tbl_borrowednonprinted` VALUES (39, '3001', 'Philippine Map', '15/11/2022', '16/11/2022', '7004', 'Mrs. Jesusa Dulay Villanueva', '(+63) 951-7238-230');
-INSERT INTO `tbl_borrowednonprinted` VALUES (40, '3002', 'Philippine Map', '15/11/2022', '16/11/2022', '7005', 'Mr. Jeremy Parado Marquez', '(+63) 977-2372-993');
-INSERT INTO `tbl_borrowednonprinted` VALUES (41, '4000', 'World Map', '15/11/2022', '17/11/2022', '101090140045', 'Regine Emperador Gepega', '(+63) 939-9774-502');
+INSERT INTO `tbl_borrowednonprinted` VALUES ('58', '1001', 'Globe - World', '', '11/29/2022 - 02:48 pm', '11/30/2022 - 02:56 pm', '2147483647', 'Felix Ramos Medina', '(+63) 977-4501-239');
+INSERT INTO `tbl_borrowednonprinted` VALUES ('59', '3001', 'Philippine Map', '', '12/03/2022 - 02:48 pm', '12/04/2022 - 02:48 pm', '7001', 'Dr. Marina Gracias Estoesta', '(+63) 977-2130-087');
+INSERT INTO `tbl_borrowednonprinted` VALUES ('60', '2002', 'Periodic Table', '', '12/03/2022 - 02:52 pm', '12/04/2022 - 02:53 pm', '2147483647', 'Jocelyn Quiroga Verceles', '(+63) 943-5234-232');
+INSERT INTO `tbl_borrowednonprinted` VALUES ('61', '3002', 'Philippine Map', '', '12/03/2022 - 03:43 pm', '12/04/2022 - 03:44 pm', '2147483647', 'Rica Nemia Grandia Daligdig', '(+63) 949-8177-038');
+INSERT INTO `tbl_borrowednonprinted` VALUES ('62', '4000', 'World Map', '', '12/03/2022 - 08:52 pm', '12/04/2022 - 08:56 pm', '2147483647', 'Mel Dheon Munar Jucutan', '(+63) 977-1499-716');
 
 -- ----------------------------
--- Table structure for tbl_borrowreturnbooks
+-- Table structure for `tbl_borrowreturnbooks`
 -- ----------------------------
 DROP TABLE IF EXISTS `tbl_borrowreturnbooks`;
-CREATE TABLE `tbl_borrowreturnbooks`  (
-  `BookNumber` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `ISBN` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `Title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `Author` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `DeweyDecimalClassification` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `Category` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `YearofPublication` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `Publisher` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `Address` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `Copyright` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `DateBorrowed` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `DatetoReturn` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `Username` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `Name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `ContactNo` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  PRIMARY KEY (`BookNumber`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+CREATE TABLE `tbl_borrowreturnbooks` (
+  `BookNumber` int(255) NOT NULL,
+  `ISBN` varchar(255) NOT NULL,
+  `Title` varchar(255) NOT NULL,
+  `Edition` varchar(255) NOT NULL,
+  `AuthorLastName` varchar(255) NOT NULL,
+  `AuthorFirstName` varchar(255) NOT NULL,
+  `AuthorMiddleName` varchar(255) NOT NULL,
+  `DeweyDecimalClassification` varchar(255) NOT NULL,
+  `Category` varchar(255) NOT NULL,
+  `YearofPublication` int(255) NOT NULL,
+  `Publisher` varchar(255) NOT NULL,
+  `Address` varchar(255) NOT NULL,
+  `Copyright` varchar(255) NOT NULL,
+  `Conditions` varchar(255) NOT NULL,
+  `DateBorrowed` varchar(255) NOT NULL,
+  `DatetoReturn` varchar(255) NOT NULL,
+  `Username` int(255) NOT NULL,
+  `Name` varchar(255) NOT NULL,
+  `ContactNo` varchar(255) NOT NULL,
+  PRIMARY KEY (`BookNumber`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of tbl_borrowreturnbooks
 -- ----------------------------
-INSERT INTO `tbl_borrowreturnbooks` VALUES ('40022003', '978-2-54335-423-8', 'Introducing English Language', 'Louise Mullany, Peter Stockwell', '400 - Language', 'Textbook', '2015', 'Routledge', 'Milton Park, Abingdon-on-Thames, Oxforshire, England, UK', '2019 Colleen Hover', '16/11/2022 - 07:26 pm', '18/11/2022', '101007150010', 'Ernest Charl Valdez Geneta', '(+63) 977-4501-236');
-INSERT INTO `tbl_borrowreturnbooks` VALUES ('60422001', '978-9-23123-231-7', 'Technical Drawing 101 with AutoCAD', 'Ashleigh Congdon-Fuller, Antonio Ramirez, Douglas Smith', '570 - Science', 'General Reference', '2019', 'SDC Publications', 'PO Box 1334, Mission, Kansas, 66222, United States', '2019 Leonard Piekoff', '16/11/2022 - 07:22 pm', '18/11/2022', '100845150051', 'Princess Jewel Grace Alas Orejudos', '(+63) 939-9774-505');
-INSERT INTO `tbl_borrowreturnbooks` VALUES ('60422002', '978-9-23123-231-7', 'Technical Drawing 101 with AutoCAD', 'Ashleigh Congdon-Fuller, Antonio Ramirez, Douglas Smith', '570 - Science', 'General Reference', '2019', 'SDC Publications', 'PO Box 1334, Mission, Kansas, 66222, United States', '2019 Leonard Piekoff', '16/11/2022 - 07:22 pm', '18/11/2022', '100816100072', 'Felix Ramos Medina', '(+63) 977-4501-239');
 
 -- ----------------------------
--- Table structure for tbl_borrowreturnnonprinted
+-- Table structure for `tbl_borrowreturnnonprinted`
 -- ----------------------------
 DROP TABLE IF EXISTS `tbl_borrowreturnnonprinted`;
-CREATE TABLE `tbl_borrowreturnnonprinted`  (
-  `MaterialNumber` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `MaterialName` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `DateBorrowed` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `DatetoReturn` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `Username` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `Name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `ContactNo` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  PRIMARY KEY (`MaterialNumber`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+CREATE TABLE `tbl_borrowreturnnonprinted` (
+  `MaterialNumber` int(255) NOT NULL,
+  `MaterialName` varchar(255) NOT NULL,
+  `Conditions` varchar(255) NOT NULL,
+  `DateBorrowed` varchar(255) NOT NULL,
+  `DatetoReturn` varchar(255) NOT NULL,
+  `Username` int(255) NOT NULL,
+  `Name` varchar(255) NOT NULL,
+  `ContactNo` varchar(255) NOT NULL,
+  PRIMARY KEY (`MaterialNumber`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of tbl_borrowreturnnonprinted
 -- ----------------------------
-INSERT INTO `tbl_borrowreturnnonprinted` VALUES ('3001', 'Philippine Map', '15/11/2022', '16/11/2022', '7004', 'Mrs. Jesusa Dulay Villanueva', '(+63) 951-7238-230');
-INSERT INTO `tbl_borrowreturnnonprinted` VALUES ('4000', 'World Map', '15/11/2022', '17/11/2022', '101090140045', 'Regine Emperador Gepega', '(+63) 939-9774-502');
+INSERT INTO `tbl_borrowreturnnonprinted` VALUES ('1001', 'Globe - World', '', '11/29/2022 - 02:48 pm', '11/30/2022 - 02:56 pm', '2147483647', 'Felix Ramos Medina', '(+63) 977-4501-239');
+INSERT INTO `tbl_borrowreturnnonprinted` VALUES ('2002', 'Periodic Table', '', '12/03/2022 - 02:52 pm', '12/04/2022 - 02:53 pm', '2147483647', 'Jocelyn Quiroga Verceles', '(+63) 943-5234-232');
+INSERT INTO `tbl_borrowreturnnonprinted` VALUES ('3001', 'Philippine Map', '', '12/03/2022 - 02:48 pm', '12/04/2022 - 02:48 pm', '7001', 'Dr. Marina Gracias Estoesta', '(+63) 977-2130-087');
+INSERT INTO `tbl_borrowreturnnonprinted` VALUES ('3002', 'Philippine Map', '', '12/03/2022 - 03:43 pm', '12/04/2022 - 03:44 pm', '2147483647', 'Rica Nemia Grandia Daligdig', '(+63) 949-8177-038');
+INSERT INTO `tbl_borrowreturnnonprinted` VALUES ('4000', 'World Map', '', '12/03/2022 - 08:52 pm', '12/04/2022 - 08:56 pm', '2147483647', 'Mel Dheon Munar Jucutan', '(+63) 977-1499-716');
 
 -- ----------------------------
--- Table structure for tbl_damagedbooks
+-- Table structure for `tbl_category`
+-- ----------------------------
+DROP TABLE IF EXISTS `tbl_category`;
+CREATE TABLE `tbl_category` (
+  `category_id` int(255) NOT NULL AUTO_INCREMENT,
+  `category` varchar(250) NOT NULL,
+  `daystoborrow` int(255) NOT NULL,
+  PRIMARY KEY (`category_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4;
+
+-- ----------------------------
+-- Records of tbl_category
+-- ----------------------------
+INSERT INTO `tbl_category` VALUES ('1', 'ALBERT', '10');
+INSERT INTO `tbl_category` VALUES ('2', 'Ariane', '4');
+INSERT INTO `tbl_category` VALUES ('3', 'di malaman', '3');
+INSERT INTO `tbl_category` VALUES ('4', 'General References', '1');
+INSERT INTO `tbl_category` VALUES ('5', 'NEW CATEGORY', '5');
+INSERT INTO `tbl_category` VALUES ('6', 'PATRICK', '2');
+INSERT INTO `tbl_category` VALUES ('7', 'Textbook', '3');
+INSERT INTO `tbl_category` VALUES ('8', 'textboox', '2');
+
+-- ----------------------------
+-- Table structure for `tbl_damagedbooks`
 -- ----------------------------
 DROP TABLE IF EXISTS `tbl_damagedbooks`;
-CREATE TABLE `tbl_damagedbooks`  (
-  `BookID` int NOT NULL AUTO_INCREMENT,
-  `BookNumber` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `ISBN` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `Title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `Author` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `DeweyDecimalClassification` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `Category` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `YearofPublication` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `Publisher` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `Address` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `Copyright` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `Name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `DateReturned` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  PRIMARY KEY (`BookID`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+CREATE TABLE `tbl_damagedbooks` (
+  `BookID` int(255) NOT NULL AUTO_INCREMENT,
+  `BookNumber` int(255) NOT NULL,
+  `ISBN` varchar(255) NOT NULL,
+  `Title` varchar(255) NOT NULL,
+  `Edition` varchar(255) NOT NULL,
+  `AuthorLastName` varchar(255) NOT NULL,
+  `AuthorFirstName` varchar(255) NOT NULL,
+  `AuthorMiddleName` varchar(255) NOT NULL,
+  `DeweyDecimalClassification` varchar(255) NOT NULL,
+  `Category` varchar(255) NOT NULL,
+  `YearofPublication` int(255) NOT NULL,
+  `Publisher` varchar(255) NOT NULL,
+  `Address` varchar(255) NOT NULL,
+  `Copyright` varchar(255) NOT NULL,
+  `Name` varchar(255) NOT NULL,
+  `DateReturned` varchar(255) NOT NULL,
+  PRIMARY KEY (`BookID`)
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of tbl_damagedbooks
 -- ----------------------------
 
 -- ----------------------------
--- Table structure for tbl_damagednonprinted
+-- Table structure for `tbl_damagednonprinted`
 -- ----------------------------
 DROP TABLE IF EXISTS `tbl_damagednonprinted`;
-CREATE TABLE `tbl_damagednonprinted`  (
-  `MaterialID` int NOT NULL AUTO_INCREMENT,
-  `MaterialNumber` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `MaterialName` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `Name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `DateReturned` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  PRIMARY KEY (`MaterialID`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 18 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+CREATE TABLE `tbl_damagednonprinted` (
+  `MaterialID` int(255) NOT NULL AUTO_INCREMENT,
+  `MaterialNumber` int(255) NOT NULL,
+  `MaterialName` varchar(255) NOT NULL,
+  `Name` varchar(255) NOT NULL,
+  `DateReturned` varchar(255) NOT NULL,
+  PRIMARY KEY (`MaterialID`)
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of tbl_damagednonprinted
 -- ----------------------------
-INSERT INTO `tbl_damagednonprinted` VALUES (15, '2000', 'Periodic Table', 'Princess Jewel Grace Alas Orejudos', '15/11/2022');
-INSERT INTO `tbl_damagednonprinted` VALUES (16, '2001', 'Periodic Table', 'Ernest Charl Valdez Geneta', '15/11/2022');
-INSERT INTO `tbl_damagednonprinted` VALUES (17, '2002', 'Periodic Table', 'Francis Bryan Villanueva Hidalgo', '15/11/2022');
 
 -- ----------------------------
--- Table structure for tbl_delinquentborrowers
+-- Table structure for `tbl_ddc`
+-- ----------------------------
+DROP TABLE IF EXISTS `tbl_ddc`;
+CREATE TABLE `tbl_ddc` (
+  `ddc_id` int(255) NOT NULL AUTO_INCREMENT,
+  `deweydecimalclassification` varchar(255) NOT NULL,
+  PRIMARY KEY (`ddc_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4;
+
+-- ----------------------------
+-- Records of tbl_ddc
+-- ----------------------------
+INSERT INTO `tbl_ddc` VALUES ('1', '005 - Computer science, information and general works');
+INSERT INTO `tbl_ddc` VALUES ('2', '100 - Philisophy and psychology');
+INSERT INTO `tbl_ddc` VALUES ('3', '210 - Religion');
+INSERT INTO `tbl_ddc` VALUES ('4', '300 - Social sciences');
+INSERT INTO `tbl_ddc` VALUES ('5', '400 - Language');
+INSERT INTO `tbl_ddc` VALUES ('6', '570 - Science');
+INSERT INTO `tbl_ddc` VALUES ('7', '600 - Technology');
+INSERT INTO `tbl_ddc` VALUES ('8', '700 - Arts and recreation');
+INSERT INTO `tbl_ddc` VALUES ('9', '810 - Literature');
+INSERT INTO `tbl_ddc` VALUES ('10', '900 - History and Geography');
+INSERT INTO `tbl_ddc` VALUES ('11', 'asdfasfasdf');
+INSERT INTO `tbl_ddc` VALUES ('12', 'hahahaha');
+INSERT INTO `tbl_ddc` VALUES ('13', 'Hahaharies');
+INSERT INTO `tbl_ddc` VALUES ('14', 'JESSA');
+INSERT INTO `tbl_ddc` VALUES ('15', 'NEW DDC');
+INSERT INTO `tbl_ddc` VALUES ('16', 'SECRETmoto');
+INSERT INTO `tbl_ddc` VALUES ('17', 'tama na rto');
+INSERT INTO `tbl_ddc` VALUES ('18', 'wehehheaasasdasdasdasd');
+INSERT INTO `tbl_ddc` VALUES ('19', 'friday');
+
+-- ----------------------------
+-- Table structure for `tbl_delinquentborrowers`
 -- ----------------------------
 DROP TABLE IF EXISTS `tbl_delinquentborrowers`;
-CREATE TABLE `tbl_delinquentborrowers`  (
-  `ItemID` int NOT NULL AUTO_INCREMENT,
-  `ItemNumber` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `Username` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `Name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `DatetoReturn` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `DateReturned` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `Reason` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  PRIMARY KEY (`ItemID`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 26 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+CREATE TABLE `tbl_delinquentborrowers` (
+  `ItemID` int(255) NOT NULL AUTO_INCREMENT,
+  `ItemNumber` int(255) NOT NULL,
+  `Username` int(255) NOT NULL,
+  `Name` varchar(255) NOT NULL,
+  `DatetoReturn` varchar(255) NOT NULL,
+  `DateReturned` varchar(255) NOT NULL,
+  `Reason` varchar(255) NOT NULL,
+  PRIMARY KEY (`ItemID`)
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of tbl_delinquentborrowers
 -- ----------------------------
-INSERT INTO `tbl_delinquentborrowers` VALUES (25, '2002', '101090140013', 'Francis Bryan Villanueva Hidalgo', '14/11/2022', '15/11/2022', 'nakalimutan');
 
 -- ----------------------------
--- Table structure for tbl_faculty
+-- Table structure for `tbl_faculty`
 -- ----------------------------
 DROP TABLE IF EXISTS `tbl_faculty`;
-CREATE TABLE `tbl_faculty`  (
-  `Username` int NOT NULL,
-  `Name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `ContactNo` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `AdvisoryClass` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `Password` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `ImagePath` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  PRIMARY KEY (`Username`) USING BTREE,
-  INDEX `Username`(`Username` ASC) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+CREATE TABLE `tbl_faculty` (
+  `Username` int(50) NOT NULL,
+  `Name` varchar(255) NOT NULL,
+  `ContactNo` varchar(50) NOT NULL,
+  `AdvisoryClass` varchar(50) NOT NULL,
+  `Password` varchar(50) NOT NULL,
+  `ImagePath` varchar(50) NOT NULL,
+  PRIMARY KEY (`Username`),
+  KEY `Username` (`Username`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of tbl_faculty
 -- ----------------------------
-INSERT INTO `tbl_faculty` VALUES (7001, 'Dr. Marina Gracias Estoesta', '(+63) 977-2130-087', '', 'password', '');
-INSERT INTO `tbl_faculty` VALUES (7002, 'Mrs. Tricia Mae Laplana Carbonell', '(+63) 977-2130-090', '7-Narra', 'password', '');
-INSERT INTO `tbl_faculty` VALUES (7003, 'Mrs. Ruth Rivera Maestro', '(+63) 921-3323-002', '7-Camachile', 'password', '');
-INSERT INTO `tbl_faculty` VALUES (7004, 'Mrs. Jesusa Dulay Villanueva', '(+63) 951-7238-230', '8-Ipil-Ipil', 'password', '');
-INSERT INTO `tbl_faculty` VALUES (7005, 'Mr. Jeremy Parado Marquez', '(+63) 977-2372-993', '8-Molave', 'password', '');
-INSERT INTO `tbl_faculty` VALUES (7006, 'Mrs. Jobelle Picar Rocapor', '(+63) 999-2323-404', '9-Kamagong', 'password', '');
-INSERT INTO `tbl_faculty` VALUES (7007, 'Mr. Frank Quidit Calub Jr', '(+63) 987-2334-499', '9-Olive', 'password', '');
-INSERT INTO `tbl_faculty` VALUES (7008, 'Mrs. Imelda Garcia Gracias', '(+63) 977-2340-023', '10-Acacia', 'password', '');
-INSERT INTO `tbl_faculty` VALUES (7009, 'Mrs. Catherine F. Carbonell', '(+63) 923-2300-823', '11-GAS', 'password', '');
-INSERT INTO `tbl_faculty` VALUES (7010, 'Dr. John-John Q. Garcia', '(+63) 977-2131-237', '12-GAS', 'password', '');
-INSERT INTO `tbl_faculty` VALUES (7011, 'Ms. Charlene Mae G. Gracias', '(+63) 988-2323-093', '12-HUMMS', 'password', '');
-INSERT INTO `tbl_faculty` VALUES (7012, 'Mr. Jeffrey C. Galera', '(+63) 987-3200-323', '11-HUMMS', 'password', '');
-INSERT INTO `tbl_faculty` VALUES (7020, 'Patrick Grey', '(+63) 995-1178-725', '12-TVL', 'password', 'C:\\Barcode\\7020.jpg');
-INSERT INTO `tbl_faculty` VALUES (7030, 'Haries Bening', '(+63) 992-3131-232', '11-TVL', 'password', 'C:\\Barcode\\7030.jpg');
+INSERT INTO `tbl_faculty` VALUES ('7001', 'Dr. Marina Gracias Estoesta', '(+63) 977-2130-087', '', 'password', '');
+INSERT INTO `tbl_faculty` VALUES ('7002', 'Mrs. Tricia Mae Laplana Carbonell', '(+63) 977-2130-090', '7-Narra', 'password', '');
+INSERT INTO `tbl_faculty` VALUES ('7003', 'Mrs. Ruth Rivera Maestro', '(+63) 921-3323-002', '7-Camachile', 'password', '');
+INSERT INTO `tbl_faculty` VALUES ('7004', 'Mrs. Jesusa Dulay Villanueva', '(+63) 951-7238-230', '8-Ipil-Ipil', 'password', '');
+INSERT INTO `tbl_faculty` VALUES ('7005', 'Mr. Jeremy Parado Marquez', '(+63) 977-2372-993', '8-Molave', 'password', '');
+INSERT INTO `tbl_faculty` VALUES ('7006', 'Mrs. Jobelle Picar Rocapor', '(+63) 999-2323-404', '9-Kamagong', 'password', '');
+INSERT INTO `tbl_faculty` VALUES ('7007', 'Mr. Frank Quidit Calub Jr', '(+63) 987-2334-499', '9-Olive', 'password', '');
+INSERT INTO `tbl_faculty` VALUES ('7008', 'Mrs. Imelda Garcia Gracias', '(+63) 977-2340-023', '10-Acacia', 'password', '');
+INSERT INTO `tbl_faculty` VALUES ('7009', 'Mrs. Catherine F. Carbonell', '(+63) 923-2300-823', '11-GAS', 'password', '');
+INSERT INTO `tbl_faculty` VALUES ('7010', 'Dr. John-John Q. Garcia', '(+63) 977-2131-237', '12-GAS', 'password', '');
+INSERT INTO `tbl_faculty` VALUES ('7011', 'Ms. Charlene Mae G. Gracias', '(+63) 988-2323-093', '12-HUMMS', 'password', '');
+INSERT INTO `tbl_faculty` VALUES ('7012', 'Mr. Jeffrey C. Galera', '(+63) 987-3200-323', '11-HUMMS', 'password', '');
 
 -- ----------------------------
--- Table structure for tbl_facultyborrowers
+-- Table structure for `tbl_facultyborrowers`
 -- ----------------------------
 DROP TABLE IF EXISTS `tbl_facultyborrowers`;
-CREATE TABLE `tbl_facultyborrowers`  (
-  `Username` int NOT NULL,
-  `Name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `ContactNo` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `ItemID` int NOT NULL AUTO_INCREMENT,
-  `ItemNumber` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `ItemType` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `Title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `DateBorrowed` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `DatetoReturn` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  PRIMARY KEY (`ItemID`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 29 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+CREATE TABLE `tbl_facultyborrowers` (
+  `Username` int(255) NOT NULL,
+  `Name` varchar(255) NOT NULL,
+  `ContactNo` varchar(255) NOT NULL,
+  `ItemID` int(255) NOT NULL AUTO_INCREMENT,
+  `ItemNumber` int(255) NOT NULL,
+  `ItemType` varchar(255) NOT NULL,
+  `Title` varchar(255) NOT NULL,
+  `DateBorrowed` varchar(255) NOT NULL,
+  `DatetoReturn` varchar(255) NOT NULL,
+  PRIMARY KEY (`ItemID`)
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of tbl_facultyborrowers
 -- ----------------------------
-INSERT INTO `tbl_facultyborrowers` VALUES (7001, 'Dr. Marina Gracias Estoesta', '(+63) 977-2130-087', 25, '1000', 'Non-Printed', 'Globe - World', '15/11/2022', '16/11/2022');
-INSERT INTO `tbl_facultyborrowers` VALUES (7002, 'Mrs. Tricia Mae Laplana Carbonell', '(+63) 977-2130-090', 26, '1001', 'Non-Printed', 'Globe - World', '15/11/2022', '15/11/2022');
-INSERT INTO `tbl_facultyborrowers` VALUES (7004, 'Mrs. Jesusa Dulay Villanueva', '(+63) 951-7238-230', 27, '3001', 'Non-Printed', 'Philippine Map', '15/11/2022', '16/11/2022');
-INSERT INTO `tbl_facultyborrowers` VALUES (7005, 'Mr. Jeremy Parado Marquez', '(+63) 977-2372-993', 28, '3002', 'Non-Printed', 'Philippine Map', '15/11/2022', '16/11/2022');
+INSERT INTO `tbl_facultyborrowers` VALUES ('7001', 'Dr. Marina Gracias Estoesta', '(+63) 977-2130-087', '34', '30022001', 'Printed', 'Social Science: An Introduction to the Study of Society', '12/03/2022 - 01:52 pm', '12/10/2022 - 01:52 pm');
+INSERT INTO `tbl_facultyborrowers` VALUES ('7001', 'Dr. Marina Gracias Estoesta', '(+63) 977-2130-087', '35', '522003', 'Printed', 'Information Technology', '12/03/2022 - 01:52 pm', '12/10/2022 - 01:53 pm');
+INSERT INTO `tbl_facultyborrowers` VALUES ('7001', 'Dr. Marina Gracias Estoesta', '(+63) 977-2130-087', '36', '522001', 'Printed', 'Information Technology', '12/03/2022 - 01:52 pm', '12/10/2022 - 01:53 pm');
+INSERT INTO `tbl_facultyborrowers` VALUES ('7001', 'Dr. Marina Gracias Estoesta', '(+63) 977-2130-087', '37', '3001', 'Non-Printed', 'Philippine Map', '12/03/2022 - 02:48 pm', '12/04/2022 - 02:48 pm');
 
 -- ----------------------------
--- Table structure for tbl_lostbooks
+-- Table structure for `tbl_lostbooks`
 -- ----------------------------
 DROP TABLE IF EXISTS `tbl_lostbooks`;
-CREATE TABLE `tbl_lostbooks`  (
-  `BookNumber` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `ISBN` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `Title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `Author` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `DeweyDecimalClassification` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `Category` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `YearofPublication` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `Publisher` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `Address` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `Copyright` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `Name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `DatetoReturn` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  PRIMARY KEY (`BookNumber`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+CREATE TABLE `tbl_lostbooks` (
+  `BookNumber` int(255) NOT NULL,
+  `ISBN` varchar(255) NOT NULL,
+  `Title` varchar(255) NOT NULL,
+  `Edition` varchar(255) NOT NULL,
+  `AuthorLastName` varchar(255) NOT NULL,
+  `AuthorFirstName` varchar(255) NOT NULL,
+  `AuthorMiddleName` varchar(255) NOT NULL,
+  `DeweyDecimalClassification` varchar(255) NOT NULL,
+  `Category` varchar(255) NOT NULL,
+  `YearofPublication` int(255) NOT NULL,
+  `Publisher` varchar(255) NOT NULL,
+  `Address` varchar(255) NOT NULL,
+  `Copyright` varchar(255) NOT NULL,
+  `Name` varchar(255) NOT NULL,
+  `DatetoReturn` varchar(255) NOT NULL,
+  PRIMARY KEY (`BookNumber`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of tbl_lostbooks
 -- ----------------------------
 
 -- ----------------------------
--- Table structure for tbl_lostnonprinted
+-- Table structure for `tbl_lostnonprinted`
 -- ----------------------------
 DROP TABLE IF EXISTS `tbl_lostnonprinted`;
-CREATE TABLE `tbl_lostnonprinted`  (
-  `MaterialNumber` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `MaterialName` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `Name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `DatetoReturn` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  PRIMARY KEY (`MaterialNumber`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+CREATE TABLE `tbl_lostnonprinted` (
+  `MaterialNumber` int(255) NOT NULL,
+  `MaterialName` varchar(255) NOT NULL,
+  `Name` varchar(255) NOT NULL,
+  `DatetoReturn` varchar(255) NOT NULL,
+  PRIMARY KEY (`MaterialNumber`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of tbl_lostnonprinted
 -- ----------------------------
-INSERT INTO `tbl_lostnonprinted` VALUES ('3000', 'Philippine Map', 'Francis Bryan Villanueva Hidalgo', '15/11/2022');
+INSERT INTO `tbl_lostnonprinted` VALUES ('1001', 'Globe - World', 'Felix Ramos Medina', '11/30/2022 - 02:56 pm');
 
 -- ----------------------------
--- Table structure for tbl_nonprinted
+-- Table structure for `tbl_nonprinted`
 -- ----------------------------
 DROP TABLE IF EXISTS `tbl_nonprinted`;
-CREATE TABLE `tbl_nonprinted`  (
-  `MaterialNumber` int NOT NULL AUTO_INCREMENT,
-  `MaterialName` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `Status` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `ImagePath` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  PRIMARY KEY (`MaterialNumber`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 12212122 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+CREATE TABLE `tbl_nonprinted` (
+  `MaterialNumber` int(255) NOT NULL AUTO_INCREMENT,
+  `MaterialName` varchar(255) NOT NULL,
+  `Status` varchar(255) NOT NULL,
+  `Conditions` varchar(255) NOT NULL,
+  `ImagePath` varchar(255) NOT NULL,
+  PRIMARY KEY (`MaterialNumber`)
+) ENGINE=InnoDB AUTO_INCREMENT=20222003 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of tbl_nonprinted
 -- ----------------------------
-INSERT INTO `tbl_nonprinted` VALUES (1000, 'Globe - World', 'Available', 'C:\\Barcode\\1000.jpg');
-INSERT INTO `tbl_nonprinted` VALUES (1001, 'Globe - World', 'Available', 'C:\\Barcode\\1001.jpg');
-INSERT INTO `tbl_nonprinted` VALUES (1002, 'Globe - World', 'Available', 'C:\\Barcode\\1002.jpg');
-INSERT INTO `tbl_nonprinted` VALUES (2000, 'Periodic Table', 'Available', 'C:\\Barcode\\2000.jpg');
-INSERT INTO `tbl_nonprinted` VALUES (2001, 'Periodic Table', 'Available', 'C:\\Barcode\\2001.jpg');
-INSERT INTO `tbl_nonprinted` VALUES (2002, 'Periodic Table', 'Available', 'C:\\Barcode\\2002.jpg');
-INSERT INTO `tbl_nonprinted` VALUES (3000, 'Philippine Map', 'Lost', 'C:\\Barcode\\3000.jpg');
-INSERT INTO `tbl_nonprinted` VALUES (3001, 'Philippine Map', 'Borrowed', 'C:\\Barcode\\3001.jpg');
-INSERT INTO `tbl_nonprinted` VALUES (3002, 'Philippine Map', 'Available', 'C:\\Barcode\\3002.jpg');
-INSERT INTO `tbl_nonprinted` VALUES (4000, 'World Map', 'Borrowed', 'C:\\Barcode\\4000.jpg');
-INSERT INTO `tbl_nonprinted` VALUES (4001, 'World Map', 'Available', 'C:\\Barcode\\4001.jpg');
-INSERT INTO `tbl_nonprinted` VALUES (4002, 'World Map', 'Available', 'C:\\Barcode\\4002.jpg');
+INSERT INTO `tbl_nonprinted` VALUES ('2022109', 'World Map', 'Available', 'Good', 'C:\\Barcode\\4000.jpg');
+INSERT INTO `tbl_nonprinted` VALUES ('20221000', 'Globe - World', 'Available', 'Good', 'C:\\Barcode\\1000.jpg');
+INSERT INTO `tbl_nonprinted` VALUES ('20221001', 'Globe - World', 'Available', 'Good', 'C:\\Barcode\\1001.jpg');
+INSERT INTO `tbl_nonprinted` VALUES ('20221002', 'Globe - World', 'Available', 'Good', 'C:\\Barcode\\1002.jpg');
+INSERT INTO `tbl_nonprinted` VALUES ('20221003', 'Periodic Table', 'Available', 'Good', 'C:\\Barcode\\2000.jpg');
+INSERT INTO `tbl_nonprinted` VALUES ('20221004', 'Periodic Table', 'Available', 'Good', 'C:\\Barcode\\2001.jpg');
+INSERT INTO `tbl_nonprinted` VALUES ('20221005', 'Periodic Table', 'Available', 'Good', 'C:\\Barcode\\2002.jpg');
+INSERT INTO `tbl_nonprinted` VALUES ('20221006', 'Philippine Map', 'Available', 'Good', 'C:\\Barcode\\3000.jpg');
+INSERT INTO `tbl_nonprinted` VALUES ('20221007', 'Philippine Map', 'Available', 'Good', 'C:\\Barcode\\3001.jpg');
+INSERT INTO `tbl_nonprinted` VALUES ('20221008', 'Philippine Map', 'Available', 'Good', 'C:\\Barcode\\3002.jpg');
+INSERT INTO `tbl_nonprinted` VALUES ('20221010', 'World Map', 'Available', 'Good', 'C:\\Barcode\\4001.jpg');
+INSERT INTO `tbl_nonprinted` VALUES ('20221011', 'World Map', 'Available', 'Good', 'C:\\Barcode\\4002.jpg');
 
 -- ----------------------------
--- Table structure for tbl_overduebooks
+-- Table structure for `tbl_overduebooks`
 -- ----------------------------
 DROP TABLE IF EXISTS `tbl_overduebooks`;
-CREATE TABLE `tbl_overduebooks`  (
-  `BookID` int NOT NULL AUTO_INCREMENT,
-  `BookNumber` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `ISBN` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `Title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `Author` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `DeweyDecimalClassification` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `Category` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `YearofPublication` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `DatetoReturn` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `DateReturned` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  PRIMARY KEY (`BookID`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 20 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+CREATE TABLE `tbl_overduebooks` (
+  `BookID` int(255) NOT NULL AUTO_INCREMENT,
+  `BookNumber` int(255) NOT NULL,
+  `ISBN` varchar(255) NOT NULL,
+  `Title` varchar(255) NOT NULL,
+  `Edition` varchar(255) NOT NULL,
+  `AuthorLastName` varchar(255) NOT NULL,
+  `AuthorFirstName` varchar(255) NOT NULL,
+  `AuthorMiddleName` varchar(255) NOT NULL,
+  `DeweyDecimalClassification` varchar(255) NOT NULL,
+  `Category` varchar(255) NOT NULL,
+  `YearofPublication` int(255) NOT NULL,
+  `DatetoReturn` varchar(255) NOT NULL,
+  `DateReturned` varchar(255) NOT NULL,
+  PRIMARY KEY (`BookID`)
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of tbl_overduebooks
 -- ----------------------------
 
 -- ----------------------------
--- Table structure for tbl_overduenonprinted
+-- Table structure for `tbl_overduenonprinted`
 -- ----------------------------
 DROP TABLE IF EXISTS `tbl_overduenonprinted`;
-CREATE TABLE `tbl_overduenonprinted`  (
-  `MaterialID` int NOT NULL AUTO_INCREMENT,
-  `MaterialNumber` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `MaterialName` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `DatetoReturn` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `DateReturned` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  PRIMARY KEY (`MaterialID`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+CREATE TABLE `tbl_overduenonprinted` (
+  `MaterialID` int(255) NOT NULL AUTO_INCREMENT,
+  `MaterialNumber` int(255) NOT NULL,
+  `MaterialName` varchar(255) NOT NULL,
+  `DatetoReturn` varchar(255) NOT NULL,
+  `DateReturned` varchar(255) NOT NULL,
+  PRIMARY KEY (`MaterialID`)
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of tbl_overduenonprinted
 -- ----------------------------
-INSERT INTO `tbl_overduenonprinted` VALUES (14, '2002', 'Periodic Table', '14/11/2022', '15/11/2022');
 
 -- ----------------------------
--- Table structure for tbl_returnedbooks
+-- Table structure for `tbl_returnedbooks`
 -- ----------------------------
 DROP TABLE IF EXISTS `tbl_returnedbooks`;
-CREATE TABLE `tbl_returnedbooks`  (
-  `BookID` int NOT NULL AUTO_INCREMENT,
-  `BookNumber` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `ISBN` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `Title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `Author` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `DeweyDecimalClassification` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `Category` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `YearofPublication` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `Publisher` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `Address` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `Copyright` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `DateReturned` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `Username` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `Name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  PRIMARY KEY (`BookID`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 43 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+CREATE TABLE `tbl_returnedbooks` (
+  `BookID` int(255) NOT NULL AUTO_INCREMENT,
+  `BookNumber` int(255) NOT NULL,
+  `ISBN` varchar(255) NOT NULL,
+  `Title` varchar(255) NOT NULL,
+  `Edition` varchar(255) NOT NULL,
+  `AuthorLastName` varchar(255) NOT NULL,
+  `AuthorFirstName` varchar(255) NOT NULL,
+  `AuthorMiddleName` varchar(255) NOT NULL,
+  `DeweyDecimalClassification` varchar(255) NOT NULL,
+  `Category` varchar(255) NOT NULL,
+  `YearofPublication` int(255) NOT NULL,
+  `Publisher` varchar(255) NOT NULL,
+  `Address` varchar(255) NOT NULL,
+  `Copyright` varchar(255) NOT NULL,
+  `DateReturned` varchar(255) NOT NULL,
+  `Username` int(255) NOT NULL,
+  `Name` varchar(255) NOT NULL,
+  PRIMARY KEY (`BookID`)
+) ENGINE=InnoDB AUTO_INCREMENT=57 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of tbl_returnedbooks
 -- ----------------------------
-INSERT INTO `tbl_returnedbooks` VALUES (41, '00522001', '978-4-54349-094-2', 'Information Technology', 'Richard Fox', 'Computer science, information and general works', 'Textbook', '2015', 'Chapman and Hall/CRC.', 'Class 005', '', '28/10/2022', '101090130036', 'Mel Dheon Munar Jucutan');
-INSERT INTO `tbl_returnedbooks` VALUES (42, '60422003', '978-9-23123-231-7', 'PO Box 1334, Mission, Kansas, 66222, United States', '2019 Leonard Piekoff', '570 - Science', 'General Reference', 'Technical Drawing 101 with AutoCAD', 'Ashleigh Congdon-Fuller, Antonio Ramirez, Douglas Smith', '2019', 'SDC Publications', '16/11/2022', '7001', 'Dr. Marina Gracias Estoesta');
+INSERT INTO `tbl_returnedbooks` VALUES ('56', '522001', '978-4-54349-094-2', 'Information Technology', '', 'Richard Fox', '', '', '005 - Computer science, information and general works', 'Textbook', '2015', 'Chapman and Hall/CRC.', '6000 Broken Sound Parkway, NW,(Suite 300)', '2015 Jane Done', '11/29/2022 - 03:00 pm', '2147483647', 'Felix Ramos Medina');
 
 -- ----------------------------
--- Table structure for tbl_returnednonprinted
+-- Table structure for `tbl_returnednonprinted`
 -- ----------------------------
 DROP TABLE IF EXISTS `tbl_returnednonprinted`;
-CREATE TABLE `tbl_returnednonprinted`  (
-  `MaterialID` int NOT NULL AUTO_INCREMENT,
-  `MaterialNumber` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `MaterialName` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `DateReturned` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `Username` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `Name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  PRIMARY KEY (`MaterialID`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 24 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+CREATE TABLE `tbl_returnednonprinted` (
+  `MaterialID` int(255) NOT NULL AUTO_INCREMENT,
+  `MaterialNumber` int(255) NOT NULL,
+  `MaterialName` varchar(255) NOT NULL,
+  `DateReturned` varchar(255) NOT NULL,
+  `Username` int(255) NOT NULL,
+  `Name` varchar(255) NOT NULL,
+  PRIMARY KEY (`MaterialID`)
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of tbl_returnednonprinted
 -- ----------------------------
-INSERT INTO `tbl_returnednonprinted` VALUES (16, '1000', 'Globe - World', '28/10/2022', '7002', 'Mrs. Tricia Mae Laplana Carbonell');
-INSERT INTO `tbl_returnednonprinted` VALUES (17, '1000', 'Globe - World', '15/11/2022', '7001', 'Dr. Marina Gracias Estoesta');
-INSERT INTO `tbl_returnednonprinted` VALUES (18, '1001', 'Globe - World', '15/11/2022', '7002', 'Mrs. Tricia Mae Laplana Carbonell');
-INSERT INTO `tbl_returnednonprinted` VALUES (19, '1002', 'Globe - World', '15/11/2022', '100816100072', 'Felix Ramos Medina');
-INSERT INTO `tbl_returnednonprinted` VALUES (20, '2000', 'Periodic Table', '15/11/2022', '100845150051', 'Princess Jewel Grace Alas Orejudos');
-INSERT INTO `tbl_returnednonprinted` VALUES (21, '2001', 'Periodic Table', '15/11/2022', '101007150010', 'Ernest Charl Valdez Geneta');
-INSERT INTO `tbl_returnednonprinted` VALUES (22, '2002', 'Periodic Table', '15/11/2022', '101090140013', 'Francis Bryan Villanueva Hidalgo');
-INSERT INTO `tbl_returnednonprinted` VALUES (23, '3002', 'Philippine Map', '16/11/2022', '7005', 'Mr. Jeremy Parado Marquez');
 
 -- ----------------------------
--- Table structure for tbl_student
+-- Table structure for `tbl_student`
 -- ----------------------------
 DROP TABLE IF EXISTS `tbl_student`;
-CREATE TABLE `tbl_student`  (
-  `Username` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `Name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `ContactNo` varchar(25) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `GradeSec` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `Teacher` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `Password` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `ImagePath` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  PRIMARY KEY (`Username`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+CREATE TABLE `tbl_student` (
+  `Username` varchar(255) NOT NULL,
+  `Name` varchar(255) NOT NULL,
+  `ContactNo` varchar(25) NOT NULL,
+  `GradeSec` varchar(50) NOT NULL,
+  `Teacher` varchar(255) NOT NULL,
+  `Password` varchar(50) NOT NULL,
+  `ImagePath` varchar(50) NOT NULL,
+  PRIMARY KEY (`Username`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of tbl_student
@@ -887,7 +955,6 @@ INSERT INTO `tbl_student` VALUES ('108082120088', 'Arjames Gemina Madrilejo', '(
 INSERT INTO `tbl_student` VALUES ('108082130080', 'Kristel Gimena Madrilejo', '(+63) 902-3131-122', '10-Acacia', 'Mrs. Imelda Garcia Gracias', 'password', '');
 INSERT INTO `tbl_student` VALUES ('108533110012', 'Carl Justine Gariguez De Gracia', '(+63) 988-9853-232', '11-GAS', 'Mrs. Catherine F. Carbonell', 'password', '');
 INSERT INTO `tbl_student` VALUES ('108533130057', 'Uahana Kriselle Gariguez De Gracia', '(+63) 949-8177-039', '9-Kamagong', 'Mrs. Jobelle Picar Rocapor', 'password', '');
-INSERT INTO `tbl_student` VALUES ('123456789', 'Albert', '(+63) 917-8942-731', '12-GAS', 'Mr. Patrick', 'password', '');
 INSERT INTO `tbl_student` VALUES ('126378120022', 'Reynan Dave Gontao Bilog', '(+63) 977-1499-710', '9-Olive', 'Mr. Frank Quidit Calub Jr', 'password', '');
 INSERT INTO `tbl_student` VALUES ('135628150016', 'Sabrina Kae Refuerzo Talania', '(+63) 995-1782-345', '7-Camachile', 'Mrs. Ruth Rivera Maestro', 'password', '');
 INSERT INTO `tbl_student` VALUES ('135632060011', 'Jayvie Calub Bulandres', '(+63) 998-7654-423', '12-GAS', 'Dr. John-John Q. Garcia', 'password', '');
@@ -900,48 +967,46 @@ INSERT INTO `tbl_student` VALUES ('403825150274', 'Ashley Marie Hufalar Navales'
 INSERT INTO `tbl_student` VALUES ('403825150320', 'Miesha Franchesca Hufalar Navales', '(+63) 976-5321-012', '10-Acacia', 'Mrs. Imelda Garcia Gracias', 'password', '');
 
 -- ----------------------------
--- Table structure for tbl_studentborrowers
+-- Table structure for `tbl_studentborrowers`
 -- ----------------------------
 DROP TABLE IF EXISTS `tbl_studentborrowers`;
-CREATE TABLE `tbl_studentborrowers`  (
-  `Username` varchar(12) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `Name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `ContactNo` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `GradeSec` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `Teacher` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `ItemID` int NOT NULL AUTO_INCREMENT,
-  `ItemNumber` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `ItemType` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `Title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `DateBorrowed` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `DatetoReturn` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  PRIMARY KEY (`ItemID`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 52 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+CREATE TABLE `tbl_studentborrowers` (
+  `Username` int(12) NOT NULL,
+  `Name` varchar(255) NOT NULL,
+  `ContactNo` varchar(255) NOT NULL,
+  `GradeSec` varchar(255) NOT NULL,
+  `Teacher` varchar(255) NOT NULL,
+  `ItemID` int(255) NOT NULL AUTO_INCREMENT,
+  `ItemNumber` int(255) NOT NULL,
+  `ItemType` varchar(255) NOT NULL,
+  `Title` varchar(255) NOT NULL,
+  `DateBorrowed` varchar(255) NOT NULL,
+  `DatetoReturn` varchar(255) NOT NULL,
+  PRIMARY KEY (`ItemID`)
+) ENGINE=InnoDB AUTO_INCREMENT=85 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of tbl_studentborrowers
 -- ----------------------------
-INSERT INTO `tbl_studentborrowers` VALUES ('101090130036', 'Mel Dheon Munar Jucutan', '(+63) 977-1499-716', '9-Olive', 'Mr. Frank Quidit Calub Jr', 43, '00522001', 'Printed', 'Information Technology', '28/10/2022', '31/10/2022');
-INSERT INTO `tbl_studentborrowers` VALUES ('101090140013', 'Francis Bryan Villanueva Hidalgo', '(+63) 977-4501-237', '7-Narra', 'Mrs. Tricia Mae Laplana Carbonell', 44, '00522003', 'Printed', 'Information Technology', '28/10/2022', '31/10/2022');
-INSERT INTO `tbl_studentborrowers` VALUES ('101090140045', 'Regine Emperador Gepega', '(+63) 939-9774-502', '7-Narra', 'Mrs. Tricia Mae Laplana Carbonell', 45, '30022002', 'Printed', 'Social Science: An Introduction to the Study of Society', '28/10/2022', '31/10/2022');
-INSERT INTO `tbl_studentborrowers` VALUES ('100816100072', 'Felix Ramos Medina', '(+63) 977-4501-239', '7-Narra', 'Mrs. Tricia Mae Laplana Carbonell', 46, '1002', 'Non-Printed', 'Globe - World', '15/11/2022', '17/11/2022');
-INSERT INTO `tbl_studentborrowers` VALUES ('100845150051', 'Princess Jewel Grace Alas Orejudos', '(+63) 939-9774-505', '7-Narra', 'Mrs. Tricia Mae Laplana Carbonell', 47, '2000', 'Non-Printed', 'Periodic Table', '15/11/2022', '18/11/2022');
-INSERT INTO `tbl_studentborrowers` VALUES ('101007150010', 'Ernest Charl Valdez Geneta', '(+63) 977-4501-236', '7-Narra', 'Mrs. Tricia Mae Laplana Carbonell', 48, '2001', 'Non-Printed', 'Periodic Table', '15/11/2022', '16/11/2022');
-INSERT INTO `tbl_studentborrowers` VALUES ('101090140013', 'Francis Bryan Villanueva Hidalgo', '(+63) 977-4501-237', '7-Narra', 'Mrs. Tricia Mae Laplana Carbonell', 49, '2002', 'Non-Printed', 'Periodic Table', '15/11/2022', '15/11/2022');
-INSERT INTO `tbl_studentborrowers` VALUES ('101090140013', 'Francis Bryan Villanueva Hidalgo', '(+63) 977-4501-237', '7-Narra', 'Mrs. Tricia Mae Laplana Carbonell', 50, '3000', 'Non-Printed', 'Philippine Map', '15/11/2022', '15/11/2022');
-INSERT INTO `tbl_studentborrowers` VALUES ('101090140045', 'Regine Emperador Gepega', '(+63) 939-9774-502', '7-Narra', 'Mrs. Tricia Mae Laplana Carbonell', 51, '4000', 'Non-Printed', 'World Map', '15/11/2022', '17/11/2022');
+INSERT INTO `tbl_studentborrowers` VALUES ('2147483647', 'Felix Ramos Medina', '(+63) 977-4501-239', '7-Narra', 'Mrs. Tricia Mae Laplana Carbonell', '78', '522001', 'Printed', 'Information Technology', '11/29/2022 - 02:48 pm', '12/02/2022 - 02:54 pm');
+INSERT INTO `tbl_studentborrowers` VALUES ('2147483647', 'Jocelyn Quiroga Verceles', '(+63) 943-5234-232', '12-HUMMS', 'Ms. Charlene Mae G. Gracias', '79', '2002', 'Non-Printed', 'Periodic Table', '12/03/2022 - 02:52 pm', '12/04/2022 - 02:53 pm');
+INSERT INTO `tbl_studentborrowers` VALUES ('2147483647', 'Rica Nemia Grandia Daligdig', '(+63) 949-8177-038', '9-Kamagong', 'Mrs. Jobelle Picar Rocapor', '80', '40022003', 'Printed', 'Introducing English Language', '12/03/2022 - 03:43 pm', '12/10/2022 - 03:43 pm');
+INSERT INTO `tbl_studentborrowers` VALUES ('2147483647', 'Rica Nemia Grandia Daligdig', '(+63) 949-8177-038', '9-Kamagong', 'Mrs. Jobelle Picar Rocapor', '81', '3002', 'Non-Printed', 'Philippine Map', '12/03/2022 - 03:43 pm', '12/04/2022 - 03:44 pm');
+INSERT INTO `tbl_studentborrowers` VALUES ('2147483647', 'Rica Nemia Grandia Daligdig', '(+63) 949-8177-038', '9-Kamagong', 'Mrs. Jobelle Picar Rocapor', '82', '40022002', 'Printed', 'Introducing English Language', '12/03/2022 - 03:43 pm', '12/10/2022 - 03:45 pm');
+INSERT INTO `tbl_studentborrowers` VALUES ('2147483647', 'Mel Dheon Munar Jucutan', '(+63) 977-1499-716', '9-Olive', 'Mr. Frank Quidit Calub Jr', '83', '30022003', 'Printed', 'Social Science: An Introduction to the Study of Society', '12/03/2022 - 08:52 pm', '12/10/2022 - 08:56 pm');
+INSERT INTO `tbl_studentborrowers` VALUES ('2147483647', 'Mel Dheon Munar Jucutan', '(+63) 977-1499-716', '9-Olive', 'Mr. Frank Quidit Calub Jr', '84', '4000', 'Non-Printed', 'World Map', '12/03/2022 - 08:52 pm', '12/04/2022 - 08:56 pm');
 
 -- ----------------------------
--- Table structure for tbl_users
+-- Table structure for `tbl_users`
 -- ----------------------------
 DROP TABLE IF EXISTS `tbl_users`;
-CREATE TABLE `tbl_users`  (
-  `Username` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `Name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `Password` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `Usertype` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  PRIMARY KEY (`Username`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+CREATE TABLE `tbl_users` (
+  `Username` varchar(50) NOT NULL,
+  `Name` varchar(255) NOT NULL,
+  `Password` varchar(50) NOT NULL,
+  `Usertype` varchar(50) NOT NULL,
+  PRIMARY KEY (`Username`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of tbl_users
@@ -1301,7 +1366,3 @@ INSERT INTO `tbl_users` VALUES ('7009', 'Mrs. Catherine F. Carbonell', 'password
 INSERT INTO `tbl_users` VALUES ('7010', 'Dr. John-John Q. Garcia', 'password', 'Faculty');
 INSERT INTO `tbl_users` VALUES ('7011', 'Ms. Charlene Mae G. Gracias', 'password', 'Faculty');
 INSERT INTO `tbl_users` VALUES ('7012', 'Mr. Jeffrey C. Galera', 'password', 'Faculty');
-INSERT INTO `tbl_users` VALUES ('7020', 'Patrick Grey', 'password', 'Faculty');
-INSERT INTO `tbl_users` VALUES ('7030', 'Haries Bening', 'password', 'Faculty');
-
-SET FOREIGN_KEY_CHECKS = 1;

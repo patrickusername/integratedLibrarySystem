@@ -39,10 +39,10 @@ Partial Class Lost_NonPrinted
         '
         Me.Label2.AutoSize = True
         Me.Label2.BackColor = System.Drawing.Color.Transparent
-        Me.Label2.Font = New System.Drawing.Font("Century Schoolbook", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(1110, 214)
+        Me.Label2.Font = New System.Drawing.Font("Century Schoolbook", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Location = New System.Drawing.Point(212, 12)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(52, 30)
+        Me.Label2.Size = New System.Drawing.Size(38, 23)
         Me.Label2.TabIndex = 23
         Me.Label2.Text = "To:"
         '
@@ -50,31 +50,33 @@ Partial Class Lost_NonPrinted
         '
         Me.Label1.AutoSize = True
         Me.Label1.BackColor = System.Drawing.Color.Transparent
-        Me.Label1.Font = New System.Drawing.Font("Century Schoolbook", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(589, 214)
+        Me.Label1.Font = New System.Drawing.Font("Century Schoolbook", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(33, 11)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(87, 30)
+        Me.Label1.Size = New System.Drawing.Size(63, 23)
         Me.Label1.TabIndex = 22
         Me.Label1.Text = "From:"
         '
         'btn_refresh
         '
-        Me.btn_refresh.Font = New System.Drawing.Font("Century Schoolbook", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_refresh.Font = New System.Drawing.Font("Century Schoolbook", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_refresh.ForeColor = System.Drawing.Color.White
         Me.btn_refresh.Image = CType(resources.GetObject("btn_refresh.Image"), System.Drawing.Image)
-        Me.btn_refresh.Location = New System.Drawing.Point(740, 316)
+        Me.btn_refresh.Location = New System.Drawing.Point(499, 30)
         Me.btn_refresh.Name = "btn_refresh"
-        Me.btn_refresh.Size = New System.Drawing.Size(181, 57)
+        Me.btn_refresh.Size = New System.Drawing.Size(144, 41)
         Me.btn_refresh.TabIndex = 21
         Me.btn_refresh.Text = "REFRESH"
         Me.btn_refresh.UseVisualStyleBackColor = True
         '
         'txt_search
         '
-        Me.txt_search.Font = New System.Drawing.Font("Century Schoolbook", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txt_search.Font = New System.Drawing.Font("Century Schoolbook", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txt_search.ForeColor = System.Drawing.Color.White
         Me.txt_search.Image = CType(resources.GetObject("txt_search.Image"), System.Drawing.Image)
-        Me.txt_search.Location = New System.Drawing.Point(509, 316)
+        Me.txt_search.Location = New System.Drawing.Point(375, 30)
         Me.txt_search.Name = "txt_search"
-        Me.txt_search.Size = New System.Drawing.Size(151, 57)
+        Me.txt_search.Size = New System.Drawing.Size(118, 41)
         Me.txt_search.TabIndex = 20
         Me.txt_search.Text = "SEARCH"
         Me.txt_search.UseVisualStyleBackColor = True
@@ -82,41 +84,43 @@ Partial Class Lost_NonPrinted
         'dt2
         '
         Me.dt2.CalendarFont = New System.Drawing.Font("Book Antiqua", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.dt2.Font = New System.Drawing.Font("Century Schoolbook", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.dt2.Font = New System.Drawing.Font("Century Schoolbook", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.dt2.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.dt2.Location = New System.Drawing.Point(1108, 248)
+        Me.dt2.Location = New System.Drawing.Point(202, 36)
         Me.dt2.Name = "dt2"
-        Me.dt2.Size = New System.Drawing.Size(200, 32)
+        Me.dt2.Size = New System.Drawing.Size(151, 30)
         Me.dt2.TabIndex = 19
         '
         'dt1
         '
         Me.dt1.CalendarFont = New System.Drawing.Font("Book Antiqua", 13.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.dt1.Font = New System.Drawing.Font("Century Schoolbook", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.dt1.Font = New System.Drawing.Font("Century Schoolbook", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.dt1.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.dt1.Location = New System.Drawing.Point(586, 247)
+        Me.dt1.Location = New System.Drawing.Point(31, 36)
         Me.dt1.Name = "dt1"
-        Me.dt1.Size = New System.Drawing.Size(200, 32)
+        Me.dt1.Size = New System.Drawing.Size(151, 30)
         Me.dt1.TabIndex = 18
         '
         'btn_back
         '
-        Me.btn_back.Font = New System.Drawing.Font("Century Schoolbook", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_back.Font = New System.Drawing.Font("Century Schoolbook", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_back.ForeColor = System.Drawing.Color.White
         Me.btn_back.Image = CType(resources.GetObject("btn_back.Image"), System.Drawing.Image)
-        Me.btn_back.Location = New System.Drawing.Point(987, 316)
+        Me.btn_back.Location = New System.Drawing.Point(754, 30)
         Me.btn_back.Name = "btn_back"
-        Me.btn_back.Size = New System.Drawing.Size(151, 57)
+        Me.btn_back.Size = New System.Drawing.Size(92, 41)
         Me.btn_back.TabIndex = 17
         Me.btn_back.Text = "BACK"
         Me.btn_back.UseVisualStyleBackColor = True
         '
         'btn_generate
         '
-        Me.btn_generate.Font = New System.Drawing.Font("Century Schoolbook", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_generate.Font = New System.Drawing.Font("Century Schoolbook", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_generate.ForeColor = System.Drawing.Color.White
         Me.btn_generate.Image = CType(resources.GetObject("btn_generate.Image"), System.Drawing.Image)
-        Me.btn_generate.Location = New System.Drawing.Point(1231, 316)
+        Me.btn_generate.Location = New System.Drawing.Point(654, 30)
         Me.btn_generate.Name = "btn_generate"
-        Me.btn_generate.Size = New System.Drawing.Size(151, 57)
+        Me.btn_generate.Size = New System.Drawing.Size(92, 41)
         Me.btn_generate.TabIndex = 16
         Me.btn_generate.Text = "PRINT"
         Me.btn_generate.UseVisualStyleBackColor = True
@@ -125,18 +129,22 @@ Partial Class Lost_NonPrinted
         '
         Me.DataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Location = New System.Drawing.Point(380, 395)
+        Me.DataGridView1.Location = New System.Drawing.Point(31, 77)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.ReadOnly = True
         Me.DataGridView1.RowTemplate.Height = 24
-        Me.DataGridView1.Size = New System.Drawing.Size(1164, 445)
+        Me.DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.DataGridView1.Size = New System.Drawing.Size(1350, 488)
         Me.DataGridView1.TabIndex = 15
         '
         'Lost_NonPrinted
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1924, 1055)
+        Me.BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), System.Drawing.Image)
+        Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.ClientSize = New System.Drawing.Size(1409, 586)
+        Me.ControlBox = False
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.btn_refresh)
@@ -146,9 +154,11 @@ Partial Class Lost_NonPrinted
         Me.Controls.Add(Me.btn_back)
         Me.Controls.Add(Me.btn_generate)
         Me.Controls.Add(Me.DataGridView1)
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
         Me.Name = "Lost_NonPrinted"
-        Me.Text = "Lost_NonPrinted"
-        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
+        Me.Text = "Lost Non-Printed"
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()

@@ -112,7 +112,7 @@ Public Class LostNonPrinted
     End Sub
 
     Private Sub LostNonPrinted_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Me.WindowState = FormWindowState.Maximized
+        'Me.WindowState = FormWindowState.Maximized
         DataGridView1.BackgroundColor = System.Drawing.SystemColors.Control
         bind_data()
         DataGridView1.Sort(DataGridView1.Columns(0), ListSortDirection.Descending)

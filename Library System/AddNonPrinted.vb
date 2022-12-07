@@ -5,10 +5,14 @@ Public Class AddNonPrinted
         Me.Hide()
         txt_matno.Clear()
         txt_matname.Clear()
+
     End Sub
 
     Private Sub btn_add1_Click(sender As Object, e As EventArgs) Handles btn_add1.Click
-        If txt_matno.Text = "" Then
+        If txt_quantity.Text = "" Then
+            MsgBox("Please Enter Quantity", MsgBoxStyle.Critical)
+            txt_quantity.Focus()
+        ElseIf txt_matno.Text = "" Then
             MsgBox("Please Enter Material Number", MsgBoxStyle.Critical)
             txt_matno.Focus()
         ElseIf txt_matname.Text = "" Then
@@ -28,6 +32,8 @@ Public Class AddNonPrinted
                 If userCounter1 > 0 Then
                     txt_matno.Clear()
                     txt_matname.Clear()
+                    PictureBox1.Image = Nothing
+                    MsgBox("Material Already Exist", MsgBoxStyle.Critical)
 
                 Else
                     Dim qstr As String = "INSERT INTO tbl_nonprinted (MaterialNumber,MaterialName) VALUES ('" & txt_matno.Text & "' ,'" & txt_matname.Text & "') On DUPLICATE KEY UPDATE materialnumber = '" & txt_matno.Text & "'"
@@ -40,8 +46,13 @@ Public Class AddNonPrinted
                     Dim dat1 As MySqlDataReader = cm1.ExecuteReader
                     dat1.Close()
 
+                    Dim qstr14 As String = "Update  tbl_nonprinted set conditions = 'Good' where materialnumber= '" & txt_matno.Text & "' "
+                    Dim cm14 As New MySqlCommand(qstr14, conn)
+                    Dim dat14 As MySqlDataReader = cm14.ExecuteReader
+                    dat14.Close()
+
                     Dim book As String = txt_matno.Text & ".jpg"
-                    Dim folder As String = "C:\Barcode\"
+                    Dim folder As String = "C:\Users\patrick\Desktop\NONPRINTED BARCODE\"
                     Dim query As String = "Update tbl_nonprinted set ImagePath = @pathstring where MaterialNumber = '" & txt_matno.Text & "'"
                     Using con As MySqlConnection = New MySqlConnection(connString)
                         Using cmd As MySqlCommand = New MySqlCommand(query, con)
@@ -92,7 +103,19 @@ Public Class AddNonPrinted
     End Sub
 
     Private Sub AddNonPrinted_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Me.WindowState = FormWindowState.Maximized
+        txt_quantity.Focus()
+        'Me.WindowState = FormWindowState.Maximized
+        'AUTOINCREMENT AND AUTOFILL BOOK NUMBER
+        If conn.State = ConnectionState.Closed Then
+            conn.Open()
+        End If
+        Dim strsql = "Select materialnumber from tbl_nonprinted where materialnumber=(select max(materialnumber)from tbl_nonprinted)"
+        Dim cmddd1 As New MySqlCommand(strsql, conn)
+        Dim myreader As MySqlDataReader = cmddd1.ExecuteReader
+        If myreader.Read() Then
+            txt_matno.Text = myreader("materialnumber") + 1
+        End If
+        conn.Close()
     End Sub
 
     Private Sub btn_clear_Click(sender As Object, e As EventArgs) Handles btn_clear.Click
@@ -113,6 +136,16 @@ Public Class AddNonPrinted
         End Try
         If txt_matno.Text = "" Then
             PictureBox1.Image = Nothing
+        End If
+    End Sub
+
+    Private Sub txt_matno_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txt_matno.KeyPress
+        If e.KeyChar = ChrW(Keys.Back) Then
+        Else
+            If e.KeyChar.ToString >= "0" And e.KeyChar.ToString <= "9" Then
+            Else
+                e.Handled = True
+            End If
         End If
     End Sub
 End Class

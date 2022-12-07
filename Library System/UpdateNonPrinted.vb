@@ -68,7 +68,17 @@ Public Class UpdateNonPrinted
         conn.Close()
     End Sub
 
-    Private Sub UpdateNonPrinted_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Me.WindowState = FormWindowState.Maximized
+    Private Sub txt_search_TextChanged(sender As Object, e As EventArgs) Handles txt_search.TextChanged
+
+    End Sub
+
+    Private Sub txt_search_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txt_search.KeyPress
+        If e.KeyChar = ChrW(Keys.Back) Then
+        Else
+            If e.KeyChar.ToString >= "0" And e.KeyChar.ToString <= "9" Then
+            Else
+                e.Handled = True
+            End If
+        End If
     End Sub
 End Class

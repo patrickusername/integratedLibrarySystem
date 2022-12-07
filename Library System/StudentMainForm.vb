@@ -42,24 +42,11 @@ Public Class Main_Form
             'Update_Student.txt_studname.Focus()
         End If
     End Sub
-
-    'Private Sub ViewNonPrintedMaterialsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ViewNonPrintedMaterialsToolStripMenuItem.Click
-    '    ViewNonPrinted3.MdiParent = Me
-    '    ViewNonPrinted3.Show()
-
-    'End Sub
-
-    'Private Sub ViewBooksToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ViewBooksToolStripMenuItem.Click
-    '    ViewBook3.MdiParent = Me
-    '    ViewBook3.Show()
-    'End Sub
-
     Private Sub SearchToolStripMenuItem1_Click(sender As Object, e As EventArgs)
         'SearchBook3.MdiParent = Me
         'SearchBook3.Show()
         'SearchBook3.txt_isbn1.Focus()
     End Sub
-
     Private Sub SearchToolStripMenuItem2_Click(sender As Object, e As EventArgs)
         SearchNonPrinted3.MdiParent = Me
         SearchNonPrinted3.Show()
@@ -76,5 +63,19 @@ Public Class Main_Form
         SearchNonPrinted3.MdiParent = Me
         SearchNonPrinted3.Show()
         SearchNonPrinted3.txt_isbn1.Focus()
+    End Sub
+
+    Private Sub SearchToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SearchToolStripMenuItem.Click
+        UserManualForm.MdiParent = Me
+        UserManualForm.Show()
+    End Sub
+    Private Sub PrintedMaterialsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PrintedMaterialsToolStripMenuItem.Click
+        UnreturnedBooks.MdiParent = Me
+        UnreturnedBooks.Show()
+    End Sub
+
+    Private Sub NonPrintedMaterialsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles NonPrintedMaterialsToolStripMenuItem.Click
+        UnreturnedMaterialss.MdiParent = Me
+        UnreturnedMaterialss.Show()
     End Sub
 End Class

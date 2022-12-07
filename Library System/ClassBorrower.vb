@@ -4,11 +4,10 @@ Public Class ClassBorrower
     Private Sub btn_back9_Click(sender As Object, e As EventArgs) Handles btn_back9.Click
         TeacherMainForm.Show()
         Me.Hide()
-
     End Sub
 
     Private Sub ClassBorrower_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Me.WindowState = FormWindowState.Maximized
+        'Me.WindowState = FormWindowState.Maximized
         DataGridView1.BackgroundColor = System.Drawing.SystemColors.Control
         'DataGridView1.Sort(DataGridView1.Columns(0), ListSortDirection.Descending)
         Dim conn As New MySqlConnection(connString)

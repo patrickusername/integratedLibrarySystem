@@ -19,7 +19,7 @@ Public Class Update_Faculty
         If txt_studpword.Text = "" Then
             MsgBox("Please Enter your Password", MsgBoxStyle.Critical)
             txt_studpword.Focus()
-        ElseIf txt_studcontact.Text = "(+63)    -    -" Then
+        ElseIf txt_studcontact.MaskCompleted = False Then
             MsgBox("Please Enter your Contact Number", MsgBoxStyle.Critical)
             txt_studcontact.Focus()
             'ElseIf txt_advisory.Text = "" Then
@@ -76,7 +76,7 @@ Public Class Update_Faculty
     End Sub
 
     Private Sub Update_Faculty_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Me.WindowState = FormWindowState.Maximized
+        'Me.WindowState = FormWindowState.Maximized
 
         'Refresh DataTable
         'Dim cmddd As New MySqlCommand("Select * From Tbl_faculty", conn)

@@ -12,11 +12,10 @@
     <AssemblyName>Library System</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>WindowsForms</MyType>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -49,9 +48,6 @@
   </PropertyGroup>
   <PropertyGroup>
     <OptionInfer>On</OptionInfer>
-  </PropertyGroup>
-  <PropertyGroup>
-    <ApplicationIcon>logo.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="BouncyCastle.Crypto, Version=1.9.0.0, Culture=neutral, PublicKeyToken=0e99375e54769942, processorArchitecture=MSIL">
@@ -107,6 +103,10 @@
     </Reference>
     <Reference Include="MySqlBackup, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MySqlBackup.1.0.1\lib\MySqlBackup.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PlaceholderTextBox, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\PlaceholderTextBox.1.3.1\lib\PlaceholderTextBox.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -166,6 +166,12 @@
     <Compile Include="AddAdmin.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="AddCategory.Designer.vb">
+      <DependentUpon>AddCategory.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AddCategory.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="AddFaculty.Designer.vb">
       <DependentUpon>AddFaculty.vb</DependentUpon>
     </Compile>
@@ -190,6 +196,12 @@
     <Compile Include="Add_Book.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Add_DDC.Designer.vb">
+      <DependentUpon>Add_DDC.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Add_DDC.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="AdminMainForms.Designer.vb">
       <DependentUpon>AdminMainForms.vb</DependentUpon>
     </Compile>
@@ -202,24 +214,6 @@
     <Compile Include="BackUpandRestore.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="backupandrestore3.Designer.vb">
-      <DependentUpon>backupandrestore3.vb</DependentUpon>
-    </Compile>
-    <Compile Include="backupandrestore3.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="BackupandRestore4.Designer.vb">
-      <DependentUpon>BackupandRestore4.vb</DependentUpon>
-    </Compile>
-    <Compile Include="BackupandRestore4.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="BackupRestore.Designer.vb">
-      <DependentUpon>BackupRestore.vb</DependentUpon>
-    </Compile>
-    <Compile Include="BackupRestore.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="bar.Designer.vb">
       <DependentUpon>bar.vb</DependentUpon>
     </Compile>
@@ -229,6 +223,12 @@
     </Compile>
     <Compile Include="bin\Debug\BorrowedNonPrintedReport.vb">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="bin\Debug\BorrowerSlipCR.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BorrowerSlipCR.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="bin\Debug\CrystalReport1.vb">
       <AutoGen>True</AutoGen>
@@ -414,6 +414,24 @@
     <Compile Include="BorrowedNonPrinted.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="BorrowerSlip.Designer.vb">
+      <DependentUpon>BorrowerSlip.vb</DependentUpon>
+    </Compile>
+    <Compile Include="BorrowerSlip.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CategoryManagement.Designer.vb">
+      <DependentUpon>CategoryManagement.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CategoryManagement.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CategoryManagement2.Designer.vb">
+      <DependentUpon>CategoryManagement2.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CategoryManagement2.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="ClassBorrower.Designer.vb">
       <DependentUpon>ClassBorrower.vb</DependentUpon>
     </Compile>
@@ -432,6 +450,18 @@
     <Compile Include="DamagedNonPrinted.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="DDCManagement.Designer.vb">
+      <DependentUpon>DDCManagement.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DDCManagement.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DDCManagement2.Designer.vb">
+      <DependentUpon>DDCManagement2.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DDCManagement2.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="DelinquentBorrower.Designer.vb">
       <DependentUpon>DelinquentBorrower.vb</DependentUpon>
     </Compile>
@@ -448,6 +478,12 @@
       <DependentUpon>FacultyBorrowers.vb</DependentUpon>
     </Compile>
     <Compile Include="FacultyBorrowers.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form2.Designer.vb">
+      <DependentUpon>Form2.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form2.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Help.Designer.vb">
@@ -497,6 +533,12 @@
       <DependentUpon>OverdueNonPrinted.vb</DependentUpon>
     </Compile>
     <Compile Include="OverdueNonPrinted.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Restore.Designer.vb">
+      <DependentUpon>Restore.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Restore.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ReturnBook.Designer.vb">
@@ -570,7 +612,6 @@
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
       <DependentUpon>Application.myapp</DependentUpon>
-      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="My Project\Resources.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -586,6 +627,70 @@
       <DependentUpon>TeacherMainForm.vb</DependentUpon>
     </Compile>
     <Compile Include="TeacherMainForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UM_Borrow.Designer.vb">
+      <DependentUpon>UM_Borrow.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UM_Borrow.vb" />
+    <Compile Include="UM_lost.Designer.vb">
+      <DependentUpon>UM_lost.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UM_lost.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UM_Manage.Designer.vb">
+      <DependentUpon>UM_Manage.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UM_Manage.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UM_Reports.Designer.vb">
+      <DependentUpon>UM_Reports.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UM_Reports.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UM_Return.Designer.vb">
+      <DependentUpon>UM_Return.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UM_Return.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UM_sms.Designer.vb">
+      <DependentUpon>UM_sms.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UM_sms.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UM_UserManagement.Designer.vb">
+      <DependentUpon>UM_UserManagement.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UM_UserManagement.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UnreturnedBooks.Designer.vb">
+      <DependentUpon>UnreturnedBooks.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UnreturnedBooks.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UnreturnedBookss.Designer.vb">
+      <DependentUpon>UnreturnedBookss.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UnreturnedBookss.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UnreturnedMaterials.Designer.vb">
+      <DependentUpon>UnreturnedMaterials.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UnreturnedMaterials.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UnreturnedMaterialss.Designer.vb">
+      <DependentUpon>UnreturnedMaterialss.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UnreturnedMaterialss.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UpdateAdmin.Designer.vb">
@@ -641,6 +746,9 @@
     <EmbeddedResource Include="AddAdmin.resx">
       <DependentUpon>AddAdmin.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AddCategory.resx">
+      <DependentUpon>AddCategory.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AddFaculty.resx">
       <DependentUpon>AddFaculty.vb</DependentUpon>
     </EmbeddedResource>
@@ -653,26 +761,24 @@
     <EmbeddedResource Include="Add_Book.resx">
       <DependentUpon>Add_Book.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Add_DDC.resx">
+      <DependentUpon>Add_DDC.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AdminMainForms.resx">
       <DependentUpon>AdminMainForms.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="BackUpandRestore.resx">
       <DependentUpon>BackUpandRestore.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="backupandrestore3.resx">
-      <DependentUpon>backupandrestore3.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="BackupandRestore4.resx">
-      <DependentUpon>BackupandRestore4.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="BackupRestore.resx">
-      <DependentUpon>BackupRestore.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="bar.resx">
       <DependentUpon>bar.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="bin\Debug\BorrowedNonPrintedReport.resx">
       <DependentUpon>BorrowedNonPrintedReport.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="bin\Debug\BorrowerSlipCR.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>BorrowerSlipCR.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="bin\Debug\CrystalReport1.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -774,6 +880,15 @@
     <EmbeddedResource Include="BorrowedNonPrinted.resx">
       <DependentUpon>BorrowedNonPrinted.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="BorrowerSlip.resx">
+      <DependentUpon>BorrowerSlip.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CategoryManagement.resx">
+      <DependentUpon>CategoryManagement.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CategoryManagement2.resx">
+      <DependentUpon>CategoryManagement2.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ClassBorrower.resx">
       <DependentUpon>ClassBorrower.vb</DependentUpon>
     </EmbeddedResource>
@@ -783,6 +898,12 @@
     <EmbeddedResource Include="DamagedNonPrinted.resx">
       <DependentUpon>DamagedNonPrinted.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DDCManagement.resx">
+      <DependentUpon>DDCManagement.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DDCManagement2.resx">
+      <DependentUpon>DDCManagement2.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DelinquentBorrower.resx">
       <DependentUpon>DelinquentBorrower.vb</DependentUpon>
     </EmbeddedResource>
@@ -791,6 +912,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FacultyBorrowers.resx">
       <DependentUpon>FacultyBorrowers.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form2.resx">
+      <DependentUpon>Form2.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Help.resx">
       <DependentUpon>Help.vb</DependentUpon>
@@ -815,6 +939,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="OverdueNonPrinted.resx">
       <DependentUpon>OverdueNonPrinted.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Restore.resx">
+      <DependentUpon>Restore.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ReturnBook.resx">
       <DependentUpon>ReturnBook.vb</DependentUpon>
@@ -857,6 +984,39 @@
     </EmbeddedResource>
     <EmbeddedResource Include="TeacherMainForm.resx">
       <DependentUpon>TeacherMainForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UM_Borrow.resx">
+      <DependentUpon>UM_Borrow.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UM_lost.resx">
+      <DependentUpon>UM_lost.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UM_Manage.resx">
+      <DependentUpon>UM_Manage.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UM_Reports.resx">
+      <DependentUpon>UM_Reports.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UM_Return.resx">
+      <DependentUpon>UM_Return.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UM_sms.resx">
+      <DependentUpon>UM_sms.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UM_UserManagement.resx">
+      <DependentUpon>UM_UserManagement.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UnreturnedBooks.resx">
+      <DependentUpon>UnreturnedBooks.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UnreturnedBookss.resx">
+      <DependentUpon>UnreturnedBookss.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UnreturnedMaterials.resx">
+      <DependentUpon>UnreturnedMaterials.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UnreturnedMaterialss.resx">
+      <DependentUpon>UnreturnedMaterialss.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UpdateAdmin.resx">
       <DependentUpon>UpdateAdmin.vb</DependentUpon>
@@ -1009,6 +1169,14 @@
     <Content Include="bin\Debug\USB-Barcode-Scanner.dll" />
     <Content Include="bin\Debug\ZstdNet.dll" />
     <Content Include="logo.ico" />
+    <None Include="Resources\hetooooonaaa ahhhhhh12.png" />
+    <None Include="Resources\hetooooonaaa ahhhhhh11.png" />
+    <None Include="Resources\blue.png" />
+    <None Include="Resources\button1.jpg" />
+    <None Include="Resources\button.jpg" />
+    <None Include="Resources\hetooooonaaa ahhhhhh1.png" />
+    <None Include="Resources\lavender-color-solid-background-1920x1080.png" />
+    <None Include="Resources\white-radial-gradient-a5802da1.jpg" />
     <None Include="Resources\UPDATE.png" />
     <None Include="Resources\BORROW.png" />
     <None Include="Resources\button.png" />

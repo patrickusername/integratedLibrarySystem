@@ -1,9 +1,9 @@
 ﻿Imports MySql.Data.MySqlClient
 Imports System.ComponentModel
 Public Class ReturnBook
-    Public conn As New MySqlConnection(connString)
+    Public conn As New MySqlConnection("server=localhost;uid=root;database=db_system")
     Private Sub bind_data()
-        Dim con As New MySqlConnection(connString)
+        Dim con As New MySqlConnection("server=localhost;uid=root;database=db_system")
         con.Open()
         Dim cmd As New MySqlCommand("Select * from tbl_borrowreturnbooks", con)
         Dim da As New MySqlDataAdapter
@@ -14,13 +14,16 @@ Public Class ReturnBook
 
     End Sub
     Private Sub btn_cncl1_Click(sender As Object, e As EventArgs) Handles btn_cncl1.Click
+        ListView1.Items.Clear()
         AdminMainForms.Show()
         Me.Hide()
         rb_nonprinted.Checked = False
         rb_printed.Checked = False
         txt_isbnn1.Clear()
         txt_titlee1.Clear()
-        txt_authorr1.Clear()
+        txt_auth_ln.Clear()
+        txt_auth_fn.Clear()
+        txt_auth_mn.Clear()
         txt_address.Clear()
         txt_copyright.Clear()
         cmb_ddc.SelectedIndex = -1
@@ -37,7 +40,9 @@ Public Class ReturnBook
         txt_reason.Clear()
         txt_isbnn1.ReadOnly = False
         txt_titlee1.ReadOnly = False
-        txt_authorr1.ReadOnly = False
+        txt_auth_ln.ReadOnly = False
+        txt_auth_fn.ReadOnly = False
+        txt_auth_mn.ReadOnly = False
         txt_year.ReadOnly = False
         txt_pubcom.ReadOnly = False
         txt_datetoreturn.ReadOnly = False
@@ -52,39 +57,82 @@ Public Class ReturnBook
     End Sub
 
     Private Sub ReturnBook_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Me.WindowState = FormWindowState.Maximized
 
-        ListView1.Columns.Add("Material", 80, HorizontalAlignment.Left)
-        ListView1.Columns.Add("MaterialNumber", 80, HorizontalAlignment.Left)
-        ListView1.Columns.Add("MaterialName", 80, HorizontalAlignment.Left)
-        ListView1.Columns.Add("BookNumber", 80, HorizontalAlignment.Left)
-        ListView1.Columns.Add("ISBN", 80, HorizontalAlignment.Left)
-        'ListView1.Columns.Add("ClassNumber", 80, HorizontalAlignment.Left)
-        ListView1.Columns.Add("Title", 80, HorizontalAlignment.Left)
-        ListView1.Columns.Add("Author", 80, HorizontalAlignment.Left)
-        ListView1.Columns.Add("YearofPublication", 80, HorizontalAlignment.Left)
-        ListView1.Columns.Add("Publisher", 80, HorizontalAlignment.Left)
-        ListView1.Columns.Add("Address", 80, HorizontalAlignment.Left)
-        ListView1.Columns.Add("Copyright", 80, HorizontalAlignment.Left)
-        ListView1.Columns.Add("Classification", 80, HorizontalAlignment.Left)
-        ListView1.Columns.Add("Category", 80, HorizontalAlignment.Left)
-        ListView1.Columns.Add("DatetoReturn", 80, HorizontalAlignment.Left)
-        ListView1.Columns.Add("DateReturned", 80, HorizontalAlignment.Left)
-        ListView1.Columns.Add("Username", 80, HorizontalAlignment.Left)
-        ListView1.Columns.Add("Name", 80, HorizontalAlignment.Left)
-        ListView1.Columns.Add("MaterialStatus", 80, HorizontalAlignment.Left)
-        ListView1.Columns.Add("Reason", 80, HorizontalAlignment.Left)
+        ListView1.Columns.Add("Material", 80, HorizontalAlignment.Left) '0
+        ListView1.Columns.Add("MaterialNumber", 80, HorizontalAlignment.Left) '1
+        ListView1.Columns.Add("MaterialName", 80, HorizontalAlignment.Left) '2
+        ListView1.Columns.Add("BookNumber", 80, HorizontalAlignment.Left) '3
+        ListView1.Columns.Add("ISBN", 80, HorizontalAlignment.Left) '4 
+        'ListView1.Columns.Add("ClassNumber", 80, HorizontalAlignment.Left) 
+        ListView1.Columns.Add("Title", 80, HorizontalAlignment.Left) '5
+        ListView1.Columns.Add("AuthorLastName", 80, HorizontalAlignment.Left) '6
+        ListView1.Columns.Add("AuthorFirstName", 80, HorizontalAlignment.Left) '7
+        ListView1.Columns.Add("AuthorMiddleName", 80, HorizontalAlignment.Left) '8
+        ListView1.Columns.Add("YearofPublication", 80, HorizontalAlignment.Left) '9
+        ListView1.Columns.Add("Publisher", 80, HorizontalAlignment.Left) '10
+        ListView1.Columns.Add("Address", 80, HorizontalAlignment.Left) '11
+        ListView1.Columns.Add("Copyright", 80, HorizontalAlignment.Left) '12
+        ListView1.Columns.Add("Classification", 80, HorizontalAlignment.Left) '13
+        ListView1.Columns.Add("Category", 80, HorizontalAlignment.Left) '14
+        ListView1.Columns.Add("DatetoReturn", 80, HorizontalAlignment.Left) '15
+        ListView1.Columns.Add("DateReturned", 80, HorizontalAlignment.Left) '16
+        ListView1.Columns.Add("Username", 80, HorizontalAlignment.Left) '17
+        ListView1.Columns.Add("Name", 80, HorizontalAlignment.Left) '18
+        ListView1.Columns.Add("MaterialStatus", 80, HorizontalAlignment.Left) '19
+        ListView1.Columns.Add("Reason", 80, HorizontalAlignment.Left) '20
 
         'DataGridView1.BackgroundColor = System.Drawing.SystemColors.Control
         'bind_data()
         'DataGridView1.Sort(DataGridView1.Columns(0), ListSortDirection.Descending)
         'Me.WindowState = FormWindowState.Maximized
 
-        Dim theDate As Date
-        theDate = Date.Now
-        Dim theDateStr = theDate.ToString("dd-MM-yyyy")
-        txt_dateret.Text = theDateStr
+        'Dim theDate As Date
+        'theDate = Format(Now(), "dd/MM/yyyy hh:mm tt")
+        'txt_dateret.Text = theDate
 
+        txt_dateret.Text = Now().ToString("MM/dd/yyyy - hh:mm tt")
+
+        'conn.Open()
+        'Try
+        '    Dim str As String = "SELECT category FROM tbl_category"
+        '    Dim da As New MySqlDataAdapter(str, conn)
+        '    Dim dt As New DataTable
+        '    da.Fill(dt)
+        '    If dt.Rows.Count > 0 Then
+        '        cmb_categooory1.DataSource = dt
+        '        cmb_categooory1.DisplayMember = "category"
+        '        cmb_categooory1.ValueMember = ""
+        '        'cmb_category.DataSource = dt
+        '        cmb_categooory1.SelectedIndex = -1
+        '        cmb_categooory1.Refresh()
+        '    End If
+        'Catch ex As Exception
+        '    MsgBox(ex.Message)
+        'End Try
+        'conn.Close()
+
+        'conn.Open()
+        'Try
+        '    Dim str1 As String = "SELECT DeweyDecimalClassification FROM tbl_ddc"
+        '    Dim da1 As New MySqlDataAdapter(str1, conn)
+        '    Dim dt1 As New DataTable
+        '    da1.Fill(dt1)
+        '    If dt1.Rows.Count > 0 Then
+        '        cmb_ddc.DataSource = dt1
+        '        cmb_ddc.DisplayMember = "DeweyDecimalClassification"
+        '        cmb_ddc.ValueMember = ""
+        '        'cmb_category.DataSource = dt
+        '        cmb_ddc.SelectedIndex = -1
+        '        cmb_ddc.Refresh()
+        '    End If
+        'Catch ex As Exception
+        '    MsgBox(ex.Message)
+        'End Try
+        'conn.Close()
+
+        If conn.State = ConnectionState.Open Then
+            conn.Close()
+        End If
         conn.Open()
         Try
             Dim str As String = "SELECT category FROM tbl_book GROUP BY category"
@@ -123,10 +171,13 @@ Public Class ReturnBook
         End Try
         conn.Close()
 
+
         'txt_reason.Enabled = True
         txt_isbnn1.ReadOnly = False
         txt_titlee1.ReadOnly = False
-        txt_authorr1.ReadOnly = False
+        txt_auth_ln.ReadOnly = False
+        txt_auth_fn.ReadOnly = False
+        txt_auth_mn.ReadOnly = False
         txt_year.ReadOnly = False
         txt_pubcom.ReadOnly = False
         txt_datetoreturn.ReadOnly = False
@@ -142,7 +193,9 @@ Public Class ReturnBook
     Private Sub btn_clear_Click(sender As Object, e As EventArgs) Handles btn_clear.Click
         txt_isbnn1.Clear()
         txt_titlee1.Clear()
-        txt_authorr1.Clear()
+        txt_auth_ln.Clear()
+        txt_auth_fn.Clear()
+        txt_auth_mn.Clear()
         cmb_ddc.SelectedIndex = -1
         cmb_categooory1.SelectedIndex = -1
         txt_pubcom.Clear()
@@ -166,7 +219,9 @@ Public Class ReturnBook
         rb_nonprinted.Checked = False
         txt_isbnn1.ReadOnly = False
         txt_titlee1.ReadOnly = False
-        txt_authorr1.ReadOnly = False
+        txt_auth_ln.ReadOnly = False
+        txt_auth_fn.ReadOnly = False
+        txt_auth_mn.ReadOnly = False
         txt_year.ReadOnly = False
         txt_pubcom.ReadOnly = False
         txt_datetoreturn.ReadOnly = False
@@ -181,7 +236,9 @@ Public Class ReturnBook
         txt_isbnn1.Enabled = True
         txt_titlee1.Enabled = True
         txt_bookno.Enabled = True
-        txt_authorr1.Enabled = True
+        txt_auth_ln.Enabled = True
+        txt_auth_fn.Enabled = True
+        txt_auth_mn.Enabled = True
         txt_year.Enabled = True
         txt_address.Enabled = True
         txt_copyright.Enabled = True
@@ -191,7 +248,9 @@ Public Class ReturnBook
         txt_reason.Enabled = False
         txt_isbnn1.ReadOnly = False
         txt_titlee1.ReadOnly = False
-        txt_authorr1.ReadOnly = False
+        txt_auth_ln.ReadOnly = False
+        txt_auth_fn.ReadOnly = False
+        txt_auth_mn.ReadOnly = False
         txt_year.ReadOnly = False
         txt_pubcom.ReadOnly = False
         txt_datetoreturn.ReadOnly = False
@@ -243,24 +302,27 @@ Public Class ReturnBook
                     txt_isbnn1.ReadOnly = True
                     txt_titlee1.Text = data(2)
                     txt_titlee1.ReadOnly = True
-                    txt_authorr1.Text = data(3)
-                    txt_authorr1.ReadOnly = True
-                    cmb_ddc.Text = data(4)
-                    cmb_categooory1.Text = data(5)
-                    'cmb_categooory1.DropDownStyle = True
-                    txt_year.Text = data(6)
+                    txt_auth_ln.Text = data(3)
+                    txt_auth_ln.ReadOnly = True
+                    txt_auth_fn.Text = data(4)
+                    txt_auth_fn.ReadOnly = True
+                    txt_auth_mn.Text = data(5)
+                    txt_auth_mn.ReadOnly = True
+                    cmb_ddc.Text = data(6)
+                    cmb_categooory1.Text = data(7)
+                    txt_year.Text = data(8)
                     txt_year.ReadOnly = True
-                    txt_address.Text = data(8)
+                    txt_address.Text = data(10)
                     txt_address.ReadOnly = True
-                    txt_copyright.Text = data(9)
+                    txt_copyright.Text = data(11)
                     txt_copyright.ReadOnly = True
-                    txt_datetoreturn.Text = data(11)
+                    txt_datetoreturn.Text = data(13)
                     txt_datetoreturn.ReadOnly = True
-                    txt_pubcom.Text = data(7)
+                    txt_pubcom.Text = data(9)
                     txt_pubcom.ReadOnly = True
-                    txt_idno.Text = data(12)
+                    txt_idno.Text = data(14)
                     txt_idno.ReadOnly = True
-                    txt_namee.Text = data(13)
+                    txt_namee.Text = data(15)
                     txt_namee.ReadOnly = True
                 End If
             End If
@@ -287,12 +349,15 @@ Public Class ReturnBook
             ElseIf txt_isbnn1.Text = "" Then
                 MsgBox("Please Enter ISBN", MsgBoxStyle.Critical)
                 txt_isbnn1.Focus()
+            ElseIf txt_isbnn1.MaskCompleted = False Then
+                MsgBox("Please Enter ISBN", MsgBoxStyle.Critical)
+                txt_isbnn1.Focus()
             ElseIf txt_titlee1.Text = "" Then
                 MsgBox("Please Enter Title", MsgBoxStyle.Critical)
                 txt_titlee1.Focus()
-            ElseIf txt_authorr1.Text = "" Then
-                MsgBox("Please Enter Author", MsgBoxStyle.Critical)
-                txt_authorr1.Focus()
+                'ElseIf txt_authorr1.Text = "" Then
+                '    MsgBox("Please Enter Author", MsgBoxStyle.Critical)
+                '    txt_authorr1.Focus()
             ElseIf cmb_ddc.Text = "" Then
                 MsgBox("Please Enter Dewey Decimal Classification", MsgBoxStyle.Critical)
                 cmb_ddc.Focus()
@@ -334,7 +399,7 @@ Public Class ReturnBook
                 conn.Open()
 
                 '[VALIDATE BOOK]SELECT BOOK BORROWED FROM TBL_BORROWRETURNBOOKS
-                Dim bo As String = "SELECT booknumber,isbn,title,author,deweydecimalclassification,category,yearofpublication,publisher,address,copyright,datetoreturn,username,name from tbl_borrowreturnbooks where booknumber= '" & txt_bookno.Text & "' AND isbn= '" & txt_isbnn1.Text & "' AND title= '" & txt_titlee1.Text & "' AND author= '" & txt_authorr1.Text & "' AND DeweyDecimalClassification= '" & cmb_ddc.Text & "' AND category= '" & cmb_categooory1.Text & "' AND YearofPublication= '" & txt_year.Text & "' AND publisher= '" & txt_pubcom.Text & "' AND address= '" & txt_address.Text & "' AND copyright= '" & txt_copyright.Text & "' AND datetoreturn= '" & txt_datetoreturn.Text & "' AND username= '" & txt_idno.Text & "' AND name= '" & txt_namee.Text & "'"
+                Dim bo As String = "SELECT booknumber,isbn,title,authorlastname,authorfirstname,authormiddlename,deweydecimalclassification,category,yearofpublication,publisher,address,copyright,datetoreturn,username,name from tbl_borrowreturnbooks where booknumber= '" & txt_bookno.Text & "' AND isbn= '" & txt_isbnn1.Text & "' AND title= '" & txt_titlee1.Text & "' AND authorlastname= '" & txt_auth_ln.Text & "' AND AuthorFirstName='" & txt_auth_fn.Text & "' AND AuthorMiddleName='" & txt_auth_mn.Text & "' And DeweyDecimalClassification = '" & cmb_ddc.Text & "' AND category= '" & cmb_categooory1.Text & "' AND YearofPublication= '" & txt_year.Text & "' AND publisher= '" & txt_pubcom.Text & "' AND address= '" & txt_address.Text & "' AND copyright= '" & txt_copyright.Text & "' AND datetoreturn= '" & txt_datetoreturn.Text & "' AND username= '" & txt_idno.Text & "' AND name= '" & txt_namee.Text & "'"
                 Dim commm As New MySqlCommand(bo, conn)
                 Dim userCounter As Integer = commm.ExecuteScalar
                 Dim da2 As MySqlDataReader = commm.ExecuteReader
@@ -348,12 +413,14 @@ Public Class ReturnBook
                         newitem.SubItems.Add("")
                         newitem.SubItems.Add(txt_bookno.Text)
                         newitem.SubItems.Add(txt_isbnn1.Text)
-                        newitem.SubItems.Add(txt_address.Text)
-                        newitem.SubItems.Add(txt_copyright.Text)
                         newitem.SubItems.Add(txt_titlee1.Text)
-                        newitem.SubItems.Add(txt_authorr1.Text)
+                        newitem.SubItems.Add(txt_auth_ln.Text)
+                        newitem.SubItems.Add(txt_auth_fn.Text)
+                        newitem.SubItems.Add(txt_auth_mn.Text)
                         newitem.SubItems.Add(txt_year.Text)
                         newitem.SubItems.Add(txt_pubcom.Text)
+                        newitem.SubItems.Add(txt_address.Text)
+                        newitem.SubItems.Add(txt_copyright.Text)
                         newitem.SubItems.Add(cmb_ddc.Text)
                         newitem.SubItems.Add(cmb_categooory1.Text)
                         newitem.SubItems.Add(txt_datetoreturn.Text)
@@ -368,7 +435,13 @@ Public Class ReturnBook
                             newitem.SubItems.Add(rb_damaged.Text)
                         End If
                         newitem.SubItems.Add(txt_reason.Text)
-                        ListView1.Items.Add(newitem)
+
+                        newitem.Name = txt_bookno.Text
+                        If ListView1.Items.Item(txt_bookno.Text) Is Nothing Then
+                            ListView1.Items.Add(newitem)
+                        Else
+                            MsgBox("Material exists in the list", MsgBoxStyle.Critical)
+                        End If
 
                         rb_printed.Checked = False
                         rb_nonprinted.Checked = False
@@ -379,7 +452,9 @@ Public Class ReturnBook
                         txt_address.Clear()
                         txt_copyright.Clear()
                         txt_titlee1.Clear()
-                        txt_authorr1.Clear()
+                        txt_auth_ln.Clear()
+                        txt_auth_fn.Clear()
+                        txt_auth_mn.Clear()
                         txt_year.Clear()
                         txt_pubcom.Clear()
                         cmb_ddc.ResetText()
@@ -398,7 +473,9 @@ Public Class ReturnBook
                         txt_isbnn1.Enabled = True
                         txt_titlee1.Enabled = True
                         txt_bookno.Enabled = True
-                        txt_authorr1.Enabled = True
+                        txt_auth_ln.Enabled = True
+                        txt_auth_fn.Enabled = True
+                        txt_auth_mn.Enabled = True
                         txt_year.Enabled = True
                         txt_address.Enabled = True
                         txt_copyright.Enabled = True
@@ -408,7 +485,9 @@ Public Class ReturnBook
                         txt_reason.Enabled = False
                         txt_isbnn1.ReadOnly = False
                         txt_titlee1.ReadOnly = False
-                        txt_authorr1.ReadOnly = False
+                        txt_auth_ln.ReadOnly = False
+                        txt_auth_fn.ReadOnly = False
+                        txt_auth_mn.ReadOnly = False
                         txt_year.ReadOnly = False
                         txt_pubcom.ReadOnly = False
                         txt_datetoreturn.ReadOnly = False
@@ -430,7 +509,9 @@ Public Class ReturnBook
             txt_isbnn1.Enabled = True
             txt_titlee1.Enabled = True
             txt_bookno.Enabled = True
-            txt_authorr1.Enabled = True
+            txt_auth_ln.Enabled = True
+            txt_auth_fn.Enabled = True
+            txt_auth_mn.Enabled = True
             txt_year.Enabled = True
             txt_address.Enabled = True
             txt_copyright.Enabled = True
@@ -440,7 +521,9 @@ Public Class ReturnBook
             txt_reason.Enabled = False
             txt_isbnn1.ReadOnly = False
             txt_titlee1.ReadOnly = False
-            txt_authorr1.ReadOnly = False
+            txt_auth_ln.ReadOnly = False
+            txt_auth_fn.ReadOnly = False
+            txt_auth_mn.ReadOnly = False
             txt_year.ReadOnly = False
             txt_pubcom.ReadOnly = False
             txt_datetoreturn.ReadOnly = False
@@ -500,6 +583,7 @@ Public Class ReturnBook
                         newitem.SubItems.Add("")
                         newitem.SubItems.Add("")
                         newitem.SubItems.Add("")
+                        newitem.SubItems.Add("")
                         newitem.SubItems.Add(txt_datetoreturn.Text)
                         newitem.SubItems.Add(txt_dateret.Text)
                         newitem.SubItems.Add(txt_idno.Text)
@@ -512,7 +596,13 @@ Public Class ReturnBook
                             newitem.SubItems.Add(rb_damaged.Text)
                         End If
                         newitem.SubItems.Add(txt_reason.Text)
-                        ListView1.Items.Add(newitem)
+
+                        newitem.Name = txt_matno.Text
+                        If ListView1.Items.Item(txt_matno.Text) Is Nothing Then
+                            ListView1.Items.Add(newitem)
+                        Else
+                            MsgBox("Material exists in the list", MsgBoxStyle.Critical)
+                        End If
 
                         rb_printed.Checked = False
                         rb_nonprinted.Checked = False
@@ -523,7 +613,9 @@ Public Class ReturnBook
                         txt_address.Clear()
                         txt_copyright.Clear()
                         txt_titlee1.Clear()
-                        txt_authorr1.Clear()
+                        txt_auth_ln.Clear()
+                        txt_auth_fn.Clear()
+                        txt_auth_mn.Clear()
                         txt_year.Clear()
                         txt_pubcom.Clear()
                         cmb_ddc.ResetText()
@@ -544,7 +636,9 @@ Public Class ReturnBook
                         txt_isbnn1.Enabled = True
                         txt_titlee1.Enabled = True
                         txt_bookno.Enabled = True
-                        txt_authorr1.Enabled = True
+                        txt_auth_ln.Enabled = True
+                        txt_auth_fn.Enabled = True
+                        txt_auth_mn.Enabled = True
                         txt_year.Enabled = True
                         txt_address.Enabled = True
                         txt_copyright.Enabled = True
@@ -554,7 +648,9 @@ Public Class ReturnBook
                         txt_reason.Enabled = False
                         txt_isbnn1.ReadOnly = False
                         txt_titlee1.ReadOnly = False
-                        txt_authorr1.ReadOnly = False
+                        txt_auth_ln.ReadOnly = False
+                        txt_auth_fn.ReadOnly = False
+                        txt_auth_mn.ReadOnly = False
                         txt_year.ReadOnly = False
                         txt_pubcom.ReadOnly = False
                         txt_datetoreturn.ReadOnly = False
@@ -577,7 +673,9 @@ Public Class ReturnBook
         txt_isbnn1.Enabled = True
         txt_titlee1.Enabled = True
         txt_bookno.Enabled = True
-        txt_authorr1.Enabled = True
+        txt_auth_ln.Enabled = True
+        txt_auth_fn.Enabled = True
+        txt_auth_mn.Enabled = True
         txt_year.Enabled = True
         txt_address.Enabled = True
         txt_copyright.Enabled = True
@@ -587,7 +685,9 @@ Public Class ReturnBook
         txt_reason.Enabled = False
         txt_isbnn1.ReadOnly = False
         txt_titlee1.ReadOnly = False
-        txt_authorr1.ReadOnly = False
+        txt_auth_ln.ReadOnly = False
+        txt_auth_fn.ReadOnly = False
+        txt_auth_mn.ReadOnly = False
         txt_year.ReadOnly = False
         txt_pubcom.ReadOnly = False
         txt_datetoreturn.ReadOnly = False
@@ -599,16 +699,23 @@ Public Class ReturnBook
         txt_bookno.ReadOnly = False
         txt_address.ReadOnly = False
         txt_copyright.ReadOnly = False
+
     End Sub
 
     Private Sub rb_printed_CheckedChanged(sender As Object, e As EventArgs) Handles rb_printed.CheckedChanged
         txt_bookno.Focus()
+        txt_matno.Clear()
+        txt_matname.Clear()
+        txt_datetoreturn.Clear()
+        txt_reason.Clear()
         txt_bookno.Enabled = True
         txt_isbnn1.Enabled = True
         txt_address.Enabled = True
         txt_copyright.Enabled = True
         txt_titlee1.Enabled = True
-        txt_authorr1.Enabled = True
+        txt_auth_ln.Enabled = True
+        txt_auth_fn.Enabled = True
+        txt_auth_mn.Enabled = True
         txt_year.Enabled = True
         txt_pubcom.Enabled = True
         cmb_ddc.Enabled = True
@@ -619,12 +726,32 @@ Public Class ReturnBook
 
     Private Sub rb_nonprinted_CheckedChanged(sender As Object, e As EventArgs) Handles rb_nonprinted.CheckedChanged
         txt_matno.Focus()
+        txt_bookno.Clear()
+        txt_isbnn1.Clear()
+        txt_titlee1.Clear()
+        txt_auth_ln.Clear()
+        txt_auth_fn.Clear()
+        txt_auth_mn.Clear()
+        cmb_ddc.SelectedIndex = -1
+        cmb_categooory1.SelectedIndex = -1
+        txt_year.Clear()
+        txt_pubcom.Clear()
+        txt_address.Clear()
+        txt_copyright.Clear()
+        txt_datetoreturn.Clear()
+        txt_reason.Clear()
+        txt_idno.Clear()
+        txt_namee.Clear()
+
+
         txt_bookno.Enabled = False
         txt_isbnn1.Enabled = False
         txt_address.Enabled = False
         txt_copyright.Enabled = False
         txt_titlee1.Enabled = False
-        txt_authorr1.Enabled = False
+        txt_auth_ln.Enabled = False
+        txt_auth_fn.Enabled = False
+        txt_auth_mn.Enabled = False
         txt_year.Enabled = False
         txt_pubcom.Enabled = False
         cmb_ddc.Enabled = False
@@ -634,161 +761,171 @@ Public Class ReturnBook
     End Sub
 
     Private Sub btn_save_Click(sender As Object, e As EventArgs) Handles btn_save.Click
+        If ListView1.Items.Count = 0 Then
+            MsgBox("Return list is empty", MsgBoxStyle.Information)
 
-        If MsgBox("Are you sure you want to borrow these materials?", MsgBoxStyle.OkCancel) = MsgBoxResult.Ok Then
+        Else
+            If MsgBox("Are you sure you want to borrow these materials?", MsgBoxStyle.OkCancel) = MsgBoxResult.Ok Then
 
-            For Each lvitem As ListViewItem In ListView1.Items
+                For Each lvitem As ListViewItem In ListView1.Items
 
-                If lvitem.SubItems(0).Text = "Printed" Then 'save to tbl_returnedbooks
-                    Dim conn As New MySqlConnection(connString)
-                    Dim cmmds As New MySqlCommand("Insert Into tbl_returnedbooks (BookNumber,ISBN,Title,Author,DeweyDecimalClassification,Category,YearofPublication,Publisher,Address,Copyright,DateReturned,Username,Name) VALUES (@BookNumber,@ISBN,@Title,@Author,@Classification,@Category,@YearofPublication,@Publisher,@Address,@Copyright,@DateReturned,@Username,@Name)", conn)
-                    cmmds.Parameters.AddWithValue("@BookNumber", lvitem.SubItems(3).Text)
-                    cmmds.Parameters.AddWithValue("@ISBN", lvitem.SubItems(4).Text)
-                    cmmds.Parameters.AddWithValue("@Title", lvitem.SubItems(5).Text)
-                    cmmds.Parameters.AddWithValue("@Author", lvitem.SubItems(6).Text)
-                    cmmds.Parameters.AddWithValue("@Classification", lvitem.SubItems(11).Text)
-                    cmmds.Parameters.AddWithValue("@Category", lvitem.SubItems(12).Text)
-                    cmmds.Parameters.AddWithValue("@YearofPublication", lvitem.SubItems(7).Text)
-                    cmmds.Parameters.AddWithValue("@Publisher", lvitem.SubItems(8).Text)
-                    cmmds.Parameters.AddWithValue("@Address", lvitem.SubItems(9).Text)
-                    cmmds.Parameters.AddWithValue("@Copyright", lvitem.SubItems(10).Text)
-                    cmmds.Parameters.AddWithValue("@DateReturned", lvitem.SubItems(14).Text)
-                    cmmds.Parameters.AddWithValue("@Username", lvitem.SubItems(15).Text)
-                    cmmds.Parameters.AddWithValue("@Name", lvitem.SubItems(16).Text)
-                    conn.Open()
-                    cmmds.ExecuteNonQuery()
-                    conn.Close()
+                    If lvitem.SubItems(0).Text = "Printed" Then 'save to tbl_returnedbooks
+                        Dim conn As New MySqlConnection("server=localhost; uid=root;database=db_system")
+                        Dim cmmds As New MySqlCommand("Insert Into tbl_returnedbooks (BookNumber,ISBN,Title,AuthorLastName,AuthorFirstName,AuthorMiddleName,DeweyDecimalClassification,Category,YearofPublication,Publisher,Address,Copyright,DateReturned,Username,Name) VALUES (@BookNumber,@ISBN,@Title,@AuthorLastName,@AuthorFirstName,@AuthorMiddleName,@Classification,@Category,@YearofPublication,@Publisher,@Address,@Copyright,@DateReturned,@Username,@Name)", conn)
+                        cmmds.Parameters.AddWithValue("@BookNumber", lvitem.SubItems(3).Text)
+                        cmmds.Parameters.AddWithValue("@ISBN", lvitem.SubItems(4).Text)
+                        cmmds.Parameters.AddWithValue("@Title", lvitem.SubItems(5).Text)
+                        cmmds.Parameters.AddWithValue("@AuthorLastName", lvitem.SubItems(6).Text)
+                        cmmds.Parameters.AddWithValue("@AuthorFirstName", lvitem.SubItems(7).Text)
+                        cmmds.Parameters.AddWithValue("@AuthorMiddleName", lvitem.SubItems(8).Text)
+                        cmmds.Parameters.AddWithValue("@Classification", lvitem.SubItems(13).Text)
+                        cmmds.Parameters.AddWithValue("@Category", lvitem.SubItems(14).Text)
+                        cmmds.Parameters.AddWithValue("@YearofPublication", lvitem.SubItems(9).Text)
+                        cmmds.Parameters.AddWithValue("@Publisher", lvitem.SubItems(10).Text)
+                        cmmds.Parameters.AddWithValue("@Address", lvitem.SubItems(11).Text)
+                        cmmds.Parameters.AddWithValue("@Copyright", lvitem.SubItems(12).Text)
+                        cmmds.Parameters.AddWithValue("@DateReturned", lvitem.SubItems(16).Text)
+                        cmmds.Parameters.AddWithValue("@Username", lvitem.SubItems(17).Text)
+                        cmmds.Parameters.AddWithValue("@Name", lvitem.SubItems(18).Text)
+                        conn.Open()
+                        cmmds.ExecuteNonQuery()
+                        conn.Close()
 
-                    If lvitem.SubItems(16).Text = "Damaged" Then 'save to tbl_damagedbooks
-                        Dim conn2 As New MySqlConnection(connString)
-                        Dim cmmds2 As New MySqlCommand("Insert Into tbl_damagedbooks (BookNumber,ISBN,Title,Author,DeweyDecimalClassification,Category,YearofPublication,Publisher,Address,Copyright,Name,DateReturned) VALUES (@BookNumber,@ISBN,@Title,@Author,@Classification,@Category,@YearofPublication,@Publisher,@Address,@Copyright,@Name,@DateReturned)", conn2)
-                        cmmds2.Parameters.AddWithValue("@BookNumber", lvitem.SubItems(3).Text)
-                        cmmds2.Parameters.AddWithValue("@ISBN", lvitem.SubItems(4).Text)
-                        cmmds2.Parameters.AddWithValue("@Title", lvitem.SubItems(5).Text)
-                        cmmds2.Parameters.AddWithValue("@Author", lvitem.SubItems(6).Text)
-                        cmmds2.Parameters.AddWithValue("@Classification", lvitem.SubItems(11).Text)
-                        cmmds.Parameters.AddWithValue("@Category", lvitem.SubItems(12).Text)
-                        cmmds2.Parameters.AddWithValue("@YearofPublication", lvitem.SubItems(7).Text)
-                        cmmds2.Parameters.AddWithValue("@Publisher", lvitem.SubItems(8).Text)
-                        cmmds2.Parameters.AddWithValue("@Address", lvitem.SubItems(9).Text)
-                        cmmds2.Parameters.AddWithValue("@Copyright", lvitem.SubItems(10).Text)
-                        cmmds2.Parameters.AddWithValue("@Name", lvitem.SubItems(16).Text)
-                        cmmds2.Parameters.AddWithValue("@DateReturned", lvitem.SubItems(14).Text)
-                        conn2.Open()
-                        cmmds2.ExecuteNonQuery()
-                        conn2.Close()
+                        If lvitem.SubItems(17).Text = "Damaged" Then 'save to tbl_damagedbooks
+                            Dim conn2 As New MySqlConnection("server=localhost; uid=root;database=db_system")
+                            Dim cmmds2 As New MySqlCommand("Insert Into tbl_damagedbooks (BookNumber,ISBN,Title,AuthorLastName,AuthorFirstName,AuthorMiddleName,DeweyDecimalClassification,Category,YearofPublication,Publisher,Address,Copyright,Name,DateReturned) VALUES (@BookNumber,@ISBN,@Title,@AuthorLastName,@AuthorFirstName,@AuthorMiddleName,@Classification,@Category,@YearofPublication,@Publisher,@Address,@Copyright,@Name,@DateReturned)", conn2)
+                            cmmds2.Parameters.AddWithValue("@BookNumber", lvitem.SubItems(3).Text)
+                            cmmds2.Parameters.AddWithValue("@ISBN", lvitem.SubItems(4).Text)
+                            cmmds2.Parameters.AddWithValue("@Title", lvitem.SubItems(5).Text)
+                            cmmds2.Parameters.AddWithValue("@AuthorLastName", lvitem.SubItems(6).Text)
+                            cmmds2.Parameters.AddWithValue("@AuthorFirstName", lvitem.SubItems(7).Text)
+                            cmmds2.Parameters.AddWithValue("@AuthorMiddleName", lvitem.SubItems(8).Text)
+                            cmmds2.Parameters.AddWithValue("@Classification", lvitem.SubItems(13).Text)
+                            cmmds2.Parameters.AddWithValue("@Category", lvitem.SubItems(14).Text)
+                            cmmds2.Parameters.AddWithValue("@YearofPublication", lvitem.SubItems(9).Text)
+                            cmmds2.Parameters.AddWithValue("@Publisher", lvitem.SubItems(10).Text)
+                            cmmds2.Parameters.AddWithValue("@Address", lvitem.SubItems(11).Text)
+                            cmmds2.Parameters.AddWithValue("@Copyright", lvitem.SubItems(12).Text)
+                            cmmds2.Parameters.AddWithValue("@Name", lvitem.SubItems(18).Text)
+                            cmmds2.Parameters.AddWithValue("@DateReturned", lvitem.SubItems(16).Text)
+                            conn2.Open()
+                            cmmds2.ExecuteNonQuery()
+                            conn2.Close()
+                        End If
+
+                        If lvitem.SubItems(13).Text < lvitem.SubItems(14).Text = True Then
+                            Dim conn4 As New MySqlConnection("server=localhost; uid=root;database=db_system")
+                            Dim cmmds4 As New MySqlCommand("Insert Into tbl_overduebooks (BookNumber,ISBN,Title,AuthorLastName,AuthorFirstName,AuthorMiddleName,DeweyDecimalClassification,Category,YearofPublication,DatetoReturn,DateReturned) VALUES (@BookNumber,@ISBN,@Title,@AuthorLastName,AuthorFirstName,AuthorMiddleName,@Classification,@Category,@YearofPublication,@DatetoReturn,@DateReturned)", conn4)
+                            cmmds4.Parameters.AddWithValue("@BookNumber", lvitem.SubItems(3).Text)
+                            cmmds4.Parameters.AddWithValue("@ISBN", lvitem.SubItems(4).Text)
+                            cmmds4.Parameters.AddWithValue("@Title", lvitem.SubItems(5).Text)
+                            cmmds4.Parameters.AddWithValue("@AuthorLastName", lvitem.SubItems(6).Text)
+                            cmmds4.Parameters.AddWithValue("@AuthorFirstName", lvitem.SubItems(7).Text)
+                            cmmds4.Parameters.AddWithValue("@AuthorMiddleName", lvitem.SubItems(8).Text)
+                            cmmds4.Parameters.AddWithValue("@Classification", lvitem.SubItems(13).Text)
+                            cmmds4.Parameters.AddWithValue("@Category", lvitem.SubItems(14).Text)
+                            cmmds4.Parameters.AddWithValue("@YearofPublication", lvitem.SubItems(9).Text)
+                            cmmds4.Parameters.AddWithValue("@DatetoReturn", lvitem.SubItems(15).Text)
+                            cmmds4.Parameters.AddWithValue("@DateReturned", lvitem.SubItems(16).Text)
+                            conn4.Open()
+                            cmmds4.ExecuteNonQuery()
+                            conn4.Close()
+
+                            Dim conn5 As New MySqlConnection("server=localhost; uid=root;database=db_system")
+                            Dim cmmds5 As New MySqlCommand("Insert Into tbl_delinquentborrowers (ItemNumber,Username,Name,DatetoReturn,DateReturned,Reason) VALUES (@ItemNumber,@Username,@Name,@DatetoReturn,@DateReturned,@Reason)", conn5)
+                            cmmds5.Parameters.AddWithValue("@ItemNumber", lvitem.SubItems(3).Text)
+                            cmmds5.Parameters.AddWithValue("@Username", lvitem.SubItems(17).Text)
+                            cmmds5.Parameters.AddWithValue("@Name", lvitem.SubItems(18).Text)
+                            cmmds5.Parameters.AddWithValue("@DatetoReturn", lvitem.SubItems(15).Text)
+                            cmmds5.Parameters.AddWithValue("@DateReturned", lvitem.SubItems(16).Text)
+                            cmmds5.Parameters.AddWithValue("@Reason", lvitem.SubItems(20).Text)
+                            conn5.Open()
+                            cmmds5.ExecuteNonQuery()
+                            conn5.Close()
+                        End If
+
+                        Dim conn8 As New MySqlConnection("server=localhost; uid=root;database=db_system")
+                        Dim cmmds8 As New MySqlCommand("Update tbl_book set status = 'Available' where BookNumber= '" & lvitem.SubItems(3).Text & "' ", conn8)
+                        conn8.Open()
+                        cmmds8.ExecuteNonQuery()
+                        conn8.Close()
+
+                        Dim conn9 As New MySqlConnection("server=localhost; uid=root;database=db_system")
+                        Dim cmmds9 As New MySqlCommand("delete from tbl_borrowreturnbooks where BookNumber= '" & lvitem.SubItems(3).Text & "' ", conn9)
+                        conn9.Open()
+                        cmmds9.ExecuteNonQuery()
+                        conn9.Close()
+
+                    ElseIf lvitem.SubItems(0).Text = "Non-Printed" Then 'save to tbl_returnednonprinted
+                        Dim conn1 As New MySqlConnection("server=localhost; uid=root;database=db_system")
+                        Dim cmmds1 As New MySqlCommand("Insert Into tbl_returnednonprinted (MaterialNumber,MaterialName,DateReturned,Username,Name) VALUES (@MaterialNumber,@MaterialName,@DateReturned,@Username,@Name)", conn1)
+                        cmmds1.Parameters.AddWithValue("@MaterialNumber", lvitem.SubItems(1).Text)
+                        cmmds1.Parameters.AddWithValue("@MaterialName", lvitem.SubItems(2).Text)
+                        cmmds1.Parameters.AddWithValue("@DateReturned", lvitem.SubItems(16).Text)
+                        cmmds1.Parameters.AddWithValue("@Username", lvitem.SubItems(17).Text)
+                        cmmds1.Parameters.AddWithValue("@Name", lvitem.SubItems(18).Text)
+                        conn1.Open()
+                        cmmds1.ExecuteNonQuery()
+                        conn1.Close()
+
+                        If lvitem.SubItems(17).Text = "Damaged" Then 'save to tbl_damagednonprinted
+                            Dim conn3 As New MySqlConnection("server=localhost; uid=root;database=db_system")
+                            Dim cmmds3 As New MySqlCommand("Insert Into tbl_damagednonprinted (MaterialNumber,MaterialName,Name,DateReturned) VALUES (@MaterialNumber,@MaterialName,@Name,@DateReturned)", conn3)
+                            cmmds3.Parameters.AddWithValue("@MaterialNumber", lvitem.SubItems(1).Text)
+                            cmmds3.Parameters.AddWithValue("@MaterialName", lvitem.SubItems(2).Text)
+                            cmmds3.Parameters.AddWithValue("@Name", lvitem.SubItems(18).Text)
+                            cmmds3.Parameters.AddWithValue("@DateReturned", lvitem.SubItems(16).Text)
+                            conn3.Open()
+                            cmmds3.ExecuteNonQuery()
+                            conn3.Close()
+                        End If
+
+                        If lvitem.SubItems(13).Text < lvitem.SubItems(14).Text = True Then
+                            Dim conn6 As New MySqlConnection("server=localhost; uid=root;database=db_system")
+                            Dim cmmds6 As New MySqlCommand("Insert Into tbl_overduenonprinted (MaterialNumber,MaterialName,DatetoReturn,DateReturned) VALUES (@MaterialNumber,@MaterialName,@DatetoReturn,@DateReturned)", conn6)
+                            cmmds6.Parameters.AddWithValue("@MaterialNumber", lvitem.SubItems(1).Text)
+                            cmmds6.Parameters.AddWithValue("@MaterialName", lvitem.SubItems(2).Text)
+                            cmmds6.Parameters.AddWithValue("@DatetoReturn", lvitem.SubItems(15).Text)
+                            cmmds6.Parameters.AddWithValue("@DateReturned", lvitem.SubItems(16).Text)
+                            conn6.Open()
+                            cmmds6.ExecuteNonQuery()
+                            conn6.Close()
+
+
+
+                            Dim conn7 As New MySqlConnection("server=localhost; uid=root;database=db_system")
+                            Dim cmmds7 As New MySqlCommand("Insert Into tbl_delinquentborrowers (ItemNumber,Username,Name,DatetoReturn,DateReturned,Reason) VALUES (@MaterialNumber,@Username,@Name,@DatetoReturn,@DateReturned,@Reason)", conn7)
+                            cmmds7.Parameters.AddWithValue("@MaterialNumber", lvitem.SubItems(1).Text)
+                            cmmds7.Parameters.AddWithValue("@Username", lvitem.SubItems(17).Text)
+                            cmmds7.Parameters.AddWithValue("@Name", lvitem.SubItems(18).Text)
+                            cmmds7.Parameters.AddWithValue("@DatetoReturn", lvitem.SubItems(15).Text)
+                            cmmds7.Parameters.AddWithValue("@DateReturned", lvitem.SubItems(16).Text)
+                            cmmds7.Parameters.AddWithValue("@Reason", lvitem.SubItems(20).Text)
+                            conn7.Open()
+                            cmmds7.ExecuteNonQuery()
+                            conn7.Close()
+                        End If
+
+                        Dim conn10 As New MySqlConnection("server=localhost; uid=root;database=db_system")
+                        Dim cmmds10 As New MySqlCommand("Update tbl_nonprinted set status = 'Available' where MaterialNumber= '" & lvitem.SubItems(1).Text & "' ", conn10)
+                        conn10.Open()
+                        cmmds10.ExecuteNonQuery()
+                        conn10.Close()
+
+                        Dim conn11 As New MySqlConnection("server=localhost; uid=root;database=db_system")
+                        Dim cmmds11 As New MySqlCommand("delete from tbl_borrowreturnnonprinted where MaterialNumber= '" & lvitem.SubItems(1).Text & "' ", conn11)
+                        conn11.Open()
+                        cmmds11.ExecuteNonQuery()
+                        conn11.Close()
+
                     End If
-
-                    If lvitem.SubItems(12).Text < lvitem.SubItems(13).Text Then
-                        Dim conn4 As New MySqlConnection(connString)
-                        Dim cmmds4 As New MySqlCommand("Insert Into tbl_overduebooks (BookNumber,ISBN,Title,Author,DeweyDecimalClassification,Category,YearofPublication,DatetoReturn,DateReturned) VALUES (@BookNumber,@ISBN,@Title,@Author,@Classification,@Category,@YearofPublication,@DatetoReturn,@DateReturned)", conn4)
-                        cmmds4.Parameters.AddWithValue("@BookNumber", lvitem.SubItems(3).Text)
-                        cmmds4.Parameters.AddWithValue("@ISBN", lvitem.SubItems(4).Text)
-                        cmmds4.Parameters.AddWithValue("@Title", lvitem.SubItems(6).Text)
-                        cmmds4.Parameters.AddWithValue("@Author", lvitem.SubItems(7).Text)
-                        cmmds4.Parameters.AddWithValue("@Classification", lvitem.SubItems(10).Text)
-                        cmmds4.Parameters.AddWithValue("@YearofPublication", lvitem.SubItems(8).Text)
-                        cmmds4.Parameters.AddWithValue("@DatetoReturn", lvitem.SubItems(12).Text)
-                        cmmds4.Parameters.AddWithValue("@DateReturned", lvitem.SubItems(13).Text)
-                        conn4.Open()
-                        cmmds4.ExecuteNonQuery()
-                        conn4.Close()
-
-                        Dim conn5 As New MySqlConnection(connString)
-                        Dim cmmds5 As New MySqlCommand("Insert Into tbl_delinquentborrowers (ItemNumber,Username,Name,DatetoReturn,DateReturned,Reason) VALUES (@ItemNumber,@Username,@Name,@DatetoReturn,@DateReturned,@Reason)", conn5)
-                        cmmds5.Parameters.AddWithValue("@ItemNumber", lvitem.SubItems(3).Text)
-                        cmmds5.Parameters.AddWithValue("@Username", lvitem.SubItems(14).Text)
-                        cmmds5.Parameters.AddWithValue("@Name", lvitem.SubItems(15).Text)
-                        cmmds5.Parameters.AddWithValue("@DatetoReturn", lvitem.SubItems(12).Text)
-                        cmmds5.Parameters.AddWithValue("@DateReturned", lvitem.SubItems(13).Text)
-                        cmmds5.Parameters.AddWithValue("@Reason", lvitem.SubItems(17).Text)
-                        conn5.Open()
-                        cmmds5.ExecuteNonQuery()
-                        conn5.Close()
-                    End If
-
-                    Dim conn8 As New MySqlConnection(connString)
-                    Dim cmmds8 As New MySqlCommand("Update tbl_book set status = 'Available' where BookNumber= '" & lvitem.SubItems(3).Text & "' ", conn8)
-                    conn8.Open()
-                    cmmds8.ExecuteNonQuery()
-                    conn8.Close()
-
-                    Dim conn9 As New MySqlConnection(connString)
-                    Dim cmmds9 As New MySqlCommand("delete from tbl_borrowreturnbooks where BookNumber= '" & lvitem.SubItems(3).Text & "' ", conn9)
-                    conn9.Open()
-                    cmmds9.ExecuteNonQuery()
-                    conn9.Close()
-
-                ElseIf lvitem.SubItems(0).Text = "Non-Printed" Then 'save to tbl_returnednonprinted
-                    Dim conn1 As New MySqlConnection(connString)
-                    Dim cmmds1 As New MySqlCommand("Insert Into tbl_returnednonprinted (MaterialNumber,MaterialName,DateReturned,Username,Name) VALUES (@MaterialNumber,@MaterialName,@DateReturned,@Username,@Name)", conn1)
-                    cmmds1.Parameters.AddWithValue("@MaterialNumber", lvitem.SubItems(1).Text)
-                    cmmds1.Parameters.AddWithValue("@MaterialName", lvitem.SubItems(2).Text)
-                    cmmds1.Parameters.AddWithValue("@DateReturned", lvitem.SubItems(13).Text)
-                    cmmds1.Parameters.AddWithValue("@Username", lvitem.SubItems(14).Text)
-                    cmmds1.Parameters.AddWithValue("@Name", lvitem.SubItems(15).Text)
-                    conn1.Open()
-                    cmmds1.ExecuteNonQuery()
-                    conn1.Close()
-
-                    If lvitem.SubItems(16).Text = "Damaged" Then 'save to tbl_damagednonprinted
-                        Dim conn3 As New MySqlConnection(connString)
-                        Dim cmmds3 As New MySqlCommand("Insert Into tbl_damagednonprinted (MaterialNumber,MaterialName,Name,DateReturned) VALUES (@MaterialNumber,@MaterialName,@Name,@DateReturned)", conn3)
-                        cmmds3.Parameters.AddWithValue("@MaterialNumber", lvitem.SubItems(1).Text)
-                        cmmds3.Parameters.AddWithValue("@MaterialName", lvitem.SubItems(2).Text)
-                        cmmds3.Parameters.AddWithValue("@Name", lvitem.SubItems(15).Text)
-                        cmmds3.Parameters.AddWithValue("@DateReturned", lvitem.SubItems(13).Text)
-                        conn3.Open()
-                        cmmds3.ExecuteNonQuery()
-                        conn3.Close()
-                    End If
-
-                    If lvitem.SubItems(12).Text < lvitem.SubItems(13).Text Then
-                        Dim conn6 As New MySqlConnection(connString)
-                        Dim cmmds6 As New MySqlCommand("Insert Into tbl_overduenonprinted (MaterialNumber,MaterialName,DatetoReturn,DateReturned) VALUES (@MaterialNumber,@MaterialName,@DatetoReturn,@DateReturned)", conn6)
-                        cmmds6.Parameters.AddWithValue("@MaterialNumber", lvitem.SubItems(1).Text)
-                        cmmds6.Parameters.AddWithValue("@MaterialName", lvitem.SubItems(2).Text)
-                        cmmds6.Parameters.AddWithValue("@DatetoReturn", lvitem.SubItems(12).Text)
-                        cmmds6.Parameters.AddWithValue("@DateReturned", lvitem.SubItems(13).Text)
-                        conn6.Open()
-                        cmmds6.ExecuteNonQuery()
-                        conn6.Close()
-
-
-
-                        Dim conn7 As New MySqlConnection(connString)
-                        Dim cmmds7 As New MySqlCommand("Insert Into tbl_delinquentborrowers (ItemNumber,Username,Name,DatetoReturn,DateReturned,Reason) VALUES (@MaterialNumber,@Username,@Name,@DatetoReturn,@DateReturned,@Reason)", conn7)
-                        cmmds7.Parameters.AddWithValue("@MaterialNumber", lvitem.SubItems(1).Text)
-                        cmmds7.Parameters.AddWithValue("@Username", lvitem.SubItems(14).Text)
-                        cmmds7.Parameters.AddWithValue("@Name", lvitem.SubItems(15).Text)
-                        cmmds7.Parameters.AddWithValue("@DatetoReturn", lvitem.SubItems(12).Text)
-                        cmmds7.Parameters.AddWithValue("@DateReturned", lvitem.SubItems(13).Text)
-                        cmmds7.Parameters.AddWithValue("@Reason", lvitem.SubItems(17).Text)
-                        conn7.Open()
-                        cmmds7.ExecuteNonQuery()
-                        conn7.Close()
-                    End If
-
-                    Dim conn10 As New MySqlConnection(connString)
-                    Dim cmmds10 As New MySqlCommand("Update tbl_nonprinted set status = 'Available' where MaterialNumber= '" & lvitem.SubItems(1).Text & "' ", conn10)
-                    conn10.Open()
-                    cmmds10.ExecuteNonQuery()
-                    conn10.Close()
-
-                    Dim conn11 As New MySqlConnection(connString)
-                    Dim cmmds11 As New MySqlCommand("delete from tbl_borrowreturnnonprinted where MaterialNumber= '" & lvitem.SubItems(1).Text & "' ", conn11)
-                    conn11.Open()
-                    cmmds11.ExecuteNonQuery()
-                    conn11.Close()
-
-                End If
-            Next
-            MsgBox("Returned successfully", MsgBoxStyle.Information)
-            ListView1.Items.Clear()
-            AdminMainForms.Show()
-            Me.Hide()
+                Next
+                MsgBox("Returned successfully", MsgBoxStyle.Information)
+                ListView1.Items.Clear()
+                AdminMainForms.Show()
+                Me.Hide()
+            End If
         End If
-
     End Sub
 
     Private Sub txt_datetoreturn_TextChanged(sender As Object, e As EventArgs) Handles txt_datetoreturn.TextChanged
@@ -837,7 +974,7 @@ Public Class ReturnBook
         End If
     End Sub
 
-    Private Sub txt_authorr1_Click(sender As Object, e As EventArgs) Handles txt_authorr1.Click
+    Private Sub txt_authorr1_Click(sender As Object, e As EventArgs)
         If rb_printed.Checked = False And rb_nonprinted.Checked = False Then
             MsgBox("Please Select Material", MsgBoxStyle.Critical)
         End If
@@ -903,6 +1040,35 @@ Public Class ReturnBook
     End Sub
 
     Private Sub txt_copyright_Click(sender As Object, e As EventArgs) Handles txt_copyright.Click
+        If rb_printed.Checked = False And rb_nonprinted.Checked = False Then
+            MsgBox("Please Select Material", MsgBoxStyle.Critical)
+        End If
+    End Sub
+
+    Private Sub txt_copyright_TextChanged(sender As Object, e As EventArgs) Handles txt_copyright.TextChanged
+        Dim currentYear As String = System.DateTime.Now.Year
+        If txt_copyright.Text > currentYear Then
+            MsgBox("Invalid Year", MsgBoxStyle.Information)
+            txt_copyright.Clear()
+            txt_copyright.Focus()
+        End If
+    End Sub
+    Private Sub txt_auth_ln_Click(sender As Object, e As EventArgs) Handles txt_auth_ln.Click
+        If rb_printed.Checked = False And rb_nonprinted.Checked = False Then
+            MsgBox("Please Select Material", MsgBoxStyle.Critical)
+        End If
+    End Sub
+    Private Sub txt_auth_fn_Click(sender As Object, e As EventArgs) Handles txt_auth_fn.Click
+        If rb_printed.Checked = False And rb_nonprinted.Checked = False Then
+            MsgBox("Please Select Material", MsgBoxStyle.Critical)
+        End If
+    End Sub
+    Private Sub txt_auth_mn_Click(sender As Object, e As EventArgs) Handles txt_auth_mn.Click
+        If rb_printed.Checked = False And rb_nonprinted.Checked = False Then
+            MsgBox("Please Select Material", MsgBoxStyle.Critical)
+        End If
+    End Sub
+    Private Sub txt_edition_Click(sender As Object, e As EventArgs) Handles txt_edition.Click
         If rb_printed.Checked = False And rb_nonprinted.Checked = False Then
             MsgBox("Please Select Material", MsgBoxStyle.Critical)
         End If

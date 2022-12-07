@@ -13,7 +13,7 @@ Public Class SearchBook3
         DataGridView1.DataSource = dt
     End Sub
     Private Sub SearchBook3_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Me.WindowState = FormWindowState.Maximized
+        'Me.WindowState = FormWindowState.Maximized
         DataGridView1.BackgroundColor = System.Drawing.SystemColors.Control
         bind_data()
 
@@ -29,17 +29,17 @@ Public Class SearchBook3
         Dim dt As New DataTable
         da.Fill(dt)
     End Sub
-
-    Private Sub btn_cleaar11_Click(sender As Object, e As EventArgs) Handles btn_cleaar11.Click
-        txt_isbn1.Clear()
+    Private Sub btn_cancell_Click_1(sender As Object, e As EventArgs) Handles btn_cancell.Click
+        Main_Form.Show()
+        Me.Hide()
         DataGridView1.ClearSelection()
-        DataGridView1.Sort(DataGridView1.Columns(0), ListSortDirection.Descending)
+        txt_isbn1.Clear()
         txt_isbn1.Focus()
         bind_data()
     End Sub
 
     Private Sub txt_isbn1_TextChanged(sender As Object, e As EventArgs) Handles txt_isbn1.TextChanged
-        Dim searchque As String = "Select BookNumber,ISBN,Title,Author,Category,YearofPublication,Publisher,Address,Copyright,Status from tbl_book Where concat (BookNumber, ISBN, Title, Author, DeweyDecimalClassification, Category, YearofPublication, Publisher, Address, Copyright, Status)  like '%" & txt_isbn1.Text & "%'"
+        Dim searchque As String = "Select BookNumber,ISBN,Title,Author,DeweyDecimalClassification,Category,YearofPublication,Publisher,Address,Copyright,Status,Conditions from tbl_book Where concat (BookNumber, ISBN, Title, Author, DeweyDecimalClassification, Category, YearofPublication, Publisher, Address, Copyright, Status, Conditions)  like '%" & txt_isbn1.Text & "%'"
         Dim conn As MySqlConnection = New MySqlConnection(connString)
         Dim cmd5 As MySqlCommand = New MySqlCommand(searchque, conn)
         Dim da As MySqlDataAdapter = New MySqlDataAdapter
@@ -51,11 +51,10 @@ Public Class SearchBook3
         End If
     End Sub
 
-    Private Sub btn_cancell_Click(sender As Object, e As EventArgs) Handles btn_cancell.Click
-        Main_Form.Show()
-        Me.Hide()
-        DataGridView1.ClearSelection()
+    Private Sub btn_cleaar11_Click(sender As Object, e As EventArgs) Handles btn_cleaar11.Click
         txt_isbn1.Clear()
+        DataGridView1.ClearSelection()
+        DataGridView1.Sort(DataGridView1.Columns(0), ListSortDirection.Descending)
         txt_isbn1.Focus()
         bind_data()
     End Sub

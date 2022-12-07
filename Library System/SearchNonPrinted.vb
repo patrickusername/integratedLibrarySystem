@@ -22,7 +22,7 @@ Public Class SearchNonPrinted
     End Sub
 
     Private Sub SearchNonPrinted_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Me.WindowState = FormWindowState.Maximized
+        'Me.WindowState = FormWindowState.Maximized
         DataGridView1.BackgroundColor = System.Drawing.SystemColors.Control
         bind_data()
 

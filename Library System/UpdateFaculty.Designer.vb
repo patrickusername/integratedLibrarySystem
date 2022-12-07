@@ -44,22 +44,24 @@ Partial Class UpdateFaculty
         '
         'btn_searchs
         '
-        Me.btn_searchs.Font = New System.Drawing.Font("Century Schoolbook", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_searchs.Font = New System.Drawing.Font("Century Schoolbook", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_searchs.ForeColor = System.Drawing.Color.White
         Me.btn_searchs.Image = CType(resources.GetObject("btn_searchs.Image"), System.Drawing.Image)
-        Me.btn_searchs.Location = New System.Drawing.Point(795, 296)
+        Me.btn_searchs.Location = New System.Drawing.Point(155, 69)
         Me.btn_searchs.Name = "btn_searchs"
-        Me.btn_searchs.Size = New System.Drawing.Size(151, 45)
+        Me.btn_searchs.Size = New System.Drawing.Size(99, 36)
         Me.btn_searchs.TabIndex = 108
         Me.btn_searchs.Text = "SEARCH"
         Me.btn_searchs.UseVisualStyleBackColor = True
         '
         'btn_clear
         '
-        Me.btn_clear.Font = New System.Drawing.Font("Century Schoolbook", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_clear.Font = New System.Drawing.Font("Century Schoolbook", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_clear.ForeColor = System.Drawing.Color.White
         Me.btn_clear.Image = CType(resources.GetObject("btn_clear.Image"), System.Drawing.Image)
-        Me.btn_clear.Location = New System.Drawing.Point(1052, 296)
+        Me.btn_clear.Location = New System.Drawing.Point(275, 69)
         Me.btn_clear.Name = "btn_clear"
-        Me.btn_clear.Size = New System.Drawing.Size(151, 45)
+        Me.btn_clear.Size = New System.Drawing.Size(99, 36)
         Me.btn_clear.TabIndex = 110
         Me.btn_clear.Text = "CLEAR"
         Me.btn_clear.UseVisualStyleBackColor = True
@@ -68,40 +70,41 @@ Partial Class UpdateFaculty
         '
         Me.Label5.AutoSize = True
         Me.Label5.BackColor = System.Drawing.Color.Transparent
-        Me.Label5.Font = New System.Drawing.Font("Century Schoolbook", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(544, 210)
+        Me.Label5.Font = New System.Drawing.Font("Century Schoolbook", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.Location = New System.Drawing.Point(18, 16)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(216, 30)
+        Me.Label5.Size = New System.Drawing.Size(125, 18)
         Me.Label5.TabIndex = 109
         Me.Label5.Text = "Enter Username"
         '
         'txt_unames
         '
-        Me.txt_unames.Font = New System.Drawing.Font("Century Schoolbook", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txt_unames.Location = New System.Drawing.Point(542, 246)
+        Me.txt_unames.Font = New System.Drawing.Font("Century Schoolbook", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txt_unames.Location = New System.Drawing.Point(12, 37)
         Me.txt_unames.MaxLength = 100
         Me.txt_unames.Name = "txt_unames"
-        Me.txt_unames.Size = New System.Drawing.Size(892, 32)
+        Me.txt_unames.Size = New System.Drawing.Size(470, 26)
         Me.txt_unames.TabIndex = 107
         '
         'txt_studcontact
         '
-        Me.txt_studcontact.Font = New System.Drawing.Font("Century Schoolbook", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txt_studcontact.Location = New System.Drawing.Point(405, 646)
+        Me.txt_studcontact.Font = New System.Drawing.Font("Century Schoolbook", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txt_studcontact.Location = New System.Drawing.Point(12, 290)
         Me.txt_studcontact.Mask = "(+63) 000-0000-000"
         Me.txt_studcontact.Name = "txt_studcontact"
-        Me.txt_studcontact.Size = New System.Drawing.Size(470, 32)
+        Me.txt_studcontact.Size = New System.Drawing.Size(470, 26)
         Me.txt_studcontact.TabIndex = 136
         '
         'btn_studcancels
         '
         Me.btn_studcancels.BackColor = System.Drawing.Color.Transparent
-        Me.btn_studcancels.Font = New System.Drawing.Font("Century Schoolbook", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_studcancels.Font = New System.Drawing.Font("Century Schoolbook", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_studcancels.ForeColor = System.Drawing.Color.White
         Me.btn_studcancels.Image = CType(resources.GetObject("btn_studcancels.Image"), System.Drawing.Image)
-        Me.btn_studcancels.Location = New System.Drawing.Point(1139, 807)
+        Me.btn_studcancels.Location = New System.Drawing.Point(331, 401)
         Me.btn_studcancels.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.btn_studcancels.Name = "btn_studcancels"
-        Me.btn_studcancels.Size = New System.Drawing.Size(151, 57)
+        Me.btn_studcancels.Size = New System.Drawing.Size(99, 36)
         Me.btn_studcancels.TabIndex = 135
         Me.btn_studcancels.Text = "CANCEL"
         Me.btn_studcancels.UseVisualStyleBackColor = False
@@ -109,12 +112,13 @@ Partial Class UpdateFaculty
         'btn_studclears
         '
         Me.btn_studclears.BackColor = System.Drawing.Color.Transparent
-        Me.btn_studclears.Font = New System.Drawing.Font("Century Schoolbook", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_studclears.Font = New System.Drawing.Font("Century Schoolbook", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_studclears.ForeColor = System.Drawing.Color.White
         Me.btn_studclears.Image = CType(resources.GetObject("btn_studclears.Image"), System.Drawing.Image)
-        Me.btn_studclears.Location = New System.Drawing.Point(665, 807)
+        Me.btn_studclears.Location = New System.Drawing.Point(78, 401)
         Me.btn_studclears.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.btn_studclears.Name = "btn_studclears"
-        Me.btn_studclears.Size = New System.Drawing.Size(151, 57)
+        Me.btn_studclears.Size = New System.Drawing.Size(99, 36)
         Me.btn_studclears.TabIndex = 134
         Me.btn_studclears.Text = "CLEAR"
         Me.btn_studclears.UseVisualStyleBackColor = False
@@ -122,58 +126,59 @@ Partial Class UpdateFaculty
         'btn_studsaves
         '
         Me.btn_studsaves.BackColor = System.Drawing.Color.Transparent
-        Me.btn_studsaves.Font = New System.Drawing.Font("Century Schoolbook", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_studsaves.Font = New System.Drawing.Font("Century Schoolbook", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_studsaves.ForeColor = System.Drawing.Color.White
         Me.btn_studsaves.Image = CType(resources.GetObject("btn_studsaves.Image"), System.Drawing.Image)
-        Me.btn_studsaves.Location = New System.Drawing.Point(907, 807)
+        Me.btn_studsaves.Location = New System.Drawing.Point(204, 401)
         Me.btn_studsaves.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.btn_studsaves.Name = "btn_studsaves"
-        Me.btn_studsaves.Size = New System.Drawing.Size(151, 57)
+        Me.btn_studsaves.Size = New System.Drawing.Size(99, 36)
         Me.btn_studsaves.TabIndex = 133
         Me.btn_studsaves.Text = "UPDATE"
         Me.btn_studsaves.UseVisualStyleBackColor = False
         '
         'txt_studpword
         '
-        Me.txt_studpword.Font = New System.Drawing.Font("Century Schoolbook", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txt_studpword.Location = New System.Drawing.Point(1071, 548)
+        Me.txt_studpword.Font = New System.Drawing.Font("Century Schoolbook", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txt_studpword.Location = New System.Drawing.Point(12, 240)
         Me.txt_studpword.Name = "txt_studpword"
-        Me.txt_studpword.Size = New System.Drawing.Size(470, 32)
+        Me.txt_studpword.Size = New System.Drawing.Size(470, 26)
         Me.txt_studpword.TabIndex = 132
         '
         'txt_advisory
         '
-        Me.txt_advisory.Font = New System.Drawing.Font("Century Schoolbook", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txt_advisory.Location = New System.Drawing.Point(1071, 651)
+        Me.txt_advisory.Font = New System.Drawing.Font("Century Schoolbook", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txt_advisory.Location = New System.Drawing.Point(12, 342)
         Me.txt_advisory.Name = "txt_advisory"
-        Me.txt_advisory.Size = New System.Drawing.Size(470, 32)
+        Me.txt_advisory.Size = New System.Drawing.Size(470, 26)
         Me.txt_advisory.TabIndex = 130
         '
         'txt_studname
         '
-        Me.txt_studname.Font = New System.Drawing.Font("Century Schoolbook", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txt_studname.Location = New System.Drawing.Point(405, 548)
+        Me.txt_studname.Font = New System.Drawing.Font("Century Schoolbook", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txt_studname.Location = New System.Drawing.Point(12, 189)
         Me.txt_studname.Name = "txt_studname"
-        Me.txt_studname.Size = New System.Drawing.Size(470, 32)
+        Me.txt_studname.Size = New System.Drawing.Size(470, 26)
         Me.txt_studname.TabIndex = 129
         '
         'txt_studuname
         '
-        Me.txt_studuname.Font = New System.Drawing.Font("Century Schoolbook", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txt_studuname.Location = New System.Drawing.Point(405, 454)
+        Me.txt_studuname.Font = New System.Drawing.Font("Century Schoolbook", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txt_studuname.Location = New System.Drawing.Point(12, 138)
         Me.txt_studuname.MaxLength = 17
         Me.txt_studuname.Name = "txt_studuname"
         Me.txt_studuname.ReadOnly = True
-        Me.txt_studuname.Size = New System.Drawing.Size(470, 32)
+        Me.txt_studuname.Size = New System.Drawing.Size(252, 26)
         Me.txt_studuname.TabIndex = 128
         '
         'lbl_studpword
         '
         Me.lbl_studpword.AutoSize = True
         Me.lbl_studpword.BackColor = System.Drawing.Color.Transparent
-        Me.lbl_studpword.Font = New System.Drawing.Font("Century Schoolbook", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbl_studpword.Location = New System.Drawing.Point(1077, 513)
+        Me.lbl_studpword.Font = New System.Drawing.Font("Century Schoolbook", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_studpword.Location = New System.Drawing.Point(20, 219)
         Me.lbl_studpword.Name = "lbl_studpword"
-        Me.lbl_studpword.Size = New System.Drawing.Size(134, 30)
+        Me.lbl_studpword.Size = New System.Drawing.Size(76, 18)
         Me.lbl_studpword.TabIndex = 127
         Me.lbl_studpword.Text = "Password"
         '
@@ -181,10 +186,10 @@ Partial Class UpdateFaculty
         '
         Me.lbl_studgs.AutoSize = True
         Me.lbl_studgs.BackColor = System.Drawing.Color.Transparent
-        Me.lbl_studgs.Font = New System.Drawing.Font("Century Schoolbook", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbl_studgs.Location = New System.Drawing.Point(1075, 616)
+        Me.lbl_studgs.Font = New System.Drawing.Font("Century Schoolbook", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_studgs.Location = New System.Drawing.Point(20, 321)
         Me.lbl_studgs.Name = "lbl_studgs"
-        Me.lbl_studgs.Size = New System.Drawing.Size(198, 30)
+        Me.lbl_studgs.Size = New System.Drawing.Size(113, 18)
         Me.lbl_studgs.TabIndex = 125
         Me.lbl_studgs.Text = "Advisory Class"
         '
@@ -192,10 +197,10 @@ Partial Class UpdateFaculty
         '
         Me.lbl_studcontact.AutoSize = True
         Me.lbl_studcontact.BackColor = System.Drawing.Color.Transparent
-        Me.lbl_studcontact.Font = New System.Drawing.Font("Century Schoolbook", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbl_studcontact.Location = New System.Drawing.Point(407, 616)
+        Me.lbl_studcontact.Font = New System.Drawing.Font("Century Schoolbook", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_studcontact.Location = New System.Drawing.Point(20, 269)
         Me.lbl_studcontact.Name = "lbl_studcontact"
-        Me.lbl_studcontact.Size = New System.Drawing.Size(153, 30)
+        Me.lbl_studcontact.Size = New System.Drawing.Size(87, 18)
         Me.lbl_studcontact.TabIndex = 124
         Me.lbl_studcontact.Text = "Contact No"
         '
@@ -203,10 +208,10 @@ Partial Class UpdateFaculty
         '
         Me.lbl_studname.AutoSize = True
         Me.lbl_studname.BackColor = System.Drawing.Color.Transparent
-        Me.lbl_studname.Font = New System.Drawing.Font("Century Schoolbook", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbl_studname.Location = New System.Drawing.Point(409, 511)
+        Me.lbl_studname.Font = New System.Drawing.Font("Century Schoolbook", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_studname.Location = New System.Drawing.Point(18, 168)
         Me.lbl_studname.Name = "lbl_studname"
-        Me.lbl_studname.Size = New System.Drawing.Size(85, 30)
+        Me.lbl_studname.Size = New System.Drawing.Size(49, 18)
         Me.lbl_studname.TabIndex = 123
         Me.lbl_studname.Text = "Name"
         '
@@ -214,10 +219,10 @@ Partial Class UpdateFaculty
         '
         Me.lbl_studuname.AutoSize = True
         Me.lbl_studuname.BackColor = System.Drawing.Color.Transparent
-        Me.lbl_studuname.Font = New System.Drawing.Font("Century Schoolbook", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbl_studuname.Location = New System.Drawing.Point(411, 419)
+        Me.lbl_studuname.Font = New System.Drawing.Font("Century Schoolbook", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_studuname.Location = New System.Drawing.Point(18, 117)
         Me.lbl_studuname.Name = "lbl_studuname"
-        Me.lbl_studuname.Size = New System.Drawing.Size(139, 30)
+        Me.lbl_studuname.Size = New System.Drawing.Size(80, 18)
         Me.lbl_studuname.TabIndex = 122
         Me.lbl_studuname.Text = "Username"
         '
@@ -225,8 +230,9 @@ Partial Class UpdateFaculty
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.BackgroundImage = Global.Library_System.My.Resources.Resources.hetooooonaaa_ahhhhhh1
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.ClientSize = New System.Drawing.Size(1924, 1055)
+        Me.ClientSize = New System.Drawing.Size(505, 457)
         Me.Controls.Add(Me.txt_studcontact)
         Me.Controls.Add(Me.btn_studcancels)
         Me.Controls.Add(Me.btn_studclears)
@@ -245,8 +251,8 @@ Partial Class UpdateFaculty
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.txt_unames)
         Me.Name = "UpdateFaculty"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Update Faculty - Admin"
-        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

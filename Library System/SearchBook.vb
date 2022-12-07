@@ -22,7 +22,7 @@ Public Class SearchBook
     End Sub
 
     Private Sub SearchBook_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Me.WindowState = FormWindowState.Maximized
+        'Me.WindowState = FormWindowState.Maximized
         DataGridView1.BackgroundColor = System.Drawing.SystemColors.Control
         bind_data()
 
@@ -49,7 +49,7 @@ Public Class SearchBook
     End Sub
 
     Private Sub txt_isbn1_TextChanged(sender As Object, e As EventArgs) Handles txt_isbn1.TextChanged
-        Dim searchque As String = "Select * from tbl_book Where concat (BookNumber, ISBN, Title, Author, DeweyDecimalClassification, Category, YearofPublication, Publisher, Address, Copyright, Status, ImagePath)  like '%" & txt_isbn1.Text & "%'"
+        Dim searchque As String = "Select BookNumber, ISBN, Title, Author, DeweyDecimalClassification, Category, YearofPublication, Publisher, Address, Copyright, Status, Conditions, ImagePath from tbl_book Where concat (BookNumber, ISBN, Title, Author, DeweyDecimalClassification, Category, YearofPublication, Publisher, Address, Copyright, Status, Conditions, ImagePath)  like '%" & txt_isbn1.Text & "%'"
         Dim conn As MySqlConnection = New MySqlConnection(connString)
         Dim cmd5 As MySqlCommand = New MySqlCommand(searchque, conn)
         Dim da As MySqlDataAdapter = New MySqlDataAdapter

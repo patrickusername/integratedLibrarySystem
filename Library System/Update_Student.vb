@@ -4,7 +4,7 @@ Public Class Update_Student
         If txt_studpword.Text = "" Then
             MsgBox("Please Enter your Password", MsgBoxStyle.Critical)
             txt_studpword.Focus()
-        ElseIf txt_studcontact.Text = "" Then
+        ElseIf txt_studcontact.MaskCompleted = False Then
             MsgBox("Please Enter your Contact Number", MsgBoxStyle.Critical)
             txt_studcontact.Focus()
         ElseIf txt_studgs.Text = "" Then
@@ -60,7 +60,7 @@ Public Class Update_Student
     End Sub
 
     Private Sub Update_Student_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Me.WindowState = FormWindowState.Maximized
+        'Me.WindowState = FormWindowState.Maximized
     End Sub
 
     Private Sub txt_studcontact_MaskInputRejected(sender As Object, e As MaskInputRejectedEventArgs) Handles txt_studcontact.MaskInputRejected

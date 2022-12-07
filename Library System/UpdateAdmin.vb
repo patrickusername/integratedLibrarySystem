@@ -4,7 +4,7 @@ Public Class UpdateAdmin
         If txt_pword10.Text = "" Then
             MsgBox("Please Enter your Password", MsgBoxStyle.Critical)
             txt_pword10.Focus()
-        ElseIf txt_contact.Text = "" Then
+        ElseIf txt_contact.MaskCompleted = False Then
             MsgBox("Please Enter your Contact Number", MsgBoxStyle.Critical)
             txt_contact.Focus()
         ElseIf MsgBox("Are you sure you want to save this record?", MsgBoxStyle.OkCancel) = MsgBoxResult.Ok Then
@@ -93,7 +93,7 @@ Public Class UpdateAdmin
     End Sub
 
     Private Sub UpdateAdmin_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Me.WindowState = FormWindowState.Maximized
+        'Me.WindowState = FormWindowState.Maximized
     End Sub
 
     Private Sub txt_name10_TextChanged(sender As Object, e As EventArgs) Handles txt_name10.TextChanged

@@ -1,25 +1,11 @@
 ﻿Imports MySql.Data.MySqlClient
 Imports System.ComponentModel
 Public Class AdminMainForms
-    'Private Sub AddBookToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AddBookToolStripMenuItem.Click
-    '    Add_Book.MdiParent = Me
-    '    Add_Book.Show()
-    '    Add_Book.txt_booknum.Focus()
-
-    '    'Refresh DataTable
-    '    'Dim cmd13 As New MySqlCommand("Select * From tbl_category", conn)
-    '    'Dim daw13 As New MySqlDataAdapter
-    '    'daw13.SelectCommand = cmd13
-    '    'Dim dt13 As New DataTable
-    '    'dt13.Clear()
-    '    'daw13.Fill(dt13)
-    'End Sub
-
     Private Sub BorrowBookToolStripMenuItem_Click(sender As Object, e As EventArgs)
         'BorrowBook.MdiParent = Me
         'BorrowBook.Show()
         'BorrowBook.txt_isbnn.Focus()
-        Borrow.dtp_datetorett.CustomFormat = " "
+        Borrow.txt_duedate.Clear()
         'Borrow.dtp_datetorett.Text = ""
         'Borrow.MdiParent = Me
         Borrow.Show()
@@ -29,56 +15,16 @@ Public Class AdminMainForms
         Borrow.txt_gradesecc.Enabled = True
         Borrow.txt_teacher.Enabled = True
 
-        'AUTOINCREMENT AND AUTOFILL BOOK NUMBER
-        If conn.State = ConnectionState.Closed Then
-            conn.Open()
-        End If
-        Dim strsql = "Select book_number from tbl_borrowedbooks where book_number=(select max(book_number)from tbl_borrowedbooks)"
-        Dim cmddd1 As New MySqlCommand(strsql, conn)
-        Dim myreader As MySqlDataReader = cmddd1.ExecuteReader
-        If myreader.Read() Then
-            Borrow.txt_bookno.Text = myreader("book_number") + 1
-        End If
-        conn.Close()
-    End Sub
-
-    Private Sub BorrowedBooksToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BorrowedBooksToolStripMenuItem.Click
-        'BorrowedBook.MdiParent = Me
-        'BorrowedBook.Show()
-        'BorrowedBook.dt1.CustomFormat = " "
-        'BorrowedBook.dt2.CustomFormat = " "
-
-        'If conn.State = ConnectionState.Open Then
-        '    conn.Close()
+        ''AUTOINCREMENT AND AUTOFILL BOOK NUMBER
+        'If conn.State = ConnectionState.Closed Then
+        '    conn.Open()
         'End If
-        'conn.Open()
-        'Dim cmd01 As New MySqlCommand("Select * From tbl_borrowedbooks", conn)
-        'Dim daw01 As New MySqlDataAdapter
-        'daw01.SelectCommand = cmd01
-        'Dim dt01 As New DataTable
-        'dt01.Clear()
-        'daw01.Fill(dt01)
-        'BorrowedBook.DataGridView1.DataSource = dt01
-        'conn.Close()
-    End Sub
-
-    Private Sub ReturnedBooksToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ReturnedBooksToolStripMenuItem.Click
-        'ReturnedBook.MdiParent = Me
-        'ReturnedBook.Show()
-        'ReturnedBook.dt1.CustomFormat = " "
-        'ReturnedBook.dt2.CustomFormat = " "
-
-        'If conn.State = ConnectionState.Open Then
-        '    conn.Close()
+        'Dim strsql = "Select book_number from tbl_borrowedbooks where book_number=(select max(book_number)from tbl_borrowedbooks)"
+        'Dim cmddd1 As New MySqlCommand(strsql, conn)
+        'Dim myreader As MySqlDataReader = cmddd1.ExecuteReader
+        'If myreader.Read() Then
+        '    Borrow.txt_bookno.Text = myreader("book_number") + 1
         'End If
-        'conn.Open()
-        'Dim cmd01 As New MySqlCommand("Select * From tbl_returnedbooks", conn)
-        'Dim daw01 As New MySqlDataAdapter
-        'daw01.SelectCommand = cmd01
-        'Dim dt01 As New DataTable
-        'dt01.Clear()
-        'daw01.Fill(dt01)
-        'ReturnedBook.DataGridView1.DataSource = dt01
         'conn.Close()
     End Sub
 
@@ -100,68 +46,6 @@ Public Class AdminMainForms
         daw51.Fill(dt51)
         DelinquentBorrower.DataGridView1.DataSource = dt51
         conn.Close()
-    End Sub
-
-    Private Sub OverdueBooksToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OverdueBooksToolStripMenuItem.Click
-        'OverdueBook.MdiParent = Me
-        'OverdueBook.Show()
-        'OverdueBook.dt1.CustomFormat = " "
-        'OverdueBook.dt2.CustomFormat = " "
-
-        'If conn.State = ConnectionState.Open Then
-        '    conn.Close()
-        'End If
-        'conn.Open()
-        'Dim cmd5 As New MySqlCommand("Select * From tbl_overduebooks", conn)
-        'Dim daw5 As New MySqlDataAdapter
-        'daw5.SelectCommand = cmd5
-        'Dim dt5 As New DataTable
-        'dt5.Clear()
-        'daw5.Fill(dt5)
-        'OverdueBook.DataGridView1.DataSource = dt5
-        'conn.Close()
-    End Sub
-
-    Private Sub DamagedBooksToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DamagedBooksToolStripMenuItem.Click
-        'DamagedBook.MdiParent = Me
-        'DamagedBook.Show()
-        'DamagedBook.dt1.CustomFormat = " "
-        'DamagedBook.dt2.CustomFormat = " "
-
-        'If conn.State = ConnectionState.Open Then
-        '    conn.Close()
-        'End If
-        'conn.Open() 'Refresh DamagedBook Form DataGridView
-        'Dim cmd5 As New MySqlCommand("Select * From tbl_damagedbooks", conn)
-        'Dim daw5 As New MySqlDataAdapter
-        'daw5.SelectCommand = cmd5
-        'Dim dt5 As New DataTable
-        'dt5.Clear()
-        'daw5.Fill(dt5)
-        'DamagedBook.DataGridView1.DataSource = dt5
-        'conn.Close()
-    End Sub
-
-    Private Sub LostBooksToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LostBooksToolStripMenuItem.Click
-        'LostBook.MdiParent = Me
-        'LostBook.Show()
-        'LostBook.dt1.CustomFormat = " "
-        'LostBook.dt2.CustomFormat = " "
-
-        ''Refresh LOST BOOK FORM DataGridView
-        'If conn.State = ConnectionState.Open Then
-        '    conn.Close()
-        'End If
-        'conn.Open()
-        'Dim cmd013 As New MySqlCommand("Select * From tbl_lostbooks", conn)
-        'Dim daw013 As New MySqlDataAdapter
-        'daw013.SelectCommand = cmd013
-        'Dim dt013 As New DataTable
-        'dt013.Clear()
-        'daw013.Fill(dt013)
-        'LostBook.DataGridView1.DataSource = dt013
-        'conn.Close()
-
     End Sub
 
     Private Sub LogoutToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LogoutToolStripMenuItem.Click
@@ -202,19 +86,26 @@ Public Class AdminMainForms
 
     End Sub
 
-    'Private Sub SearchToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SearchToolStripMenuItem.Click
-    '    Search.MdiParent = Me
-    '    Search.Show()
-    '    Search.DataGridView1.Sort(Search.DataGridView1.Columns(0), ListSortDirection.Descending)
-    '    Search.txt_isbn1.Focus()
-
-    'End Sub
-
     Private Sub StudentToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles StudentToolStripMenuItem.Click
         'StudentBorrower.MdiParent = Me
         StudentBorrower.Show()
         StudentBorrower.dt1.CustomFormat = " "
         StudentBorrower.dt2.CustomFormat = " "
+        StudentBorrower.DataGridView1.ClearSelection()
+
+        If conn.State = ConnectionState.Open Then
+            conn.Close()
+        End If
+        conn.Open()
+        Dim cmd01 As New MySqlCommand("Select Username, Name, ContactNo, GradeSec, Teacher, Itemtype, Title, Dateborrowed, datetoreturn From tbl_studentborrowers", conn)
+        Dim daw01 As New MySqlDataAdapter
+        daw01.SelectCommand = cmd01
+        Dim dt01 As New DataTable
+        dt01.Clear()
+        daw01.Fill(dt01)
+        StudentBorrower.DataGridView1.DataSource = dt01
+        conn.Close()
+
         'Borrowers.MdiParent = Me
         'Borrowers.Show()
     End Sub
@@ -224,97 +115,37 @@ Public Class AdminMainForms
         FacultyBorrowers.Show()
         FacultyBorrowers.dt1.CustomFormat = " "
         FacultyBorrowers.dt2.CustomFormat = " "
+        FacultyBorrowers.DataGridView1.ClearSelection()
         'Borrowers2.MdiParent = Me
         'Borrowers2.Show()
-    End Sub
 
-    'Private Sub StudentToolStripMenuItem1_Click(sender As Object, e As EventArgs)
-    '    Borrowers.MdiParent = Me
-    '    Borrowers.Show()
-    'End Sub
-
-    'Private Sub FacultyToolStripMenuItem1_Click(sender As Object, e As EventArgs)
-    '    Borrowers2.MdiParent = Me
-    '    Borrowers2.Show()
-    'End Sub
-
-    'Private Sub AdminToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles AdminToolStripMenuItem1.Click
-    '    UpdateAdmin.MdiParent = Me
-    '    UpdateAdmin.Show()
-    '    UpdateAdmin.txt_unames.Focus()
-
-
-    '    'Update_Search.MdiParent = Me
-    '    'Update_Search.Show()
-
-    'End Sub
-
-
-    'Private Sub AdminToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AdminToolStripMenuItem.Click
-    '    'Add_Admin.MdiParent = Me
-    '    'Add_Admin.Show()
-    '    'Add_Admin.txt_pword1.Text = "password"
-    'End Sub
-
-    'Private Sub TeacherToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TeacherToolStripMenuItem.Click
-    '    Add_Student.MdiParent = Me
-    '    Add_Student.Show()
-    '    Add_Student.txt_studpword.Text = "password"
-    'End Sub
-
-    'Private Sub FacultyToolStripMenuItem2_Click(sender As Object, e As EventArgs) Handles FacultyToolStripMenuItem2.Click
-    '    Add_Faculty.MdiParent = Me
-    '    Add_Faculty.Show()
-    '    Add_Faculty.txt_faculpword.Text = "password"
-    'End Sub
-
-    'Private Sub StudentToolStripMenuItem2_Click(sender As Object, e As EventArgs) Handles StudentToolStripMenuItem2.Click
-    '    UpdateStudent.MdiParent = Me
-    '    UpdateStudent.Show()
-    '    UpdateStudent.txt_unames.Focus()
-
-    'End Sub
-
-    'Private Sub FacultyToolStripMenuItem3_Click(sender As Object, e As EventArgs) Handles FacultyToolStripMenuItem3.Click
-    '    UpdateFaculty.MdiParent = Me
-    '    UpdateFaculty.Show()
-    '    UpdateFaculty.txt_unames.Focus()
-
-    'End Sub
-
-    Private Sub AddAdminToolStripMenuItem_Click(sender As Object, e As EventArgs)
-        'AddUser.MdiParent = Me
-        'AddUser.Show()
-        'AddUser.txt_pword1.Text = "password"
-        'AddUser.lbl_faculadvi.Enabled = True
-        'AddUser.cmb_faculadvi.Enabled = True
-        'AddUser.lbl_studgs.Enabled = True
-        'AddUser.cmb_studgs.Enabled = True
-        'AddUser.lbl_studtea.Enabled = True
-        'AddUser.cmb_studtea.Enabled = True
-    End Sub
-
-    Private Sub UpdateUserToolStripMenuItem_Click(sender As Object, e As EventArgs)
-        'UpdateUser.MdiParent = Me
-        'UpdateUser.Show()
+        If conn.State = ConnectionState.Open Then
+            conn.Close()
+        End If
+        conn.Open()
+        Dim cmd01 As New MySqlCommand("Select Username,Name,ContactNo,Itemtype,Title,Dateborrowed,datetoreturn from tbl_facultyborrowers", conn)
+        Dim daw01 As New MySqlDataAdapter
+        daw01.SelectCommand = cmd01
+        Dim dt01 As New DataTable
+        dt01.Clear()
+        daw01.Fill(dt01)
+        FacultyBorrowers.DataGridView1.DataSource = dt01
+        conn.Close()
 
     End Sub
-
-    'Private Sub UpdateBookToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles UpdateBookToolStripMenuItem.Click
-    '    Update_Book.MdiParent = Me
-    '    Update_Book.Show()
-    '    Update_Book.txt_search.Focus()
-    'End Sub
 
     Private Sub ToolStripMenuItem2_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem2.Click
-        'BorrowBook.MdiParent = Me
-        'BorrowBook.Show()
-        'BorrowBook.txt_isbnn.Focus()
-        Borrow.dtp_datetorett.CustomFormat = " "
-        'Borrow.dtp_datetorett.Text = ""
+
         Borrow.MdiParent = Me
         Borrow.Show()
-        Borrow.txt_bookno.Focus()
+
+        'Borrow.ListView1.Refresh()
+        'BorrowBook.Show()
+        'BorrowBook.txt_isbnn.Focus()
+        Borrow.txt_duedate.Text = ""
+        'Borrow.dtp_datetorett.CustomFormat = "dd/MM/yyyy - hh:mm tt"
+        'Borrow.dtp_datetorett.Text = ""
+        'Borrow.txt_idno.Focus()
         Borrow.Label3.Enabled = True
         Borrow.Label9.Enabled = True
         Borrow.txt_gradesecc.Enabled = True
@@ -323,8 +154,11 @@ Public Class AdminMainForms
         Borrow.txt_matno.Enabled = True
         Borrow.txt_isbnn.Enabled = True
         Borrow.txt_titlee.Enabled = True
+        Borrow.txt_edition.Enabled = True
         Borrow.txt_bookno.Enabled = True
-        Borrow.txt_authorr.Enabled = True
+        Borrow.txt_auth_ln.Enabled = True
+        Borrow.txt_auth_fn.Enabled = True
+        Borrow.txt_auth_mn.Enabled = True
         Borrow.txt_year.Enabled = True
         Borrow.txt_address.Enabled = True
         Borrow.txt_copyright.Enabled = True
@@ -333,7 +167,9 @@ Public Class AdminMainForms
         Borrow.cmb_categooory.Enabled = True
         Borrow.txt_isbnn.ReadOnly = False
         Borrow.txt_titlee.ReadOnly = False
-        Borrow.txt_authorr.ReadOnly = False
+        Borrow.txt_auth_ln.ReadOnly = False
+        Borrow.txt_auth_fn.ReadOnly = False
+        Borrow.txt_auth_mn.ReadOnly = False
         Borrow.txt_year.ReadOnly = False
         Borrow.txt_idno.ReadOnly = False
         Borrow.txt_namee.ReadOnly = False
@@ -375,41 +211,84 @@ Public Class AdminMainForms
         daw01.Fill(dt01)
         conn.Close()
 
-        ''BorrowBook.MdiParent = Me
-        ''BorrowBook.Show()
-        ''BorrowBook.txt_isbnn.Focus()
-        'Borrow.dtp_datetorett.CustomFormat = " "
-        ''Borrow.dtp_datetorett.Text = ""
-        ''Borrow.MdiParent = Me
-        'Borrow.Show()
-        'Borrow.txt_bookno.Focus()
-        'Borrow.Label3.Enabled = True
-        'Borrow.Label9.Enabled = True
-        'Borrow.txt_gradesecc.Enabled = True
-        'Borrow.txt_teacher.Enabled = True
 
-        'Borrow.txt_isbnn.ReadOnly = False
-        'Borrow.txt_titlee.ReadOnly = False
-        'Borrow.txt_authorr.ReadOnly = False
-        'Borrow.txt_year.ReadOnly = False
-        'Borrow.txt_idno.ReadOnly = False
-        'Borrow.txt_namee.ReadOnly = False
-        'Borrow.txt_num.ReadOnly = False
-        'Borrow.txt_gradesecc.ReadOnly = False
-        'Borrow.txt_teacher.ReadOnly = False
-        'Borrow.txt_classnum.ReadOnly = False
-        'Borrow.txt_bookno.ReadOnly = False
-        'Borrow.txt_pubcom.ReadOnly = False
-        ''AUTOINCREMENT AND AUTOFILL BOOK NUMBER
-        'If conn.State = ConnectionState.Closed Then
-        '    conn.Open()
+        conn.Open()
+        Try
+            Dim str As String = "SELECT category FROM tbl_category"
+            Dim da As New MySqlDataAdapter(str, conn)
+            Dim dt As New DataTable
+            da.Fill(dt)
+            If dt.Rows.Count > 0 Then
+                Borrow.cmb_categooory.DataSource = dt
+                Borrow.cmb_categooory.DisplayMember = "category"
+                Borrow.cmb_categooory.ValueMember = ""
+                'cmb_category.DataSource = dt
+                Borrow.cmb_categooory.SelectedIndex = -1
+                Borrow.cmb_categooory.Refresh()
+            End If
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+        conn.Close()
+
+        conn.Open()
+        Try
+            Dim str1 As String = "SELECT DeweyDecimalClassification FROM tbl_ddc"
+            Dim da1 As New MySqlDataAdapter(str1, conn)
+            Dim dt1 As New DataTable
+            da1.Fill(dt1)
+            If dt1.Rows.Count > 0 Then
+                Borrow.cmb_ddc.DataSource = dt1
+                Borrow.cmb_ddc.DisplayMember = "DeweyDecimalClassification"
+                Borrow.cmb_ddc.ValueMember = ""
+                'cmb_category.DataSource = dt
+                Borrow.cmb_ddc.SelectedIndex = -1
+                Borrow.cmb_ddc.Refresh()
+            End If
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+        conn.Close()
+
+        'If conn.State = ConnectionState.Open Then
+        '    conn.Close()
         'End If
-        'Dim strsql = "Select book_number from tbl_borrowedbooks where book_number=(select max(book_number)from tbl_borrowedbooks)"
-        'Dim cmddd1 As New MySqlCommand(strsql, conn)
-        'Dim myreader As MySqlDataReader = cmddd1.ExecuteReader
-        'If myreader.Read() Then
-        '    Borrow.txt_bookno.Text = myreader("book_number") + 1
-        'End If
+        'conn.Open()
+        'Try
+        '    Dim str As String = "SELECT category FROM tbl_book GROUP BY category"
+        '    Dim da As New MySqlDataAdapter(str, conn)
+        '    Dim dt As New DataTable
+        '    da.Fill(dt)
+        '    If dt.Rows.Count > 0 Then
+        '        Borrow.cmb_categooory.DataSource = dt
+        '        Borrow.cmb_categooory.DisplayMember = "category"
+        '        Borrow.cmb_categooory.ValueMember = ""
+        '        'cmb_category.DataSource = dt
+        '        Borrow.cmb_categooory.SelectedIndex = -1
+        '        Borrow.cmb_categooory.Refresh()
+        '    End If
+        'Catch ex As Exception
+        '    MsgBox(ex.Message)
+        'End Try
+        'conn.Close()
+
+        'conn.Open()
+        'Try
+        '    Dim str1 As String = "SELECT DeweyDecimalClassification FROM tbl_book GROUP BY DeweyDecimalClassification"
+        '    Dim da1 As New MySqlDataAdapter(str1, conn)
+        '    Dim dt1 As New DataTable
+        '    da1.Fill(dt1)
+        '    If dt1.Rows.Count > 0 Then
+        '        Borrow.cmb_ddc.DataSource = dt1
+        '        Borrow.cmb_ddc.DisplayMember = "DeweyDecimalClassification"
+        '        Borrow.cmb_ddc.ValueMember = ""
+        '        'cmb_category.DataSource = dt
+        '        Borrow.cmb_ddc.SelectedIndex = -1
+        '        Borrow.cmb_ddc.Refresh()
+        '    End If
+        'Catch ex As Exception
+        '    MsgBox(ex.Message)
+        'End Try
         'conn.Close()
     End Sub
 
@@ -421,7 +300,9 @@ Public Class AdminMainForms
         ReturnBook.txt_reason.Enabled = False
         ReturnBook.txt_isbnn1.ReadOnly = False
         ReturnBook.txt_titlee1.ReadOnly = False
-        ReturnBook.txt_authorr1.ReadOnly = False
+        ReturnBook.txt_auth_ln.ReadOnly = False
+        ReturnBook.txt_auth_fn.ReadOnly = False
+        ReturnBook.txt_auth_mn.ReadOnly = False
         ReturnBook.txt_year.ReadOnly = False
         ReturnBook.txt_pubcom.ReadOnly = False
         ReturnBook.txt_datetoreturn.ReadOnly = False
@@ -436,7 +317,9 @@ Public Class AdminMainForms
         ReturnBook.txt_isbnn1.Enabled = True
         ReturnBook.txt_titlee1.Enabled = True
         ReturnBook.txt_bookno.Enabled = True
-        ReturnBook.txt_authorr1.Enabled = True
+        ReturnBook.txt_auth_ln.Enabled = True
+        ReturnBook.txt_auth_fn.Enabled = True
+        ReturnBook.txt_auth_mn.Enabled = True
         ReturnBook.txt_year.Enabled = True
         ReturnBook.txt_address.Enabled = True
         ReturnBook.txt_copyright.Enabled = True
@@ -469,6 +352,86 @@ Public Class AdminMainForms
         dt01.Clear()
         daw01.Fill(dt01)
         conn.Close()
+
+        'conn.Open()
+        'Try
+        '    Dim str As String = "SELECT category FROM tbl_category"
+        '    Dim da As New MySqlDataAdapter(str, conn)
+        '    Dim dt As New DataTable
+        '    da.Fill(dt)
+        '    If dt.Rows.Count > 0 Then
+        '        ReturnBook.cmb_categooory1.DataSource = dt
+        '        ReturnBook.cmb_categooory1.DisplayMember = "category"
+        '        ReturnBook.cmb_categooory1.ValueMember = ""
+        '        'cmb_category.DataSource = dt
+        '        ReturnBook.cmb_categooory1.SelectedIndex = -1
+        '        ReturnBook.cmb_categooory1.Refresh()
+        '    End If
+        'Catch ex As Exception
+        '    MsgBox(ex.Message)
+        'End Try
+        'conn.Close()
+
+        'conn.Open()
+        'Try
+        '    Dim str1 As String = "SELECT DeweyDecimalClassification FROM tbl_ddc"
+        '    Dim da1 As New MySqlDataAdapter(str1, conn)
+        '    Dim dt1 As New DataTable
+        '    da1.Fill(dt1)
+        '    If dt1.Rows.Count > 0 Then
+        '        ReturnBook.cmb_ddc.DataSource = dt1
+        '        ReturnBook.cmb_ddc.DisplayMember = "DeweyDecimalClassification"
+        '        ReturnBook.cmb_ddc.ValueMember = ""
+        '        'cmb_category.DataSource = dt
+        '        ReturnBook.cmb_ddc.SelectedIndex = -1
+        '        ReturnBook.cmb_ddc.Refresh()
+        '    End If
+        'Catch ex As Exception
+        '    MsgBox(ex.Message)
+        'End Try
+        'conn.Close()
+
+        If conn.State = ConnectionState.Open Then
+            conn.Close()
+        End If
+        conn.Open()
+        Try
+            Dim str As String = "SELECT category FROM tbl_book GROUP BY category"
+            Dim da As New MySqlDataAdapter(str, conn)
+            Dim dt As New DataTable
+            da.Fill(dt)
+            If dt.Rows.Count > 0 Then
+                ReturnBook.cmb_categooory1.DataSource = dt
+                ReturnBook.cmb_categooory1.DisplayMember = "category"
+                ReturnBook.cmb_categooory1.ValueMember = ""
+                'cmb_category.DataSource = dt
+                ReturnBook.cmb_categooory1.SelectedIndex = -1
+                ReturnBook.cmb_categooory1.Refresh()
+            End If
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+        conn.Close()
+
+        conn.Open()
+        Try
+            Dim str1 As String = "SELECT DeweyDecimalClassification FROM tbl_book GROUP BY DeweyDecimalClassification"
+            Dim da1 As New MySqlDataAdapter(str1, conn)
+            Dim dt1 As New DataTable
+            da1.Fill(dt1)
+            If dt1.Rows.Count > 0 Then
+                ReturnBook.cmb_ddc.DataSource = dt1
+                ReturnBook.cmb_ddc.DisplayMember = "DeweyDecimalClassification"
+                ReturnBook.cmb_ddc.ValueMember = ""
+                'cmb_category.DataSource = dt
+                ReturnBook.cmb_ddc.SelectedIndex = -1
+                ReturnBook.cmb_ddc.Refresh()
+            End If
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+        conn.Close()
+
     End Sub
 
     'Private Sub ToolStripMenuItem6_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem6.Click
@@ -586,6 +549,7 @@ Public Class AdminMainForms
         dt0130.Clear()
         daw0130.Fill(dt0130)
         Lost_Book.DataGridView1.DataSource = dt0130
+        Lost_Book.DataGridView1.ClearSelection()
 
         'Refresh tbl_inventory
         If conn.State = ConnectionState.Open Then
@@ -613,6 +577,83 @@ Public Class AdminMainForms
         daw01.Fill(dt01)
         conn.Close()
 
+        'conn.Open()
+        'Try
+        '    Dim str As String = "SELECT category FROM tbl_category"
+        '    Dim da As New MySqlDataAdapter(str, conn)
+        '    Dim dt As New DataTable
+        '    da.Fill(dt)
+        '    If dt.Rows.Count > 0 Then
+        '        Lost_Book.cmb_categooory1.DataSource = dt
+        '        Lost_Book.cmb_categooory1.DisplayMember = "category"
+        '        Lost_Book.cmb_categooory1.ValueMember = ""
+        '        'cmb_category.DataSource = dt
+        '        Lost_Book.cmb_categooory1.SelectedIndex = -1
+        '        Lost_Book.cmb_categooory1.Refresh()
+        '    End If
+        'Catch ex As Exception
+        '    MsgBox(ex.Message)
+        'End Try
+        'conn.Close()
+
+        'conn.Open()
+        'Try
+        '    Dim str1 As String = "SELECT DeweyDecimalClassification FROM tbl_ddc"
+        '    Dim da1 As New MySqlDataAdapter(str1, conn)
+        '    Dim dt1 As New DataTable
+        '    da1.Fill(dt1)
+        '    If dt1.Rows.Count > 0 Then
+        '        Lost_Book.cmb_ddc.DataSource = dt1
+        '        Lost_Book.cmb_ddc.DisplayMember = "DeweyDecimalClassification"
+        '        Lost_Book.cmb_ddc.ValueMember = ""
+        '        'cmb_category.DataSource = dt
+        '        Lost_Book.cmb_ddc.SelectedIndex = -1
+        '        Lost_Book.cmb_ddc.Refresh()
+        '    End If
+        'Catch ex As Exception
+        '    MsgBox(ex.Message)
+        'End Try
+        'conn.Close()
+
+        If conn.State = ConnectionState.Open Then
+            conn.Close()
+        End If
+        conn.Open()
+        Try
+            Dim str As String = "SELECT category FROM tbl_book GROUP BY category"
+            Dim da As New MySqlDataAdapter(str, conn)
+            Dim dt As New DataTable
+            da.Fill(dt)
+            If dt.Rows.Count > 0 Then
+                Lost_Book.cmb_categooory1.DataSource = dt
+                Lost_Book.cmb_categooory1.DisplayMember = "category"
+                Lost_Book.cmb_categooory1.ValueMember = ""
+                'cmb_category.DataSource = dt
+                Lost_Book.cmb_categooory1.SelectedIndex = -1
+                Lost_Book.cmb_categooory1.Refresh()
+            End If
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+        conn.Close()
+
+        conn.Open()
+        Try
+            Dim str1 As String = "SELECT DeweyDecimalClassification FROM tbl_book GROUP BY DeweyDecimalClassification"
+            Dim da1 As New MySqlDataAdapter(str1, conn)
+            Dim dt1 As New DataTable
+            da1.Fill(dt1)
+            If dt1.Rows.Count > 0 Then
+                Lost_Book.cmb_ddc.DataSource = dt1
+                Lost_Book.cmb_ddc.DisplayMember = "DeweyDecimalClassification"
+                Lost_Book.cmb_ddc.ValueMember = ""
+                'cmb_category.DataSource = dt
+                Lost_Book.cmb_ddc.SelectedIndex = -1
+                Lost_Book.cmb_ddc.Refresh()
+            End If
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
         conn.Close()
     End Sub
 
@@ -629,6 +670,7 @@ Public Class AdminMainForms
         LostNonPrinted.txt_datetoreturn.ReadOnly = False
         LostNonPrinted.txt_namee.ReadOnly = False
         LostNonPrinted.txt_idno.ReadOnly = False
+        LostNonPrinted.DataGridView1.ClearSelection()
         'Refresh LOST BOOK FORM DataGridView
         If conn.State = ConnectionState.Open Then
             conn.Close()
@@ -683,11 +725,23 @@ Public Class AdminMainForms
     'End Sub
 
     Private Sub AddToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AddToolStripMenuItem.Click
+        'AUTOINCREMENT AND AUTOFILL BOOK NUMBER
+        If conn.State = ConnectionState.Closed Then
+            conn.Open()
+        End If
+        Dim strsql = "Select booknumber from tbl_book where booknumber=(select max(booknumber)from tbl_book)"
+        Dim cmddd1 As New MySqlCommand(strsql, conn)
+        Dim myreader As MySqlDataReader = cmddd1.ExecuteReader
+        If myreader.Read() Then
+            Add_Book.txt_booknum.Text = myreader("booknumber") + 1
+        End If
+        conn.Close()
+
         Add_Book.MdiParent = Me
         Add_Book.Show()
-        Add_Book.txt_booknum.Focus()
-
-
+        Add_Book.txt_quantity.Focus()
+        Add_Book.cmb_categoory.Text = ""
+        Add_Book.cmb_ddc.Text = ""
         'Refresh tbl_book
         If conn.State = ConnectionState.Open Then
             conn.Close()
@@ -700,6 +754,52 @@ Public Class AdminMainForms
         dt013.Clear()
         daw013.Fill(dt013)
         conn.Close()
+
+        'Refresh DataTable
+        Dim cmd131 As New MySqlCommand("Select * From tbl_ddc", conn)
+        Dim daw131 As New MySqlDataAdapter
+        daw131.SelectCommand = cmd131
+        Dim dt131 As New DataTable
+        dt131.Clear()
+        daw131.Fill(dt131)
+
+        conn.Open()
+        Try
+            Dim str As String = "SELECT category FROM tbl_category"
+            Dim da As New MySqlDataAdapter(str, conn)
+            Dim dt As New DataTable
+            da.Fill(dt)
+            If dt.Rows.Count > 0 Then
+                Add_Book.cmb_categoory.DataSource = dt
+                Add_Book.cmb_categoory.DisplayMember = "category"
+                Add_Book.cmb_categoory.ValueMember = ""
+                'cmb_category.DataSource = dt
+                Add_Book.cmb_categoory.SelectedIndex = -1
+                Add_Book.cmb_categoory.Refresh()
+            End If
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+        conn.Close()
+
+        conn.Open()
+        Try
+            Dim str1 As String = "SELECT DeweyDecimalClassification FROM tbl_ddc"
+            Dim da1 As New MySqlDataAdapter(str1, conn)
+            Dim dt1 As New DataTable
+            da1.Fill(dt1)
+            If dt1.Rows.Count > 0 Then
+                Add_Book.cmb_ddc.DataSource = dt1
+                Add_Book.cmb_ddc.DisplayMember = "DeweyDecimalClassification"
+                Add_Book.cmb_ddc.ValueMember = ""
+                'cmb_category.DataSource = dt
+                Add_Book.cmb_ddc.SelectedIndex = -1
+                Add_Book.cmb_ddc.Refresh()
+            End If
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+        conn.Close()
     End Sub
 
     'Private Sub UpdateBookToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles UpdateBookToolStripMenuItem.Click
@@ -709,28 +809,21 @@ Public Class AdminMainForms
     'End Sub
 
     Private Sub AddToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles AddToolStripMenuItem1.Click
+        'AUTOINCREMENT AND AUTOFILL BOOK NUMBER
+        If conn.State = ConnectionState.Closed Then
+            conn.Open()
+        End If
+        Dim strsql = "Select materialnumber from tbl_nonprinted where materialnumber=(select max(materialnumber)from tbl_nonprinted)"
+        Dim cmddd1 As New MySqlCommand(strsql, conn)
+        Dim myreader As MySqlDataReader = cmddd1.ExecuteReader
+        If myreader.Read() Then
+            AddNonPrinted.txt_matno.Text = myreader("materialnumber") + 1
+        End If
+        conn.Close()
+
         AddNonPrinted.MdiParent = Me
         AddNonPrinted.Show()
-        AddNonPrinted.txt_matno.Focus()
-
-        'Refresh tbl_inventory
-        If conn.State = ConnectionState.Open Then
-            conn.Close()
-        End If
-        conn.Open()
-        Dim cmd013 As New MySqlCommand("Select * From tbl_nonprinted", conn)
-        Dim daw013 As New MySqlDataAdapter
-        daw013.SelectCommand = cmd013
-        Dim dt013 As New DataTable
-        dt013.Clear()
-        daw013.Fill(dt013)
-        conn.Close()
-    End Sub
-
-    Private Sub UpdateToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles UpdateToolStripMenuItem1.Click
-        UpdateNonPrinted.MdiParent = Me
-        UpdateNonPrinted.Show()
-        UpdateNonPrinted.txt_search.Focus()
+        AddNonPrinted.txt_quantity.Focus()
 
         'Refresh tbl_inventory
         If conn.State = ConnectionState.Open Then
@@ -750,7 +843,9 @@ Public Class AdminMainForms
         Update_Book.MdiParent = Me
         Update_Book.Show()
         Update_Book.txt_search.Focus()
-
+        Update_Book.cmb_category.Text = ""
+        Update_Book.cmb_ddc.Text = ""
+        Update_Book.txt_search.Clear()
         'Refresh tbl_book
         If conn.State = ConnectionState.Open Then
             conn.Close()
@@ -961,6 +1056,7 @@ Public Class AdminMainForms
         SearchBook.MdiParent = Me
         SearchBook.Show()
         SearchBook.txt_isbn1.Focus()
+        SearchBook.DataGridView1.ClearSelection()
 
         'Refresh tbl_book
         If conn.State = ConnectionState.Open Then
@@ -980,7 +1076,7 @@ Public Class AdminMainForms
         SearchNonPrinted.MdiParent = Me
         SearchNonPrinted.Show()
         SearchNonPrinted.txt_isbn1.Focus()
-
+        SearchNonPrinted.DataGridView1.ClearSelection()
         'Refresh tbl_inventory
         If conn.State = ConnectionState.Open Then
             conn.Close()
@@ -1035,12 +1131,7 @@ Public Class AdminMainForms
         BackUpandRestore.MdiParent = Me
         BackUpandRestore.Show()
         BackUpandRestore.TextBox1.Focus()
-
-        'BackupRestore.MdiParent = Me
-        'BackupRestore.Show()
-
-        'backupandrestore3.MdiParent = Me
-        'backupandrestore3.Show()
+        BackUpandRestore.TextBox1.Clear()
 
     End Sub
 
@@ -1055,12 +1146,12 @@ Public Class AdminMainForms
         BorrowedBook.Show()
         BorrowedBook.dt1.CustomFormat = " "
         BorrowedBook.dt2.CustomFormat = " "
-
+        BorrowedBook.DataGridView1.ClearSelection()
         If conn.State = ConnectionState.Open Then
             conn.Close()
         End If
         conn.Open()
-        Dim cmd01 As New MySqlCommand("Select * From tbl_borrowedbooks", conn)
+        Dim cmd01 As New MySqlCommand("select ISBN,Title,Author,Category,DateBorrowed,DatetoReturn,Username,Name,ContactNo From tbl_borrowedbooks", conn)
         Dim daw01 As New MySqlDataAdapter
         daw01.SelectCommand = cmd01
         Dim dt01 As New DataTable
@@ -1075,12 +1166,12 @@ Public Class AdminMainForms
         ReturnedBook.Show()
         ReturnedBook.dt1.CustomFormat = " "
         ReturnedBook.dt2.CustomFormat = " "
-
+        ReturnedBook.DataGridView1.ClearSelection()
         If conn.State = ConnectionState.Open Then
             conn.Close()
         End If
         conn.Open()
-        Dim cmd01 As New MySqlCommand("Select * From tbl_returnedbooks", conn)
+        Dim cmd01 As New MySqlCommand("select ISBN,Title,Author,Category,DateReturned,Username,Name From tbl_returnedbooks", conn)
         Dim daw01 As New MySqlDataAdapter
         daw01.SelectCommand = cmd01
         Dim dt01 As New DataTable
@@ -1095,12 +1186,12 @@ Public Class AdminMainForms
         OverdueBook.Show()
         OverdueBook.dt1.CustomFormat = " "
         OverdueBook.dt2.CustomFormat = " "
-
+        OverdueBook.DataGridView1.ClearSelection()
         If conn.State = ConnectionState.Open Then
             conn.Close()
         End If
         conn.Open()
-        Dim cmd5 As New MySqlCommand("Select * From tbl_overduebooks", conn)
+        Dim cmd5 As New MySqlCommand("Select BookNumber,ISBN,Title,Author,Category,DatetoReturn,DateReturned from tbl_overduebooks", conn)
         Dim daw5 As New MySqlDataAdapter
         daw5.SelectCommand = cmd5
         Dim dt5 As New DataTable
@@ -1115,12 +1206,12 @@ Public Class AdminMainForms
         DamagedBook.Show()
         DamagedBook.dt1.CustomFormat = " "
         DamagedBook.dt2.CustomFormat = " "
-
+        DamagedBook.DataGridView1.ClearSelection()
         If conn.State = ConnectionState.Open Then
             conn.Close()
         End If
         conn.Open() 'Refresh DamagedBook Form DataGridView
-        Dim cmd5 As New MySqlCommand("Select * From tbl_damagedbooks", conn)
+        Dim cmd5 As New MySqlCommand("Select BookNumber,ISBN,Title,Author,Category,Name,DateReturned from tbl_damagedbooks", conn)
         Dim daw5 As New MySqlDataAdapter
         daw5.SelectCommand = cmd5
         Dim dt5 As New DataTable
@@ -1135,13 +1226,13 @@ Public Class AdminMainForms
         LostBook.Show()
         LostBook.dt1.CustomFormat = " "
         LostBook.dt2.CustomFormat = " "
-
+        LostBook.DataGridView1.ClearSelection()
         'Refresh LOST BOOK FORM DataGridView
         If conn.State = ConnectionState.Open Then
             conn.Close()
         End If
         conn.Open()
-        Dim cmd013 As New MySqlCommand("Select * From tbl_lostbooks", conn)
+        Dim cmd013 As New MySqlCommand("Select BookNumber,ISBN,Title,Author,Category,Name,DatetoReturn from tbl_lostbooks", conn)
         Dim daw013 As New MySqlDataAdapter
         daw013.SelectCommand = cmd013
         Dim dt013 As New DataTable
@@ -1156,7 +1247,7 @@ Public Class AdminMainForms
         BorrowedNonPrinted.Show()
         BorrowedNonPrinted.dt1.CustomFormat = " "
         BorrowedNonPrinted.dt2.CustomFormat = " "
-
+        BorrowedNonPrinted.DataGridView1.ClearSelection()
         If conn.State = ConnectionState.Open Then
             conn.Close()
         End If
@@ -1176,7 +1267,7 @@ Public Class AdminMainForms
         ReturnedNonPrinted.Show()
         ReturnedNonPrinted.dt1.CustomFormat = " "
         ReturnedNonPrinted.dt2.CustomFormat = " "
-
+        ReturnedNonPrinted.DataGridView1.ClearSelection()
         If conn.State = ConnectionState.Open Then
             conn.Close()
         End If
@@ -1196,7 +1287,7 @@ Public Class AdminMainForms
         OverdueNonPrinted.Show()
         OverdueNonPrinted.dt1.CustomFormat = " "
         OverdueNonPrinted.dt2.CustomFormat = " "
-
+        OverdueNonPrinted.DataGridView1.ClearSelection()
         If conn.State = ConnectionState.Open Then
             conn.Close()
         End If
@@ -1216,7 +1307,7 @@ Public Class AdminMainForms
         DamagedNonPrinted.Show()
         DamagedNonPrinted.dt1.CustomFormat = " "
         DamagedNonPrinted.dt2.CustomFormat = " "
-
+        DamagedNonPrinted.DataGridView1.ClearSelection()
         If conn.State = ConnectionState.Open Then
             conn.Close()
         End If
@@ -1236,7 +1327,7 @@ Public Class AdminMainForms
         Lost_NonPrinted.Show()
         Lost_NonPrinted.dt1.CustomFormat = " "
         Lost_NonPrinted.dt2.CustomFormat = " "
-
+        Lost_NonPrinted.DataGridView1.ClearSelection()
         'Refresh LOST BOOK FORM DataGridView
         If conn.State = ConnectionState.Open Then
             conn.Close()
@@ -1252,4 +1343,70 @@ Public Class AdminMainForms
         conn.Close()
     End Sub
 
+    Private Sub ManageBookToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ManageBookToolStripMenuItem.Click
+
+    End Sub
+
+    Private Sub SendSMSToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SendSMSToolStripMenuItem.Click
+        DueMaterials.MdiParent = Me
+        DueMaterials.Show()
+        DueMaterials.DataGridView1.ClearSelection()
+        DueMaterials.DataGridView1.Refresh()
+        DueMaterials.Refresh()
+        'Refresh tbl_borrowreturn
+        If conn.State = ConnectionState.Open Then
+            conn.Close()
+        End If
+        conn.Open()
+        Dim cmd013 As New MySqlCommand("Select * From tbl_borrowreturnnonprinted", conn)
+        Dim daw013 As New MySqlDataAdapter
+        daw013.SelectCommand = cmd013
+        Dim dt013 As New DataTable
+        dt013.Clear()
+        daw013.Fill(dt013)
+        conn.Close()
+
+        'Refresh tbl_inventory
+        If conn.State = ConnectionState.Open Then
+            conn.Close()
+        End If
+        conn.Open()
+        Dim cmd01300 As New MySqlCommand("Select * From tbl_borrowreturnbooks", conn)
+        Dim daw01300 As New MySqlDataAdapter
+        daw01300.SelectCommand = cmd01300
+        Dim dt01300 As New DataTable
+        dt01300.Clear()
+        daw01300.Fill(dt01300)
+        conn.Close()
+    End Sub
+
+    Private Sub UpdateToolStripMenuItem1_Click_1(sender As Object, e As EventArgs) Handles UpdateToolStripMenuItem1.Click
+        UpdateNonPrinted.MdiParent = Me
+        UpdateNonPrinted.Show()
+        UpdateNonPrinted.txt_search.Focus()
+
+        'Refresh tbl_inventory
+        If conn.State = ConnectionState.Open Then
+            conn.Close()
+        End If
+        conn.Open()
+        Dim cmd013 As New MySqlCommand("Select * From tbl_nonprinted", conn)
+        Dim daw013 As New MySqlDataAdapter
+        daw013.SelectCommand = cmd013
+        Dim dt013 As New DataTable
+        dt013.Clear()
+        daw013.Fill(dt013)
+        conn.Close()
+    End Sub
+
+    Private Sub AdminMainForms_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+    End Sub
+
+    Private Sub RestoreToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RestoreToolStripMenuItem.Click
+        Restore.MdiParent = Me
+        Restore.Show()
+        Restore.TextBox2.Focus()
+        Restore.TextBox2.Clear()
+    End Sub
 End Class

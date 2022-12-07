@@ -1,12 +1,5 @@
 ﻿Imports MySql.Data.MySqlClient
 Public Class TeacherMainForm
-
-    'Private Sub SearchToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SearchToolStripMenuItem.Click
-    '    Search2.MdiParent = Me
-    '    Search2.Show()
-    '    Search2.txt_isbn1.Focus()
-    'End Sub
-
     Private Sub ExitToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ExitToolStripMenuItem.Click
         Dim Ask As MsgBoxResult = MsgBox("Are you sure you want to exit?", MsgBoxStyle.OkCancel)
         If Ask = MsgBoxResult.Ok Then
@@ -19,7 +12,7 @@ Public Class TeacherMainForm
     End Sub
 
     Private Sub BorrowersToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BorrowersToolStripMenuItem.Click
-        'ClassBorrower.MdiParent = Me
+        ClassBorrower.MdiParent = Me
         ClassBorrower.Show()
     End Sub
 
@@ -59,26 +52,8 @@ Public Class TeacherMainForm
                 Update_Faculty.Show()
             End If
             conn.Close()
-            'Update_Faculty.txt_studname.Focus()
         End If
     End Sub
-
-    Private Sub MenuStrip1_ItemClicked(sender As Object, e As ToolStripItemClickedEventArgs) Handles MenuStrip1.ItemClicked
-
-    End Sub
-
-    'Private Sub SearchToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles SearchToolStripMenuItem1.Click
-    '    SearchBook2.MdiParent = Me
-    '    SearchBook2.Show()
-    '    SearchBook2.txt_isbn1.Focus()
-    'End Sub
-
-    'Private Sub SearchToolStripMenuItem2_Click(sender As Object, e As EventArgs) Handles SearchToolStripMenuItem2.Click
-    '    SearchNonPrinted2.MdiParent = Me
-    '    SearchNonPrinted2.Show()
-    '    SearchNonPrinted2.txt_isbn1.Focus()
-    'End Sub
-
     Private Sub BookToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BookToolStripMenuItem.Click
         SearchBook2.MdiParent = Me
         SearchBook2.Show()
@@ -91,20 +66,26 @@ Public Class TeacherMainForm
         SearchNonPrinted2.txt_isbn1.Focus()
     End Sub
 
-    'Private Sub ViewBooksToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ViewBooksToolStripMenuItem.Click
-    '    ViewBook2.MdiParent = Me
-    '    ViewBook2.Show()
+    Private Sub TeacherMainForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-    'End Sub
+    End Sub
 
-    'Private Sub ViewNonPrintedMaterialToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ViewNonPrintedMaterialToolStripMenuItem.Click
-    '    ViewNonPrinted2.MdiParent = Me
-    '    ViewNonPrinted2.Show()
+    Private Sub HelpToolStripMenuItem1_Click(sender As Object, e As EventArgs)
+        UserManualForm.MdiParent = Me
+        UserManualForm.Show()
+    End Sub
 
-    'End Sub
+    Private Sub HelpToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles HelpToolStripMenuItem.Click
+        UserManualForm.MdiParent = Me
+        UserManualForm.Show()
+    End Sub
+    Private Sub PrintedMaterialsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PrintedMaterialsToolStripMenuItem.Click
+        UnreturnedBooks.MdiParent = Me
+        UnreturnedBooks.Show()
+    End Sub
 
-    'Private Sub ToolStripMenuItem4_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem4.Click
-    '    View3.MdiParent = Me
-    '    View3.Show()
-    'End Sub
+    Private Sub NonPrintedMaterialsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles NonPrintedMaterialsToolStripMenuItem.Click
+        UnreturnedMaterials.MdiParent = Me
+        UnreturnedMaterials.Show()
+    End Sub
 End Class
