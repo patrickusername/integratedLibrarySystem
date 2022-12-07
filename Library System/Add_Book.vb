@@ -1,6 +1,6 @@
 ﻿Imports MySql.Data.MySqlClient
 Public Class Add_Book
-    Public conn As New MySqlConnection("server=localhost;uid=root;database=db_system")
+    Public conn As New MySqlConnection(connString)
     Private Sub btn_cancl_Click(sender As Object, e As EventArgs) Handles btn_cancl.Click
         AdminMainForms.Show()
         Me.Hide()
@@ -80,7 +80,6 @@ Public Class Add_Book
             If data12.Read Then
                 data12.Close()
                 conn.Close()
-                conn.Open()
 
                 If userCounter1 > 0 Then
                     MsgBox("Material Already Exist", MsgBoxStyle.Critical)
@@ -103,36 +102,39 @@ Public Class Add_Book
                     txt_edition.Clear()
                 Else
 
-                    Dim qstr As String = "INSERT INTO tbl_book (BookNumber,isbn,title,AuthorLastName,AuthorFirstName,AuthorMiddleName,DeweyDecimalClassification,category,yearofpublication,publisher,address,copyright) VALUES ('" & txt_booknum.Text & "' ,'" & txt_isbn4.Text & "' , '" & txt_title4.Text & "' , '" & txt_auth_ln.Text & "' , '" & txt_auth_fn.Text & "' , '" & txt_auth_mn.Text & "' , '" & cmb_ddc.Text & "' , '" & cmb_categoory.Text & "' , '" & txt_year.Text & "' , '" & txt_pubcom.Text & "' , '" & txt_address.Text & "' , '" & txt_copyright.Text & "') On DUPLICATE KEY UPDATE booknumber = '" & txt_booknum.Text & "'"
-                    Dim cm As New MySqlCommand(qstr, conn)
-                    Dim dat As MySqlDataReader = cm.ExecuteReader
-                    dat.Close()
+                    Dim quantityCount As Integer = Integer.Parse(txt_quantity.Text)
+                    Dim bokNumber As Integer = 0
+                    Dim pbAdd As New PictureBox
+                    For i As Integer = 1 To quantityCount
+                        If i = 1 Then
+                            bokNumber = txt_booknum.Text
+                            pbAdd.Image = PictureBox1.Image
+                        Else
+                            bokNumber += 1
+                            Dim Generator As New MessagingToolkit.Barcode.BarcodeEncoder
+                            Generator.IncludeLabel = True
+                            Generator.CustomLabel = bokNumber
+                            pbAdd.Image = New Bitmap(Generator.Encode(MessagingToolkit.Barcode.BarcodeFormat.Code128, bokNumber))
+                        End If
 
-                    Dim qstr1 As String = "Update  tbl_book set status = 'Available' where booknumber= '" & txt_booknum.Text & "' "
-                    Dim cm1 As New MySqlCommand(qstr1, conn)
-                    Dim dat1 As MySqlDataReader = cm1.ExecuteReader
-                    dat1.Close()
-
-                    Dim qstr123 As String = "Update  tbl_book set Conditions = 'Good' where booknumber= '" & txt_booknum.Text & "' "
-                    Dim cm123 As New MySqlCommand(qstr123, conn)
-                    Dim dat123 As MySqlDataReader = cm123.ExecuteReader
-                    dat123.Close()
-
-                    Dim book As String = txt_booknum.Text & ".jpg"
-                    Dim folder As String = "C:\Users\patrick\Desktop\BOOK BARCODE\"
-                    Dim query As String = "Update tbl_book set ImagePath = @pathstring where BookNumber = '" & txt_booknum.Text & "'"
-                    Using con As MySqlConnection = New MySqlConnection("server=localhost;uid=root;database=db_system")
-                        Using cmd As MySqlCommand = New MySqlCommand(query, con)
-                            Dim pathstring As String = System.IO.Path.Combine(folder, book)
-                            cmd.Parameters.AddWithValue("@pathstring", pathstring)
-                            con.Open()
-                            cmd.ExecuteNonQuery()
-                            con.Close()
-
-                            Dim a As Image = PictureBox1.Image
-                            a.Save(pathstring)
+                        Dim book As String = String.Format("{0}", bokNumber) & ".jpg"
+                        Dim folder As String = "C:\Users\patrick\Desktop\BOOK BARCODE\"
+                        Dim pathstring As String = System.IO.Path.Combine(folder, book)
+                        conn.Open()
+                        Using (conn)
+                            Dim qstr As String = "INSERT INTO tbl_book (BookNumber,isbn,title,AuthorLastName,AuthorFirstName,AuthorMiddleName,DeweyDecimalClassification,category,yearofpublication,publisher,address,copyright,edition,status,Conditions,ImagePath) VALUES ('" & String.Format("{0}", bokNumber) & "' ,'" & txt_isbn4.Text & "' , '" & txt_title4.Text & "' , '" & txt_auth_ln.Text & "' , '" & txt_auth_fn.Text & "' , '" & txt_auth_mn.Text & "' , '" & cmb_ddc.Text & "' , '" & cmb_categoory.Text & "' , '" & txt_year.Text & "' , '" & txt_pubcom.Text & "' , '" & txt_address.Text & "' , '" & txt_copyright.Text & "','" & txt_edition.Text & "','Available','Good','" & pathstring & "')"
+                            Dim cm As New MySqlCommand(qstr, conn)
+                            Dim affectedRows = cm.ExecuteNonQuery()
+                            If affectedRows > 0 Then
+                                Dim a = New Bitmap(pbAdd.Image)
+                                a.Save(pathstring, System.Drawing.Imaging.ImageFormat.Jpeg)
+                            End If
+                            conn.Close()
                         End Using
-                    End Using
+
+                    Next
+
+
 
                     MsgBox("The Material has been added!", MsgBoxStyle.Information)
 

@@ -6,7 +6,7 @@ Public Class DueMaterials
     Dim frmSendSMS As New SendMessage
 
     Private Sub bind_data()
-        Dim conn As New MySqlConnection("server=localhost;uid=root;Database=db_system;Integrated security=true;")
+        Dim conn As New MySqlConnection(connString)
         Dim cmd As New MySqlCommand("Select BookNumber, Title, DateBorrowed, DatetoReturn, Username, Name, ContactNo From tbl_borrowreturnbooks Union All Select MaterialNumber, MaterialName, DateBorrowed, DatetoReturn, Username, Name, ContactNo from tbl_borrowreturnnonprinted", conn)
         Dim da As New MySqlDataAdapter(cmd)
         Dim dt As New DataTable
