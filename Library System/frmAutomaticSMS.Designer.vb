@@ -42,7 +42,7 @@ Partial Class frmAutomaticSMS
         Me.btnSaveSetting.Name = "btnSaveSetting"
         Me.btnSaveSetting.Size = New System.Drawing.Size(180, 38)
         Me.btnSaveSetting.TabIndex = 1
-        Me.btnSaveSetting.Text = "Save Settings"
+        Me.btnSaveSetting.Text = "Run Settings"
         Me.btnSaveSetting.UseVisualStyleBackColor = True
         '
         'frmAutomaticSMS

@@ -1,6 +1,8 @@
 ﻿Imports MySql.Data.MySqlClient
 Imports System.ComponentModel
 Public Class AdminMainForms
+
+
     Private Sub BorrowBookToolStripMenuItem_Click(sender As Object, e As EventArgs)
         'BorrowBook.MdiParent = Me
         'BorrowBook.Show()
@@ -1408,5 +1410,20 @@ Public Class AdminMainForms
         Restore.Show()
         Restore.TextBox2.Focus()
         Restore.TextBox2.Clear()
+    End Sub
+
+    Private Sub AUTOSMSToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AUTOSMSToolStripMenuItem.Click
+        'frmAutomaticSMS.MdiParent = Me
+        Dim runbg = getConfiguration()
+        If runbg Then
+            Dim Ask As MsgBoxResult = MsgBox("Auto SMS is currently running in background, Do you wish to stop it?", MsgBoxStyle.OkCancel)
+            If Ask = MsgBoxResult.Ok Then
+                Dim query = String.Format(updateCronSettings, False)
+                Dim isUpdate = updateQuery(query)
+
+            End If
+        Else
+            Process.Start("D:\libraryCron\LibraryCron\bin\Debug\net6.0-windows\LibraryCron.exe")
+        End If
     End Sub
 End Class

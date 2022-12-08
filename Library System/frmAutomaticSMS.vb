@@ -53,7 +53,7 @@ Public Class frmAutomaticSMS
                             Continue For
                         End If
 
-                        If rBook.getCategory().ToLower().Equals("textbook") Then
+                        If rBook.getCategory().ToLower().Equals("textbook") Or rBook.getCategory().ToLower().Equals("general reference") Then
                             Dim dets As New Date
                             Date.TryParse(rBook.getDateToReturn, dets)
                             Dim betweenDays = DateAndTime.DateDiff(DateInterval.Day, Date.Parse(Date.Now().ToShortDateString()), dets)
@@ -67,47 +67,6 @@ Public Class frmAutomaticSMS
                                 End Try
                             End If
 
-                        End If
-                        If rBook.getCategory().ToLower().Equals("general reference") Then
-                            Try
-                                Dim sliceTime = rBook.getOriginalDateToReturn().Split("-")
-                                Dim hoursAndMinutes = sliceTime(1).Split(":")
-                                Dim hours As String = hoursAndMinutes(0).Trim()
-                                Dim sliceMins = hoursAndMinutes(1).Split(" ")
-                                Dim amPm = sliceMins(1).Trim()
-                                Dim mins = sliceMins(0).Trim()
-                                If mins = "00" Then
-                                    mins = "00"
-                                End If
-                                If amPm.ToLower().Equals("pm") Then
-                                    hours = hours + 12
-                                End If
-
-                                If amPm.ToLower().Equals("am") Then
-                                    If hours.ToLower().Equals("12") Then
-                                        hours = "00"
-                                    End If
-                                End If
-                                Dim mDate = Date.Parse(rBook.getDateToReturn())
-                                Dim dets As DateTime = New DateTime(mDate.Year, mDate.Month, mDate.Day, hours, mins, 0)
-                                Dim currentHour = DateTime.Now().Hour
-                                Dim dueHour = Integer.Parse(hours)
-                                Dim hourDiff = dueHour - currentHour
-                                If hourDiff <= 12 Then
-                                    Dim message = String.Format(smsTemplate, rBook.getBorrowerName, rBook.getBookTitle, rBook.getOriginalDateToReturn)
-                                    Try
-                                        Dim result = SMP(smsApiKey, rBook.getContactNumber, message, "BAILNHSLIB")
-                                        insert(String.Format(insertCronSentQuery, rBook.getBookNumber, rBook.getBorrowerName, rBook.getDateToReturn))
-                                    Catch ex As Exception
-                                        ' MsgBox(ex.Message)
-                                    End Try
-                                End If
-
-
-
-                            Catch ex As Exception
-                                MsgBox(ex.Message)
-                            End Try
                         End If
 
                     Next
@@ -186,4 +145,14 @@ Public Class frmAutomaticSMS
         End Using
         Return responseBody
     End Function
+
+    Private Sub frmAutomaticSMS_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Dim runbg = getConfiguration()
+        If runbg Then
+            cbRunBG.CheckState = CheckState.Checked
+
+        Else
+            cbRunBG.CheckState = CheckState.Unchecked
+        End If
+    End Sub
 End Class

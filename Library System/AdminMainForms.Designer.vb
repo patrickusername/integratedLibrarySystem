@@ -79,6 +79,7 @@ Partial Class AdminMainForms
         Me.lbl_name = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolStripStatusLabel2 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.lbl_usertype = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.AUTOSMSToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         Me.SuspendLayout()
@@ -89,11 +90,11 @@ Partial Class AdminMainForms
         Me.MenuStrip1.BackColor = System.Drawing.Color.White
         Me.MenuStrip1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
         Me.MenuStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ManageBookToolStripMenuItem, Me.ToolStripMenuItem2, Me.SendSMSToolStripMenuItem, Me.ToolStripMenuItem5, Me.ToolStripMenuItem7, Me.ReportsToolStripMenuItem, Me.UserToolStripMenuItem, Me.GeneratesBarcodeToolStripMenuItem, Me.LogoutToolStripMenuItem})
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ManageBookToolStripMenuItem, Me.ToolStripMenuItem2, Me.SendSMSToolStripMenuItem, Me.AUTOSMSToolStripMenuItem, Me.ToolStripMenuItem5, Me.ToolStripMenuItem7, Me.ReportsToolStripMenuItem, Me.UserToolStripMenuItem, Me.GeneratesBarcodeToolStripMenuItem, Me.LogoutToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(1, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Padding = New System.Windows.Forms.Padding(5, 2, 0, 2)
-        Me.MenuStrip1.Size = New System.Drawing.Size(1923, 62)
+        Me.MenuStrip1.Padding = New System.Windows.Forms.Padding(4, 2, 0, 2)
+        Me.MenuStrip1.Size = New System.Drawing.Size(1027, 50)
         Me.MenuStrip1.TabIndex = 0
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -105,7 +106,7 @@ Partial Class AdminMainForms
         Me.ManageBookToolStripMenuItem.Image = CType(resources.GetObject("ManageBookToolStripMenuItem.Image"), System.Drawing.Image)
         Me.ManageBookToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.ManageBookToolStripMenuItem.Name = "ManageBookToolStripMenuItem"
-        Me.ManageBookToolStripMenuItem.Size = New System.Drawing.Size(184, 58)
+        Me.ManageBookToolStripMenuItem.Size = New System.Drawing.Size(157, 46)
         Me.ManageBookToolStripMenuItem.Text = "Manage Inventory"
         Me.ManageBookToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.ManageBookToolStripMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
@@ -117,25 +118,25 @@ Partial Class AdminMainForms
         Me.AddBookToolStripMenuItem.Image = CType(resources.GetObject("AddBookToolStripMenuItem.Image"), System.Drawing.Image)
         Me.AddBookToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.AddBookToolStripMenuItem.Name = "AddBookToolStripMenuItem"
-        Me.AddBookToolStripMenuItem.Size = New System.Drawing.Size(285, 26)
+        Me.AddBookToolStripMenuItem.Size = New System.Drawing.Size(245, 26)
         Me.AddBookToolStripMenuItem.Text = "Printed Materials"
         '
         'AddToolStripMenuItem
         '
         Me.AddToolStripMenuItem.Name = "AddToolStripMenuItem"
-        Me.AddToolStripMenuItem.Size = New System.Drawing.Size(148, 26)
+        Me.AddToolStripMenuItem.Size = New System.Drawing.Size(128, 22)
         Me.AddToolStripMenuItem.Text = "Add"
         '
         'UpdateToolStripMenuItem
         '
         Me.UpdateToolStripMenuItem.Name = "UpdateToolStripMenuItem"
-        Me.UpdateToolStripMenuItem.Size = New System.Drawing.Size(148, 26)
+        Me.UpdateToolStripMenuItem.Size = New System.Drawing.Size(128, 22)
         Me.UpdateToolStripMenuItem.Text = "Update"
         '
         'SearchToolStripMenuItem1
         '
         Me.SearchToolStripMenuItem1.Name = "SearchToolStripMenuItem1"
-        Me.SearchToolStripMenuItem1.Size = New System.Drawing.Size(148, 26)
+        Me.SearchToolStripMenuItem1.Size = New System.Drawing.Size(128, 22)
         Me.SearchToolStripMenuItem1.Text = "Search"
         '
         'UpdateBookToolStripMenuItem
@@ -144,25 +145,25 @@ Partial Class AdminMainForms
         Me.UpdateBookToolStripMenuItem.Image = CType(resources.GetObject("UpdateBookToolStripMenuItem.Image"), System.Drawing.Image)
         Me.UpdateBookToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.UpdateBookToolStripMenuItem.Name = "UpdateBookToolStripMenuItem"
-        Me.UpdateBookToolStripMenuItem.Size = New System.Drawing.Size(285, 26)
+        Me.UpdateBookToolStripMenuItem.Size = New System.Drawing.Size(245, 26)
         Me.UpdateBookToolStripMenuItem.Text = "Non-Printed Materials"
         '
         'AddToolStripMenuItem1
         '
         Me.AddToolStripMenuItem1.Name = "AddToolStripMenuItem1"
-        Me.AddToolStripMenuItem1.Size = New System.Drawing.Size(148, 26)
+        Me.AddToolStripMenuItem1.Size = New System.Drawing.Size(128, 22)
         Me.AddToolStripMenuItem1.Text = "Add"
         '
         'UpdateToolStripMenuItem1
         '
         Me.UpdateToolStripMenuItem1.Name = "UpdateToolStripMenuItem1"
-        Me.UpdateToolStripMenuItem1.Size = New System.Drawing.Size(148, 26)
+        Me.UpdateToolStripMenuItem1.Size = New System.Drawing.Size(128, 22)
         Me.UpdateToolStripMenuItem1.Text = "Update"
         '
         'SearchToolStripMenuItem2
         '
         Me.SearchToolStripMenuItem2.Name = "SearchToolStripMenuItem2"
-        Me.SearchToolStripMenuItem2.Size = New System.Drawing.Size(148, 26)
+        Me.SearchToolStripMenuItem2.Size = New System.Drawing.Size(128, 22)
         Me.SearchToolStripMenuItem2.Text = "Search"
         '
         'ToolStripMenuItem2
@@ -170,7 +171,7 @@ Partial Class AdminMainForms
         Me.ToolStripMenuItem2.Font = New System.Drawing.Font("Century Schoolbook", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ToolStripMenuItem2.Image = CType(resources.GetObject("ToolStripMenuItem2.Image"), System.Drawing.Image)
         Me.ToolStripMenuItem2.Name = "ToolStripMenuItem2"
-        Me.ToolStripMenuItem2.Size = New System.Drawing.Size(88, 58)
+        Me.ToolStripMenuItem2.Size = New System.Drawing.Size(75, 46)
         Me.ToolStripMenuItem2.Text = "Borrow"
         Me.ToolStripMenuItem2.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.ToolStripMenuItem2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
@@ -181,7 +182,7 @@ Partial Class AdminMainForms
         Me.SendSMSToolStripMenuItem.ForeColor = System.Drawing.Color.Black
         Me.SendSMSToolStripMenuItem.Image = CType(resources.GetObject("SendSMSToolStripMenuItem.Image"), System.Drawing.Image)
         Me.SendSMSToolStripMenuItem.Name = "SendSMSToolStripMenuItem"
-        Me.SendSMSToolStripMenuItem.Size = New System.Drawing.Size(110, 58)
+        Me.SendSMSToolStripMenuItem.Size = New System.Drawing.Size(91, 46)
         Me.SendSMSToolStripMenuItem.Text = "Send SMS"
         Me.SendSMSToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.SendSMSToolStripMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
@@ -191,7 +192,7 @@ Partial Class AdminMainForms
         Me.ToolStripMenuItem5.Font = New System.Drawing.Font("Century Schoolbook", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ToolStripMenuItem5.Image = CType(resources.GetObject("ToolStripMenuItem5.Image"), System.Drawing.Image)
         Me.ToolStripMenuItem5.Name = "ToolStripMenuItem5"
-        Me.ToolStripMenuItem5.Size = New System.Drawing.Size(86, 58)
+        Me.ToolStripMenuItem5.Size = New System.Drawing.Size(72, 46)
         Me.ToolStripMenuItem5.Text = "Return"
         Me.ToolStripMenuItem5.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.ToolStripMenuItem5.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
@@ -202,7 +203,7 @@ Partial Class AdminMainForms
         Me.ToolStripMenuItem7.Font = New System.Drawing.Font("Century Schoolbook", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ToolStripMenuItem7.Image = CType(resources.GetObject("ToolStripMenuItem7.Image"), System.Drawing.Image)
         Me.ToolStripMenuItem7.Name = "ToolStripMenuItem7"
-        Me.ToolStripMenuItem7.Size = New System.Drawing.Size(60, 58)
+        Me.ToolStripMenuItem7.Size = New System.Drawing.Size(52, 46)
         Me.ToolStripMenuItem7.Text = "Lost"
         Me.ToolStripMenuItem7.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.ToolStripMenuItem7.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
@@ -211,14 +212,14 @@ Partial Class AdminMainForms
         '
         Me.BookToolStripMenuItem1.Image = CType(resources.GetObject("BookToolStripMenuItem1.Image"), System.Drawing.Image)
         Me.BookToolStripMenuItem1.Name = "BookToolStripMenuItem1"
-        Me.BookToolStripMenuItem1.Size = New System.Drawing.Size(285, 26)
+        Me.BookToolStripMenuItem1.Size = New System.Drawing.Size(241, 22)
         Me.BookToolStripMenuItem1.Text = "Printed Materials"
         '
         'NonPrintedMaterialToolStripMenuItem1
         '
         Me.NonPrintedMaterialToolStripMenuItem1.Image = CType(resources.GetObject("NonPrintedMaterialToolStripMenuItem1.Image"), System.Drawing.Image)
         Me.NonPrintedMaterialToolStripMenuItem1.Name = "NonPrintedMaterialToolStripMenuItem1"
-        Me.NonPrintedMaterialToolStripMenuItem1.Size = New System.Drawing.Size(285, 26)
+        Me.NonPrintedMaterialToolStripMenuItem1.Size = New System.Drawing.Size(241, 22)
         Me.NonPrintedMaterialToolStripMenuItem1.Text = "Non-Printed Materials"
         '
         'ReportsToolStripMenuItem
@@ -229,7 +230,7 @@ Partial Class AdminMainForms
         Me.ReportsToolStripMenuItem.Image = CType(resources.GetObject("ReportsToolStripMenuItem.Image"), System.Drawing.Image)
         Me.ReportsToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.ReportsToolStripMenuItem.Name = "ReportsToolStripMenuItem"
-        Me.ReportsToolStripMenuItem.Size = New System.Drawing.Size(91, 58)
+        Me.ReportsToolStripMenuItem.Size = New System.Drawing.Size(77, 46)
         Me.ReportsToolStripMenuItem.Text = "Reports"
         Me.ReportsToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.ReportsToolStripMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
@@ -240,19 +241,19 @@ Partial Class AdminMainForms
         Me.BorrowedBooksToolStripMenuItem.Image = CType(resources.GetObject("BorrowedBooksToolStripMenuItem.Image"), System.Drawing.Image)
         Me.BorrowedBooksToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.BorrowedBooksToolStripMenuItem.Name = "BorrowedBooksToolStripMenuItem"
-        Me.BorrowedBooksToolStripMenuItem.Size = New System.Drawing.Size(285, 26)
+        Me.BorrowedBooksToolStripMenuItem.Size = New System.Drawing.Size(244, 26)
         Me.BorrowedBooksToolStripMenuItem.Text = "Borrowed"
         '
         'BooksToolStripMenuItem
         '
         Me.BooksToolStripMenuItem.Name = "BooksToolStripMenuItem"
-        Me.BooksToolStripMenuItem.Size = New System.Drawing.Size(285, 26)
+        Me.BooksToolStripMenuItem.Size = New System.Drawing.Size(241, 22)
         Me.BooksToolStripMenuItem.Text = "Printed Materials"
         '
         'NonPrintedMaterialsToolStripMenuItem
         '
         Me.NonPrintedMaterialsToolStripMenuItem.Name = "NonPrintedMaterialsToolStripMenuItem"
-        Me.NonPrintedMaterialsToolStripMenuItem.Size = New System.Drawing.Size(285, 26)
+        Me.NonPrintedMaterialsToolStripMenuItem.Size = New System.Drawing.Size(241, 22)
         Me.NonPrintedMaterialsToolStripMenuItem.Text = "Non-Printed Materials"
         '
         'BorrowersToolStripMenuItem
@@ -261,21 +262,21 @@ Partial Class AdminMainForms
         Me.BorrowersToolStripMenuItem.Image = CType(resources.GetObject("BorrowersToolStripMenuItem.Image"), System.Drawing.Image)
         Me.BorrowersToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.BorrowersToolStripMenuItem.Name = "BorrowersToolStripMenuItem"
-        Me.BorrowersToolStripMenuItem.Size = New System.Drawing.Size(285, 26)
+        Me.BorrowersToolStripMenuItem.Size = New System.Drawing.Size(244, 26)
         Me.BorrowersToolStripMenuItem.Text = "Borrowers"
         '
         'StudentToolStripMenuItem
         '
         Me.StudentToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.StudentToolStripMenuItem.Name = "StudentToolStripMenuItem"
-        Me.StudentToolStripMenuItem.Size = New System.Drawing.Size(156, 26)
+        Me.StudentToolStripMenuItem.Size = New System.Drawing.Size(133, 22)
         Me.StudentToolStripMenuItem.Text = "Student"
         '
         'FacultyToolStripMenuItem
         '
         Me.FacultyToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.FacultyToolStripMenuItem.Name = "FacultyToolStripMenuItem"
-        Me.FacultyToolStripMenuItem.Size = New System.Drawing.Size(156, 26)
+        Me.FacultyToolStripMenuItem.Size = New System.Drawing.Size(133, 22)
         Me.FacultyToolStripMenuItem.Text = "Faculty"
         '
         'ReturnedBooksToolStripMenuItem
@@ -284,19 +285,19 @@ Partial Class AdminMainForms
         Me.ReturnedBooksToolStripMenuItem.Image = CType(resources.GetObject("ReturnedBooksToolStripMenuItem.Image"), System.Drawing.Image)
         Me.ReturnedBooksToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.ReturnedBooksToolStripMenuItem.Name = "ReturnedBooksToolStripMenuItem"
-        Me.ReturnedBooksToolStripMenuItem.Size = New System.Drawing.Size(285, 26)
+        Me.ReturnedBooksToolStripMenuItem.Size = New System.Drawing.Size(244, 26)
         Me.ReturnedBooksToolStripMenuItem.Text = "Returned"
         '
         'BooksToolStripMenuItem1
         '
         Me.BooksToolStripMenuItem1.Name = "BooksToolStripMenuItem1"
-        Me.BooksToolStripMenuItem1.Size = New System.Drawing.Size(285, 26)
+        Me.BooksToolStripMenuItem1.Size = New System.Drawing.Size(241, 22)
         Me.BooksToolStripMenuItem1.Text = "Printed Materials"
         '
         'NonPrintedMaterialsToolStripMenuItem1
         '
         Me.NonPrintedMaterialsToolStripMenuItem1.Name = "NonPrintedMaterialsToolStripMenuItem1"
-        Me.NonPrintedMaterialsToolStripMenuItem1.Size = New System.Drawing.Size(285, 26)
+        Me.NonPrintedMaterialsToolStripMenuItem1.Size = New System.Drawing.Size(241, 22)
         Me.NonPrintedMaterialsToolStripMenuItem1.Text = "Non-Printed Materials"
         '
         'DelinquentBorrowersToolStripMenuItem
@@ -304,7 +305,7 @@ Partial Class AdminMainForms
         Me.DelinquentBorrowersToolStripMenuItem.Image = CType(resources.GetObject("DelinquentBorrowersToolStripMenuItem.Image"), System.Drawing.Image)
         Me.DelinquentBorrowersToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.DelinquentBorrowersToolStripMenuItem.Name = "DelinquentBorrowersToolStripMenuItem"
-        Me.DelinquentBorrowersToolStripMenuItem.Size = New System.Drawing.Size(285, 26)
+        Me.DelinquentBorrowersToolStripMenuItem.Size = New System.Drawing.Size(244, 26)
         Me.DelinquentBorrowersToolStripMenuItem.Text = "Delinquent Borrowers"
         '
         'OverdueBooksToolStripMenuItem
@@ -313,19 +314,19 @@ Partial Class AdminMainForms
         Me.OverdueBooksToolStripMenuItem.Image = CType(resources.GetObject("OverdueBooksToolStripMenuItem.Image"), System.Drawing.Image)
         Me.OverdueBooksToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.OverdueBooksToolStripMenuItem.Name = "OverdueBooksToolStripMenuItem"
-        Me.OverdueBooksToolStripMenuItem.Size = New System.Drawing.Size(285, 26)
+        Me.OverdueBooksToolStripMenuItem.Size = New System.Drawing.Size(244, 26)
         Me.OverdueBooksToolStripMenuItem.Text = "Overdue"
         '
         'BooksToolStripMenuItem2
         '
         Me.BooksToolStripMenuItem2.Name = "BooksToolStripMenuItem2"
-        Me.BooksToolStripMenuItem2.Size = New System.Drawing.Size(285, 26)
+        Me.BooksToolStripMenuItem2.Size = New System.Drawing.Size(241, 22)
         Me.BooksToolStripMenuItem2.Text = "Printed Materials"
         '
         'NonPrintedMaterialsToolStripMenuItem2
         '
         Me.NonPrintedMaterialsToolStripMenuItem2.Name = "NonPrintedMaterialsToolStripMenuItem2"
-        Me.NonPrintedMaterialsToolStripMenuItem2.Size = New System.Drawing.Size(285, 26)
+        Me.NonPrintedMaterialsToolStripMenuItem2.Size = New System.Drawing.Size(241, 22)
         Me.NonPrintedMaterialsToolStripMenuItem2.Text = "Non-Printed Materials"
         '
         'DamagedBooksToolStripMenuItem
@@ -334,19 +335,19 @@ Partial Class AdminMainForms
         Me.DamagedBooksToolStripMenuItem.Image = CType(resources.GetObject("DamagedBooksToolStripMenuItem.Image"), System.Drawing.Image)
         Me.DamagedBooksToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.DamagedBooksToolStripMenuItem.Name = "DamagedBooksToolStripMenuItem"
-        Me.DamagedBooksToolStripMenuItem.Size = New System.Drawing.Size(285, 26)
+        Me.DamagedBooksToolStripMenuItem.Size = New System.Drawing.Size(244, 26)
         Me.DamagedBooksToolStripMenuItem.Text = "Damaged"
         '
         'BooksToolStripMenuItem3
         '
         Me.BooksToolStripMenuItem3.Name = "BooksToolStripMenuItem3"
-        Me.BooksToolStripMenuItem3.Size = New System.Drawing.Size(285, 26)
+        Me.BooksToolStripMenuItem3.Size = New System.Drawing.Size(241, 22)
         Me.BooksToolStripMenuItem3.Text = "Printed Materials"
         '
         'NonPrintedMaterialsToolStripMenuItem3
         '
         Me.NonPrintedMaterialsToolStripMenuItem3.Name = "NonPrintedMaterialsToolStripMenuItem3"
-        Me.NonPrintedMaterialsToolStripMenuItem3.Size = New System.Drawing.Size(285, 26)
+        Me.NonPrintedMaterialsToolStripMenuItem3.Size = New System.Drawing.Size(241, 22)
         Me.NonPrintedMaterialsToolStripMenuItem3.Text = "Non-Printed Materials"
         '
         'LostBooksToolStripMenuItem
@@ -355,19 +356,19 @@ Partial Class AdminMainForms
         Me.LostBooksToolStripMenuItem.Image = CType(resources.GetObject("LostBooksToolStripMenuItem.Image"), System.Drawing.Image)
         Me.LostBooksToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.LostBooksToolStripMenuItem.Name = "LostBooksToolStripMenuItem"
-        Me.LostBooksToolStripMenuItem.Size = New System.Drawing.Size(285, 26)
+        Me.LostBooksToolStripMenuItem.Size = New System.Drawing.Size(244, 26)
         Me.LostBooksToolStripMenuItem.Text = "Lost"
         '
         'BooksToolStripMenuItem4
         '
         Me.BooksToolStripMenuItem4.Name = "BooksToolStripMenuItem4"
-        Me.BooksToolStripMenuItem4.Size = New System.Drawing.Size(285, 26)
+        Me.BooksToolStripMenuItem4.Size = New System.Drawing.Size(241, 22)
         Me.BooksToolStripMenuItem4.Text = "Printed Materials"
         '
         'NonPrintedMaterialsToolStripMenuItem4
         '
         Me.NonPrintedMaterialsToolStripMenuItem4.Name = "NonPrintedMaterialsToolStripMenuItem4"
-        Me.NonPrintedMaterialsToolStripMenuItem4.Size = New System.Drawing.Size(285, 26)
+        Me.NonPrintedMaterialsToolStripMenuItem4.Size = New System.Drawing.Size(241, 22)
         Me.NonPrintedMaterialsToolStripMenuItem4.Text = "Non-Printed Materials"
         '
         'UserToolStripMenuItem
@@ -379,7 +380,7 @@ Partial Class AdminMainForms
         Me.UserToolStripMenuItem.ImageAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.UserToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.UserToolStripMenuItem.Name = "UserToolStripMenuItem"
-        Me.UserToolStripMenuItem.Size = New System.Drawing.Size(183, 58)
+        Me.UserToolStripMenuItem.Size = New System.Drawing.Size(154, 46)
         Me.UserToolStripMenuItem.Text = "User Management"
         Me.UserToolStripMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
         '
@@ -388,19 +389,19 @@ Partial Class AdminMainForms
         Me.AdminManagementToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AddToolStripMenuItem2, Me.UpdateToolStripMenuItem2})
         Me.AdminManagementToolStripMenuItem.Image = CType(resources.GetObject("AdminManagementToolStripMenuItem.Image"), System.Drawing.Image)
         Me.AdminManagementToolStripMenuItem.Name = "AdminManagementToolStripMenuItem"
-        Me.AdminManagementToolStripMenuItem.Size = New System.Drawing.Size(275, 26)
+        Me.AdminManagementToolStripMenuItem.Size = New System.Drawing.Size(237, 26)
         Me.AdminManagementToolStripMenuItem.Text = "Admin Management"
         '
         'AddToolStripMenuItem2
         '
         Me.AddToolStripMenuItem2.Name = "AddToolStripMenuItem2"
-        Me.AddToolStripMenuItem2.Size = New System.Drawing.Size(148, 26)
+        Me.AddToolStripMenuItem2.Size = New System.Drawing.Size(128, 22)
         Me.AddToolStripMenuItem2.Text = "Add"
         '
         'UpdateToolStripMenuItem2
         '
         Me.UpdateToolStripMenuItem2.Name = "UpdateToolStripMenuItem2"
-        Me.UpdateToolStripMenuItem2.Size = New System.Drawing.Size(148, 26)
+        Me.UpdateToolStripMenuItem2.Size = New System.Drawing.Size(128, 22)
         Me.UpdateToolStripMenuItem2.Text = "Update"
         '
         'FacultyManagementToolStripMenuItem
@@ -409,19 +410,19 @@ Partial Class AdminMainForms
         Me.FacultyManagementToolStripMenuItem.Image = CType(resources.GetObject("FacultyManagementToolStripMenuItem.Image"), System.Drawing.Image)
         Me.FacultyManagementToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.FacultyManagementToolStripMenuItem.Name = "FacultyManagementToolStripMenuItem"
-        Me.FacultyManagementToolStripMenuItem.Size = New System.Drawing.Size(275, 26)
+        Me.FacultyManagementToolStripMenuItem.Size = New System.Drawing.Size(237, 26)
         Me.FacultyManagementToolStripMenuItem.Text = "Faculty Management"
         '
         'AddToolStripMenuItem3
         '
         Me.AddToolStripMenuItem3.Name = "AddToolStripMenuItem3"
-        Me.AddToolStripMenuItem3.Size = New System.Drawing.Size(148, 26)
+        Me.AddToolStripMenuItem3.Size = New System.Drawing.Size(128, 22)
         Me.AddToolStripMenuItem3.Text = "Add"
         '
         'UpdateToolStripMenuItem3
         '
         Me.UpdateToolStripMenuItem3.Name = "UpdateToolStripMenuItem3"
-        Me.UpdateToolStripMenuItem3.Size = New System.Drawing.Size(148, 26)
+        Me.UpdateToolStripMenuItem3.Size = New System.Drawing.Size(128, 22)
         Me.UpdateToolStripMenuItem3.Text = "Update"
         '
         'StudentManagementToolStripMenuItem
@@ -429,19 +430,19 @@ Partial Class AdminMainForms
         Me.StudentManagementToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AddToolStripMenuItem4, Me.UpdateToolStripMenuItem4})
         Me.StudentManagementToolStripMenuItem.Image = CType(resources.GetObject("StudentManagementToolStripMenuItem.Image"), System.Drawing.Image)
         Me.StudentManagementToolStripMenuItem.Name = "StudentManagementToolStripMenuItem"
-        Me.StudentManagementToolStripMenuItem.Size = New System.Drawing.Size(275, 26)
+        Me.StudentManagementToolStripMenuItem.Size = New System.Drawing.Size(237, 26)
         Me.StudentManagementToolStripMenuItem.Text = "Student Management"
         '
         'AddToolStripMenuItem4
         '
         Me.AddToolStripMenuItem4.Name = "AddToolStripMenuItem4"
-        Me.AddToolStripMenuItem4.Size = New System.Drawing.Size(148, 26)
+        Me.AddToolStripMenuItem4.Size = New System.Drawing.Size(128, 22)
         Me.AddToolStripMenuItem4.Text = "Add"
         '
         'UpdateToolStripMenuItem4
         '
         Me.UpdateToolStripMenuItem4.Name = "UpdateToolStripMenuItem4"
-        Me.UpdateToolStripMenuItem4.Size = New System.Drawing.Size(148, 26)
+        Me.UpdateToolStripMenuItem4.Size = New System.Drawing.Size(128, 22)
         Me.UpdateToolStripMenuItem4.Text = "Update"
         '
         'GeneratesBarcodeToolStripMenuItem
@@ -452,7 +453,7 @@ Partial Class AdminMainForms
         Me.GeneratesBarcodeToolStripMenuItem.Image = CType(resources.GetObject("GeneratesBarcodeToolStripMenuItem.Image"), System.Drawing.Image)
         Me.GeneratesBarcodeToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.GeneratesBarcodeToolStripMenuItem.Name = "GeneratesBarcodeToolStripMenuItem"
-        Me.GeneratesBarcodeToolStripMenuItem.Size = New System.Drawing.Size(93, 58)
+        Me.GeneratesBarcodeToolStripMenuItem.Size = New System.Drawing.Size(79, 46)
         Me.GeneratesBarcodeToolStripMenuItem.Text = "Utilities"
         Me.GeneratesBarcodeToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.GeneratesBarcodeToolStripMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
@@ -461,20 +462,20 @@ Partial Class AdminMainForms
         '
         Me.BackUpRestoreToolStripMenuItem.Image = CType(resources.GetObject("BackUpRestoreToolStripMenuItem.Image"), System.Drawing.Image)
         Me.BackUpRestoreToolStripMenuItem.Name = "BackUpRestoreToolStripMenuItem"
-        Me.BackUpRestoreToolStripMenuItem.Size = New System.Drawing.Size(158, 26)
+        Me.BackUpRestoreToolStripMenuItem.Size = New System.Drawing.Size(138, 22)
         Me.BackUpRestoreToolStripMenuItem.Text = "Back Up"
         '
         'RestoreToolStripMenuItem
         '
         Me.RestoreToolStripMenuItem.Name = "RestoreToolStripMenuItem"
-        Me.RestoreToolStripMenuItem.Size = New System.Drawing.Size(158, 26)
+        Me.RestoreToolStripMenuItem.Size = New System.Drawing.Size(138, 22)
         Me.RestoreToolStripMenuItem.Text = "Restore"
         '
         'HelpToolStripMenuItem
         '
         Me.HelpToolStripMenuItem.Image = CType(resources.GetObject("HelpToolStripMenuItem.Image"), System.Drawing.Image)
         Me.HelpToolStripMenuItem.Name = "HelpToolStripMenuItem"
-        Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(158, 26)
+        Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(138, 22)
         Me.HelpToolStripMenuItem.Text = "Help"
         '
         'LogoutToolStripMenuItem
@@ -484,7 +485,7 @@ Partial Class AdminMainForms
         Me.LogoutToolStripMenuItem.Image = CType(resources.GetObject("LogoutToolStripMenuItem.Image"), System.Drawing.Image)
         Me.LogoutToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.LogoutToolStripMenuItem.Name = "LogoutToolStripMenuItem"
-        Me.LogoutToolStripMenuItem.Size = New System.Drawing.Size(83, 58)
+        Me.LogoutToolStripMenuItem.Size = New System.Drawing.Size(73, 46)
         Me.LogoutToolStripMenuItem.Text = "Logout"
         Me.LogoutToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.LogoutToolStripMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
@@ -494,10 +495,11 @@ Partial Class AdminMainForms
         Me.StatusStrip1.Font = New System.Drawing.Font("Century Schoolbook", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.StatusStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
         Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel1, Me.lbl_name, Me.ToolStripStatusLabel2, Me.lbl_usertype})
-        Me.StatusStrip1.Location = New System.Drawing.Point(1, 1025)
+        Me.StatusStrip1.Location = New System.Drawing.Point(1, 584)
         Me.StatusStrip1.Name = "StatusStrip1"
+        Me.StatusStrip1.Padding = New System.Windows.Forms.Padding(1, 0, 10, 0)
         Me.StatusStrip1.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.StatusStrip1.Size = New System.Drawing.Size(1923, 30)
+        Me.StatusStrip1.Size = New System.Drawing.Size(1027, 25)
         Me.StatusStrip1.TabIndex = 2
         Me.StatusStrip1.Text = "StatusStrip1"
         '
@@ -505,47 +507,54 @@ Partial Class AdminMainForms
         '
         Me.ToolStripStatusLabel1.Font = New System.Drawing.Font("Century Schoolbook", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ToolStripStatusLabel1.Name = "ToolStripStatusLabel1"
-        Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(120, 25)
+        Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(99, 20)
         Me.ToolStripStatusLabel1.Text = "WELCOME"
         '
         'lbl_name
         '
         Me.lbl_name.Name = "lbl_name"
-        Me.lbl_name.Size = New System.Drawing.Size(71, 25)
+        Me.lbl_name.Size = New System.Drawing.Size(56, 20)
         Me.lbl_name.Text = "Name"
         '
         'ToolStripStatusLabel2
         '
         Me.ToolStripStatusLabel2.Font = New System.Drawing.Font("Century Schoolbook", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ToolStripStatusLabel2.Name = "ToolStripStatusLabel2"
-        Me.ToolStripStatusLabel2.Size = New System.Drawing.Size(197, 25)
+        Me.ToolStripStatusLabel2.Size = New System.Drawing.Size(157, 20)
         Me.ToolStripStatusLabel2.Text = "You are logged in as"
         '
         'lbl_usertype
         '
         Me.lbl_usertype.Name = "lbl_usertype"
-        Me.lbl_usertype.Size = New System.Drawing.Size(105, 25)
+        Me.lbl_usertype.Size = New System.Drawing.Size(84, 20)
         Me.lbl_usertype.Text = "Usertype"
+        '
+        'AUTOSMSToolStripMenuItem
+        '
+        Me.AUTOSMSToolStripMenuItem.Name = "AUTOSMSToolStripMenuItem"
+        Me.AUTOSMSToolStripMenuItem.Size = New System.Drawing.Size(75, 46)
+        Me.AUTOSMSToolStripMenuItem.Text = "AUTO SMS"
         '
         'AdminMainForms
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoSize = True
         Me.BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), System.Drawing.Image)
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.ClientSize = New System.Drawing.Size(1924, 1055)
+        Me.ClientSize = New System.Drawing.Size(1028, 609)
         Me.ControlBox = False
         Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.MenuStrip1)
         Me.ForeColor = System.Drawing.SystemColors.ControlText
         Me.IsMdiContainer = True
         Me.MainMenuStrip = Me.MenuStrip1
-        Me.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "AdminMainForms"
         Me.Padding = New System.Windows.Forms.Padding(1, 0, 0, 0)
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Tag = "                        "
         Me.Text = "Integrated Library Management System for Bail National High School"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
@@ -613,4 +622,5 @@ Partial Class AdminMainForms
     Friend WithEvents lbl_name As ToolStripStatusLabel
     Friend WithEvents ToolStripStatusLabel2 As ToolStripStatusLabel
     Friend WithEvents lbl_usertype As ToolStripStatusLabel
+    Friend WithEvents AUTOSMSToolStripMenuItem As ToolStripMenuItem
 End Class

@@ -101,7 +101,7 @@ Public Class Form1
     End Sub
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        frmAutomaticSMS.Show()
+
         'Refresh tbl_user
         If conn.State = ConnectionState.Open Then
             conn.Close()
